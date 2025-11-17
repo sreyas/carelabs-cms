@@ -68,7 +68,7 @@ const Header = () => {
           <li className='text-center text-[16px] hover:text-[#f15c30] hover:border-b-2 hover:border-[#f15c30] p-3'>Impact</li>
           <li className='text-center text-[16px] hover:text-[#f15c30] hover:border-b-2 hover:border-[#f15c30] p-3'>Blog</li>
           <li className='text-center text-[16px]  p-3'>
-            <button className='gradient-bg px-4 py-2 rounded-[6px]'>Enquire Now</button>
+            <button className='gradient-bg px-4 py-2 rounded-[6px]'>Enquire  Now</button>
           </li>
           </ul> 
         </div>
