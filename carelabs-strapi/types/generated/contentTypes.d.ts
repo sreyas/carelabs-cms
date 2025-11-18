@@ -621,6 +621,7 @@ export interface ApiHomeServiceItemHomeServiceItem
       'oneToMany',
       'api::home-serivice.home-serivice'
     >;
+    Image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     linktext: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<

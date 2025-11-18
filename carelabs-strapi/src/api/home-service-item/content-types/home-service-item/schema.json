@@ -20,6 +20,16 @@
     "description": {
       "type": "text"
     },
+    "Image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
     "featureheading": {
       "type": "string"
     },
