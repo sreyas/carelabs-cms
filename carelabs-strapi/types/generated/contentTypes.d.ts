@@ -772,7 +772,7 @@ export interface ApiWorldwideImpactWorldwideImpact
     projectsStat: Schema.Attribute.Component<'stats.project-stat', true>;
     publishedAt: Schema.Attribute.DateTime;
     successStat: Schema.Attribute.Component<'stats.success-stat', true>;
-    title: Schema.Attribute.String;
+    title: Schema.Attribute.RichText;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

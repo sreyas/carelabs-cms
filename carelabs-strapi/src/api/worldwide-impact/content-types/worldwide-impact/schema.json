@@ -15,7 +15,7 @@
       "type": "string"
     },
     "title": {
-      "type": "string"
+      "type": "richtext"
     },
     "description": {
       "type": "text"
