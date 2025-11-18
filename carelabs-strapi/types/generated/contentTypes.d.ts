@@ -565,7 +565,7 @@ export interface ApiHomeSeriviceHomeSerivice
   extends Struct.CollectionTypeSchema {
   collectionName: 'home_serivices';
   info: {
-    displayName: 'HomeSerivice';
+    displayName: 'HomeService';
     pluralName: 'home-serivices';
     singularName: 'home-serivice';
   };
@@ -578,8 +578,8 @@ export interface ApiHomeSeriviceHomeSerivice
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     description: Schema.Attribute.Text;
-    home_service_item: Schema.Attribute.Relation<
-      'manyToOne',
+    home_service_items: Schema.Attribute.Relation<
+      'oneToMany',
       'api::home-service-item.home-service-item'
     >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
@@ -617,8 +617,8 @@ export interface ApiHomeServiceItemHomeServiceItem
       Schema.Attribute.Private;
     description: Schema.Attribute.Text;
     featureheading: Schema.Attribute.String;
-    home_serivices: Schema.Attribute.Relation<
-      'oneToMany',
+    home_serivice: Schema.Attribute.Relation<
+      'manyToOne',
       'api::home-serivice.home-serivice'
     >;
     Image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;

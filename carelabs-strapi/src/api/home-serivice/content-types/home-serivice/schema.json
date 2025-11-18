@@ -4,7 +4,7 @@
   "info": {
     "singularName": "home-serivice",
     "pluralName": "home-serivices",
-    "displayName": "HomeSerivice"
+    "displayName": "HomeService"
   },
   "options": {
     "draftAndPublish": true
@@ -20,11 +20,11 @@
     "description": {
       "type": "text"
     },
-    "home_service_item": {
+    "home_service_items": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "oneToMany",
       "target": "api::home-service-item.home-service-item",
-      "inversedBy": "home_serivices"
+      "mappedBy": "home_serivice"
     }
   }
 }

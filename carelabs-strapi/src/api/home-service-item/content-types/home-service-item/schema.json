@@ -48,11 +48,11 @@
     "button2link": {
       "type": "string"
     },
-    "home_serivices": {
+    "home_serivice": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "manyToOne",
       "target": "api::home-serivice.home-serivice",
-      "mappedBy": "home_service_item"
+      "inversedBy": "home_service_items"
     },
     "serviceFeatures": {
       "type": "component",
