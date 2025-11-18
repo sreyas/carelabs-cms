@@ -11,6 +11,9 @@
   },
   "pluginOptions": {},
   "attributes": {
+    "order": {
+      "type": "integer"
+    },
     "name": {
       "type": "string"
     },

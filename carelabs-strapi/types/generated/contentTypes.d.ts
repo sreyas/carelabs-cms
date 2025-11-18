@@ -630,6 +630,7 @@ export interface ApiHomeServiceItemHomeServiceItem
     > &
       Schema.Attribute.Private;
     name: Schema.Attribute.String;
+    order: Schema.Attribute.Integer;
     performance: Schema.Attribute.Component<'stats.performance-matrix', true>;
     performanceheading: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
