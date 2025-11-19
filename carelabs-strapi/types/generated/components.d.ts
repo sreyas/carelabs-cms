@@ -20,6 +20,50 @@ export interface FeaturesServiceFeature extends Struct.ComponentSchema {
   };
 }
 
+export interface FooterFooterBottomlink extends Struct.ComponentSchema {
+  collectionName: 'components_footer_footer_bottomlinks';
+  info: {
+    displayName: 'footer-bottomlink';
+  };
+  attributes: {
+    label: Schema.Attribute.String;
+    url: Schema.Attribute.String;
+  };
+}
+
+export interface FooterFooterMenu extends Struct.ComponentSchema {
+  collectionName: 'components_footer_footer_menus';
+  info: {
+    displayName: 'footer-menu';
+  };
+  attributes: {
+    links: Schema.Attribute.Component<'footer.menu-link', true>;
+    title: Schema.Attribute.String;
+  };
+}
+
+export interface FooterMenuLink extends Struct.ComponentSchema {
+  collectionName: 'components_footer_menu_links';
+  info: {
+    displayName: 'menu-link';
+  };
+  attributes: {
+    label: Schema.Attribute.String;
+    url: Schema.Attribute.String;
+  };
+}
+
+export interface FooterSocialLink extends Struct.ComponentSchema {
+  collectionName: 'components_footer_social_links';
+  info: {
+    displayName: 'social-link';
+  };
+  attributes: {
+    icon: Schema.Attribute.String;
+    url: Schema.Attribute.String;
+  };
+}
+
 export interface NavbarNavbarItem extends Struct.ComponentSchema {
   collectionName: 'components_navbar_navbar_items';
   info: {
@@ -160,6 +204,10 @@ declare module '@strapi/strapi' {
     export interface ComponentSchemas {
       'features.feature-item': FeaturesFeatureItem;
       'features.service-feature': FeaturesServiceFeature;
+      'footer.footer-bottomlink': FooterFooterBottomlink;
+      'footer.footer-menu': FooterFooterMenu;
+      'footer.menu-link': FooterMenuLink;
+      'footer.social-link': FooterSocialLink;
       'navbar.navbar-item': NavbarNavbarItem;
       'new.new-item': NewNewItem;
       'shared.open-graph': SharedOpenGraph;
