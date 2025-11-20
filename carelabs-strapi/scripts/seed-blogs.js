@@ -57,9 +57,16 @@ async function seedBlogs() {
       });
 
       const result = await res.json();
-      console.log("Blog created:", result);
+
+      if (!res.ok) {
+        console.error("❌ Failed Blog:", blog.title);
+        console.error(JSON.stringify(result, null, 2));
+      } else {
+        console.log("✅ Created:", blog.title);
+      }
+
     } catch (err) {
-     console.error("Blog creation failed",err);
+      console.error("❌ Network/Fetch Error for:", blog.title, err.message);
     }
   }
 }

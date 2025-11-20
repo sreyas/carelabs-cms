@@ -99,17 +99,9 @@ export interface SharedOpenGraph extends Struct.ComponentSchema {
     icon: 'project-diagram';
   };
   attributes: {
-    ogDescription: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetMinMaxLength<{
-        maxLength: 200;
-      }>;
+    ogDescription: Schema.Attribute.String & Schema.Attribute.Required;
     ogImage: Schema.Attribute.Media<'images'>;
-    ogTitle: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetMinMaxLength<{
-        maxLength: 70;
-      }>;
+    ogTitle: Schema.Attribute.String & Schema.Attribute.Required;
     ogType: Schema.Attribute.String;
     ogUrl: Schema.Attribute.String;
   };

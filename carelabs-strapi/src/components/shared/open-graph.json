@@ -8,20 +8,18 @@
   "attributes": {
     "ogTitle": {
       "type": "string",
-      "required": true,
-      "maxLength": 70
+      "required": true
     },
     "ogDescription": {
       "type": "string",
-      "maxLength": 200,
       "required": true
     },
     "ogImage": {
+      "type": "media",
+      "multiple": false,
       "allowedTypes": [
         "images"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "ogUrl": {
       "type": "string",
