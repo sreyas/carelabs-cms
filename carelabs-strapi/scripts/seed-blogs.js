@@ -2,7 +2,7 @@ const fs = require('fs');
 
 const API_URL = "https://proper-hug-7f40206151.strapiapp.com/api/blogs";
 
-const TOKEN = "e185f1512806e5a74ac6ee0ac474a274eb79d3e75bbbf6f684d7f7f76b80e9b8a542ef3d84d5f99ceaade6c4ab790fae187a76c980d097f0ae419d83faff3a753478ffd6595f5b4b772d52f48db5a1a2fb1dd37c2db7eb155160bb9a701e4384a7fb51c106e00fb6f3b74a486feabb8bcb07da92f14bf49333f66e2dc847af8b";
+const TOKEN = "f4e933bdf4345428244af68bf548df195620bb34c2f398f1f82e9c5c8a64a2b4835ed8212a8e9c3b0210cebded529a1836b051a881f7684ad495defd88fc72070edaaa9945b5d237b1e3b6aa326e9a967a1941bded7d8cb30f845fc20b661ecaf501ab48fa14ccfcc4b0f1d3f7ecf962706a802094ab29728bf69c9afcb16f74";
 
 async function seedBlogs() {
   const blogs = JSON.parse(fs.readFileSync('./scripts/blogs.json', 'utf8'));
