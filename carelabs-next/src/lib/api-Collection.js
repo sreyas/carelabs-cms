@@ -99,3 +99,130 @@ query  {
   }
 }`;
 
+export const GET_GLOBAL_REACH = gql`
+query {
+  homeSerivices {
+    badge
+    title
+    description
+    home_service_items {
+      order
+      name
+      Image {
+        url
+      }
+      button1link
+      button1text
+      button2link
+      button2text
+      description
+      featureheading
+      linktext
+      performanceheading
+      performance {
+        name
+        stats
+      }
+      serviceFeatures {
+        name
+      }
+    }
+  }
+}
+
+`
+export const GET_WORLD_IMPACT = gql` 
+query {
+  worldwideImpact {
+    badge
+    description
+    title
+    projectsStat {
+      count
+      countryCount
+      countryName
+      title
+    }
+    successStat {
+      title
+      value
+    }
+  }
+}
+
+`
+export const GET_INSIGHTS = gql`
+query {
+  insight {
+    title
+    description
+    button
+    buttonLink
+    articles {
+      title
+      slug
+      image {
+        url
+      }
+      featuredText
+      featured
+      description
+      date
+      content
+      category
+      buttontext
+      buttonlink
+      blog_category {
+        category
+      }
+    }
+  }
+}
+  
+`
+export const GET_TESTIMONIALS = gql`
+ query {
+  testimonialsSection {
+    badge
+    title
+    description
+    testimonials {
+      feedback
+      name
+      company
+      position
+    }
+  }
+}
+  
+`
+
+export const GET_FOOTER = gql`
+
+query {
+  footer {
+    logo {
+      url
+    }
+    description
+    socialLinks {
+      icon
+      url
+    }
+    footerMenu {
+      title
+      links {
+        label
+        url
+      }
+    }
+    bottomLinks {
+      label
+      url
+    }
+    copyrightText
+  }
+}
+
+`
+

@@ -1,8 +1,11 @@
 
 "use client";
 
+import GlobalReach from "@/components/GlobalReach";
+import HomeBlog from "@/components/HomeBlog";
 import HomeCounter from "@/components/Homecounter";
 import HomeServices from "@/components/HomeServices";
+import HomeTestimonials from "@/components/HomeTestimonials";
 import {GET_HOME_SECTION_1 } from "@/lib/api-Collection";
 import client from "@/lib/appollo-client";
 import { TextGenerateEffect } from "@/lib/ui/text-generate-effect";
@@ -15,7 +18,10 @@ export default function Home() {
   const [homeData,setHomeData]=useState();
   const [blogData,setBlogData]=useState();
 
+<<<<<<< HEAD
   const STRAPI_URL = "https://competent-belief-4c86b8d649.strapiapp.com";
+=======
+>>>>>>> 83a9f28d0ecd738bef1ecb93c241cb5171a77ee4
 
 
     useEffect(() => {
@@ -52,83 +58,97 @@ console.log("Home Data",homeData);
 if (!homeData) return null;
   return (
     <>
-     <div className="home-cover relative top-[80px]  w-full h-[calc(100vh-80px)]  flex flex-col items-center justify-center  ">
-      {/* .section 1 */}
-      <div className="w-[60%] h-[85%] bg-gray-50 rounded-4xl flex items-center justify-center navbar-shadow">
-          <div className="w-[90%]  h-[90%] flex flex-col items-center justify-evenly ">
+   <div className="home-cover relative top-[80px] w-full min-h-[calc(100vh-80px)]  flex flex-col items-center justify-center">
+  {/* Section 1 */}
+  <div className="w-11/12 md:w-4/5 lg:w-3/5 h-auto md:h-[85%] 2xl:h-[85%] 2xl:w-[65%]  bg-gray-50 rounded-3xl flex flex-col items-center justify-center navbar-shadow p-4 md:p-6">
+    <div className="w-full flex flex-col items-center justify-evenly space-y-6 md:space-y-8">
 
-            <div className="flex justify-center items-center">
-              <button className="px-5 py-2 border-2 border-blue-400  rounded-full">
-                <a>{homeData.heading}</a>
-              </button>
-            </div>
+      {/* Heading Button */}
+      <div className="flex justify-center items-center">
+        <button className="px-4 py-2 border-2 border-blue-400 rounded-full text-sm sm:text-base md:text-lg">
+          <a>{homeData.heading}</a>
+        </button>
+      </div>
 
-        <div className="w-full text-7xl flex items-center justify-center text-center px-8">
-          <div className="w-[60%] font-bold py-4">
-            <p className=""
-              style={{ letterSpacing: "1px" }}
-                dangerouslySetInnerHTML={{
-                  __html: homeData.title
-                }}
-              />
-          </div>
-        
+      {/* Title */}
+      <div className="w-full flex items-center justify-center text-center px-4 md:px-8">
+        <div className="w-full md:w-3/5 font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl py-2"
+          style={{ letterSpacing: "1px" }}
+          dangerouslySetInnerHTML={{ __html: homeData.title }}
+        />
+      </div>
+
+      {/* Description */}
+      <div className="w-full flex items-center justify-center text-center px-4 md:px-8">
+        <div className="w-full md:w-11/12 text-lg  md:text-xl py-2 text-[#65758B]">
+          <p>{homeData.description}</p>
         </div>
+      </div>
 
-
-        <div className="w-full flex items-center justify-center text-center px-8">
-             <div className="w-[90%] text-xl py-3">
-                <p className="text-[#65758B]">{homeData.description}</p>
-             </div>
+      {/* Buttons */}
+      <div className="w-full flex items-center justify-center py-4">
+        <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-center justify-center w-full md:w-3/5">
+          <button className="bg-[#FF7038] text-white py-2 px-6 rounded-full text-sm sm:text-base md:text-lg">
+            <a href={homeData.btn1_link}>{homeData.btn1_text}</a>
+          </button>
+          <button className="bg-[#FF7038] text-white py-2 px-6 rounded-full text-sm sm:text-base md:text-lg">
+            <a href={homeData.btn2_link}>{homeData.btn2_text}</a>
+          </button>
         </div>
+      </div>
 
-        <div className=" w-full flex items-center justify-center py-4">
-          <div className="w-[60%] flex  items-center justify-evenly">
-                    <button className="bg-[#FF7038] text-white py-2 px-6 rounded-full">
-                    <a href={homeData.btn1_link}>{homeData.btn1_text}</a>
-                  </button>
-                   <button className="bg-[#FF7038] text-white py-2 px-6 rounded-full">
-                      <a href={homeData.btn2_link}>{homeData.btn2_text}</a>
-                  </button>
-          </div>
-
-        </div>
-
-     <div className="w-full flex items-center justify-evenly  py-4">
+      {/* Stats */}
+      <div className="w-full flex flex-col sm:flex-row  items-center justify-evenly py-4 gap-4">
         {homeData.stats?.map((item) => (
           <div
             key={item.id}
-            className="w-[31%]  flex flex-col items-center justify-center p-6 rounded-2xl card-shadow"
+            className="w-full sm:w-[45%] md:w-[30%] flex flex-col items-center justify-center p-4 rounded-2xl card-shadow"
           >
-            <p className="text-5xl font-bold  text-blue-500">{item.number} </p>
-            <p className="text-sm py-1 text-[#65758B]">{item.label}</p>
+            <p className="text-4xl sm:text-5xl font-bold text-blue-500">{item.number}</p>
+            <p className="text-sm sm:text-base py-1 text-[#65758B]">{item.label}</p>
           </div>
         ))}
       </div>
 
-
-          </div>
-          
-      </div>
-     </div>
+    </div>
+  </div>
+</div>
 
 
-     <div className="w-full  h-[250px]"></div>
+{/* section-2 */}
+     <div className="w-full h-[100px]  2xl:h-[250px]"></div>
 
      <section>
-            <div className="text  w-full h-auto flex flex-col items-center justify-center ">
-              <div className="w-[50%] bg-white flex items-center justify-center text-center flex-col gap-5 ">
-                <h1 className='text-sm  px-6 py-2  rounded-full border-[1px] border-blue-500'>Our Services</h1>
-                <p className='text-6xl gradient-text'>Comprehensive Power Solutions</p>
-                <p className='px-9 text-[20px] text-[#65758B]'>From analysis to optimization, we deliver end-to-end power system solutions backed by cutting-edge technology and decades of expertise.</p>
 
-              </div>
-               
-            </div>
+  
+          
       <HomeServices/>
      </section>
 
-      
+
+
+     {/* Section-3  */}
+
+
+      <section>
+        <GlobalReach />
+      </section>
+
+
+      {/* Section-4 */}
+
+       <section>
+        <HomeTestimonials/>
+       </section>
+
+
+      {/* Section-5 */}
+
+      <section>
+        <div className="w-full h-[100px]  2xl:h-[150px]"></div>
+        <HomeBlog/>
+      </section>
+
 
     </>
   );

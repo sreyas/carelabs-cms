@@ -1,6 +1,8 @@
 import Header from "@/components/Header";
 import "./globals.css";
 import "aos/dist/aos.css";
+import Footer from "@/components/Footer";
+import QuoteBar from "@/components/QuoteBar";
 
 
 
@@ -21,6 +23,8 @@ export default function RootLayout({ children }) {
       <body>
         <Header/>
         {children}
+        <QuoteBar/>
+        <Footer/>
       </body>
     </html>
   );

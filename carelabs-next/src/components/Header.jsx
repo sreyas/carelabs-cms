@@ -41,7 +41,7 @@ const Header = () => {
 if (!navbarData) return null;
   return (
       <>
-        <div className="headCvr w-full h-[80px] flex items-center justify-center navbar-shadow fixed z-50 bg-[white]">
+        <div className="headCvr w-full h-[80px] flex items-center justify-center navbar-shadow fixed z-50 header-background">
           <div className="header w-full  h-full flex items-center justify-between lg:justify-center 2xl:w-[80%] 2xl:p-3 ">
 
             <div className="logo flex item center justify-center w-[50%] sm:w-[40%]  lg:w-[22%] ">
@@ -80,7 +80,7 @@ if (!navbarData) return null;
 
                   <div className="theme">
                     <button className='bg-blue-300 p-2 flex items-center justify-center sm:p-3 rounded-full '>
-            <i className="fa-regular fa-moon" style={{color:"#3b82f6"}}></i>
+                <a href="/services">    <i className="fa-regular fa-moon" style={{color:"#3b82f6"}}></i></a>
               </button>
                   </div>
 
@@ -186,7 +186,7 @@ if (!navbarData) return null;
 
         {/* Mobile Bar  Menus */}
 {openMobileMenu && (
-  <div className="w-full h-max bg-gray-100 absolute flex items-center z-50 justify-center p-3 lg:hidden">
+  <div className="w-full h-max bg-gray-100 absolute flex items-center top-[80px] z-[1000] justify-center p-3 lg:hidden">
     <div className="bg-white w-[90%] h-[90%] rounded-2xl p-4 md:w-[80%] md:flex md:justify-center md:flex-col md:items-center">
       <ul className="md:text-center">
         {navbarData.items.map((item) => (
