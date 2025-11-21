@@ -18,10 +18,7 @@ export default function Home() {
   const [homeData,setHomeData]=useState();
   const [blogData,setBlogData]=useState();
 
-<<<<<<< HEAD
-  const STRAPI_URL = "https://competent-belief-4c86b8d649.strapiapp.com";
-=======
->>>>>>> 83a9f28d0ecd738bef1ecb93c241cb5171a77ee4
+
 
 
     useEffect(() => {
