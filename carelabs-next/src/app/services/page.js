@@ -119,7 +119,7 @@ const page = () => {
             <div className='w-full h-screen'>
 
                 <div className="text w-full h-auto flex flex-col items-center justify-center py-10">
-                    <div className="w-11/12 sm:w-4/5 md:w-3/5 lg:w-1/2 2xl:w-[65%] bg-gray-600 flex items-center justify-center text-center flex-col gap-5 p-4">
+                    <div className="w-11/12 sm:w-4/5 md:w-3/5 lg:w-1/2 2xl:w-[65%] bg-gray-400 flex items-center justify-center text-center flex-col gap-5 p-4">
                     
                     {/* Title */}
                     <p className="gradient-text font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
