@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_services_whats_include_features",
+  "info": {
+    "displayName": "whats-include-features"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    }
+  },
+  "config": {}
+}

@@ -1,0 +1,81 @@
+{
+  "kind": "collectionType",
+  "collectionName": "services",
+  "info": {
+    "singularName": "service",
+    "pluralName": "services",
+    "displayName": "Service"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "badge": {
+      "type": "string"
+    },
+    "mainheading1": {
+      "type": "string"
+    },
+    "mainheading2": {
+      "type": "string"
+    },
+    "maindesc": {
+      "type": "text"
+    },
+    "mainbutton1": {
+      "type": "string"
+    },
+    "mainbuttonlink1": {
+      "type": "string"
+    },
+    "mainbutton2": {
+      "type": "string"
+    },
+    "mainbuttonlink2": {
+      "type": "string"
+    },
+    "mainbutton3": {
+      "type": "string"
+    },
+    "mainbuttonlink3": {
+      "type": "string"
+    },
+    "mainimage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "service_stats": {
+      "type": "component",
+      "component": "services.servicestats",
+      "repeatable": true
+    },
+    "service_features": {
+      "type": "component",
+      "component": "services.service-features",
+      "repeatable": true
+    },
+    "Why_Matters": {
+      "type": "component",
+      "component": "services.why-matters",
+      "repeatable": true
+    },
+    "WhatsIncludedtitle": {
+      "type": "richtext"
+    },
+    "WhatsIncludedsubtitle": {
+      "type": "text"
+    },
+    "whats_include_features": {
+      "type": "component",
+      "component": "services.whats-include-features",
+      "repeatable": true
+    }
+  }
+}

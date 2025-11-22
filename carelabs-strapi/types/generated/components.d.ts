@@ -92,6 +92,54 @@ export interface NewNewItem extends Struct.ComponentSchema {
   };
 }
 
+export interface ServicesServiceFeatures extends Struct.ComponentSchema {
+  collectionName: 'components_services_service_features';
+  info: {
+    displayName: 'service-features';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    title: Schema.Attribute.String;
+  };
+}
+
+export interface ServicesServicestats extends Struct.ComponentSchema {
+  collectionName: 'components_services_servicestats';
+  info: {
+    displayName: 'servicestats';
+  };
+  attributes: {
+    label: Schema.Attribute.String;
+    number: Schema.Attribute.String;
+  };
+}
+
+export interface ServicesWhatsIncludeFeatures extends Struct.ComponentSchema {
+  collectionName: 'components_services_whats_include_features';
+  info: {
+    displayName: 'whats-include-features';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    label: Schema.Attribute.String;
+  };
+}
+
+export interface ServicesWhyMatters extends Struct.ComponentSchema {
+  collectionName: 'components_services_why_matters';
+  info: {
+    displayName: 'Why-Matters';
+  };
+  attributes: {
+    ans1: Schema.Attribute.String;
+    ans2: Schema.Attribute.String;
+    ans3: Schema.Attribute.String;
+    ans4: Schema.Attribute.String;
+    subtitle: Schema.Attribute.Text;
+    title: Schema.Attribute.String;
+  };
+}
+
 export interface SharedOpenGraph extends Struct.ComponentSchema {
   collectionName: 'components_shared_open_graphs';
   info: {
@@ -201,6 +249,10 @@ declare module '@strapi/strapi' {
       'footer.social-link': FooterSocialLink;
       'navbar.navbar-item': NavbarNavbarItem;
       'new.new-item': NewNewItem;
+      'services.service-features': ServicesServiceFeatures;
+      'services.servicestats': ServicesServicestats;
+      'services.whats-include-features': ServicesWhatsIncludeFeatures;
+      'services.why-matters': ServicesWhyMatters;
       'shared.open-graph': SharedOpenGraph;
       'shared.seo': SharedSeo;
       'stats.performance-matrix': StatsPerformanceMatrix;

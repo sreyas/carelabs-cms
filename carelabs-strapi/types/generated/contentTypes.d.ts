@@ -920,6 +920,56 @@ export interface ApiRegionRegion extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiServiceService extends Struct.CollectionTypeSchema {
+  collectionName: 'services';
+  info: {
+    displayName: 'Service';
+    pluralName: 'services';
+    singularName: 'service';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    badge: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::service.service'
+    > &
+      Schema.Attribute.Private;
+    mainbutton1: Schema.Attribute.String;
+    mainbutton2: Schema.Attribute.String;
+    mainbutton3: Schema.Attribute.String;
+    mainbuttonlink1: Schema.Attribute.String;
+    mainbuttonlink2: Schema.Attribute.String;
+    mainbuttonlink3: Schema.Attribute.String;
+    maindesc: Schema.Attribute.Text;
+    mainheading1: Schema.Attribute.String;
+    mainheading2: Schema.Attribute.String;
+    mainimage: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    publishedAt: Schema.Attribute.DateTime;
+    service_features: Schema.Attribute.Component<
+      'services.service-features',
+      true
+    >;
+    service_stats: Schema.Attribute.Component<'services.servicestats', true>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    whats_include_features: Schema.Attribute.Component<
+      'services.whats-include-features',
+      true
+    >;
+    WhatsIncludedsubtitle: Schema.Attribute.Text;
+    WhatsIncludedtitle: Schema.Attribute.RichText;
+    Why_Matters: Schema.Attribute.Component<'services.why-matters', true>;
+  };
+}
+
 export interface ApiTestimonialTestimonial extends Struct.CollectionTypeSchema {
   collectionName: 'testimonials';
   info: {
@@ -1543,6 +1593,7 @@ declare module '@strapi/strapi' {
       'api::insight.insight': ApiInsightInsight;
       'api::navbar.navbar': ApiNavbarNavbar;
       'api::region.region': ApiRegionRegion;
+      'api::service.service': ApiServiceService;
       'api::testimonial.testimonial': ApiTestimonialTestimonial;
       'api::testimonials-section.testimonials-section': ApiTestimonialsSectionTestimonialsSection;
       'api::worldwide-impact.worldwide-impact': ApiWorldwideImpactWorldwideImpact;
