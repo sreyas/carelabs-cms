@@ -764,6 +764,7 @@ export interface ApiHomeServiceItemHomeServiceItem
       'manyToOne',
       'api::home-serivice.home-serivice'
     >;
+    icon: Schema.Attribute.String;
     Image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     linktext: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
