@@ -986,6 +986,7 @@ export interface ApiServiceService extends Struct.CollectionTypeSchema {
       true
     >;
     service_stats: Schema.Attribute.Component<'services.servicestats', true>;
+    slug: Schema.Attribute.String;
     technicalItems: Schema.Attribute.Component<
       'services.technical-items',
       true

@@ -162,6 +162,9 @@
       "type": "component",
       "component": "services.technical-items",
       "repeatable": true
+    },
+    "slug": {
+      "type": "string"
     }
   }
 }
