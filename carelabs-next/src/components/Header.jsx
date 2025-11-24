@@ -1,15 +1,30 @@
 "use client";
 import { GET_NAVBAR } from '@/lib/api-Collection';
 import client from '@/lib/appollo-client';
+import { ChevronDown, ChevronUp, Globe, Mail, Moon, X } from 'lucide-react';
 import React, { useEffect, useState } from 'react'
+import RegionModal from './RegionModal';
 
 const Header = () => {
     const [navbarData,setNavbarData]=useState();
     const [activeIndex, setActiveIndex] = useState(null);
     const [selectedSubmenuIndex, setSelectedSubmenuIndex] = useState(0);
     const [openMobileMenu, setOpenMobileMenu] = useState(false);
-   
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const [selectedRegion, setSelectedRegion] = useState("Global");
 
+    const regions = [
+        "Global",
+        "Middle East & Africa",
+        "Asia-Pacific",
+        "Europe",
+        "Americas",
+      ];
+    
+      const handleRegionChange = (e) => {
+        setSelectedRegion(e.target.value);
+      };
 
 
     const openMobilemenus = () => {
@@ -25,9 +40,12 @@ const Header = () => {
                       query: GET_NAVBAR,
                     });
 
-        
+            const allSlugs =
+          res.data.navbar.items
+        ?.flatMap(item => item.submenus || [])
+        ?.map(sub => sub.slug);
 
-          console.log("Navbar data:", res.data.navbar);
+          console.log("Navbar data:", allSlugs);
           setNavbarData(res.data.navbar);
 
         }catch(err){
@@ -48,7 +66,7 @@ if (!navbarData) return null;
               <img className=' p-3 md:w-[60%] lg:w-[75%]' src={navbarData.Logo?.url} alt="" />
             </div>
 
-            <div className="menuList hidden lg:flex lg:w-[38%] lg:justify-center h-full">
+            <div className="menuList hidden lg:flex lg:w-[50%] xl:w-[38%] lg:justify-center h-full">
                 <ul className='flex text-[14px] font-medium justify-evenly items-center gap-6 w-[90%] p-3'>
                 {navbarData.items.map((item, index) => (
                   <li
@@ -69,18 +87,24 @@ if (!navbarData) return null;
             </div>
 
             <div className="nav-Container h-full flex items-center gap-5 sm:gap-5 lg:justify-center lg:w-[40%] 2xl:justify-end 2xl:pe-[5%]">
-                <div className="global hidden sm:flex items-center justify-center gap-2 border border-[#] px-2 py-1 rounded-4xl">
-                  <i className="fa-solid fa-globe" style={{color: "#000000"}}></i>
-                  <p className='text-[14px]'>{navbarData?.regionSelector}</p>
-                </div>
+                    <button
+                  onClick={() => setIsModalOpen(true)}
+                  className="global hidden sm:flex items-center justify-center gap-2 border px-2 py-1 rounded-4xl"
+                >
+                  <Globe />
+                  <p className="text-[14px]">{navbarData?.regionSelector}</p>
+                </button>
 
-                <div className="mob-global flex justify-center items-center sm:hidden">
-                  <i className="fa-solid fa-globe" style={{color: "#000000"}}></i>
-                </div>
+
+               <div className="mob-global flex sm:hidden">
+              <button onClick={() => setIsModalOpen(true)}>
+                <Globe />
+              </button>
+            </div>
 
                   <div className="theme">
-                    <button className='bg-blue-300 p-2 flex items-center justify-center sm:p-3 rounded-full '>
-                <a href="/services">    <i className="fa-regular fa-moon" style={{color:"#3b82f6"}}></i></a>
+                    <button className='bg-[#2575B626] border border-[#2575b64d]  w-[50px] h-[50px] flex items-center justify-center sm:p-3 rounded-full '>
+                <a href="/services" style={{color:"#2575b6"}}> <Moon  /></a>
               </button>
                   </div>
 
@@ -168,7 +192,9 @@ if (!navbarData) return null;
                   
 
                       <button className='bg-blue-500 text-white py-2 px-4 rounded-full w-[40%]'>
-                        <a href="">{navbarData.items[activeIndex].submenus[selectedSubmenuIndex].Button}</a>
+                        <a href={`/services/${navbarData.items[activeIndex].submenus[selectedSubmenuIndex].slug}`}>
+                        {navbarData.items[activeIndex].submenus[selectedSubmenuIndex].Button}
+                        </a>
                       </button>
 
 
@@ -185,30 +211,106 @@ if (!navbarData) return null;
 
 
         {/* Mobile Bar  Menus */}
-{openMobileMenu && (
-  <div className="w-full h-max bg-gray-100  fixed flex items-center top-[80px] z-[1000] justify-center p-3 lg:hidden">
-    <div className="bg-white w-[90%] h-[90%] rounded-2xl p-4 md:w-[80%] md:flex md:justify-center md:flex-col md:items-center">
-      <ul className="md:text-center">
-        {navbarData.items.map((item) => (
-          <li key={item.id} className="py-2 md:px-4">
-            {item.label}
-          </li>
-        ))}
-      </ul>
+        {openMobileMenu && (
+          <div className="w-full h-max bg-gray-100  fixed flex items-center top-[80px] z-[1000] justify-center p-3 lg:hidden">
+            <div className="bg-white w-[90%] h-[90%] rounded-2xl p-4 md:w-[80%] md:flex md:justify-center md:flex-col md:items-center">
+              <ul className="md:text-center">
+                {navbarData.items.map((item) => (
+                  <li key={item.id} className="py-2 md:px-4">
+                    {item.label}
+                  </li>
+                ))}
+              </ul>
 
-      <div className="w-full flex items-center justify-center py-2">
-        <button className="bg-blue-500 w-full md:w-[80%] p-2 rounded-lg">
-          <a
-            href={navbarData?.buttonlink}
-            className="text-[14px] text-white p-3"
-          >
-            {navbarData?.buttontext}
-          </a>
-        </button>
-      </div>
-    </div>
-  </div>
-)}
+              <div className="w-full flex items-center justify-center py-2">
+                <button className="bg-blue-500 w-full md:w-[80%] p-2 rounded-lg">
+                  <a
+                    href={navbarData?.buttonlink}
+                    className="text-[14px] text-white p-3"
+                  >
+                    {navbarData?.buttontext}
+                  </a>
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Globe Modal */}
+
+             {isModalOpen && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm"
+          onClick={(e) => e.target === e.currentTarget && setIsModalOpen(false)}
+        >
+          <div className="relative w-[90%] md:w-[70%] lg:w-[30%] rounded-2xl shadow-xl p-6 bg-white">
+            
+            {/* Close Button */}
+            <button
+              onClick={() => setIsModalOpen(false)}
+              className="absolute top-4 right-4 p-2 rounded-xl text-gray-500 hover:text-black hover:bg-gray-100 "
+            >
+              <X size={24} />
+            </button>
+
+            <div className="text-center flex  flex-col items-center justify-center xl:flex-row gap-2 mb-6">
+              
+              <Globe size={24} className="xl:mt-2 text-blue-600 mb-3" />
+              <h2 className="text-xl font-semibold">Explore Carelabs in your region</h2>
+            </div>
+
+            {/* SELECT DROPDOWN */}
+          <div className="relative">
+            <button
+              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+              className="w-full bg-white border border-gray-300 rounded-full px-4 py-3 pr-10 flex justify-between items-center"
+            >
+              {selectedRegion}
+
+              <ChevronDown
+                className={`transition-transform duration-300 ${
+                  isDropdownOpen ? "rotate-180" : ""
+                }`}
+              />
+            </button>
+
+            {isDropdownOpen && (
+              <ul className="absolute left-0 right-0 mt-2 bg-white rounded-xl shadow-lg border overflow-hidden z-10">
+                {regions.map((region) => (
+                  <li
+                    key={region}
+                    onClick={() => {
+                      setSelectedRegion(region);
+                      setIsDropdownOpen(false);
+                    }}
+                    className="px-4 py-3 hover:bg-gray-100 cursor-pointer"
+                  >
+                    {region}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+
+
+            <p className="text-center text-sm text-gray-600 p-3">
+              You're viewing: <span className="font-semibold">{selectedRegion} site</span>
+            </p>
+            <div className=" w-full flex items-center justify-center">
+                <p className='text-sm'>
+                  Go to: www.carelabs.com
+                </p>
+                 <Mail size={14} />
+            </div>
+              
+          </div>
+        </div>
+      )}
+
+
+
+
+
 
 
       </>

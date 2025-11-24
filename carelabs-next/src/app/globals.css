@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap');
 @import "tailwindcss";
 @import "aos/dist/aos.css";
+
 
 
 :root {
@@ -23,11 +25,12 @@
 }
 
 .gradient-text {
-  background: linear-gradient(90deg, #f15c30, #2575b6);
+  background: linear-gradient(135deg, #157de5, #ff7038);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  color: transparent;
 }
- 
+
 .navbar-shadow{
   box-shadow: rgba(15, 23, 42, 0.35) 0px 18px 45px !important;
 }
@@ -49,6 +52,44 @@
   background:radial-gradient(circle at center top, rgb(10, 27, 58) 0%, rgb(7, 20, 40) 40%, rgb(10, 22, 51) 100%);
 }
 
+.curved-Text{
+  font-size: 14px;
+  font-weight: 500;
+   font-family: "Montserrat", sans-serif;
+}
+.primary-color{
+  color: #2575b6;
+}
+.secondary-color{
+  color:#f15c30;
+}
+.secondary-bg{
+  background:#f15c30;
+}
+.montserrat-font {
+  font-family: "Montserrat", sans-serif;
+}
+
+.poppins-font {
+  font-family: "Poppins", sans-serif;
+}
+.title-Text{
+  font-weight: 700;
+  font-family: "Montserrat", sans-serif;
+}
+.para-text{
+  color: #65758b;
+}
+.glass-panel {
+    background: rgba(255, 255, 255, 0.9); /* white with opacity */
+    border: 1px solid rgba(15, 23, 42, 0.1); /* subtle dark border */
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    box-shadow: 0 18px 45px rgba(15, 23, 42, 0.1);
+    border-radius: 16px;
+}
+
+
 
 /* Media query */
 @media (max-width: 550px) {
@@ -58,6 +99,7 @@
     }
    
 }
+
 
 @media (max-width: 400px) {
   /* Styles for mobile screens only */

@@ -1,9 +1,14 @@
+"use client";
 import React from "react";
 
+
 const ServicesLanding = () => {
+
+
+
   return (
     <div className="w-full min-h-[80vh] pt-[80px] flex justify-center px-4 ">
-      <div className="w-full 2xl:w-[70%] flex flex-col lg:flex-row mt-12 gap-10 ">
+      <div className="w-full xl:w-[90%] xl:px-6 2xl:w-[70%] flex flex-col lg:flex-row mt-12 gap-10 ">
 
         {/* LEFT SECTION */}
         <div className="w-full lg:w-[50%] flex flex-col gap-5 py-2 ">
@@ -12,6 +17,7 @@ const ServicesLanding = () => {
           <div className="w-fit">
             <p className="px-4 py-2 text-xs sm:text-sm rounded-full text-center card-shadow bg-white">
               Engineering Excellence Since 2010
+              
             </p>
           </div>
 
@@ -20,14 +26,19 @@ const ServicesLanding = () => {
            <div className=" w-[80%] text-3xl sm:text-4xl lg:text-5xl 2xl:text-6xl font-bold ">
              <p className=" gradient-text ">
               Power System Analysis  
+              
             </p>
-            <p className="text-black "> for Safe, Reliable Networks</p>
+            <p className="text-black "> 
+              for Safe, Reliable Networks
+              
+              </p>
            </div>
 
             <p className="w-[80%] text-sm sm:text-base lg:text-lg leading-7 text-gray-700">
               Comprehensive electrical studies to identify risks, optimize
               performance, and ensure compliance with international standards
               across all voltage levels.
+               
             </p>
           </div>
 
@@ -39,15 +50,38 @@ const ServicesLanding = () => {
                 Request a Study
               </button>
 
+              {/* <a
+                href={mainbuttonlink1}
+                className="px-6 sm:px-8 py-2 text-white rounded-lg text-sm bg-blue-600"
+              >
+                {mainbutton1}
+              </a> */}
+
               <button className="px-6 sm:px-8 py-2 text-sm border-2 rounded-lg border-blue-500 bg-white text-gray-600">
                 Download Sample Report
               </button>
+               
+               {/* <a
+                href={mainbuttonlink2}
+                className="px-6 sm:px-8 py-2 text-sm border-2 rounded-lg border-blue-500 bg-white text-gray-600"
+              >
+                {mainbutton2}
+              </a> */}
+
             </div>
 
             <button className="px-6 sm:px-8 py-2 text-sm rounded-lg border-2 border-orange-400 text-gray-600
               lg:w-[60%] xl:w-[50%] 2xl:w-[40%]">
               Download Sample Report
             </button>
+
+            {/* <a
+              href={mainbuttonlink3}
+              className="px-6 sm:px-8 py-2 text-sm rounded-lg border-2 border-orange-400 text-gray-600
+              lg:w-[60%] xl:w-[50%] 2xl:w-[40%]"
+            >
+              {mainbutton3}
+            </a> */}
 
           </div>
         </div>
@@ -68,7 +102,8 @@ const ServicesLanding = () => {
               2xl:mt-6
             "
             style={{
-              backgroundImage: `url("https://preview--global-grid-glimpse.lovable.app/assets/hero-power-grid-BRAXB8uH.jpg")`,
+              backgroundImage: `url("https://preview--global-grid-glimpse.lovable.app/assets/power-system-hero-Bkkban0h.png")`,
+              // backgroundImage: `url("${mainimage?.url}")`,
               backgroundSize: "cover",
               backgroundPosition: "center",
             }}
@@ -96,6 +131,16 @@ const ServicesLanding = () => {
                 <p className="text-lg text-blue-500 font-bold">500+</p>
                 <p className="text-sm text-gray-600">Countries</p>
               </div>
+
+              {/* {service_stats?.map((stat, idx) => (
+                <div
+                  key={idx}
+                  className="bg-white w-1/3 py-4 rounded-lg text-start ps-3 shadow"
+                >
+                  <p className="text-lg text-blue-500 font-bold">{stat.number}</p>
+                  <p className="text-sm text-gray-600">{stat.label}</p>
+                </div>
+              ))} */}
               
             </div>
           </div>

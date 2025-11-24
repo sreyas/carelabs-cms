@@ -16,6 +16,7 @@ export const GET_NAVBAR = gql`
           link
           order
           submenus {
+           slug
             Button
             featureheading
             features {
@@ -84,7 +85,9 @@ export const GET_BLOG = gql`
 export const GET_HOME_SECTION_1 = gql`
 query  {
   homes {
-    title
+    title1
+    title2 
+    title3
     heading
     description
     btn1_link
@@ -225,4 +228,201 @@ query {
 }
 
 `
+
+export const GET_SERVICES = gql`
+query {
+  services {
+    badge
+    mainheading1
+    mainheading2
+    maindesc
+    mainbutton1
+    mainbuttonlink1
+    mainbutton2
+    mainbuttonlink2
+    mainbutton3
+    mainbuttonlink3
+    mainimage {
+      url
+    }
+    service_stats {
+      label
+      number
+    }
+    service_features {
+      title
+      description
+    }
+    Why_Matters {
+      title
+      subtitle
+      ans1
+      ans2
+      ans3
+      ans4
+    }
+    WhatsIncludedtitle
+    WhatsIncludedsubtitle
+    whats_include_features {
+      label
+      description
+      stat
+    }
+    methodsTitle
+    methodsSubtitle
+    methodology {
+      Order
+      OrderTitleText
+      OrderSubtitleText
+    }
+    sectorBenefitsTitle
+    sectorBenefitsSubtitle
+    sectorBenefits {
+      icon
+      label
+      list1
+      list2
+      list3
+    }
+    resultsTitle
+    resultsSubtitle
+    resultsStat {
+      percentage
+      description
+    }
+    resultName {
+      icon
+      label
+      description
+    }
+    readyTitle
+    readySubtitle
+    readyButton1
+    readyButton1Link
+    readyButton2
+    readyButton2Link
+    relatedTitle
+    relatedSubtitle
+    relatedServices {
+      icon
+      label
+      description
+    }
+    faqTitle
+    faqSubtitle
+    questions {
+      questionName
+      questionAns
+    }
+    technicalTitle
+    technicalItems {
+      icon
+      label
+      format
+    }
+  }
+}
+
+`
+
+export const GET_SINGLE_SERVICE_BY_SLUG = gql`
+  query ($slug: String!) {
+    services(filters: { slug: { eq: $slug } }) {
+      id
+      slug
+      badge
+      mainheading1
+      mainheading2
+      maindesc
+      mainbutton1
+      mainbuttonlink1
+      mainbutton2
+      mainbuttonlink2
+      mainbutton3
+      mainbuttonlink3
+      mainimage {
+        url
+      }
+      service_stats {
+        label
+        number
+      }
+      service_features {
+        title
+        description
+      }
+      Why_Matters {
+        title
+        subtitle
+        ans1
+        ans2
+        ans3
+        ans4
+      }
+      WhatsIncludedtitle
+      WhatsIncludedsubtitle
+      whats_include_features {
+        label
+        description
+        stat
+      }
+      methodsTitle
+      methodsSubtitle
+      methodology {
+        Order
+        OrderTitleText
+        OrderSubtitleText
+      }
+      sectorBenefitsTitle
+      sectorBenefitsSubtitle
+      sectorBenefits {
+        icon
+        label
+        list1
+        list2
+        list3
+      }
+      resultsTitle
+      resultsSubtitle
+      resultsStat {
+        percentage
+        description
+      }
+      resultName {
+        icon
+        label
+        description
+      }
+      readyTitle
+      readySubtitle
+      readyButton1
+      readyButton1Link
+      readyButton2
+      readyButton2Link
+      relatedTitle
+      relatedSubtitle
+      relatedServices {
+        icon
+        label
+        description
+      }
+      faqTitle
+      faqSubtitle
+      questions {
+        questionName
+        questionAns
+      }
+      technicalTitle
+      technicalItems {
+        icon
+        label
+        format
+      }
+    }
+  }
+`;
+
+
+
+
 
