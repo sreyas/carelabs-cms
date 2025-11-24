@@ -815,7 +815,9 @@ export interface ApiHomeHome extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
     stats: Schema.Attribute.Component<'stats.stat-box', true>;
-    title: Schema.Attribute.RichText;
+    title1: Schema.Attribute.String;
+    title2: Schema.Attribute.String;
+    title3: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

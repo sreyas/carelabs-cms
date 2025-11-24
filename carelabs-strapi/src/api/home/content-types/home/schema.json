@@ -11,8 +11,14 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "title": {
-      "type": "richtext"
+    "title1": {
+      "type": "string"
+    },
+    "title2": {
+      "type": "string"
+    },
+    "title3": {
+      "type": "string"
     },
     "description": {
       "type": "text"
