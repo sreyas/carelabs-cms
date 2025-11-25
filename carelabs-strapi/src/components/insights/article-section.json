@@ -12,11 +12,6 @@
       "type": "component",
       "component": "insights.article-items",
       "repeatable": true
-    },
-    "whyTraditionalMaintenance": {
-      "type": "component",
-      "component": "insights.why-traditional-maintenance",
-      "repeatable": false
     }
   },
   "config": {}

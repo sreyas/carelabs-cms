@@ -53,6 +53,54 @@
       "type": "component",
       "component": "insights.article-section",
       "repeatable": false
+    },
+    "sections": {
+      "type": "dynamiczone",
+      "components": [
+        "insights.why-traditional-maintenance",
+        "insights.what-ai-powered-predictive",
+        "insights.key-building-blocks",
+        "insights.real-world",
+        "insights.howto-get-started",
+        "insights.challenges",
+        "insights.the-road-ahead"
+      ]
+    },
+    "exploretitle": {
+      "type": "richtext"
+    },
+    "exploresubtitle": {
+      "type": "text"
+    },
+    "button1text": {
+      "type": "string"
+    },
+    "button1icon": {
+      "type": "string"
+    },
+    "button1link": {
+      "type": "string"
+    },
+    "button2text": {
+      "type": "string"
+    },
+    "button2link": {
+      "type": "string"
+    },
+    "Weeklytitle": {
+      "type": "string"
+    },
+    "Weeklydesc": {
+      "type": "text"
+    },
+    "emailplaceholder": {
+      "type": "string"
+    },
+    "subscribebutton": {
+      "type": "string"
+    },
+    "subscribebuttonlink": {
+      "type": "string"
     }
   }
 }

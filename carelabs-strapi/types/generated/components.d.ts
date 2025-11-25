@@ -84,10 +84,6 @@ export interface InsightsArticleSection extends Struct.ComponentSchema {
   attributes: {
     articleItems: Schema.Attribute.Component<'insights.article-items', true>;
     title: Schema.Attribute.String;
-    whyTraditionalMaintenance: Schema.Attribute.Component<
-      'insights.why-traditional-maintenance',
-      false
-    >;
   };
 }
 
@@ -97,6 +93,128 @@ export interface InsightsCategory extends Struct.ComponentSchema {
     displayName: 'category';
   };
   attributes: {
+    title: Schema.Attribute.String;
+  };
+}
+
+export interface InsightsChallenges extends Struct.ComponentSchema {
+  collectionName: 'components_insights_challenges';
+  info: {
+    displayName: 'Challenges';
+  };
+  attributes: {
+    ChallengesItems: Schema.Attribute.Component<
+      'insights.challenges-items',
+      true
+    >;
+    conclusion: Schema.Attribute.Text;
+    introduction: Schema.Attribute.Text;
+    title: Schema.Attribute.RichText;
+  };
+}
+
+export interface InsightsChallengesItems extends Struct.ComponentSchema {
+  collectionName: 'components_insights_challenges_items';
+  info: {
+    displayName: 'ChallengesItems';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    title: Schema.Attribute.String;
+  };
+}
+
+export interface InsightsHowtoGetStarted extends Struct.ComponentSchema {
+  collectionName: 'components_insights_howto_get_starteds';
+  info: {
+    displayName: 'HowtoGetStarted';
+  };
+  attributes: {
+    content: Schema.Attribute.RichText;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    imagetext: Schema.Attribute.Text;
+    title: Schema.Attribute.RichText;
+  };
+}
+
+export interface InsightsKeyBuildingBlocks extends Struct.ComponentSchema {
+  collectionName: 'components_insights_key_building_blocks';
+  info: {
+    displayName: 'KeyBuildingBlocks';
+  };
+  attributes: {
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    imagetext: Schema.Attribute.Text;
+    KeyBuildingBlocksItems: Schema.Attribute.Component<
+      'insights.key-building-blocks-items',
+      true
+    >;
+    title: Schema.Attribute.RichText;
+  };
+}
+
+export interface InsightsKeyBuildingBlocksItems extends Struct.ComponentSchema {
+  collectionName: 'components_insights_key_building_blocks_items';
+  info: {
+    displayName: 'KeyBuildingBlocksItems';
+  };
+  attributes: {
+    content: Schema.Attribute.RichText;
+    icon: Schema.Attribute.String;
+    order: Schema.Attribute.Integer;
+    title: Schema.Attribute.String;
+  };
+}
+
+export interface InsightsRealWorld extends Struct.ComponentSchema {
+  collectionName: 'components_insights_real_worlds';
+  info: {
+    displayName: 'RealWorld';
+  };
+  attributes: {
+    RealWorldItems: Schema.Attribute.Component<
+      'insights.real-world-items',
+      true
+    >;
+    title: Schema.Attribute.RichText;
+  };
+}
+
+export interface InsightsRealWorldItems extends Struct.ComponentSchema {
+  collectionName: 'components_insights_real_world_items';
+  info: {
+    displayName: 'RealWorldItems';
+  };
+  attributes: {
+    content: Schema.Attribute.RichText;
+    icon: Schema.Attribute.String;
+    result: Schema.Attribute.Text;
+    title: Schema.Attribute.String;
+  };
+}
+
+export interface InsightsTheRoadAhead extends Struct.ComponentSchema {
+  collectionName: 'components_insights_the_road_aheads';
+  info: {
+    displayName: 'TheRoadAhead';
+  };
+  attributes: {
+    conclusion: Schema.Attribute.Text;
+    content: Schema.Attribute.RichText;
+    title: Schema.Attribute.RichText;
+  };
+}
+
+export interface InsightsWhatAiPoweredPredictive
+  extends Struct.ComponentSchema {
+  collectionName: 'components_insights_what_ai_powered_predictives';
+  info: {
+    displayName: 'WhatAI-PoweredPredictive';
+  };
+  attributes: {
+    content: Schema.Attribute.RichText;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    imagetext: Schema.Attribute.Text;
     title: Schema.Attribute.String;
   };
 }
@@ -119,9 +237,8 @@ export interface InsightsWhyTraditionalMaintenance
     displayName: 'whyTraditionalMaintenance';
   };
   attributes: {
-    conclusion: Schema.Attribute.Text;
     introduction: Schema.Attribute.RichText;
-    slug: Schema.Attribute.String;
+    title: Schema.Attribute.RichText;
     WhyTraditionalItems: Schema.Attribute.Component<
       'insights.why-traditional-items',
       true
@@ -401,6 +518,15 @@ declare module '@strapi/strapi' {
       'insights.article-items': InsightsArticleItems;
       'insights.article-section': InsightsArticleSection;
       'insights.category': InsightsCategory;
+      'insights.challenges': InsightsChallenges;
+      'insights.challenges-items': InsightsChallengesItems;
+      'insights.howto-get-started': InsightsHowtoGetStarted;
+      'insights.key-building-blocks': InsightsKeyBuildingBlocks;
+      'insights.key-building-blocks-items': InsightsKeyBuildingBlocksItems;
+      'insights.real-world': InsightsRealWorld;
+      'insights.real-world-items': InsightsRealWorldItems;
+      'insights.the-road-ahead': InsightsTheRoadAhead;
+      'insights.what-ai-powered-predictive': InsightsWhatAiPoweredPredictive;
       'insights.why-traditional-items': InsightsWhyTraditionalItems;
       'insights.why-traditional-maintenance': InsightsWhyTraditionalMaintenance;
       'navbar.navbar-item': NavbarNavbarItem;

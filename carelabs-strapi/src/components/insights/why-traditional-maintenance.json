@@ -5,8 +5,8 @@
   },
   "options": {},
   "attributes": {
-    "slug": {
-      "type": "string"
+    "title": {
+      "type": "richtext"
     },
     "introduction": {
       "type": "richtext"
@@ -15,9 +15,6 @@
       "type": "component",
       "component": "insights.why-traditional-items",
       "repeatable": true
-    },
-    "conclusion": {
-      "type": "text"
     }
   },
   "config": {}

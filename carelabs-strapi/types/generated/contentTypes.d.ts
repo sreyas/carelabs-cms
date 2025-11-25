@@ -874,11 +874,19 @@ export interface ApiInsightblogInsightblog extends Struct.CollectionTypeSchema {
     author: Schema.Attribute.String;
     authoricon: Schema.Attribute.String;
     badge: Schema.Attribute.String;
+    button1icon: Schema.Attribute.String;
+    button1link: Schema.Attribute.String;
+    button1text: Schema.Attribute.String;
+    button2link: Schema.Attribute.String;
+    button2text: Schema.Attribute.String;
     category: Schema.Attribute.Component<'insights.category', true>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     description: Schema.Attribute.Text;
+    emailplaceholder: Schema.Attribute.String;
+    exploresubtitle: Schema.Attribute.Text;
+    exploretitle: Schema.Attribute.RichText;
     introcontent: Schema.Attribute.Text;
     introtitle: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
@@ -891,11 +899,26 @@ export interface ApiInsightblogInsightblog extends Struct.CollectionTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     publishedicon: Schema.Attribute.String;
     publishedOn: Schema.Attribute.String;
+    sections: Schema.Attribute.DynamicZone<
+      [
+        'insights.why-traditional-maintenance',
+        'insights.what-ai-powered-predictive',
+        'insights.key-building-blocks',
+        'insights.real-world',
+        'insights.howto-get-started',
+        'insights.challenges',
+        'insights.the-road-ahead',
+      ]
+    >;
+    subscribebutton: Schema.Attribute.String;
+    subscribebuttonlink: Schema.Attribute.String;
     time: Schema.Attribute.String;
     timeicon: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    Weeklydesc: Schema.Attribute.Text;
+    Weeklytitle: Schema.Attribute.String;
   };
 }
 

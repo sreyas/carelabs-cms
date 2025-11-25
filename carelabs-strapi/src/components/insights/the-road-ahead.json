@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_insights_the_road_aheads",
+  "info": {
+    "displayName": "TheRoadAhead"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "richtext"
+    },
+    "content": {
+      "type": "richtext"
+    },
+    "conclusion": {
+      "type": "text"
+    }
+  },
+  "config": {}
+}
