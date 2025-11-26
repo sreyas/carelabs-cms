@@ -6,15 +6,24 @@ import HomeBlog from "@/components/HomeBlog";
 import HomeCounter from "@/components/Homecounter";
 import HomeServices from "@/components/HomeServices";
 import HomeTestimonials from "@/components/HomeTestimonials";
-import {GET_HOME_SECTION_1 } from "@/lib/api-Collection";
+import { GET_HOME_SECTION_12 } from "@/lib/api-Collection";
 import client from "@/lib/appollo-client";
 import { TextGenerateEffect } from "@/lib/ui/text-generate-effect";
 import Aos from "aos";
 import { ArrowRight, Play, Zap } from "lucide-react";
+import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
 
 export default function Home() {
+  
+  const params = useParams();
+  const locale = params.locale ?? "en";
+
+  console.log("para-Local",locale);
+  console.log("Pararar",params);
+  
+  
 
   const [homeData,setHomeData]=useState();
 
@@ -24,14 +33,20 @@ export default function Home() {
     });
   }, []);
 
+ const statsData = [
+  { number: "50", label: "Countries Served" },
+  { number: "1200", label: "Projects Delivered" },
+  { number: "350", label: "Global Clients" },
+];
 
    const fetchedData = async()=> {
     try{
-    const res= await client.query({
-                  query: GET_HOME_SECTION_1,
-                 });
-    console.log("Home banner data:", res.data.homes[0]);
-   setHomeData(res.data.homes[0]);
+    const { data } = await client.query({
+    query: GET_HOME_SECTION_12,
+    variables: { locale },
+  });
+    console.log("Home banner data1:",  data?.homes?.[0]);
+   setHomeData(data?.homes?.[0]);
     }catch(err){
       console.log("Error fetching home banner data:", err);
     }
@@ -80,7 +95,7 @@ if (!homeData) {
 
   return (
     <>
-   <div className="home-cover relative w-full min-h-[calc(100vh-80px)] 2xl:h-[calc(100vh-80px)] top-[80px] flex flex-col items-center justify-center">
+   <div className="home-cover relative w-full min-h-[calc(100vh-80px)] 2xl:h-[calc(100vh-80px)]  top-[80px] flex flex-col items-center justify-center">
   {/* Section 1 */}
   <div 
   data-aos="fade-up"
@@ -153,7 +168,7 @@ if (!homeData) {
       data-aos="fade-up"
      data-aos-duration="2000"
       className="w-full flex flex-col sm:flex-row  items-center justify-evenly py-4 gap-4 ">
-        {homeData.stats?.map((item) => (
+        {/* {homeData.stats?.map((item) => (
           <div
             key={item.id}
             className="w-full sm:w-[45%] md:w-[30%] flex flex-col items-center justify-center p-4 rounded-2xl card-shadow"
@@ -161,7 +176,16 @@ if (!homeData) {
             <HomeCounter end={item.number} duration={2} />
             <p className="text-[14px] py-1 text-[#65758B] poppins-font">{item.label}</p>
           </div>
-        ))}
+        ))} */}
+
+        {statsData.map((item, index) => (
+        <div key={index}
+        className="w-full sm:w-[45%] md:w-[30%] flex flex-col items-center justify-center p-4 rounded-2xl card-shadow">
+          <HomeCounter end={item.number} duration={2} />
+          <p className="text-[14px] py-1 text-[#65758B] poppins-font">{item.label}</p>
+        </div>
+      ))}
+
       </div>
 
     </div>

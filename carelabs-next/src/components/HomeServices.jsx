@@ -72,12 +72,12 @@ const fetchGlobalReach = async () => {
       <div className="w-full h-full xl:h-screen flex items-center justify-center px-4">
         <div
          
-        className="flex flex-col justify-center items-center xl:flex-row xl:w-[85%] 2xl:w-[65%] xl:h-[80%] gap-4 lg:gap-0">
+        className="flex flex-col justify-center items-center xl:flex-row xl:w-[85%] 2xl:w-[67%] xl:h-[80%] gap-4 lg:gap-0">
 
             {/* Service Cards Column */}
             <div 
             data-aos="fade-up"
-     data-aos-anchor-placement="top-center"
+            data-aos-anchor-placement="top-center"
             className="w-full lg:w-[85%] xl:w-[40%] h-full flex flex-col justify-start items-center p-3 gap-3 lg:gap-5 overflow-y-auto">
 
 

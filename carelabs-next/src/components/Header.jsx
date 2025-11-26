@@ -5,6 +5,7 @@ import { ChevronDown, ChevronUp, Globe, Mail, Moon, X } from 'lucide-react';
 import React, { useEffect, useState } from 'react'
 import RegionModal from './RegionModal';
 
+
 const Header = () => {
     const [navbarData,setNavbarData]=useState();
     const [activeIndex, setActiveIndex] = useState(null);
@@ -73,7 +74,9 @@ if (!navbarData) {
           <div className="header w-full  h-full flex items-center justify-between lg:justify-center 2xl:w-[80%] 2xl:p-3 ">
 
             <div className="logo flex item center justify-center w-[50%] sm:w-[40%]  lg:w-[22%] ">
-              <img className=' p-3 md:w-[60%] lg:w-[75%]' src={navbarData.Logo?.url} alt="" />
+              <a href="/">
+                <img className=' p-3 md:w-[60%] lg:w-[75%]' src={navbarData.Logo?.url} alt="Logo" />
+              </a>
             </div>
 
             <div className="menuList hidden lg:flex lg:w-[50%] xl:w-[38%] lg:justify-center h-full">
@@ -86,11 +89,37 @@ if (!navbarData) {
                       setSelectedSubmenuIndex(0); 
                     }}
 
-                  
                     className="cursor-pointer"
                   >
                     {item.label}
                   </li>
+
+                  // <li
+                  //   key={item.id}
+                  //   className="relative cursor-pointer group hover:text-[#1f7fdb] transition-colors duration-300"
+                  //   onMouseEnter={() => {
+                  //     if (item.submenus?.length > 0) {
+                  //       setActiveIndex(index);
+                  //       setSelectedSubmenuIndex(0);
+                  //     }
+                  //   }}
+                  //   onClick={() => {
+                  //     if (!item.submenus || item.submenus.length === 0) {
+                  //       window.location.href = item.slug || "/blogs";
+                  //     }
+                  //   }}
+                  // >
+                  //   {item.label}
+
+                  //   {/* Only show chevron for first 3 items */}
+                  //   {/* {index < 3 && item.submenus?.length > 0 && (
+                  //     <ChevronDown
+                  //       className="w-4 h-4 transition-transform duration-300 group-hover:-rotate-180"
+                  //     />
+                  //   )} */}
+
+                  //   <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-[#1f7fdb] transition-all duration-300 group-hover:w-full"></span>
+                  // </li>
                 ))}
               </ul>
 
@@ -100,10 +129,10 @@ if (!navbarData) {
             <div className="nav-Container h-full flex items-center gap-5 sm:gap-5 lg:justify-center lg:w-[40%] 2xl:justify-end 2xl:pe-[5%]">
                     <button
                   onClick={() => setIsModalOpen(true)}
-                  className="global hidden sm:flex items-center justify-center gap-2 border px-2 py-1 rounded-4xl"
+                  className="global hidden sm:flex items-center justify-center gap-2 px-2 py-2 rounded-4xl border border-gray-300 hover:border-blue-400 w-24"
                 >
-                  <Globe />
-                  <p className="text-[14px]">{navbarData?.regionSelector}</p>
+                  <Globe size={16} />
+                  <p className="text-[14px] font-medium">{navbarData?.regionSelector}</p>
                 </button>
 
 
@@ -113,15 +142,15 @@ if (!navbarData) {
               </button>
             </div>
 
-                  <div className="theme">
+                  <div className="theme hidden">
                     <button className='bg-[#2575B626] border border-[#2575b64d]  w-[50px] h-[50px] flex items-center justify-center sm:p-3 rounded-full '>
                 <a href="/services" style={{color:"#2575b6"}}> <Moon  /></a>
               </button>
                   </div>
 
-                  <div className="nav-bttn hidden lg:flex justify-center items-center rounded-md xl:w-[35%] 2xl:w-[30%] bg-blue-500 ">
+                  <div className="nav-bttn hidden lg:flex justify-center items-center rounded-md xl:w-[26%] 2xl:w-[33%] bg-[#157de5] ">
                     <button className=' text-sm lg:py-[10px] lg:px-3 ' >
-                      <a href={navbarData?.buttonlink} className='text-[14px] text-white'>{navbarData?.buttontext}</a>
+                      <a href={navbarData?.buttonlink} className='text-[14px] text-white font-medium'>{navbarData?.buttontext}</a>
                     </button>
                   </div>
 
