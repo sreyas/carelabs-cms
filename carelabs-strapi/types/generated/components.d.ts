@@ -431,7 +431,7 @@ export interface ServicesWhyMatters extends Struct.ComponentSchema {
     ans4: Schema.Attribute.String;
     icon: Schema.Attribute.String;
     subtitle: Schema.Attribute.Text;
-    title: Schema.Attribute.String;
+    title: Schema.Attribute.RichText;
   };
 }
 
@@ -480,7 +480,7 @@ export interface StatsPerformanceMatrix extends Struct.ComponentSchema {
   };
   attributes: {
     name: Schema.Attribute.String;
-    stats: Schema.Attribute.String;
+    stats: Schema.Attribute.RichText;
   };
 }
 
@@ -490,8 +490,8 @@ export interface StatsProjectStat extends Struct.ComponentSchema {
     displayName: 'project-stat';
   };
   attributes: {
-    count: Schema.Attribute.Integer;
-    countryCount: Schema.Attribute.String;
+    count: Schema.Attribute.RichText;
+    countryCount: Schema.Attribute.RichText;
     countryName: Schema.Attribute.String;
     title: Schema.Attribute.String;
   };
@@ -514,8 +514,9 @@ export interface StatsSuccessStat extends Struct.ComponentSchema {
     displayName: 'success-stat';
   };
   attributes: {
+    icon: Schema.Attribute.String;
     title: Schema.Attribute.String;
-    value: Schema.Attribute.String;
+    value: Schema.Attribute.RichText;
   };
 }
 

@@ -5,9 +5,6 @@
   },
   "options": {},
   "attributes": {
-    "title": {
-      "type": "string"
-    },
     "icon": {
       "type": "string"
     },
@@ -25,6 +22,9 @@
     },
     "ans4": {
       "type": "string"
+    },
+    "title": {
+      "type": "richtext"
     }
   },
   "config": {}

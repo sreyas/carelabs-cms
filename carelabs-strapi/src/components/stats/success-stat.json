@@ -8,8 +8,11 @@
     "title": {
       "type": "string"
     },
-    "value": {
+    "icon": {
       "type": "string"
+    },
+    "value": {
+      "type": "richtext"
     }
   },
   "config": {}

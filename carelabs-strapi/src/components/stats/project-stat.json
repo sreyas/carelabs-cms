@@ -5,17 +5,17 @@
   },
   "options": {},
   "attributes": {
-    "count": {
-      "type": "integer"
-    },
     "title": {
-      "type": "string"
-    },
-    "countryCount": {
       "type": "string"
     },
     "countryName": {
       "type": "string"
+    },
+    "count": {
+      "type": "richtext"
+    },
+    "countryCount": {
+      "type": "richtext"
     }
   },
   "config": {}
