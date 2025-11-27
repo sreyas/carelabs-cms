@@ -172,7 +172,7 @@ export default async function Page({ params }) {
       </section> */}
 
       <section>
-        <div className="w-full flex justify-center px-4 py-10">
+        <div className="w-full flex justify-center px-4 py-10 ">
           <div className="w-full sm:w-[90%] lg:w-[75%] flex flex-col lg:flex-row gap-8">
 
             {/* LEFT CARD → Why Power System Analysis Matters */}

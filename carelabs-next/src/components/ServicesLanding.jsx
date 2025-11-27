@@ -132,7 +132,7 @@ const downloadRandomPdf = () => {
         flex items-center gap-2
       "
     >
-      {/* Hover Glow */}
+      
       <span
         className="
           absolute inset-0 bg-blue-400/30 
@@ -141,10 +141,9 @@ const downloadRandomPdf = () => {
         "
       ></span>
 
-      {/* ICON */}
+      
       <ArrowRight className="relative z-10 w-4 h-4" />
 
-      {/* TEXT */}
       <span className="relative z-10">{mainbutton1}</span>
     </a>
 

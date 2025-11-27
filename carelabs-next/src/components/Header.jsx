@@ -716,7 +716,7 @@ if (!navbarData) {
           </div>
 
           {/* Verification */}
-          <div>
+          {/* <div>
             <label className="block text-sm font-medium text-gray-700 mb-1.5">
               Verification <span className="text-red-500">*</span>
             </label>
@@ -731,7 +731,7 @@ if (!navbarData) {
               </div>
               <span className="text-xs text-gray-500">Cloudflare</span>
             </div>
-          </div>
+          </div> */}
 
           {/* Submit Button */}
           <button
