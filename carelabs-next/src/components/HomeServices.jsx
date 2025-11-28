@@ -3,11 +3,14 @@ import React, { useEffect, useState } from 'react'
 import client from '@/lib/appollo-client';
 import { GET_GLOBAL_REACH } from '@/lib/api-Collection';
 import { CircleCheckBig, Zap } from 'lucide-react';
+import * as LucideIcons from "lucide-react";
 
 const HomeServices = () => {
 
 const [globalReachData, setGlobalReachData] = useState(null)
 const [activeServiceIndex, setActiveServiceIndex] = useState(0)
+// const IconComponent = LucideIcons[activeItem?.icon];
+
 
 const fetchGlobalReach = async () => {
     try {
@@ -86,34 +89,30 @@ const fetchGlobalReach = async () => {
             xl:w-[40%]   ">
 
 
-                {items.map((item, index) => (
-                <div
+                {items.map((item, index) => {
+                  // Get the icon component dynamically from lucide-react
+                  const IconComponent = LucideIcons[item.icon]; // item.icon must match the Lucide icon name exactly
 
-
-                  key={index}
-                  onClick={() => setActiveServiceIndex(index)}
-                  className={`w-full sm:w-[85%] lg:w-full min-h-[70px] lg:h-[80px] rounded-2xl  p-4 lg:p-5 flex justify-start gap-3 shadow-md hover:shadow-lg transition-shadow cursor-pointer ${
-                    activeServiceIndex === index ? "border border-[#2575b6] bg-[#dae9fd]" : ""
-                  }`}
-                >
-                  <div className="text-[#2575b6] w-[20%] flex items-center justify-center">
-                    <div className="w-[50px] h-[50px] flex items-center justify-center bg-[#dae9fd] rounded-xl">
-                         <Zap size={30}/>
+                  return (
+                    <div
+                      key={index}
+                      onClick={() => setActiveServiceIndex(index)}
+                      className={`w-full sm:w-[85%] lg:w-full min-h-[70px] lg:h-[80px] rounded-2xl p-4 lg:p-5 flex justify-start gap-3 shadow-md hover:shadow-lg transition-shadow cursor-pointer ${
+                        activeServiceIndex === index ? "border border-[#2575b6] bg-[#dae9fd]" : ""
+                      }`}
+                    >
+                      <div className="text-[#2575b6] w-[20%] flex items-center justify-center">
+                        <div className="w-[50px] h-[50px] flex items-center justify-center bg-[#dae9fd] rounded-xl">
+                          {IconComponent ? <IconComponent size={30} /> : null}
+                        </div>
+                      </div>
+                      <div className="w-[80%]">
+                        <p className="text-[16px] font-bold">{item.name}</p>
+                        <p className="text-[12px] text-gray-600">Click to explore details</p>
+                      </div>
                     </div>
-                    
-                  </div>
-                  <div className="w-[80%]">
-                      <p className="text-[16px] font-bold">
-                         {item.name}
-                       </p>
-                        <p className="text-[12px] text-gray-600">
-                          Click to explore details
-                        </p>
-                  </div>
-                
-                </div>
-              ))}
-
+                  );
+                })}
             </div>
 
             {/* Detail Panel */}

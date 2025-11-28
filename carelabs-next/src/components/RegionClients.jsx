@@ -36,7 +36,9 @@ const RegionClients = () => {
         </div>
 
 
-        <div className="w-[65%] h-max bg-amber-300 flex items-center justify-center gap-2">
+        <div className=" bg-amber-300 flex flex-col items-stretch justify-center gap-2
+        lg:flex-row lg:w-[80%]
+        2xl:w-[65%]">
 
             <div className="w-[50%] bg-amber-950 p-10 rounded-2xl">
                 <h3 className='mb-3 montserrat-font text-[24px] font-semibold '>Partners in Safety & Reliability</h3>
@@ -45,7 +47,7 @@ const RegionClients = () => {
                     solutions that meet CSA standards and support critical operations coast to coast.</p>
                     <p className='mb-3'>Recent Projects:</p>
 
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-3 lg:mt-5">
                 <div className="flex items-center p-4 light-blue border border-[#2575b6]  rounded-2xl gap-3">
                     <i className='primary-color' ><MapPin /></i>
                     <p className='montserrat-font font-semibold'>Ontario</p>
@@ -66,51 +68,45 @@ const RegionClients = () => {
                 </div>
             </div>
             </div>
-            <div className="w-[50%] h-full bg-amber-800 p-5 rounded-2xl">
-                <h2>Clients We've Partnered With</h2>
-                <div className=" grid grid-cols-3 ">
-                    <div className=" bg-amber-300">
-                        <div className="w-[80px] h-[80px] bg-amber-200">
-                           <Shield/>
-                        </div>
-                        <p>Hydro One</p>
-                    </div>
+            <div className="w-[50%] bg-amber-800 flex flex-col justify-center  p-10 rounded-2xl">
+                <h2 className='text-center mb-5 text-[24px] font-semibold montserrat-font '>Clients We've Partnered With</h2>
+                <div className=" w-full grid gap-10 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 ">
 
-                       <div className=" bg-amber-300">
-                        <div className="w-[80px] h-[80px] bg-amber-200">
-                           <Shield/>
-                        </div>
-                        <p>Hydro One</p>
-                    </div>
+                <div className=" bg-green-300 flex gap-3 flex-col items-center rounded-xl justify-center py-10">
+                    <Shield size={44}/>
+                    <p>Hydro One</p>
+                </div>
 
-                       <div className=" bg-amber-300">
-                        <div className="w-[80px] h-[80px] bg-amber-200">
-                           <Shield/>
-                        </div>
-                        <p>Hydro One</p>
-                    </div>
+                <div className=" bg-green-300  flex gap-3 flex-col items-center rounded-xl justify-center py-10">
+                <Shield size={44}/>
+                <p>Hydro One</p>
+                </div>
 
-                       <div className=" bg-amber-300">
-                        <div className="w-[80px] h-[80px] bg-amber-200">
-                           <Shield/>
-                        </div>
-                        <p>Hydro One</p>
-                    </div>
 
-                       <div className=" bg-amber-300">
-                        <div className="w-[80px] h-[80px] bg-amber-200">
-                           <Shield/>
-                        </div>
-                        <p>Hydro One</p>
-                    </div>
+                <div className=" bg-green-300 gap-3 flex flex-col items-center rounded-xl justify-center py-10">
+                <Shield size={44}/>
+                <p>Hydro One</p>
+                </div>
 
-                       <div className=" bg-amber-300">
-                        <div className="w-[80px] h-[80px] bg-amber-200">
-                           <Shield/>
-                        </div>
-                        <p>Hydro One</p>
-                    </div>
 
+                <div className=" bg-green-300 flex flex-col items-center rounded-xl justify-center py-10">
+                <Shield size={44}/>
+                <p>Hydro One</p>
+                </div>
+
+
+                <div className=" bg-green-300 flex flex-col items-center rounded-xl justify-center py-10">
+                <Shield size={44}/>
+                <p>Hydro One</p>
+                </div>
+
+                <div className=" bg-green-300 flex flex-col items-center rounded-xl justify-center py-10">
+                <Shield size={44}/>
+                <p>Hydro One</p>
+                </div>
+
+
+             
                 </div>
             </div>
 

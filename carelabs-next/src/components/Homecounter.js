@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useInView } from "framer-motion";
 
-const HomeCounter = ({ end = "100+", duration = 2 }) => {
+const HomeCounter = ({ end = "100+", duration = 2, color = "#000"  }) => {
   // Extract numeric part (e.g. "100+ → 100")
   const numericEnd = parseInt(end.replace(/\D/g, ""), 10);
 
@@ -34,7 +34,8 @@ const HomeCounter = ({ end = "100+", duration = 2 }) => {
   return (
     <span
       ref={ref}
-      className="gradient-text text-5xl font-bold"
+      className="text-5xl font-bold"
+      style={{ color: color }}
     >
       {count}{suffix}
     </span>

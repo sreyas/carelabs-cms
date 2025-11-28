@@ -135,6 +135,7 @@ query {
     home_service_items {
       order
       name
+      icon
       Image {
         url
       }

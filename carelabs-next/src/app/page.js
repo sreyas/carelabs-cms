@@ -163,7 +163,7 @@ if (!homeData) {
       {/* Buttons */}
       <div className="w-full flex items-center justify-center py-4">
         <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-center justify-center w-full md:w-3/5">
-          <button className="secondary-bg flex items-center justify-center gap-2  text-white py-2 px-6 rounded-full text-[14px] poppins-font hover:bg-orange-700">
+          <button className="bg-[#FF7038] flex items-center justify-center gap-2  text-white py-2 px-6 rounded-full text-[14px] poppins-font hover:bg-[#FF4C05]">
             <a 
             
             //href={homeData.btn1_link}
@@ -183,7 +183,7 @@ if (!homeData) {
 
   <button
   onClick={openRandomVideo}
-  className="flex items-center justify-center gap-2 border hover:bg-[#f15c30] hover:text-white border-[#0f172914] bg-white py-2 px-6 rounded-full text-[14px] poppins-font"
+  className="flex items-center justify-center gap-2 hover:bg-[#FF7038] border hover:border-[#157de54d] hover:text-white border-[#0f172914] bg-white py-2 px-6 rounded-full text-[14px] poppins-font"
 >
   <Play size={14} />
   {homeData.btn2_text}
@@ -198,15 +198,21 @@ if (!homeData) {
       data-aos="fade-up"
      data-aos-duration="2000"
       className="w-full flex flex-col sm:flex-row  items-center justify-evenly py-4 gap-4 ">
-        {homeData.stats?.map((item) => (
-          <div
-            key={item.id}
-            className="w-full sm:w-[45%] md:w-[30%] flex flex-col items-center justify-center p-4 rounded-2xl card-shadow"
-          >
-            <HomeCounter end={item.number} duration={2} />
-            <p className="text-[14px] py-1 text-[#65758B] poppins-font">{item.label}</p>
-          </div>
-        ))}
+        {homeData.stats?.map((item, idx) => {
+          let numberColor = "";
+          if (idx === 0 || idx === 2) numberColor = "#157DE5";
+          else if (idx === 1) numberColor = "#FF7038";
+
+          return (
+            <div
+              key={item.id}
+              className="w-full sm:w-[45%] md:w-[30%] flex flex-col items-center justify-center p-4 rounded-2xl card-shadow"
+            >
+              <HomeCounter end={item.number} duration={2} color={numberColor} />
+              <p className="text-[14px] py-1 text-[#65758B] poppins-font">{item.label}</p>
+            </div>
+          );
+        })}
       </div>
 
     </div>
