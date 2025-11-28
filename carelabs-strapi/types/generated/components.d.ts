@@ -297,6 +297,53 @@ export interface NewNewItem extends Struct.ComponentSchema {
   };
 }
 
+export interface OurteamImages extends Struct.ComponentSchema {
+  collectionName: 'components_ourteam_images';
+  info: {
+    displayName: 'images';
+  };
+  attributes: {
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    label: Schema.Attribute.String;
+  };
+}
+
+export interface OurteamOurteamStats extends Struct.ComponentSchema {
+  collectionName: 'components_ourteam_ourteam_stats';
+  info: {
+    displayName: 'ourteam-stats';
+  };
+  attributes: {
+    label: Schema.Attribute.String;
+    stats: Schema.Attribute.String;
+  };
+}
+
+export interface OurteamSnapshot extends Struct.ComponentSchema {
+  collectionName: 'components_ourteam_snapshots';
+  info: {
+    displayName: 'snapshot';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    snapshot_stats: Schema.Attribute.Component<'ourteam.snapshot-stats', true>;
+    title: Schema.Attribute.RichText;
+  };
+}
+
+export interface OurteamSnapshotStats extends Struct.ComponentSchema {
+  collectionName: 'components_ourteam_snapshot_stats';
+  info: {
+    displayName: 'snapshot-stats';
+  };
+  attributes: {
+    icon: Schema.Attribute.String;
+    label: Schema.Attribute.String;
+    stats: Schema.Attribute.String;
+  };
+}
+
 export interface ServicesBenefitSector extends Struct.ComponentSchema {
   collectionName: 'components_services_benefit_sectors';
   info: {
@@ -563,6 +610,10 @@ declare module '@strapi/strapi' {
       'insights.why-traditional-maintenance': InsightsWhyTraditionalMaintenance;
       'navbar.navbar-item': NavbarNavbarItem;
       'new.new-item': NewNewItem;
+      'ourteam.images': OurteamImages;
+      'ourteam.ourteam-stats': OurteamOurteamStats;
+      'ourteam.snapshot': OurteamSnapshot;
+      'ourteam.snapshot-stats': OurteamSnapshotStats;
       'services.benefit-sector': ServicesBenefitSector;
       'services.methodology': ServicesMethodology;
       'services.questions': ServicesQuestions;

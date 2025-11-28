@@ -1101,6 +1101,44 @@ export interface ApiNavbarNavbar extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiOurTeamPageOurTeamPage extends Struct.SingleTypeSchema {
+  collectionName: 'our_team_pages';
+  info: {
+    displayName: 'OurTeamPage';
+    pluralName: 'our-team-pages';
+    singularName: 'our-team-page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    button1link: Schema.Attribute.String;
+    button1text: Schema.Attribute.String;
+    button2link: Schema.Attribute.String;
+    button2text: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    images: Schema.Attribute.Component<'ourteam.images', true>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::our-team-page.our-team-page'
+    > &
+      Schema.Attribute.Private;
+    maindescription: Schema.Attribute.Text;
+    mainheading: Schema.Attribute.RichText;
+    mainimage: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    ourteam_stats: Schema.Attribute.Component<'ourteam.ourteam-stats', true>;
+    publishedAt: Schema.Attribute.DateTime;
+    scrolltext: Schema.Attribute.String;
+    snapshot: Schema.Attribute.Component<'ourteam.snapshot', false>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiRegionRegion extends Struct.CollectionTypeSchema {
   collectionName: 'regions';
   info: {
@@ -1869,6 +1907,7 @@ declare module '@strapi/strapi' {
       'api::insight.insight': ApiInsightInsight;
       'api::insightblog.insightblog': ApiInsightblogInsightblog;
       'api::navbar.navbar': ApiNavbarNavbar;
+      'api::our-team-page.our-team-page': ApiOurTeamPageOurTeamPage;
       'api::region.region': ApiRegionRegion;
       'api::service-page.service-page': ApiServicePageServicePage;
       'api::service.service': ApiServiceService;

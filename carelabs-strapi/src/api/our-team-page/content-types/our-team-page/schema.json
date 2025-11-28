@@ -1,0 +1,61 @@
+{
+  "kind": "singleType",
+  "collectionName": "our_team_pages",
+  "info": {
+    "singularName": "our-team-page",
+    "pluralName": "our-team-pages",
+    "displayName": "OurTeamPage"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "mainheading": {
+      "type": "richtext"
+    },
+    "maindescription": {
+      "type": "text"
+    },
+    "ourteam_stats": {
+      "type": "component",
+      "component": "ourteam.ourteam-stats",
+      "repeatable": true
+    },
+    "button1text": {
+      "type": "string"
+    },
+    "button1link": {
+      "type": "string"
+    },
+    "button2text": {
+      "type": "string"
+    },
+    "button2link": {
+      "type": "string"
+    },
+    "scrolltext": {
+      "type": "string"
+    },
+    "mainimage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "images": {
+      "type": "component",
+      "component": "ourteam.images",
+      "repeatable": true
+    },
+    "snapshot": {
+      "type": "component",
+      "component": "ourteam.snapshot",
+      "repeatable": false
+    }
+  }
+}
