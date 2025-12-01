@@ -59,20 +59,30 @@ const OurTeamsBanner = () => {
                     {/* Top-left */}
                     <div className="p-2 w-[130px] h-[100px] flex items-end justify-start rounded-2xl border-2 border-white  bg-amber-900 absolute rotate-12 -top-10 -right-1/12
                      sm:w-[160px] 
-                     md:w-[180px] md:h-32  md:p-3    ">
+                     md:w-[180px] md:h-32  md:p-3    
+                     "
+                        style={{
+                    backgroundImage: `url(${carelabzImage.src})`
+                }}>
                     <p className='text-[14px] px-1 rounded-2xl bg-white md:px-3 '>On-site testing</p>
                     </div>
 
                     {/* Bottom-left */}
                     <div className="w-[130px] h-[100px] p-2 rounded-2xl border-2 border-white md:p-3  flex items-end justify-start  bg-amber-400 absolute -rotate-6 bottom-10 -left-1/12
                     md:w-[180px] md:h-32
-                     ">
+                     "
+                        style={{
+                    backgroundImage: `url(${carelabzImage.src})`
+                }}>
                       <p className='text-[14px] px-1 md:px-3 rounded-2xl bg-white'>On-site testing</p>
                     </div>
 
                     {/* Top-right */}
-                    <div className="w-[130px] h-[80px] md:w-[160px] rounded-2xl border-2 border-white p-3  flex items-end justify-start  bg-amber-100 absolute rotate-12 bottom-1/4 -right-1/12
-                    md:h-28 ">
+                    <div className="w-[130px] h-[80px] not-first-of-type: md:w-[160px] rounded-2xl border-2 border-white p-3  flex items-end justify-start  bg-amber-100 absolute rotate-12 bottom-1/4 -right-1/12
+                    md:h-28 "
+                       style={{
+                    backgroundImage: `url(${carelabzImage.src})`
+                }}>
                         <p className='text-[14px] px-1 md:px-3 rounded-2xl bg-white'>On-site testing</p>
                     </div>
             </div>

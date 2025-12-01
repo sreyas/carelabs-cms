@@ -7,6 +7,7 @@ import HomeCounter from "@/components/Homecounter";
 import HomeServices from "@/components/HomeServices";
 import HomeTestimonials from "@/components/HomeTestimonials";
 import RegionClients from "@/components/RegionClients";
+import RegionCompliance from "@/components/RegionCompliance";
 // import RegionClients from "@/components/RegionClients";
 import RegionIndustries from "@/components/RegionIndustries";
 import { GET_HOME_SECTION_12 } from "@/lib/api-Collection";
@@ -208,10 +209,14 @@ console.log("Pararar111",params['locale']);
         <RegionClients/>
       </section>
 
-      {/* Section-3  */}
-      <section>
-        <GlobalReach />
+       <section>
+        <RegionCompliance/>
       </section>
+
+      {/* Section-3  */}
+      {/* <section>
+        <GlobalReach />
+      </section> */}
 
       {/* Section-4 */}
       <section>

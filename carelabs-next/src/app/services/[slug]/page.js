@@ -437,7 +437,7 @@ export default async function Page({ params }) {
         </div>
       </section> */}
 
-      <section>
+      {/* <section>
   <div className="w-full flex flex-col items-center py-10">
 
     <p className="gradient-text text-4xl font-bold">{service?.sectorBenefitsTitle}</p>
@@ -445,15 +445,14 @@ export default async function Page({ params }) {
 
     <div className="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-4 gap-6 mt-10 w-[90%] lg:w-[70%]">
       {service?.sectorBenefits?.map((sec, idx) => {
-        const iconName = sec.icon?.trim(); // trim spaces
-        const Icon = LucideIcons[iconName] || LucideIcons.Circle; // fallback icon
+        const iconName = sec.icon?.trim(); 
+        const Icon = LucideIcons[iconName] || LucideIcons.Circle; 
 
         return (
-          <div key={idx} className="bg-white p-6 rounded-2xl card-shadow flex flex-col gap-4">
+          <div key={idx} className="bg-white p-6 rounded-2xl card-shadow flex flex-col gap-4 transition-all duration-300 group hover:-translate-y-1 hover:shadow-xl">
 
-            {/* Dynamic Icon */}
-            <div className="w-[50px] h-[50px] bg-blue-300 rounded-xl flex justify-center items-center">
-              <Icon className="w-6 h-6 text-white" />
+            <div className="w-[50px] h-[50px] bg-gray-300 rounded-xl flex justify-center items-center transition-all duration-300 group-hover:scale-110 ">
+              <Icon className="w-6 h-6 text-[#157be2] transition-all duration-300 group-hover:text-orange-500" />
             </div>
 
             <p className="text-xl font-bold">{sec.label}</p>
@@ -472,7 +471,66 @@ export default async function Page({ params }) {
       })}
     </div>
   </div>
+</section> */}
+
+<section>
+  <div className="w-full flex flex-col items-center py-10">
+
+    <p className="gradient-text text-4xl font-bold">{service?.sectorBenefitsTitle}</p>
+    <p className="text-gray-700 max-w-xl text-center mt-3">{service?.sectorBenefitsSubtitle}</p>
+
+    <div className="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-4 gap-6 mt-10 w-[90%] lg:w-[70%]">
+      {service?.sectorBenefits?.map((sec, idx) => {
+        const iconName = sec.icon?.trim();
+        const Icon = LucideIcons[iconName] || LucideIcons.Circle;
+
+        return (
+          <div
+            key={idx}
+            className="bg-white p-6 rounded-2xl card-shadow flex flex-col gap-4
+                       transition-all duration-300 ease-out group
+                       hover:-translate-y-2 hover:shadow-2xl hover:scale-[1.02]"
+          >
+            {/* ICON BOX */}
+            <div
+              className="w-[50px] h-[50px] bg-gray-300 rounded-xl flex justify-center items-center
+                         transition-all duration-300 ease-out
+                         group-hover:scale-110 group-hover:rotate-6"
+            >
+              <Icon
+                className="w-6 h-6 text-[#157be2] transition-all duration-300 ease-out
+                           group-hover:text-orange-500"
+              />
+            </div>
+
+            {/* TITLE */}
+            <p className="text-xl font-bold transition-all duration-300 group-hover:text-[#157be2]">
+              {sec.label}
+            </p>
+
+            {/* LIST ITEMS */}
+            {[sec.list1, sec.list2, sec.list3].map(
+              (txt, i) =>
+                txt && (
+                  <div key={i} className="flex gap-2 items-start">
+
+                    <div className="w-5 h-5 rounded-full border-2 border-orange-500 flex items-center justify-center">
+                    <i className="fa-solid fa-check text-orange-500 text-[10px]"></i>
+                    </div>
+
+                    <p className="transition-all duration-300 text-gray-600 ">
+                      {txt}
+                    </p>
+                  </div>
+                )
+            )}
+          </div>
+        );
+      })}
+    </div>
+  </div>
 </section>
+
 
 
       {/* =====================================================================================
@@ -515,23 +573,24 @@ export default async function Page({ params }) {
         </div>
       </section> */}
 
-      <section>
+<section>
   <div className="min-h-[80vh] flex justify-center py-10">
     <div className="w-[95%] md:w-[85%] lg:w-[70%] rounded-4xl navbar-shadow p-10 flex flex-col items-center">
 
       <p className="gradient-text text-4xl font-bold">{service?.resultsTitle}</p>
       <p className="text-gray-700 mt-3 text-center">{service?.resultsSubtitle}</p>
 
-      {/* STATS */}
       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 w-full mt-10">
         {service?.resultsStat?.map((stat, i) => {
           const iconName = stat.icon?.trim();
           const StatIcon = LucideIcons[iconName] || LucideIcons.Circle;
 
           return (
-            <div key={i} className="bg-white p-6 rounded-xl text-center flex flex-col items-center gap-3">
-              <div className="w-[50px] h-[50px] bg-yellow-300 rounded-xl flex justify-center items-center">
-                <StatIcon className="w-6 h-6 text-white" />
+            <div key={i} className="bg-white p-6 rounded-xl text-center flex flex-col items-center gap-3 group">
+              <div className="w-[50px] h-[50px] bg-gray-300 rounded-xl flex justify-center items-center transition-all duration-300
+              group-hover:scale-110">
+
+                <StatIcon className="w-6 h-6 text-[#157be2] transition-all duration-300 group-hover:text-orange-500" />
               </div>
               <p className="text-4xl font-bold bg-gradient-to-r from-[#5b68c3] to-[#c58a7a] bg-clip-text text-transparent">
                 {stat.percentage}
@@ -542,16 +601,16 @@ export default async function Page({ params }) {
         })}
       </div>
 
-      {/* BOTTOM BOXES */}
+      
       <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 w-full mt-10">
         {service?.resultName?.map((item, idx) => {
           const iconName = item.icon?.trim();
           const ItemIcon = LucideIcons[iconName] || LucideIcons.Circle;
 
           return (
-            <div key={idx} className="bg-white p-6 rounded-xl flex flex-col gap-4">
+            <div key={idx} className="bg-white p-6 rounded-xl flex flex-col gap-4 group">
               <div className="flex gap-4 items-center">
-                <ItemIcon className="w-5 h-5 text-[#157be2]" />
+                <ItemIcon className="w-5 h-5 text-orange-500" />
                 <p className="text-xl font-bold">{item.label}</p>
               </div>
               <p className="text-sm pl-10 text-gray-600">{item.description}</p>
@@ -563,6 +622,8 @@ export default async function Page({ params }) {
     </div>
   </div>
 </section>
+
+
 
 
       <section className="mt-10">

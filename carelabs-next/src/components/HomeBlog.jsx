@@ -33,7 +33,9 @@ if(!insights) return null
 
 //const featured = insights.articles[0];
 
-const featured = insights.articles.find(a => a.featured === true)
+const featured = insights.articles.find(a => a.featured === true);
+console.log("dsf",featured.image.url);
+
 
 if (!featured) {
   console.log("No featured article found!");
@@ -136,54 +138,60 @@ if (!featured) {
       </div>
     </div>
 
-        <div className="w-full py-10 bg-[#e7f1ff]">
-          <div className="cards-blog grid grid-cols-1 mt-16 lg:grid-cols-3 gap-8 w-[85%]  md:w-[80%] lg:mt-10  2xl:w-[65%] mx-auto sm-p-5">
+    <div className="w-full py-10 bg-[#e7f1ff]">
+  <div className="cards-blog grid grid-cols-1 mt-16 lg:grid-cols-3 
+      gap-8 w-[85%] md:w-[80%] lg:mt-10 2xl:w-[65%] mx-auto sm-p-5 
+      items-stretch">
 
-            {/* CARD 1 */}
-            {insights.articles.slice(1, 4).map((item, idx) => (
-               <a key={idx} href={item.buttonlink} >
-                  <div className='transform transition-all duration-500 ease-in-out hover:-translate-y-3 border-1 border-transparent  hover:border hover:border-blue-900 '>
-                    <div 
-                    data-aos="fade-up"
-                    data-aos-anchor-placement="top-center"
-                    key={idx} className=" bg-[#e6f0fd]
-                     card-shadow rounded-xl
-                     flex flex-col  hover:shadow-lg cursor-pointer group">
+    {insights.articles.slice(1, 4).map((item, idx) => (
+      <a key={idx} href={item.buttonlink}>
+        <div className="transform transition-all duration-500 ease-in-out hover:-translate-y-3 
+            border-[1px] border-transparent hover:border hover:border-blue-900 h-full rounded-2xl">
 
-                      {/* IMAGE */}
-                      <div className="w-full h-48 overflow-hidden rounded-t-lg">
-                        <img
-                          src={item?.image?.url}
-                          className="w-full h-full object-cover transform transition-all duration-500 ease-in-out group-hover:scale-115"
-                          alt={item.title}
-                        />
-                      </div>
+          <div 
+            data-aos="fade-up"
+            className="bg-[#e6f0fd] card-shadow rounded-xl 
+                flex flex-col h-full hover:shadow-lg cursor-pointer group">
 
-                      {/* CONTENT */}
-                      <div className="px-6 py-4 flex flex-col gap-3 rounded-2xl">
-                        <div className="flex items-center gap-1">
-                          {(() => {
-                            const IconComponent = LucideIcons[item.icon];
-                            return IconComponent ? <IconComponent size={14} className="text-[#1f7fdb]" /> : null;
-                          })()}
-                          <p className="text-[12px] text-[#1f7fdb] font-bold">
-                            {item.blog_category?.category}
-                          </p>
-                        </div>
-                        <p className="text-xl font-semibold montserrat-font">{item.title}</p>
-                        <p className="text-sm text-[#4B5563] text-para poppins-font">{item.description}</p>
-                        <p className="text-xs text-[#4B5563] text-para   poppins-font">
-                          {item.date} · {item.category}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                     </a>
-            ))}
+            {/* IMAGE */}
+            <div className="w-full h-48 overflow-hidden rounded-t-lg">
+              <img
+                src={item?.image?.url}
+                className="w-full h-full object-cover transform transition-all 
+                    duration-500 ease-in-out group-hover:scale-115"
+                alt={item.title}
+              />
+            </div>
 
+            {/* CONTENT */}
+            <div className="px-6 py-4 flex flex-col gap-3 rounded-2xl flex-grow">
+              <div className="flex items-center gap-1">
+                {(() => {
+                  const IconComponent = LucideIcons[item.icon];
+                  return IconComponent ? (
+                    <IconComponent size={14} className="text-[#1f7fdb]" />
+                  ) : null;
+                })()}
+                <p className="text-[12px] text-[#1f7fdb] font-bold">
+                  {item.blog_category?.category}
+                </p>
+              </div>
+
+              <p className="text-xl font-semibold montserrat-font">{item.title}</p>
+              <p className="text-sm text-[#4B5563] poppins-font">{item.description}</p>
+
+              <p className="text-xs text-[#4B5563] poppins-font mt-auto">
+                {item.date} · {item.category}
+              </p>
+            </div>
 
           </div>
         </div>
+      </a>
+    ))}
+  </div>
+</div>
+
 
     </>
 

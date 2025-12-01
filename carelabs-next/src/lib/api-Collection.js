@@ -598,7 +598,7 @@ export const GET_INSIGHTS_BY_SLUG = gql`
         title
       }
       introtitle
-      introcontent
+      IntroductionContent
       articleSection {
         title
         articleItems {

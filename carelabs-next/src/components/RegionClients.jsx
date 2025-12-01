@@ -5,7 +5,7 @@ import React from 'react'
 
 const RegionClients = () => {
   return (
-    <div className=' w-full flex flex-col items-center justify-center py-5 '>
+    <div className=' w-full flex flex-col items-center justify-center py-5 mt-20 '>
         <div
             data-aos="fade-up"
             data-aos-anchor-placement="top-center"
@@ -36,11 +36,11 @@ const RegionClients = () => {
         </div>
 
 
-        <div className=" bg-amber-300 flex flex-col items-stretch justify-center gap-2
+        <div className="glass-panel flex flex-col items-stretch justify-center gap-2 mt-10
         lg:flex-row lg:w-[80%]
         2xl:w-[65%]">
 
-            <div className="w-[50%] bg-amber-950 p-10 rounded-2xl">
+            <div className="w-[50%]  p-10 rounded-2xl">
                 <h3 className='mb-3 montserrat-font text-[24px] font-semibold '>Partners in Safety & Reliability</h3>
                 <p className='mb-3 poppins-font'>Carelabs partners with Canadian teams from feasibility 
                     through to ongoing maintenance, delivering power system studies and electrical safety 
@@ -68,39 +68,39 @@ const RegionClients = () => {
                 </div>
             </div>
             </div>
-            <div className="w-[50%] bg-amber-800 flex flex-col justify-center  p-10 rounded-2xl">
+            <div className="w-[50%]  flex flex-col justify-center  p-10 rounded-2xl">
                 <h2 className='text-center mb-5 text-[24px] font-semibold montserrat-font '>Clients We've Partnered With</h2>
                 <div className=" w-full grid gap-10 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 ">
 
-                <div className=" bg-green-300 flex gap-3 flex-col items-center rounded-xl justify-center py-10">
+                <div className=" glass-panel flex gap-3 flex-col items-center rounded-xl justify-center py-10">
                     <Shield size={44}/>
                     <p>Hydro One</p>
                 </div>
 
-                <div className=" bg-green-300  flex gap-3 flex-col items-center rounded-xl justify-center py-10">
+                <div className=" glass-panel  flex gap-3 flex-col items-center rounded-xl justify-center py-10">
                 <Shield size={44}/>
                 <p>Hydro One</p>
                 </div>
 
 
-                <div className=" bg-green-300 gap-3 flex flex-col items-center rounded-xl justify-center py-10">
+                <div className=" glass-panel gap-3 flex flex-col items-center rounded-xl justify-center py-10">
                 <Shield size={44}/>
                 <p>Hydro One</p>
                 </div>
 
 
-                <div className=" bg-green-300 flex flex-col items-center rounded-xl justify-center py-10">
+                <div className=" glass-panel flex flex-col items-center rounded-xl justify-center py-10">
                 <Shield size={44}/>
                 <p>Hydro One</p>
                 </div>
 
 
-                <div className=" bg-green-300 flex flex-col items-center rounded-xl justify-center py-10">
+                <div className="glass-panel flex flex-col items-center rounded-xl justify-center py-10">
                 <Shield size={44}/>
                 <p>Hydro One</p>
                 </div>
 
-                <div className=" bg-green-300 flex flex-col items-center rounded-xl justify-center py-10">
+                <div className=" glass-panel flex flex-col items-center rounded-xl justify-center py-10">
                 <Shield size={44}/>
                 <p>Hydro One</p>
                 </div>

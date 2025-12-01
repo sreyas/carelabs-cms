@@ -8,6 +8,7 @@ import React from "react";
 export default function Page(props) {
   const params = React.use(props.params);
   const slug = params?.slug;
+  
 
   console.log(" Server → Slug:", slug);
 
@@ -147,13 +148,13 @@ export default function Page(props) {
               </div>
             )} */}
 
-        {blog.introtitle && blog.introcontent && (
+        {blog.introtitle && blog.IntroductionContent && (
           <div className="glass-panel rounded-2xl p-10">
           <h1 className="mb-5 text-[30px] font-semibold montserrat-font">
           {blog.introtitle}
           </h1>
 
-          {blog.introcontent
+          {blog.IntroductionContent
           .split(/\n\s*\n/) // split by blank lines
           .map((para, index) => (
           <p key={index} className="mb-5 poppins-font text-[16px] leading-[1.7]">
@@ -187,20 +188,20 @@ export default function Page(props) {
               const bulletItems = lines.slice(1, -1);
               const lastParagraph = lines[lines.length - 1];
 
-  return (
-    <div className="poppins-font text-[16px] leading-relaxed mb-5">
-      
-      <p className="mb-4">{firstParagraph}</p>
+    return (
+      <div className="poppins-font text-[16px] leading-relaxed mb-5">
+        
+        <p className="mb-4">{firstParagraph}</p>
 
-      <ul className="list-disc ml-6 space-y-1 mb-4">
-        {bulletItems.map((item, idx) => (
-          <li key={idx}>{item}</li>
-        ))}
-      </ul>
-      <p>{lastParagraph}</p>
-    </div>
-  );
-})()}
+        <ul className="list-disc ml-6 space-y-1 mb-4">
+          {bulletItems.map((item, idx) => (
+            <li key={idx}>{item}</li>
+          ))}
+        </ul>
+        <p>{lastParagraph}</p>
+      </div>
+    );
+  })()}
 
 
 

@@ -1,24 +1,26 @@
 "use client";
 
-import { Zap, Activity, Target } from "lucide-react";
+//import { Zap, Activity, Target } from "lucide-react";
+import * as LucideIcons from "lucide-react";
 
-const services = [
-  {
-    icon: Zap,
-    title: "Arc-Flash Analysis",
-    description: "Comprehensive hazard assessment and PPE labeling",
-  },
-  {
-    icon: Activity,
-    title: "Electrical Testing",
-    description: "On-site testing of switchgear, relays, and protection devices",
-  },
-  {
-    icon: Target,
-    title: "Thermography Inspection",
-    description: "Infrared imaging to detect hotspots and prevent failures",
-  },
-];
+
+// const services = [
+//   {
+//     icon: Zap,
+//     title: "Arc-Flash Analysis",
+//     description: "Comprehensive hazard assessment and PPE labeling",
+//   },
+//   {
+//     icon: Activity,
+//     title: "Electrical Testing",
+//     description: "On-site testing of switchgear, relays, and protection devices",
+//   },
+//   {
+//     icon: Target,
+//     title: "Thermography Inspection",
+//     description: "Infrared imaging to detect hotspots and prevent failures",
+//   },
+// ];
 
 export default function EngineeringServices({ service }) {
   return (
@@ -93,6 +95,7 @@ export default function EngineeringServices({ service }) {
                 {/* ICON BOX */}
                 <div className="w-14 h-14 rounded-full bg-icon-bg flex items-center justify-center">
                   {/* If Strapi gives icon name, use <i> */}
+                    
                   <i className={item.icon || "fa-solid fa-bolt text-primary"}></i>
                 </div>
 
@@ -110,5 +113,7 @@ export default function EngineeringServices({ service }) {
         </div>
       </div>
     </section>
+
+    
   );
 }
