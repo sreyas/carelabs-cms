@@ -6,6 +6,8 @@ import React, { useEffect, useState } from 'react'
 import RegionModal from './RegionModal';
 import Link from 'next/link';
 import * as LucideIcons from 'lucide-react';
+import { useRouter } from "next/navigation";
+
 
 
 const Header = () => {
@@ -21,6 +23,8 @@ const Header = () => {
     const [isContactModalOpen,setIsContactModalOpen] = useState(false)
 
     const [isSubmitting, setIsSubmitting] = useState(false);
+
+    const router = useRouter();
 
     const activeSubmenu =
       navbarData?.items?.[activeIndex]?.submenus?.[selectedSubmenuIndex];
@@ -452,9 +456,17 @@ const targetSlug = isBlogMenu
                     onClick={() => {
                       setSelectedRegion(region);
                       setIsDropdownOpen(false);
+
+                      setIsModalOpen(false);
+                      
+                      if (region === "Canada") {
+                      router.push("/CA");
+                      }
+
                     }}
                     className="px-4 py-3 hover:bg-gray-100 cursor-pointer"
                   >
+
                     {region}
                   </li>
                 ))}

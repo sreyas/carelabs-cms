@@ -70,10 +70,15 @@ const fetchGlobalReach = async () => {
       </h1>
       
       {/* Title */}
-      <p className="gradient-text  text-3xl sm:text-4xl md:text-5xl lg:text-[60px] font-semibold montserrat-font">
-       {/* Comprehensive Power Solutions */}
+      {/* Comprehensive Power Solutions */}
+      {/* <p className="gradient-text  text-3xl sm:text-4xl md:text-5xl lg:text-[60px] font-semibold montserrat-font">
        {globalReachData.title}
-      </p>
+      </p> */}
+
+      <p 
+     className=" text-3xl sm:text-4xl md:text-5xl lg:text-[60px] font-semibold montserrat-font"
+     dangerouslySetInnerHTML={{ __html: globalReachData.title || '' }}
+     />
       
       {/* Description */}
       <p className="px-4 sm:px-8 text-lg  md:text-xl poppins-font para-text">

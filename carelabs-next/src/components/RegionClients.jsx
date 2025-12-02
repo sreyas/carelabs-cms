@@ -56,21 +56,21 @@ const RegionClients = () => {
                 </div>
                   <div className="flex items-center p-4 light-blue border border-[#2575b6]  rounded-2xl gap-3">
                     <i className='primary-color' ><MapPin /></i>
-                    <p className='montserrat-font font-semibold'>Ontario</p>
+                    <p className='montserrat-font font-semibold'>Alberta</p>
                     <p>-</p>
-                    <p className='poppins-font'>132 kV substation protection review</p>
+                    <p className='poppins-font'>Power quality audit for manufacturing plant</p>
                 </div>
                   <div className="flex items-center p-4 light-blue border border-[#2575b6]  rounded-2xl gap-3">
                     <i className='primary-color' ><MapPin /></i>
-                    <p className='montserrat-font font-semibold'>Ontario</p>
+                    <p className='montserrat-font font-semibold'>British Columbia</p>
                     <p>-</p>
-                    <p className='poppins-font'>132 kV substation protection review</p>
+                    <p className='poppins-font'>Arc-flash study for hospital campus</p>
                 </div>
             </div>
             </div>
             <div className="w-full sm:w-[80%] lg:w-[50%] flex flex-col justify-center  p-10 rounded-2xl glass-panel">
                 <h2 className='text-center mb-5 text-[24px] font-semibold montserrat-font '>Clients We've Partnered With</h2>
-                <div className=" w-full grid gap-10 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 ">
+                <div className=" w-full grid gap-10 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 text-center ">
 
                 <div className=" glass-panel flex gap-3 flex-col items-center rounded-xl justify-center py-10">
                     <Shield size={44}/>
@@ -79,30 +79,30 @@ const RegionClients = () => {
 
                 <div className=" glass-panel  flex gap-3 flex-col items-center rounded-xl justify-center py-10">
                 <Shield size={44}/>
-                <p>Hydro One</p>
+                <p>Canadian Manufacturer</p>
                 </div>
 
 
                 <div className=" glass-panel gap-3 flex flex-col items-center rounded-xl justify-center py-10">
                 <Shield size={44}/>
-                <p>Hydro One</p>
+                <p>Healthcare Provider</p>
                 </div>
 
 
                 <div className=" glass-panel flex flex-col items-center rounded-xl justify-center py-10">
                 <Shield size={44}/>
-                <p>Hydro One</p>
+                <p>Data Centre Operator</p>
                 </div>
 
 
                 <div className="glass-panel flex flex-col items-center rounded-xl justify-center py-10">
                 <Shield size={44}/>
-                <p>Hydro One</p>
+                <p>University Campus</p>
                 </div>
 
                 <div className=" glass-panel flex flex-col items-center rounded-xl justify-center py-10">
                 <Shield size={44}/>
-                <p>Hydro One</p>
+                <p>Industrial Facility</p>
                 </div>
 
 
