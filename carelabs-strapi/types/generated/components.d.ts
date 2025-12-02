@@ -64,6 +64,90 @@ export interface FooterSocialLink extends Struct.ComponentSchema {
   };
 }
 
+export interface IndustryClients extends Struct.ComponentSchema {
+  collectionName: 'components_industry_clients';
+  info: {
+    displayName: 'Clients';
+  };
+  attributes: {
+    Clients_name: Schema.Attribute.Component<'industry.clients-name', true>;
+    title: Schema.Attribute.String;
+  };
+}
+
+export interface IndustryClientsName extends Struct.ComponentSchema {
+  collectionName: 'components_industry_clients_names';
+  info: {
+    displayName: 'Clients_name';
+  };
+  attributes: {
+    logo: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    name: Schema.Attribute.String;
+  };
+}
+
+export interface IndustryComponentsFeatures extends Struct.ComponentSchema {
+  collectionName: 'components_industry_components_features';
+  info: {
+    displayName: 'components_features';
+  };
+  attributes: {
+    color: Schema.Attribute.String;
+    description: Schema.Attribute.Text;
+    icon: Schema.Attribute.String;
+    subtitle: Schema.Attribute.String;
+    title: Schema.Attribute.String;
+  };
+}
+
+export interface IndustryIndustryCategories extends Struct.ComponentSchema {
+  collectionName: 'components_industry_industry_categories';
+  info: {
+    displayName: 'Industry-categories';
+  };
+  attributes: {
+    label: Schema.Attribute.String;
+  };
+}
+
+export interface IndustryKeyIndustries extends Struct.ComponentSchema {
+  collectionName: 'components_industry_key_industries';
+  info: {
+    displayName: 'key_industries';
+  };
+  attributes: {
+    highlight_color: Schema.Attribute.String;
+    highlight_text: Schema.Attribute.String;
+    icon: Schema.Attribute.String;
+    key_features: Schema.Attribute.Component<'insights.key-features', true>;
+    title: Schema.Attribute.String;
+  };
+}
+
+export interface IndustryPartners extends Struct.ComponentSchema {
+  collectionName: 'components_industry_partners';
+  info: {
+    displayName: 'Partners';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    Partners_names: Schema.Attribute.Component<'industry.partners-names', true>;
+    Recenttitle: Schema.Attribute.String;
+    title: Schema.Attribute.RichText;
+  };
+}
+
+export interface IndustryPartnersNames extends Struct.ComponentSchema {
+  collectionName: 'components_industry_partners_names';
+  info: {
+    displayName: 'Partners_names';
+  };
+  attributes: {
+    countryName: Schema.Attribute.String;
+    description: Schema.Attribute.Text;
+  };
+}
+
 export interface InsightsArticleItems extends Struct.ComponentSchema {
   collectionName: 'components_insights_article_items';
   info: {
@@ -166,6 +250,16 @@ export interface InsightsKeyBuildingBlocksItems extends Struct.ComponentSchema {
     icon: Schema.Attribute.String;
     order: Schema.Attribute.Integer;
     title: Schema.Attribute.String;
+  };
+}
+
+export interface InsightsKeyFeatures extends Struct.ComponentSchema {
+  collectionName: 'components_insights_key_features';
+  info: {
+    displayName: 'key_features';
+  };
+  attributes: {
+    label: Schema.Attribute.String;
   };
 }
 
@@ -920,6 +1014,13 @@ declare module '@strapi/strapi' {
       'footer.footer-menu': FooterFooterMenu;
       'footer.menu-link': FooterMenuLink;
       'footer.social-link': FooterSocialLink;
+      'industry.clients': IndustryClients;
+      'industry.clients-name': IndustryClientsName;
+      'industry.components-features': IndustryComponentsFeatures;
+      'industry.industry-categories': IndustryIndustryCategories;
+      'industry.key-industries': IndustryKeyIndustries;
+      'industry.partners': IndustryPartners;
+      'industry.partners-names': IndustryPartnersNames;
       'insights.article-items': InsightsArticleItems;
       'insights.article-section': InsightsArticleSection;
       'insights.category': InsightsCategory;
@@ -928,6 +1029,7 @@ declare module '@strapi/strapi' {
       'insights.howto-get-started': InsightsHowtoGetStarted;
       'insights.key-building-blocks': InsightsKeyBuildingBlocks;
       'insights.key-building-blocks-items': InsightsKeyBuildingBlocksItems;
+      'insights.key-features': InsightsKeyFeatures;
       'insights.real-world': InsightsRealWorld;
       'insights.real-world-items': InsightsRealWorldItems;
       'insights.related-article-items': InsightsRelatedArticleItems;

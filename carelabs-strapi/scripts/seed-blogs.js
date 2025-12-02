@@ -1,61 +1,55 @@
+// @ts-nocheck
 const fs = require('fs');
 
-const API_URL = "https://accessible-comfort-314cd1c7f5.strapiapp.com/api/homes";
+const API_URL = "https://inspired-gem-f09bdfaddd.strapiapp.com/api/insightblogs";
 
-const TOKEN = "4fafb1b53f5b1563582417b5f8a988306e0487a563d5ac36ac55793487a3ebff9f6c2c55c5740ae8a4aae084c332efd75a4493a5639ed5913d08d1bffc0f43ebd48ad7c76dbed1dcd6323cdcdbeb36a6115fd4e680ce44104cf653f8309220c38cdfd53f2bab8c09c6f4a9b979903330ce702f5ea59f75772098837ab316d116";
+const TOKEN = "d0150e3d2832370f339ca119a116209310eab4427e0e8a25b914482af0184fbcf0f155659039c18e4bbcfc3ce2d160941f8ef9223c115a49b34b10ab254319c1042e4e4934e8ab96ce1c15550a2e2e9103fa4f4ae859bdfeb0f6f187d2c77c8f006ffc6baef3d6ba48bfe1fc1cb49107d94b791dffa7cc6799d4c47d3efad344";
 
-async function seedHomepage() {
-  const homepage = JSON.parse(
-    fs.readFileSync("./scripts/homepage.json", "utf8")
-  )[0];
+function formatPublishedDate(dateStr) {
+  const date = new Date(dateStr);
+  const options = { day: "2-digit", month: "short", year: "numeric" };
+  const formatted = date.toLocaleDateString("en-GB", options);
+  return `Published on: ${formatted.replace(/ /g, " ")}`;
+}
 
-  const body = {
-    data: {
-      description: homepage.description,
-      heading: homepage.heading,
+async function seedBlogs() {
+  const blogs = JSON.parse(fs.readFileSync('./scripts/blogs.json', 'utf8'));
 
-      btn1_text: homepage.btn1_text,
-      btn1_link: homepage.btn1_link || "/",
+  for (const blog of blogs) {
 
-      btn2_text: homepage.btn2_text,
-      btn2_link: homepage.btn2_link || "/",
+    const body = {
+      data: {
+        mainheading: blog.title,
+        slug: blog.slug,
+        description: blog.description,
+        publishedOn: formatPublishedDate(blog.pubDate),
+        IntroductionContent: blog.content
+      }
+    };
 
-      title1: homepage.title1,
-      title2: homepage.title2,
-      title3: homepage.title3,
+    try {
+      const res = await fetch(API_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${TOKEN}`
+        },
+        body: JSON.stringify(body)
+      });
 
-      background_video: homepage.background_video || null,
+      const result = await res.json();
 
-      stats:
-        homepage.stats?.map((item) => ({
-          number: item.number,
-          label: item.label,
-        })) || [],
-    },
-  };
+      if (!res.ok) {
+        console.error("❌ Failed Blog:", blog.title);
+        console.error(JSON.stringify(result, null, 2));
+      } else {
+        console.log("✅ Created:", blog.title);
+      }
 
-  try {
-    const res = await fetch(API_URL, {
-      method: "PUT", // ✔ HOME PAGE is a single-type
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${TOKEN}`,
-      },
-      body: JSON.stringify(body),
-    });
-
-    const result = await res.json();
-
-    if (!res.ok) {
-      console.error("❌ Failed to update Home Page");
-      console.error(JSON.stringify(result, null, 2));
-    } else {
-      console.log("✅ Home Page Updated Successfully");
-      console.log(result);
+    } catch (err) {
+      console.error("❌ Network/Fetch Error for:", blog.title, err.message);
     }
-  } catch (err) {
-    console.error("❌ Network Error:", err.message);
   }
 }
 
-seedHomepage();
+seedBlogs();

@@ -119,7 +119,8 @@
         "i18n": {
           "localized": true
         }
-      }
+      },
+      "required": false
     },
     "IntroductionContent": {
       "type": "richtext",

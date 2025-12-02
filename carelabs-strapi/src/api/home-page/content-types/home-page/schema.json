@@ -22,11 +22,6 @@
       "relation": "oneToOne",
       "target": "api::home.home"
     },
-    "home_new": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::home-new.home-new"
-    },
     "homeseo": {
       "type": "component",
       "component": "shared.seo",
