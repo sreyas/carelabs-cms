@@ -1,5 +1,151 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface ContactButtons extends Struct.ComponentSchema {
+  collectionName: 'components_contact_buttons';
+  info: {
+    displayName: 'buttons';
+  };
+  attributes: {
+    link: Schema.Attribute.String;
+    text: Schema.Attribute.String;
+  };
+}
+
+export interface ContactChooseHowToConnect extends Struct.ComponentSchema {
+  collectionName: 'components_contact_choose_how_to_connects';
+  info: {
+    displayName: 'Choose_how_to_connect';
+  };
+  attributes: {
+    connect_items: Schema.Attribute.Component<'contact.connect-items', true>;
+    description: Schema.Attribute.Text;
+    title: Schema.Attribute.RichText;
+  };
+}
+
+export interface ContactConnectItems extends Struct.ComponentSchema {
+  collectionName: 'components_contact_connect_items';
+  info: {
+    displayName: 'connect_items';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    icon: Schema.Attribute.String;
+    sharelink: Schema.Attribute.String;
+    sharetext: Schema.Attribute.String;
+    title: Schema.Attribute.String;
+  };
+}
+
+export interface ContactContactForm extends Struct.ComponentSchema {
+  collectionName: 'components_contact_contact_forms';
+  info: {
+    displayName: 'contact_form';
+  };
+  attributes: {
+    contact_form_fields: Schema.Attribute.Component<
+      'contact.contact-form-fields',
+      true
+    >;
+    contactMethods: Schema.Attribute.Component<'contact.contact-methods', true>;
+    contactMethodTitle: Schema.Attribute.String;
+    reply_msg: Schema.Attribute.Text;
+    services: Schema.Attribute.Component<'contact.services', true>;
+    servicesTitle: Schema.Attribute.String;
+    submitbutton: Schema.Attribute.String;
+    typeOfHelpOptions: Schema.Attribute.Component<
+      'contact.type-of-help-options',
+      true
+    >;
+    typeOfHelpTitle: Schema.Attribute.String;
+  };
+}
+
+export interface ContactContactFormFields extends Struct.ComponentSchema {
+  collectionName: 'components_contact_contact_form_fields';
+  info: {
+    displayName: 'contact_form_fields';
+  };
+  attributes: {
+    errorMessage: Schema.Attribute.String;
+    fieldname: Schema.Attribute.String;
+    order: Schema.Attribute.Integer;
+    placeholder: Schema.Attribute.String;
+    required: Schema.Attribute.Boolean;
+  };
+}
+
+export interface ContactContactMethods extends Struct.ComponentSchema {
+  collectionName: 'components_contact_contact_methods';
+  info: {
+    displayName: 'contactMethods';
+  };
+  attributes: {
+    label: Schema.Attribute.String;
+    order: Schema.Attribute.Integer;
+  };
+}
+
+export interface ContactFeatures extends Struct.ComponentSchema {
+  collectionName: 'components_contact_features';
+  info: {
+    displayName: 'features';
+  };
+  attributes: {
+    label: Schema.Attribute.String;
+  };
+}
+
+export interface ContactServices extends Struct.ComponentSchema {
+  collectionName: 'components_contact_services';
+  info: {
+    displayName: 'services';
+  };
+  attributes: {
+    label: Schema.Attribute.String;
+    order: Schema.Attribute.Integer;
+  };
+}
+
+export interface ContactTellUsAboutProject extends Struct.ComponentSchema {
+  collectionName: 'components_contact_tell_us_about_projects';
+  info: {
+    displayName: 'Tell_us_about_project';
+  };
+  attributes: {
+    contact_form: Schema.Attribute.Component<'contact.contact-form', false>;
+    note: Schema.Attribute.Text;
+    title: Schema.Attribute.RichText;
+    what_to_share_Items: Schema.Attribute.Component<
+      'contact.what-to-share-items',
+      true
+    >;
+    What_to_share_text: Schema.Attribute.String;
+  };
+}
+
+export interface ContactTypeOfHelpOptions extends Struct.ComponentSchema {
+  collectionName: 'components_contact_type_of_help_options';
+  info: {
+    displayName: 'typeOfHelpOptions';
+  };
+  attributes: {
+    default: Schema.Attribute.Boolean;
+    name: Schema.Attribute.String;
+    order: Schema.Attribute.Integer;
+  };
+}
+
+export interface ContactWhatToShareItems extends Struct.ComponentSchema {
+  collectionName: 'components_contact_what_to_share_items';
+  info: {
+    displayName: 'what_to_share_Items';
+  };
+  attributes: {
+    label: Schema.Attribute.String;
+  };
+}
+
 export interface FeaturesFeatureItem extends Struct.ComponentSchema {
   collectionName: 'components_features_feature_items';
   info: {
@@ -1008,6 +1154,17 @@ export interface SubmenusServiceItem extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'contact.buttons': ContactButtons;
+      'contact.choose-how-to-connect': ContactChooseHowToConnect;
+      'contact.connect-items': ContactConnectItems;
+      'contact.contact-form': ContactContactForm;
+      'contact.contact-form-fields': ContactContactFormFields;
+      'contact.contact-methods': ContactContactMethods;
+      'contact.features': ContactFeatures;
+      'contact.services': ContactServices;
+      'contact.tell-us-about-project': ContactTellUsAboutProject;
+      'contact.type-of-help-options': ContactTypeOfHelpOptions;
+      'contact.what-to-share-items': ContactWhatToShareItems;
       'features.feature-item': FeaturesFeatureItem;
       'features.service-feature': FeaturesServiceFeature;
       'footer.footer-bottomlink': FooterFooterBottomlink;

@@ -612,6 +612,47 @@ export interface ApiBlogCategoryBlogCategory
   };
 }
 
+export interface ApiContactPageContactPage extends Struct.SingleTypeSchema {
+  collectionName: 'contact_pages';
+  info: {
+    displayName: 'ContactPage';
+    pluralName: 'contact-pages';
+    singularName: 'contact-page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    badge: Schema.Attribute.String;
+    badgeicon: Schema.Attribute.String;
+    buttons: Schema.Attribute.Component<'contact.buttons', true>;
+    Choose_how_to_connect: Schema.Attribute.Component<
+      'contact.choose-how-to-connect',
+      false
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
+    features: Schema.Attribute.Component<'contact.features', true>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::contact-page.contact-page'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    Tell_us_about_project: Schema.Attribute.Component<
+      'contact.tell-us-about-project',
+      false
+    >;
+    title: Schema.Attribute.RichText;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiFloatingCtaFloatingCta extends Struct.SingleTypeSchema {
   collectionName: 'floating_ctas';
   info: {
@@ -2369,6 +2410,7 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::article.article': ApiArticleArticle;
       'api::blog-category.blog-category': ApiBlogCategoryBlogCategory;
+      'api::contact-page.contact-page': ApiContactPageContactPage;
       'api::floating-cta.floating-cta': ApiFloatingCtaFloatingCta;
       'api::footer.footer': ApiFooterFooter;
       'api::home-compliance.home-compliance': ApiHomeComplianceHomeCompliance;
