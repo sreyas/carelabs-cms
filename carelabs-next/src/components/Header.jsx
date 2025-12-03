@@ -462,8 +462,8 @@ const targetSlug = isBlogMenu
                       if (region === "Canada") {
                       router.push("/ca");
                       }
-                      if (region === "Global") {
-                      router.push("/");
+                      if (region === "G") {
+                      router.push("/ca");
                       }
 
                     }}

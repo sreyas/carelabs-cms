@@ -124,7 +124,7 @@ if (!homeData) {
   <div 
   data-aos="fade-up"
   data-aos-duration="2000"
-  className="homeBanner  w-11/12 flex flex-col items-center justify-center border boreder-[#0f172914] glass-panel rounded-3xl  p-4
+  className="homeBanner  w-11/12 flex flex-col items-center justify-center border boreder-[#0f172914] glass-panel rounded-[40px]  p-4
   md:w-4/5 md:h-[85%] md:mt-2  md:p-6
   lg:w-[85%] lg:mt-5
   xl:w-[80%] xl:mt-16
@@ -246,7 +246,8 @@ if (!homeData) {
         className="
           w-[90%] sm:w-[32%] lg:w-[28%]
           flex flex-col items-center justify-center
-          p-6 rounded-2xl shadow-[0_12px_40px_rgba(0,0,0,0.15)] 
+          p-6 rounded-[24px] 
+          shadow-[0_12px_40px_rgba(0,0,0,0.15)]
           transition-all duration-500
           hover:scale-[1.04] hover:-translate-y-1 hover:shadow-xl
         "

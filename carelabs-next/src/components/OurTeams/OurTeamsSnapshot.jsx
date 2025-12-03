@@ -1,7 +1,7 @@
 "use client";
 import React from 'react'
 import carelabzImage from '@/assets/carlabz.jpg'
-import { Zap } from 'lucide-react';
+import { Award,Globe,Activity,Users } from 'lucide-react';
 
 
 const OurTeamsSnapshot = () => {
@@ -35,24 +35,24 @@ const OurTeamsSnapshot = () => {
            style={{ backgroundImage: `url(${carelabzImage.src})` }}></div>
 
       <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-5 mt-5">
-        <div className="p-6 bg-amber-200 rounded-2xl glass-panel">
-          <Zap size={36}/>
-          <p className='text-[36px] font-semibold montserrat-font'>10+</p>
+        <div className="p-6 rounded-2xl shadow-lg border border-transparent hover:border-[#dae9fd] transition-all duration-300">
+          <Award size={36} color="#157de5"/>
+          <p className='text-[36px] font-extrabold montserrat-font text-[#157de5]'>10+</p>
           <p className='text-[16px] lg:text-[14px] poppins-font'>Years in high-risk electrical environments</p>
         </div>
-        <div className="p-6 bg-amber-200 rounded-2xl glass-panel">
-          <Zap size={36}/>
-          <p className='text-[36px] font-semibold montserrat-font'>10+</p>
+        <div className="p-6 rounded-2xl shadow-lg border border-transparent hover:border-[#dae9fd] transition-all duration-300">
+          <Users size={36} color="#ff7038"/>
+          <p className='text-[36px] font-extrabold montserrat-font text-[#ff7038]'>10+</p>
           <p className='text-[16px] lg:text-[14px] poppins-font'>Years in high-risk electrical environments</p>
         </div>
-        <div className="p-6 bg-amber-200 rounded-2xl glass-panel">
-          <Zap size={36}/>
-          <p className='text-[36px] font-semibold montserrat-font'>10+</p>
+        <div className="p-6 rounded-2xl shadow-lg border border-transparent hover:border-[#dae9fd] transition-all duration-300">
+          <Activity size={36} color="#157de5"/>
+          <p className='text-[36px] font-extrabold montserrat-font text-[#157de5]'>10+</p>
           <p className='text-[16px] lg:text-[14px] poppins-font'>Years in high-risk electrical environments</p>
         </div>
-        <div className="p-6 bg-amber-200 rounded-2xl glass-panel">
-          <Zap size={36}/>
-          <p className='text-[36px] font-semibold montserrat-font'>10+</p>
+        <div className="p-6 rounded-2xl shadow-lg border border-transparent hover:border-[#dae9fd] transition-all duration-300">
+          <Globe size={36} color="#ff7038"/>
+          <p className='text-[36px] font-extrabold montserrat-font text-[#ff7038]'>10+</p>
           <p className='text-[16px] lg:text-[14px] poppins-font'>Years in high-risk electrical environments</p>
         </div>
       </div>

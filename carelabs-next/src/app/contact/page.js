@@ -1,7 +1,9 @@
 "use client";
 
 import React, { useState } from 'react'
-import { CheckCircle, FileText, HelpCircle, Headphones, Users, ChevronDown, Mail } from "lucide-react";
+import { CheckCircle, FileText, HelpCircle, Headphones, Users, ChevronDown, Mail, Phone, MessageCircle, Download } from "lucide-react";
+import * as LucideIcons from "lucide-react";
+
 
 
 const moreFaqs = [
@@ -24,7 +26,11 @@ const moreFaqs = [
   {
     q: "What industries do you support?",
     a: "We work with data centers, hospitals, utilities, manufacturing plants, oil & gas facilities, commercial buildings, and government sectors globally."
-  }
+  },
+  {
+    q: "Can you help with compliance for multiple standards (IEC, NFPA, CSA)?",
+    a: "Absolutely. Our engineers are certified across multiple international and regional standards including IEC, IEEE, NFPA, CSA, and NERC. We regularly work on projects requiring compliance with multiple standards simultaneously and can guide you through the specific requirements for your facility and location."
+  },
 ];
 
 const page = () => {
@@ -693,111 +699,87 @@ const page = () => {
 
 {/* where to start */}
 
-<section className="w-full flex flex-col items-center py-12 bg-[#F7F8FB]">
-  <div
-    className="
-      w-[98%] md:w-[90%] lg:w-[85%] xl:w-[78%] 2xl:w-[72%]
-      text-center
-    "
-  >
+<section className="w-full flex flex-col items-center py-14 bg-[#F7F8FB]">
+  <div className="w-[98%] md:w-[90%] lg:w-[85%] xl:w-[78%] 2xl:w-[72%]">
+
     {/* Heading */}
-    <h1 className="text-4xl md:text-5xl font-semibold leading-tight mb-4">
+    <h1 className="text-4xl md:text-5xl font-semibold leading-tight text-center">
       Not sure where to <span className="text-blue-600">start</span>
       <span className="text-orange-500">?</span>
     </h1>
 
     {/* Subtitle */}
-    <p className="text-gray-600 max-w-2xl mx-auto mb-16 text-[15px]">
+    <p className="text-gray-600 max-w-xl mx-auto mt-3 mb-14 text-center text-[15px]">
       Choose the guidance that best matches your role and requirement
     </p>
 
-    {/* GRID WRAPPER */}
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+    {/* GRID */}
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
 
-      {/* CARD 1 */}
-      <div className="bg-white rounded-3xl shadow-[0_8px_40px_rgba(0,0,0,0.06)] p-8 text-left flex flex-col gap-3">
-        <div className="flex items-center gap-3">
-          <div className="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center">
-            📄
-          </div>
-          <h3 className="text-lg font-semibold text-gray-900">
-            Facility managers & HSE teams
-          </h3>
+  {[
+    {
+      icon: <LucideIcons.FileText size={26} className="text-blue-600" />,
+      title: "Facility managers & HSE teams",
+      desc: "Use Project & quote requests to get started with your electrical safety assessment",
+    },
+    {
+      icon: <LucideIcons.BookOpen size={26} className="text-blue-600" />,
+      title: "Consultants & EPCs",
+      desc: "Share your single-line diagrams and standards requirements in the form",
+    },
+    {
+      icon: <LucideIcons.UsersRound size={26} className="text-blue-600" />,
+      title: "OEMs & channel partners",
+      desc: "Choose Partnership / Training to discuss collaboration opportunities",
+    },
+    {
+      icon: <LucideIcons.Headphones size={26} className="text-blue-600" />,
+      title: "Existing clients",
+      desc: "Use Existing client support or email us directly at support@carelabs.com",
+    },
+  ].map((card, idx) => (
+    <div
+      key={idx}
+      className="bg-white rounded-3xl shadow-[0_8px_40px_rgba(0,0,0,0.06)]
+                 p-8 flex flex-col gap-2 border border-gray-100"
+    >
+      {/* ICON + TITLE */}
+      <div className="flex items-center gap-4">
+        <div className="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center">
+          {card.icon}
         </div>
-        <p className="text-gray-600 text-sm leading-relaxed">
-          Use Project & quote requests to get started with your electrical safety assessment
-        </p>
-        <a href="#" className="text-blue-600 font-medium text-sm hover:underline flex items-center gap-1">
-          Go to form →
-        </a>
+
+        <h3 className="text-[18px] font-semibold text-gray-900 leading-snug">
+          {card.title}
+        </h3>
       </div>
 
-      {/* CARD 2 */}
-      <div className="bg-white rounded-3xl shadow-[0_8px_40px_rgba(0,0,0,0.06)] p-8 text-left flex flex-col gap-3">
-        <div className="flex items-center gap-3">
-          <div className="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center">
-            📘
-          </div>
-          <h3 className="text-lg font-semibold text-gray-900">
-            Consultants & EPCs
-          </h3>
-        </div>
-        <p className="text-gray-600 text-sm leading-relaxed">
-          Share your single-line diagrams and standards requirements in the form
-        </p>
-        <a href="#" className="text-blue-600 font-medium text-sm hover:underline flex items-center gap-1">
-          Go to form →
-        </a>
-      </div>
+      {/* DESCRIPTION */}
+      <p className="text-gray-600 text-[14px] leading-[1.4] ml-[60px] mt-1">
+        {card.desc}
+      </p>
 
-      {/* CARD 3 */}
-      <div className="bg-white rounded-3xl shadow-[0_8px_40px_rgba(0,0,0,0.06)] p-8 text-left flex flex-col gap-3">
-        <div className="flex items-center gap-3">
-          <div className="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center">
-            👥
-          </div>
-          <h3 className="text-lg font-semibold text-gray-900">
-            OEMs & channel partners
-          </h3>
-        </div>
-        <p className="text-gray-600 text-sm leading-relaxed">
-          Choose Partnership / Training to discuss collaboration opportunities
-        </p>
-        <a href="#" className="text-blue-600 font-medium text-sm hover:underline flex items-center gap-1">
-          Go to form →
-        </a>
-      </div>
-
-      {/* CARD 4 */}
-      <div className="bg-white rounded-3xl shadow-[0_8px_40px_rgba(0,0,0,0.06)] p-8 text-left flex flex-col gap-3">
-        <div className="flex items-center gap-3">
-          <div className="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center">
-            🎧
-          </div>
-          <h3 className="text-lg font-semibold text-gray-900">
-            Existing clients
-          </h3>
-        </div>
-        <p className="text-gray-600 text-sm leading-relaxed">
-          Use Existing client support or email us directly at support@carelabs.com
-        </p>
-        <a href="#" className="text-blue-600 font-medium text-sm hover:underline flex items-center gap-1">
-          Go to form →
-        </a>
-      </div>
-
+      {/* LINK */}
+      <a
+        href="#"
+        className="text-blue-600 font-medium text-sm hover:underline flex items-center gap-1 ml-[60px] mt-1"
+      >
+        Go to form →
+      </a>
     </div>
+  ))}
+
+</div>
+
   </div>
 </section>
+
 
 {/* gloabal reabality */}
 
 <section className="w-full flex justify-center py-20 bg-[#F7F8FB]">
-  <div
-    className="
-      w-[98%] md:w-[90%] lg:w-[85%] xl:w-[78%] 2xl:w-[72%]
-    "
-  >
+  <div className="w-[98%] md:w-[90%] lg:w-[85%] xl:w-[78%] 2xl:w-[72%]">
+
     <div
       className="
         bg-white rounded-3xl 
@@ -813,24 +795,27 @@ const page = () => {
         <span className="text-orange-500">reliability</span>
       </h2>
 
-      {/* METRICS GRID */}
+
+      {/* METRICS */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-10">
-        
+
         {/* METRIC 1 */}
         <div className="flex flex-col items-center gap-3">
           <div className="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center">
-            🌐
+            {LucideIcons["Globe"] && (
+              <LucideIcons.Globe size={32} className="text-blue-600" />
+            )}
           </div>
-          <h3 className="text-2xl font-bold text-gray-900">
-            50+
-          </h3>
+          <h3 className="text-2xl font-bold text-gray-900">50+</h3>
           <p className="text-gray-600 text-sm">countries served</p>
         </div>
 
         {/* METRIC 2 */}
         <div className="flex flex-col items-center gap-3">
           <div className="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center">
-            ✔️
+            {LucideIcons["CircleCheck"] && (
+              <LucideIcons.CircleCheck size={32} className="text-blue-600" />
+            )}
           </div>
           <h3 className="text-2xl font-bold text-gray-900">
             10,000<span className="text-orange-500">+</span>
@@ -841,21 +826,23 @@ const page = () => {
         {/* METRIC 3 */}
         <div className="flex flex-col items-center gap-3">
           <div className="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center">
-            🎖️
+            {LucideIcons["Award"] && (
+              <LucideIcons.Award size={32} className="text-blue-600" />
+            )}
           </div>
-          <h3 className="text-2xl font-bold text-gray-900">
-            100%
-          </h3>
+          <h3 className="text-2xl font-bold text-gray-900">100%</h3>
           <p className="text-gray-600 text-sm">industry-certified engineers</p>
         </div>
 
         {/* METRIC 4 */}
         <div className="flex flex-col items-center gap-3">
           <div className="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center">
-            🛡️
+            {LucideIcons["Shield"] && (
+              <LucideIcons.Shield size={32} className="text-blue-600" />
+            )}
           </div>
           <h3 className="text-2xl font-bold text-gray-900">
-            <span className="text-blue-600">IEC</span>{" / "}
+            <span className="text-blue-600">IEC</span> /{" "}
             <span className="text-orange-500">NFPA</span>
           </h3>
           <p className="text-gray-600 text-sm">local codes aligned</p>
@@ -863,13 +850,15 @@ const page = () => {
 
       </div>
 
-      {/* Divider Line */}
+
+      {/* Divider */}
       <div className="border-t border-gray-200 my-6"></div>
 
       {/* TRUST MESSAGE */}
       <p className="text-gray-600 text-sm max-w-xl mx-auto">
-        Trusted by <span className="font-medium text-gray-800">
-        data centers, hospitals, manufacturing plants, and utilities
+        Trusted by{" "}
+        <span className="font-medium text-gray-800">
+          data centers, hospitals, manufacturing plants, and utilities
         </span>{" "}
         worldwide
       </p>
@@ -935,57 +924,65 @@ const page = () => {
     </section> 
 
 
-    {/* <section className="w-full flex flex-col items-center py-12 bg-[#F7F8FB]">
-      <div
-        className="
-          w-[98%] md:w-[90%] lg:w-[85%] xl:w-[78%] 2xl:w-[72%]
-        "
-      >
-        <div className='w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5'>
-          <div className='bg-red-400 flex flex-col gap-5  items-center justify-center p-5'>
-            <div className='w-[50px] h-[50px]  flex items-center justify-center bg-[#2575b610] roun'>
-              <Mail color='#2575b6' />
-            </div>
-             <h3 className='montserrat-font font-semibold '>
-              Email our experts
-             </h3>
-             <p>solutions@carelabs.com</p>
-          </div>
+   <section className="w-full flex justify-center py-10 bg-[#F7F8FB]">
+  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 w-[95%] md:w-[85%] xl:w-[75%]">
 
-             <div className='card-shadow'>
-            <div className='w-[50px] h-[50px]'>
-              <Mail color='#2575b6' />
-            </div>
-             <h3 className='montserrat-font font-semibold '>
-              Email our experts
-             </h3>
-             <p>solutions@carelabs.com</p>
-          </div>
-
-             <div className='bg-red-400'>
-            <div className='w-[50px] h-[50px]'>
-              <Mail color='#2575b6' />
-            </div>
-             <h3>
-              Email our experts
-             </h3>
-             <p>solutions@carelabs.com</p>
-          </div>
-
-             <div className='bg-red-400'>
-            <div className='w-[50px] h-[50px]'>
-              <Mail color='#2575b6' />
-            </div>
-             <h3>
-              Email our experts
-             </h3>
-             <p>solutions@carelabs.com</p>
-          </div>
-          
-        </div>
+    {/* Email */}
+    <div className="bg-white rounded-3xl p-6 shadow-[0_8px_30px_rgba(0,0,0,0.06)]
+                    flex flex-col items-center text-center gap-2 
+                    hover:shadow-[0_10px_35px_rgba(0,0,0,0.10)]
+                    transition-all duration-300">
+      <div className="w-[60px] h-[60px] bg-[#eaf4ff] text-[#157de5]
+                      flex items-center justify-center rounded-2xl shadow-sm">
+        <Mail size={32} />
       </div>
+      <p className="text-lg font-semibold mt-2">Email our experts</p>
+      <p className="text-[#157de5] text-sm font-medium">solutions@carelabs.com</p>
+    </div>
 
-    </section> */}
+    {/* Phone */}
+    <div className="bg-white rounded-3xl p-6 shadow-[0_8px_30px_rgba(0,0,0,0.06)]
+                    flex flex-col items-center text-center gap-2 
+                    hover:shadow-[0_10px_35px_rgba(0,0,0,0.10)]
+                    transition-all duration-300">
+      <div className="w-[60px] h-[60px] bg-[#eaf4ff] text-[#157de5]
+                      flex items-center justify-center rounded-2xl shadow-sm">
+        <Phone size={32} />
+      </div>
+      <p className="text-lg font-semibold mt-2">Call our regional desk</p>
+      <p className="text-[#157de5] text-sm font-medium">+1 (555) 123-4567</p>
+      <p className="text-gray-500 text-xs">We’ll route you to the right team</p>
+    </div>
+
+    {/* WhatsApp */}
+    <div className="bg-white rounded-3xl p-6 shadow-[0_8px_30px_rgba(0,0,0,0.06)]
+                    flex flex-col items-center text-center gap-2 
+                    hover:shadow-[0_10px_35px_rgba(0,0,0,0.10)]
+                    transition-all duration-300">
+      <div className="w-[60px] h-[60px] bg-[#eaf4ff] text-[#157de5]
+                      flex items-center justify-center rounded-2xl shadow-sm">
+        <MessageCircle size={32} />
+      </div>
+      <p className="text-lg font-semibold mt-2">Message us on WhatsApp</p>
+      <p className="text-[#157de5] text-sm font-medium">Quick response</p>
+    </div>
+
+    {/* Download PDF */}
+    <div className="bg-white rounded-3xl p-6 shadow-[0_8px_30px_rgba(0,0,0,0.06)]
+                    flex flex-col items-center text-center gap-2 
+                    hover:shadow-[0_10px_35px_rgba(0,0,0,0.10)]
+                    transition-all duration-300">
+      <div className="w-[60px] h-[60px] bg-[#eaf4ff] text-[#157de5]
+                      flex items-center justify-center rounded-2xl shadow-sm">
+        <Download size={32} />
+      </div>
+      <p className="text-lg font-semibold mt-2">Download company profile</p>
+      <p className="text-[#157de5] text-sm font-medium">PDF brochure</p>
+    </div>
+
+  </div>
+</section>
+
 
 
 

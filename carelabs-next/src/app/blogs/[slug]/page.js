@@ -52,8 +52,8 @@ export default function Page(props) {
       </div>
 
       {/* HERO SECTION */}
-      <div className="w-full md:w-[80%] xl:w-[70%] bg-red flex flex-col md:flex-row items-center gap-6 p-4 md:p-10 glass-panel rounded-2xl">
-        <div className="w-full md:w-1/2 flex flex-col gap-4">
+      <div className="w-full md:w-[80%] xl:w-[70%] bg-red flex flex-col md:flex-row items-center gap-6 p-8 md:p-10 glass-panel rounded-2xl">
+        <div className="w-full md:w-1/2 flex flex-col gap-4 ">
           <div className="flex items-center gap-2 gradient-bg-badge rounded-full py-2 px-4 w-max">
             <Brain size={18} color="#2575b6"/>
             <p className="montserrat-font primary-color font-medium text-sm">{blog.badge}</p>
@@ -82,7 +82,7 @@ export default function Page(props) {
  
            
         <div
-          className="w-full md:w-1/2 h-64 md:h-[400px] rounded-2xl"
+          className="w-full md:w-1/2 h-64 md:min-h-[440px] rounded-2xl"
           style={{
             backgroundImage: `url(${blog.sections?.[1]?.image?.url || carlabz.src})`,
             backgroundSize: "cover",
@@ -92,14 +92,14 @@ export default function Page(props) {
       </div>
 
       {/* MAIN CONTENT WRAPPER */}
-      <div className="w-full flex items-center justify-center">
-        <div className="w-full md:w-[80%] xl:w-[70%] flex flex-col items-center justify-center lg:items-start lg:flex-row gap-3">
+      <div className="w-full flex items-center justify-center mt-10">
+        <div className="w-full md:w-[80%] xl:w-[70%] flex flex-col items-center justify-center lg:items-start lg:flex-row gap-8">
           
           {/* SIDEBAR */}
-          <div className="w-[90%] md:w-full lg:w-[25%] flex flex-col gap-5">
+          <div className="w-[90%] md:w-full lg:w-[25%] flex flex-col gap-5 ">
             {/* Table of Contents */}
             {blog.articleSection && (
-              <div className="glass-panel rounded-2xl py-5">
+              <div className=" rounded-[16px] py-5 ">
                 <h2 className="p-5 text-[14px] font-semibold montserrat-font uppercase">
                   {blog.articleSection.title || "IN THIS ARTICLE"}
                 </h2>
@@ -114,7 +114,7 @@ export default function Page(props) {
             )}
 
             {/* Newsletter Signup */}
-            <div className="glass-panel rounded-2xl p-5">
+            <div className="glass-panel rounded-[16px] p-5">
               <h2 className="text-[14px] font-semibold montserrat-font">
                 {blog.Weeklytitle || "Weekly Insights"}
               </h2>
