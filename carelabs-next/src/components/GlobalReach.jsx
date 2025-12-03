@@ -1,4 +1,3 @@
-"use client";
 
 import React, { useEffect, useState } from 'react'
 import client from '@/lib/appollo-client';
@@ -32,36 +31,7 @@ const GlobalReach = () => {
   }, []);
 
 
-  useEffect(() => {
-  if (document.getElementById("global-impact-animations")) return;
 
-  const style = document.createElement("style");
-  style.id = "global-impact-animations";
-
-  style.innerHTML = `
-    @keyframes statPopSuccess {
-      0% { opacity: 0; transform: translateY(20px) scale(0.85); }
-      60% { opacity: 1; transform: translateY(-5px) scale(1.05); }
-      100% { opacity: 1; transform: translateY(0) scale(1); }
-    }
-
-    @keyframes iconShadowFlash {
-      0% { box-shadow: 0 0 0 transparent; transform: scale(0.75); }
-      60% { box-shadow: 0 8px 25px rgba(0,0,0,0.25); transform: scale(1.15); }
-      100% { box-shadow: 0 0 0 transparent; transform: scale(1); }
-    }
-
-    @keyframes underlineSlide {
-      0% { width: 0%; opacity: 0; }
-      100% { width: 100%; opacity: 1; }
-    }
-  `;
-
-  document.head.appendChild(style);
-}, []);
-
-
-  
 
   
   if (!impactData) return null;
@@ -185,7 +155,7 @@ const GlobalReach = () => {
   )
 })} */}
 
-{/* {impactData.successStat?.map((item, index) => {
+{impactData.successStat?.map((item, index) => {
     const IconComponent = LucideIcons[item.icon];
     
     const colors = [
@@ -252,77 +222,8 @@ const GlobalReach = () => {
         </div>
       </div>
     );
-})} */}
-
-{impactData.successStat?.map((item, index) => {
-  const IconComponent = LucideIcons[item.icon];
-
-  const colors = [
-    { text: "#2575b6", underline: "#2575b6", bg: "#2575b6" },
-    { text: "#10b981", underline: "#10b981", bg: "#10b981" },
-    { text: "#2575b6", underline: "#2575b6", bg: "#2575b6" },
-    { text: "#f15c30", underline: "#f15c30", bg: "#f15c30" },
-  ];
-
-  const color = colors[index];
-
-  return (
-    <div
-      key={index}
-      data-aos="zoom-in"
-      data-aos-duration="700"
-      data-aos-delay={index * 150}
-      className="cards w-[90%] sm:w-[95%] flex flex-col items-center justify-center gap-3 p-3 rounded-xl"
-      style={{
-        opacity: 0,
-        animation: `statPopSuccess 0.7s ease-out forwards`,
-        animationDelay: `${index * 150}ms`,
-      }}
-    >
-
-      {/* ICON */}
-      <div
-        className="w-[48px] h-[48px] flex items-center justify-center rounded-full"
-        style={{
-          color: color.text,
-          backgroundColor: `${color.bg}20`,
-          animation: `iconShadowFlash 0.7s ease-out forwards`,
-          animationDelay: `${index * 150}ms`,
-          animationFillMode: "forwards",
-        }}
-      >
-        {IconComponent ? <IconComponent size={22} /> : <LucideIcons.HelpCircle size={22} />}
-      </div>
-
-      <p className="text-sm text-gray-600">{item.title}</p>
-
-      <div className="relative inline-block text-center">
-        <p
-          className="text-xl font-bold poppins-font"
-          style={{ color: color.text }}
-          dangerouslySetInnerHTML={{ __html: item.value }}
-        />
-
-        {/* Underline — hidden initially */}
-        <div
-          className="absolute bottom-0 left-0 h-[2px]"
-          style={{
-            backgroundColor: color.underline,
-            width: "0%",
-            opacity: 0,
-            animation: `underlineSlide 0.5s ease-out forwards`,
-            animationDelay: `${index * 150 + 450}ms`,
-            animationFillMode: "forwards",
-          }}
-        ></div>
-      </div>
-
-    </div>
-  );
 })}
-
-
-               
+       
             </div>
 
 

@@ -51,7 +51,7 @@ export default function EngineeringServices({ service }) {
     // </section>
 
     <section>
-      <div className="min-h-[80vh] w-full flex items-center justify-center py-16">
+      <div className="min-h-[80vh] w-full flex items-center justify-center py-16 bg-[#f9fbfe]">
         <div className="w-[95%] md:w-[85%] lg:w-[70%] py-10 rounded-4xl flex flex-col items-center bg-card">
 
           {/* TOP TITLE */}

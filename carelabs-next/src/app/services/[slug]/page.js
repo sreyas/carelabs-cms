@@ -248,7 +248,7 @@ export default async function Page({ params }) {
          SECTION 3 → What's Included Grid
       ===================================================================================== */}
       <section>
-        <div className="w-full flex flex-col items-center py-10">
+        <div className="w-full flex flex-col items-center py-10 bg-[#f9fbfe]">
            <h1 className=" text-4xl font-bold montserrat-font md:text-5xl text-center leading-tight " dangerouslySetInnerHTML={{ __html: service.WhatsIncludedtitle }}></h1>
           <p className="text-gray-700 max-w-xl text-center mt-3">{service?.WhatsIncludedsubtitle}</p>
 
@@ -337,7 +337,7 @@ export default async function Page({ params }) {
       </section> */}
 
       <section>
-  <div className="w-full flex flex-col items-center py-11">
+  <div className="w-full flex flex-col items-center py-11 bg-[#f9fbfe]">
 
     <h1 className=" montserrat-font font-bold text-4xl md:text-5xl text-center leading-tight">
   {service?.methodsTitle?.split(" ").slice(0, -1).join(" ")} <br />
@@ -526,7 +526,7 @@ export default async function Page({ params }) {
 </section> */}
 
 <section>
-  <div className="w-full flex flex-col items-center py-10">
+  <div className="w-full flex flex-col items-center py-10 bg-[#f9fbfe]">
 
     <h1 className=" montserrat-font font-bold text-4xl md:text-5xl text-center leading-tight">
   {service?.sectorBenefitsTitle.split(" ").slice(0, -1).join(" ")} <br />
@@ -648,7 +648,7 @@ export default async function Page({ params }) {
       </section> */}
 
 <section>
-  <div className="min-h-[80vh] flex justify-center py-10">
+  <div className="min-h-[80vh] flex justify-center py-10 bg-[#f9fbfe]">
     <div className="w-[95%] md:w-[85%] lg:w-[70%] rounded-4xl navbar-shadow p-10 flex flex-col items-center">
 
       {/* <p className="gradient-text text-4xl font-bold">{service?.resultsTitle}</p> */}

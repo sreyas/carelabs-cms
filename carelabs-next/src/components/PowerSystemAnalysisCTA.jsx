@@ -33,7 +33,7 @@ const PowerSystemAnalysisCTA = ({ service }) => {
     // </div>
     // </section>
 
-    <section className="w-full py-12 md:py-20">
+    <section className="w-full py-12 md:py-20 bg-[#f9fbfe]">
       <div className="w-full min-h-[50vh] flex items-center justify-center">
         <div className=" w-[95%] sm:w-[85%] lg:w-[70%] xl:w-[65%] 2xl:w-[60%] rounded-4xl flex flex-col items-center justify-center gap-6 sm:gap-8 p-6 sm:p-10 bg-gradient-to-br from-[#4A88FF] via-[#4A88FF] to-[#F38A4C] ">
 

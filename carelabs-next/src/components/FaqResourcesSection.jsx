@@ -210,7 +210,7 @@ export default function FaqResourcesSection({ service }) {
     // </section>
 
      <section>
-      <div className="min-h-[80vh] w-full flex items-center justify-center">
+      <div className="min-h-[80vh] w-full flex items-center justify-center bg-[#f9fbfe]">
         <div className="w-[95%] md:w-[85%] lg:w-[90%] 2xl:w-[75%] py-10 rounded-4xl flex flex-col items-center bg-card">
 
           {/* TOP TITLE */}

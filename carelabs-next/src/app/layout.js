@@ -5,12 +5,21 @@ import "aos/dist/aos.css";
 import Footer from "@/components/Footer";
 import QuoteBar from "@/components/QuoteBar";
 import Script from "next/script";
+import  { Metadata } from 'next';
 
-export const metadata = {
-  title: "Carelabs",
-  description: "Electrical safety, power system studies, and compliance services.",
-};
 
+// export const metadata = {
+//   title: "Carelabs",
+//   description: "Electrical safety, power system studies, and compliance services.",
+// };
+
+// export const metadata = {
+//   title: {
+//     template: '%s | Acme Carelabs', // %s is replaced by the child's title
+//     default: 'Carelabs1', // Default title if a child doesn't specify one
+//   },
+//    description: "Electrical safety, power system studies, and compliance services.",
+// };
 
 export default function RootLayout({ children }) {
 
