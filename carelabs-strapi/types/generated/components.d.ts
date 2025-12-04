@@ -132,7 +132,7 @@ export interface ContactLocalExpertise extends Struct.ComponentSchema {
       true
     >;
     title: Schema.Attribute.RichText;
-    Trusted_by_text: Schema.Attribute.Text;
+    Trusted_text: Schema.Attribute.RichText;
   };
 }
 

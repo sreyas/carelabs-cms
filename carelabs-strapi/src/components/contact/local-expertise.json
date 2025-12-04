@@ -13,8 +13,8 @@
       "component": "contact.local-expertise-item",
       "repeatable": true
     },
-    "Trusted_by_text": {
-      "type": "text"
+    "Trusted_text": {
+      "type": "richtext"
     }
   },
   "config": {}
