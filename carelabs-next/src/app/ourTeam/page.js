@@ -1,4 +1,6 @@
 "use client";
+import OurTeamConverstation from '@/components/OurTeams/OurTeamConverstation';
+import OurTeamGallery from '@/components/OurTeams/OurTeamGallery';
 import OurTeamMilestone from '@/components/OurTeams/OurTeamMilestone';
 import OurTeamPartner from '@/components/OurTeams/OurTeamPartner';
 import OurTeamRecognitions from '@/components/OurTeams/OurTeamRecognitions';
@@ -8,11 +10,94 @@ import OurTeamsDrivesUs from '@/components/OurTeams/OurTeamsDrivesUs';
 import OurTeamsSnapshot from '@/components/OurTeams/OurTeamsSnapshot';
 import OurTeamsWrkProjcet from '@/components/OurTeams/OurTeamsWrkProjcet';
 import OurTeamsWrkTogether from '@/components/OurTeams/OurTeamsWrkTogether';
-import React from 'react'
+import OurTeamWorkWith from '@/components/OurTeams/OurTeamWorkWith';
+import { GET_OURTEAM_PAGE } from '@/lib/api-Collection';
+import client from '@/lib/appollo-client';
+import React, { useEffect, useState } from 'react'
 
 
 
 const page = () => {
+
+  const[ourTeamSnapshot,setourTeamSnapshot]=useState(null);
+  const[ourTeamDriversUs,setourTeamDriversUs]=useState(null);
+  const[ourTeamWrkTgther,setourTeamDWrkTgther]=useState(null);
+  const[ourTeamGudieWrkPrj,setourTeamGudieWrkPrj]=useState(null);
+  const[ourTeamWrkAction,setourTeamWrkAction]=useState(null);
+  const[ourTeamPartner,setourTeamPartner]=useState(null);
+  const[ourTeamMilestones,setourTeamMilestones]=useState(null);
+  const[ourTeamGallery,setourTeamGallery]=useState(null);
+  const[ourTeamworkWithUs,setourTeamworkWithUs]=useState(null);
+  const[ourTeamRecognitions,setourTeamRecognitions]=useState(null)
+
+
+  const getOurTeamPageData=async()=>{
+    try{
+        const res= await client.query({
+                    query: GET_OURTEAM_PAGE,
+                   });
+
+        const fetchedData=res.data.ourTeamPage;
+
+        const snapShot=fetchedData.snapshot;
+        console.log("snapShot",snapShot);
+
+        const driversUs=fetchedData.Drives_Us;
+        console.log("driversUs",driversUs);
+
+        const wrkTgther=fetchedData.Work_Together;
+        console.log("wrkTgther",wrkTgther);
+
+        const GuidingWrk=fetchedData.Guiding;
+        console.log("Guiding",GuidingWrk);
+
+        const WrkAction=fetchedData.Teams_in_Action;
+        console.log("Teams_in_Action1",WrkAction);
+
+        const partner=fetchedData.How_We_Partner;
+        console.log("How_We_Partner",partner);
+
+        const mileStone=fetchedData.Milestones;
+        console.log("Milestones",mileStone);
+
+        const gallery=fetchedData.What_it_feels;
+        console.log("gallery",gallery);
+
+        const workWithUs=fetchedData.Where_you_work;
+        console.log("workWithUs",workWithUs);
+
+        const Recognition = fetchedData.Recognitions;
+        console.log("Recognitions",Recognition)
+
+        
+      
+
+        setourTeamSnapshot(snapShot);
+        setourTeamDriversUs(driversUs);
+        setourTeamDWrkTgther(wrkTgther);
+        setourTeamGudieWrkPrj(GuidingWrk);
+        setourTeamWrkAction(WrkAction);
+        setourTeamPartner(partner);
+        setourTeamMilestones(mileStone);
+        setourTeamGallery(gallery);
+        setourTeamworkWithUs(workWithUs);
+        setourTeamRecognitions(Recognition);
+
+        console.log("OURTEAM",fetchedData);
+
+        
+    }catch(err){
+      console.log("Error At Fetching ourTeam Data",err);
+      
+    }
+  }
+
+
+  useEffect(()=>{
+    getOurTeamPageData();
+  },[])
+
+
  
 
   return (
@@ -22,35 +107,47 @@ const page = () => {
       </section>
 
       <section>
-        <OurTeamsSnapshot/>
+        <OurTeamsSnapshot data={ourTeamSnapshot}/>
       </section>
 
       <section>
-        <OurTeamsDrivesUs/>
+        <OurTeamsDrivesUs data={ourTeamDriversUs}/>
       </section>
 
       <section>
-        <OurTeamsWrkTogether/>
+        <OurTeamsWrkTogether data={ourTeamWrkTgther} />
       </section>
 
       <section>
-        <OurTeamsWrkProjcet/>
+        <OurTeamsWrkProjcet data={ourTeamGudieWrkPrj}/>
       </section>
 
        <section>
-        <OurTeamsAction/>
+        <OurTeamsAction data={ourTeamWrkAction}/>
       </section>
 
       <section>
-        <OurTeamPartner/>
+        <OurTeamPartner data={ourTeamPartner}/>
       </section>
 
       <section>
-        <OurTeamMilestone/>
+        <OurTeamMilestone data={ourTeamMilestones}/>
+      </section>
+
+       <section>
+        <OurTeamGallery data={ourTeamGallery}/>
+      </section>
+
+       <section>
+        <OurTeamWorkWith data={ourTeamworkWithUs}/>
       </section>
 
       <section>
-        <OurTeamRecognitions/>
+        <OurTeamRecognitions data={ourTeamRecognitions}/>
+      </section>
+
+       <section>
+        <OurTeamConverstation/>
       </section>
      
     </div>

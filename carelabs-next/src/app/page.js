@@ -119,17 +119,34 @@ if (!homeData) {
 
   return (
     <>
-   <div className="home-cover relative w-full min-h-[calc(100vh-80px)] 2xl:h-[calc(100vh-80px)] top-[80px] flex flex-col items-center justify-center">
+<div className="home-cover relative w-full min-h-[calc(100vh-80px)] 2xl:h-[calc(100vh-80px)] top-[80px] flex flex-col items-center justify-center">
   {/* Section 1 */}
   <div 
   data-aos="fade-up"
   data-aos-duration="2000"
-  className="homeBanner  w-11/12 flex flex-col items-center justify-center border boreder-[#0f172914] glass-panel rounded-[40px]  p-4
-  md:w-4/5 md:h-[85%] md:mt-2  md:p-6
-  lg:w-[85%] lg:mt-5
-  xl:w-[80%] xl:mt-16
-  2xl:mt-0 2xl:w-[65%]">
-    <div className="w-full flex flex-col items-center justify-evenly space-y-6 md:space-y-8">
+  // className="homeBanner  w-11/12 flex flex-col items-center justify-center  boreder-[#0f172914] glass-panel1  p-4
+  // md:w-4/5 md:h-[85%] md:mt-2  md:p-6
+  // lg:w-[85%] lg:mt-5
+  // xl:w-[80%] xl:mt-16
+  // 2xl:mt-0 2xl:w-[65%]"
+
+  className="
+  homeBanner
+  w-full max-w-[1152px]
+  min-h-[600px] md:h-[758px]
+  flex flex-col items-center justify-center
+  bg-white/90
+  rounded-[40px]
+  border border-[#0f172914]
+  overflow-hidden
+  glass-panel1
+  p-4 sm:p-6 md:p-10
+"
+
+
+  
+  >
+    <div className="w-full rounded-[40px] flex flex-col items-center justify-evenly space-y-6 md:space-y-8">
 
       {/* Heading Button */}
       <div className="flex justify-center items-center">
@@ -146,22 +163,46 @@ if (!homeData) {
         </button>
       </div>
 
+
       {/* Title */}
-    <div className="w-full flex flex-col items-center justify-center text-center xl:text-[72px] title-Text"
 
-    >
-      <p className="w-full  md:w-3/5  text-3xl sm:text-4xl md:text-5xl lg:text-6xl gradient-text  py-1">
-        {homeData.title1}
-      </p>
+<div className="flex flex-col items-center justify-center text-center 
+    w-auto max-w-[900px] mx-auto montserrat-font space-y-1 sm:space-y-2 md:space-y-3">
 
-      <p className=" w-full md:w-3/5  text-3xl sm:text-4xl md:text-5xl lg:text-6xl  py-1">
-        {homeData.title2}
-      </p>
+  {/* Title 1 */}
+  <p className="
+     font-bold gradient-text
+     text-[32px] leading-[40px]
+     sm:text-[42px] sm:leading-[52px]
+     md:text-[54px] md:leading-[62px]
+     lg:text-[72px] lg:leading-[72px] lg:whitespace-nowrap
+  ">
+    {homeData.title1}
+  </p>
 
-      <p className="w-full md:w-3/5  text-3xl sm:text-4xl md:text-5xl lg:text-6xl  py-1 text-[#157de5]">
-        {homeData.title3}
-      </p>
-    </div>
+  {/* Title 2 */}
+  <p className="
+     font-bold
+     text-[32px] leading-[40px]
+     sm:text-[42px] sm:leading-[52px]
+     md:text-[54px] md:leading-[62px]
+     lg:text-[72px] lg:leading-[72px] lg:whitespace-nowrap
+  ">
+    {homeData.title2}
+  </p>
+
+  {/* Title 3 */}
+  <p className="
+     font-bold text-[#157de5]
+     text-[32px] leading-[40px]
+     sm:text-[42px] sm:leading-[52px]
+     md:text-[54px] md:leading-[62px]
+     lg:text-[72px] lg:leading-[72px] lg:whitespace-nowrap
+  ">
+    {homeData.title3}
+  </p>
+
+</div>
 
 
       </div>
@@ -173,105 +214,126 @@ if (!homeData) {
         </div>
       </div>
 
+
       {/* Buttons */}
+
+
       <div className="w-full flex items-center justify-center py-4">
-        <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-center justify-center w-full md:w-3/5">
-          <button className="bg-[#FF7038] flex items-center justify-center gap-2  text-white py-3 px-6 rounded-full text-[14px] poppins-font hover:bg-[#FF4C05]">
-            <a 
-            
-            //href={homeData.btn1_link}
-            onClick={(e) => {
-            e.preventDefault();
-          window.openContactModal();
-          }}
-            
-            >{homeData.btn1_text}</a>
-            <ArrowRight size={14} />
-          </button>
+  <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-center justify-center w-full md:w-3/5">
 
-          {/* <button className=" flex items-center justify-center gap-2 border hover:bg-[#f15c30] hover:text-white border-[#0f172914] bg-white py-2 px-6 rounded-full text-[14px] poppins-font">
-            <Play  size={14}/>
-            <a href={homeData.btn2_link}>{homeData.btn2_text}</a>
-          </button> */}
+    {/* PRIMARY BUTTON — ORANGE */}
+    <button
+      onClick={(e) => {
+        e.preventDefault();
+        window.openContactModal();
+      }}
+      className="
+        w-[202px] h-[44px]
+        bg-[#FF7038] text-white 
+        rounded-[9999px]
+        flex items-center justify-center gap-2
+        text-[14px] poppins-font font-medium
+        transition-all duration-300
+        hover:bg-[#FF4C05]
+      "
+    >
+      {homeData.btn1_text}
+      <ArrowRight size={14} />
+    </button>
 
-  <button
-  onClick={openRandomVideo}
-  //className="flex items-center justify-center gap-2 hover:bg-[#FF7038] border hover:border-[#157de54d] hover:text-white border-[#0f172914] bg-white py-2 px-6 rounded-full text-[14px] poppins-font"
-  className="flex items-center justify-center gap-2 bg-white text-gray-800 border-2 border-gray-200 py-3 px-6 rounded-full text-[14px] poppins-font transition-all duration-300 hover:border-blue-500 hover:bg-[#FF7038] hover:text-white"
->
-  <Play size={14} />
-  {homeData.btn2_text}
-</button>
+    {/* SECONDARY BUTTON — BORDERED */}
+    <button
+      onClick={openRandomVideo}
+      className="
+        w-[202px] h-[44px]
+        bg-white text-gray-800 
+        border border-gray-300
+        rounded-[9999px]
+        flex items-center justify-center gap-2
+        text-[14px] poppins-font font-medium
+        transition-all duration-300
+        hover:bg-[#FF7038] hover:text-white hover:border-[#FF7038]
+      "
+    >
+      <Play size={14} />
+      {homeData.btn2_text}
+    </button>
 
+  </div>
+</div>
 
-        </div>
-      </div>
 
       {/* Stats */}
-  {/* <div
-    data-aos="fade-up"
-      data-aos-duration="2000"
-      className="w-full flex flex-col sm:flex-row  items-center justify-evenly py-4 gap-4 ">
-        {homeData.stats?.map((item, idx) => {
-          let numberColor = "";
-          if (idx === 0 || idx === 2) numberColor = "#157DE5";
-          else if (idx === 1) numberColor = "#FF7038";
-
-          return (
-            <div
-              key={item.id}
-              className="w-full sm:w-[45%] md:w-[30%] flex flex-col items-center justify-center p-4 rounded-2xl card-shadow"
-            >
-              <HomeCounter end={item.number} duration={2} color={numberColor} />
-              <p className="text-[14px] py-1 text-[#65758B] poppins-font">{item.label}</p>
-            </div>
-          );
-        })}
-</div> */}
 
 <div
   data-aos="fade-up"
   data-aos-duration="2000"
-  className="w-full flex flex-col sm:flex-row items-center justify-center 
-             gap-6 sm:gap-8 py-8"
+  className="
+    w-full flex items-center justify-center py-8
+  "
 >
-  {homeData.stats?.map((item, idx) => {
-    let numberColor = "";
-    if (idx === 0 || idx === 2) numberColor = "#157DE5";
-    else if (idx === 1) numberColor = "#FF7038";
+  <div
+    className="
+      w-full max-w-[1022px]
+      flex flex-col sm:flex-row
+      items-center justify-between
+      gap-6 sm:gap-[24px]
+    "
+  >
+    {homeData.stats?.map((item, idx) => {
+      let numberColor =
+        idx === 1 ? "#FF7038" : "#157DE5";
 
-    return (
-      <div
-        key={item.id}
-        className="
-          w-[90%] sm:w-[32%] lg:w-[28%]
-          flex flex-col items-center justify-center
-          p-6 rounded-[24px] 
-          shadow-[0_12px_40px_rgba(0,0,0,0.15)]
-          transition-all duration-500
-          hover:scale-[1.04] hover:-translate-y-1 hover:shadow-xl
-        "
-        style={{
-          opacity: 0,
-          transform: "translateY(10px) scale(0.95)",
-          animation: `popIn 0.6s ease-out forwards`,
-          animationDelay: `${idx * 0.15}s`,
-        }}
-      >
-        <div className="text-4xl font-extrabold montserrat-font">
-        <HomeCounter end={item.number} duration={2} color={numberColor} />
+      return (
+        <div
+          key={item.id}
+          className="
+            w-[324.66px] h-[126px]
+            bg-white
+            rounded-[24px]
+            flex flex-col items-center justify-center
+            shadow-[0_12px_40px_rgba(0,0,0,0.15)]
+            transition-all duration-500
+            hover:scale-[1.04] hover:-translate-y-1 hover:shadow-xl
+          "
+          style={{
+            opacity: 0,
+            transform: "translateY(10px) scale(0.95)",
+            animation: `popIn 0.6s ease-out forwards`,
+            animationDelay: `${idx * 0.15}s`,
+          }}
+        >
+          {/* NUMBER */}
+          <div className="w-full h-[48px] flex items-center justify-center">
+            <p
+              className="
+                text-4xl font-extrabold montserrat-font
+              "
+              style={{ color: numberColor }}
+            >
+              <HomeCounter
+                end={item.number}
+                duration={2}
+                color={numberColor}
+              />
+            </p>
+          </div>
+
+          {/* LABEL */}
+          <div className="w-full h-[20px] flex items-center justify-center">
+            <p className="text-[14px] poppins-font text-[#65758B]">
+              {item.label}
+            </p>
+          </div>
         </div>
-        <p className="text-[14px] py-1 text-[#65758B] poppins-font">
-          {item.label}
-        </p>
-      </div>
-    );
-  })}
+      );
+    })}
+  </div>
 </div>
 
 
-    </div>
   </div>
+</div>
 
 
 {/* section-2 */}

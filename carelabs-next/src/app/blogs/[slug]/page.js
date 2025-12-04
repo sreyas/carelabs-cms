@@ -1,6 +1,6 @@
 import client from "@/lib/appollo-client";
 import { GET_INSIGHTS_BY_SLUG } from "@/lib/api-Collection";
-import { Brain, Calendar, Clock, Globe, User } from "lucide-react";
+import { Brain, Calendar, Clock, Globe, User, ArrowRight, Tag } from "lucide-react";
 import Image from "next/image";
 import carlabz from "@/assets/carlabz.jpg";
 import React from "react";
@@ -52,14 +52,14 @@ export default function Page(props) {
       </div>
 
       {/* HERO SECTION */}
-      <div className="w-full md:w-[80%] xl:w-[70%] bg-red flex flex-col md:flex-row items-center gap-6 p-8 md:p-10 glass-panel rounded-2xl">
+      <div className="w-full md:w-[80%] xl:w-[70%] bg-red flex flex-col md:flex-row items-center gap-6 p-8 md:p-10 shadow-2xl rounded-2xl">
         <div className="w-full md:w-1/2 flex flex-col gap-4 ">
           <div className="flex items-center gap-2 gradient-bg-badge rounded-full py-2 px-4 w-max">
             <Brain size={18} color="#2575b6"/>
             <p className="montserrat-font primary-color font-medium text-sm">{blog.badge}</p>
           </div>
 
-          <h1 className="text-[28px] lg:text-[36px] 2xl:text-[48px] font-semibold montserrat-font leading-12">
+          <h1 className="text-[28px] lg:text-[36px] 2xl:text-[48px] font-bold montserrat-font leading-12">
             {blog.mainheading}
           </h1>
 
@@ -77,6 +77,22 @@ export default function Page(props) {
             <div className="flex items-center gap-2">
               <Clock size={14} /> {blog.time}
             </div>
+          </div>
+          <div className="flex flex-wrap gap-3 mt-2">
+            {blog.category?.map((item, index) => (
+              <span
+                key={index}
+                className="flex items-center gap-2 
+                          px-4 py-1 rounded-full 
+                          bg-[#eaf3ff] 
+                          text-[#1f7fdb] 
+                          text-sm font-medium 
+                          border border-[#cfe3ff]"
+              >
+                <Tag size={14} />
+                {item.title}
+              </span>
+            ))}
           </div>
         </div>
  
@@ -96,11 +112,11 @@ export default function Page(props) {
         <div className="w-full md:w-[80%] xl:w-[70%] flex flex-col items-center justify-center lg:items-start lg:flex-row gap-8">
           
           {/* SIDEBAR */}
-          <div className="w-[90%] md:w-full lg:w-[25%] flex flex-col gap-5 ">
+          <div className="w-[90%] md:w-full lg:w-[25%] flex flex-col gap-5  ">
             {/* Table of Contents */}
             {blog.articleSection && (
-              <div className=" rounded-[16px] py-5 ">
-                <h2 className="p-5 text-[14px] font-semibold montserrat-font uppercase">
+              <div className="shadow-lg rounded-[16px] py-5 blog-shadow">
+                <h2 className="p-5 text-[14px] font-bold montserrat-font uppercase">
                   {blog.articleSection.title || "IN THIS ARTICLE"}
                 </h2>
                 <ul>
@@ -114,8 +130,8 @@ export default function Page(props) {
             )}
 
             {/* Newsletter Signup */}
-            <div className="glass-panel rounded-[16px] p-5">
-              <h2 className="text-[14px] font-semibold montserrat-font">
+            <div className="shadow-lg rounded-[16px] p-5">
+              <h2 className="text-[15px] font-bold montserrat-font">
                 {blog.Weeklytitle || "Weekly Insights"}
               </h2>
               <p className="py-2 poppins-font text-[14px] para-text">
@@ -125,7 +141,7 @@ export default function Page(props) {
                 placeholder={blog.emailplaceholder || "Your email"}
                 className="w-full border border-black h-10 rounded-lg p-2"
               />
-              <button className="bg-[#2575b6] w-full p-2 mt-3 rounded-lg text-white">
+              <button className="bg-[#157de5] w-full p-2 mt-3 rounded-lg text-white text-[14px] font-medium">
                 <a href={blog.subscribebuttonlink || "#"}>
                   {blog.subscribebutton || "Subscribe"}
                 </a>
@@ -138,8 +154,8 @@ export default function Page(props) {
           
 
       {blog.introtitle && blog.IntroductionContent && (
-        <div className="glass-panel rounded-2xl p-10">
-          <h1 className="mb-5 text-[30px] font-semibold montserrat-font">
+        <div className="shadow-lg rounded-2xl p-10">
+          <h1 className="mb-5 text-[30px] font-bold montserrat-font">
             {blog.introtitle}
           </h1>
 
@@ -170,8 +186,8 @@ export default function Page(props) {
               // Why Traditional Maintenance Section
               if (section.__typename === "ComponentInsightsWhyTraditionalMaintenance") {
                 return (
-                  <div key={index} id={section.slug} className="glass-panel rounded-2xl p-10">
-                    <h1 className="mb-5 text-[30px] font-semibold montserrat-font">
+                  <div key={index} id={section.slug} className="shadow-lg rounded-2xl p-10">
+                    <h1 className="mb-5 text-[30px] font-bold montserrat-font">
                       {section.title}
                     </h1>
 
@@ -255,10 +271,10 @@ export default function Page(props) {
               if (section.__typename === "ComponentInsightsWhatAiPoweredPredictive") {
   return (
     <React.Fragment key={index}>
-      <div id={section.slug} className="glass-panel rounded-2xl p-10">
+      <div id={section.slug} className="shadow-lg rounded-2xl p-10">
         
         {/* Title */}
-        <h2 className="mb-5 text-[30px] font-semibold montserrat-font">
+        <h2 className="mb-5 text-[30px] font-bold montserrat-font">
           {section.title}
         </h2>
 
@@ -305,7 +321,7 @@ export default function Page(props) {
 
       {/* Image Block */}
       {section.image?.url && (
-        <div className="glass-panel rounded-2xl">
+        <div className="shadow-lg rounded-2xl">
           <div
             className="h-[350px] rounded-t-2xl w-full"
             style={{
@@ -315,7 +331,7 @@ export default function Page(props) {
             }}
           />
           {section.imagetext && (
-            <p className="p-4 poppins-font para-text italic">{section.imagetext}</p>
+            <p className="p-4 poppins-font para-text italic text-[13px]">{section.imagetext}</p>
           )}
         </div>
       )}
@@ -328,13 +344,13 @@ export default function Page(props) {
               if (section.__typename === "ComponentInsightsKeyBuildingBlocks") {
                 return (
                   <React.Fragment key={index}>
-                    <div id={section.slug} className="glass-panel rounded-2xl p-10">
-                      <h1 className="mb-5 text-[30px] font-semibold montserrat-font">
+                    <div id={section.slug} className="shadow-lg rounded-2xl p-10">
+                      <h1 className="mb-5 text-[30px] font-bold montserrat-font">
                         {section.title}
                       </h1>
                       {section.KeyBuildingBlocksItems?.map((item, idx) => (
                         <div key={idx} className="mb-8">
-                          <h2 className="mb-2 text-[#2575b6] montserrat-font text-[24px] font-semibold">
+                          <h2 className="mb-2 text-[#157de5] montserrat-font text-[20px] font-bold">
                             {item.order}. {item.title}
                           </h2>
                           <div
@@ -345,7 +361,7 @@ export default function Page(props) {
                       ))}
                     </div>
                     {section.image?.url && (
-                      <div className="glass-panel rounded-2xl">
+                      <div className="shadow-lg rounded-2xl">
                         <div
                           className="h-[350px] rounded-t-2xl w-full"
                           style={{
@@ -355,7 +371,7 @@ export default function Page(props) {
                           }}
                         />
                         {section.imagetext && (
-                          <p className="p-4 poppins-font para-text italic">{section.imagetext}</p>
+                          <p className="p-4 poppins-font para-text italic text-[13px]">{section.imagetext}</p>
                         )}
                       </div>
                     )}
@@ -366,13 +382,13 @@ export default function Page(props) {
               // Real World Use Cases Section
               if (section.__typename === "ComponentInsightsRealWorld") {
                 return (
-                  <div key={index} id={section.slug} className="glass-panel rounded-2xl p-10">
-                    <h2 className="mb-5 text-[30px] font-semibold montserrat-font">
+                  <div key={index} id={section.slug} className="shadow-lg rounded-2xl p-10">
+                    <h2 className="mb-5 text-[30px] font-bold montserrat-font">
                       {section.title}
                     </h2>
                     {section.RealWorldItems?.map((item, idx) => (
                       <div key={idx} className="mb-6">
-                        <h3 className="text-[24px] montserrat-font mb-2 font-semibold">
+                        <h3 className="text-[20px] montserrat-font mb-2 font-bold text-[#157de5]">
                           {item.title}
                         </h3>
                         <div
@@ -380,7 +396,7 @@ export default function Page(props) {
                           dangerouslySetInnerHTML={{ __html: item.content }}
                         />
                         {item.result && (
-                          <p className="mb-3 secondary-color poppins-font">{item.result}</p>
+                          <p className="mb-3 poppins-font text-[13px] font-semibold text-[#FF8A38] mt-[1.15rem]">{item.result}</p>
                         )}
                       </div>
                     ))}
@@ -392,8 +408,8 @@ export default function Page(props) {
               if (section.__typename === "ComponentInsightsHowtoGetStarted") {
                 return (
                   <React.Fragment key={index}>
-                    <div id={section.slug} className="glass-panel rounded-2xl p-10">
-                      <h2 className="mb-5 text-[30px] font-semibold montserrat-font">
+                    <div id={section.slug} className="shadow-lg rounded-2xl p-10">
+                      <h2 className="mb-5 text-[30px] font-bold montserrat-font">
                         {section.title}
                       </h2>
                       <div
@@ -402,7 +418,7 @@ export default function Page(props) {
                       />
                     </div>
                     {section.image?.url && (
-                      <div className="glass-panel rounded-2xl">
+                      <div className="shadow-lg rounded-2xl">
                         <div
                           className="h-[350px] rounded-t-2xl w-full"
                           style={{
@@ -423,8 +439,8 @@ export default function Page(props) {
               // Challenges Section
               if (section.__typename === "ComponentInsightsChallenges") {
                 return (
-                  <div key={index} id={section.slug} className="glass-panel rounded-2xl p-10">
-                    <h1 className="mb-5 text-[30px] font-semibold montserrat-font">
+                  <div key={index} id={section.slug} className="shadow-lg rounded-2xl p-10">
+                    <h1 className="mb-5 text-[30px] font-bold montserrat-font">
                       {section.title}
                     </h1>
                     {section.introduction && (
@@ -450,8 +466,8 @@ export default function Page(props) {
               // The Road Ahead Section
               if (section.__typename === "ComponentInsightsTheRoadAhead") {
                 return (
-                  <div key={index} id={section.slug} className="glass-panel rounded-2xl p-10">
-                    <h1 className="mb-5 text-[30px] font-semibold montserrat-font">
+                  <div key={index} id={section.slug} className="shadow-lg rounded-2xl p-10">
+                    <h1 className="mb-5 text-[30px] font-bold montserrat-font">
                       {section.title}
                     </h1>
                     <div
@@ -472,8 +488,10 @@ export default function Page(props) {
 
             {/* EXPLORE CTA SECTION */}
             {blog.exploretitle && (
-              <div className="glass-panel rounded-2xl p-10 text-center">
-                <h2 className="text-[36px] font-semibold montserrat-font">
+              <div className="shadow-lg rounded-2xl p-10 text-center bg-gradient-to-br 
+                  from-[rgba(31,127,219,0.08)] 
+                  to-[rgba(255,122,60,0.08)]">
+                <h2 className="text-[36px] font-bold montserrat-font">
                   {blog.exploretitle}
                 </h2>
                 {blog.exploresubtitle && (
@@ -481,12 +499,16 @@ export default function Page(props) {
                 )}
                 <div className="flex flex-col lg:flex-row items-center gap-4 justify-center para-text poppins-font">
                   {blog.button1text && (
-                    <button className="bg-[#2575b6] py-2 px-6 rounded-lg text-white">
-                      <a href={blog.button1link || "#"}>{blog.button1text}</a>
+                    <button className="bg-[#157de5] py-3 px-6 rounded-md text-white text-[14px] font-medium">
+                      <a href={blog.button1link || "#"} className="flex items-center gap-2">
+                        {blog.button1text}
+                        <ArrowRight size={18} />
+                      </a>
                     </button>
                   )}
                   {blog.button2text && (
-                    <button className="border border-[#2575b6] py-2 px-6 bg-white text-black rounded-lg">
+                    <button className="border-2 border-[#157de54d] py-3 px-6 bg-white text-black rounded-md text-[14px] font-medium hover:bg-[#cad6e7] hover:text-white 
+                     transition-colors duration-300">
                       <a href={blog.button2link || "#"}>{blog.button2text}</a>
                     </button>
                   )}
@@ -497,16 +519,17 @@ export default function Page(props) {
             {/* RELATED ARTICLES */}
             {blog.RelatedArticleItems && blog.RelatedArticleItems.length > 0 && (
               <div className="rounded-2xl p-3 py-10">
-                <h1 className="mb-5 text-[24px] font-semibold">
+                <h1 className="mb-5 text-[24px] font-bold">
                   {blog.RelatedArticlesText || "Related Articles"}
                 </h1>
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
                   {blog.RelatedArticleItems.map((article, idx) => (
-                    <div key={idx} className="p-5 glass-panel rounded-2xl">
-                      <p className="mb-3">{article.category}</p>
-                      <p className="font-semibold mb-3">{article.title}</p>
-                      <a href={article.link || "#"} className="text-[#2575b6]">
+                    <div key={idx} className="p-5 shadow-lg rounded-2xl">
+                      <p className="mb-3 text-[#157de5] font-semibold">{article.category}</p>
+                      <p className="font-bold mb-3 text-lg hover:text-[#157de5] transition-colors duration-300 cursor-pointer">{article.title}</p>
+                      <a href={article.link || "#"} className="text-[#157de5] flex items-center gap-2 font-semibold">
                         {article.readtext || "Read more"}
+                        <ArrowRight size={18} />
                       </a>
                     </div>
                   ))}

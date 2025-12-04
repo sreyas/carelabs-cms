@@ -42,8 +42,9 @@
 
 .blog-shadow{
   box-shadow: 
-    0px 10px 15px -3px #000000,
-    0px 4px 6px -4px #000000;
+     0px 10px 15px -3px #000000,
+     0px 4px 6px -4px #000000;
+    backdrop-filter: blur(24px)
 }
 .navbar-shadow{
   box-shadow: rgba(15, 23, 42, 0.35) 0px 18px 45px !important;
@@ -74,6 +75,7 @@
 .primary-color{
   color: #2575b6;
 }
+
 .secondary-color{
   color:#f15c30;
 }
@@ -112,6 +114,16 @@
     border-radius: 16px;
 }
 
+.glass-panel1 {
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(15, 23, 42, 0.1);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    box-shadow: 0 18px 45px rgba(15, 23, 42, 0.1);
+    border-radius: 40px;  
+    /* IMPORTANT: remove radius so parent radius works */
+}
+
 /* Hide scrollbar for Chrome, Safari and Opera */
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
@@ -122,6 +134,17 @@
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }
+ .ourTeam-ctc{
+   background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(15, 23, 42, 0.1);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    box-shadow: 0 18px 45px rgba(15, 23, 42, 0.1);
+    border-radius: 32px;  
+ }
+
+
+
 
 
 /* icon blinks(navbar) */
@@ -190,8 +213,5 @@
 .hi{
   color: #add9f8;
 }
-
-/* home statpopup */
-
 
 

@@ -242,7 +242,6 @@ query  ($locale: I18NLocaleCode!){
   
 `
 
-
 export const GET_TESTIMONIALS = gql`
  query {
   testimonialsSection {
@@ -259,7 +258,6 @@ export const GET_TESTIMONIALS = gql`
 }
   
 `
-
 export const GET_FOOTER = gql`
 query {
   footer {
@@ -287,7 +285,6 @@ query {
 }
 
 `
-
 export const GET_SERVICES = gql`
 query {
   services {
@@ -760,11 +757,6 @@ query ($locale: I18NLocaleCode) {
 }
 `
 
-
-
-
-
-
 export const GET_HOME_SERVICES_BY_LOCALE = gql`
 query ($locale: I18NLocaleCode) {
    homeSerivices (locale:$locale) {
@@ -814,3 +806,328 @@ query ($locale: I18NLocaleCode) {
   }
 }   
 `
+
+export const GET_OURTEAM_PAGE = gql`
+  query {
+    ourTeamPage {
+      documentId
+      mainheading
+      maindescription
+      ourteam_stats {
+        stats
+        label
+      }
+      button1text
+      button1link
+      button2text
+      button2link
+      scrolltext
+      mainimage {
+        url
+      }
+      images {
+        image {
+          url
+        }
+        label
+      }
+      snapshot {
+        title
+        description
+        image {
+          url
+        }
+        snapshot_stats {
+          icon
+          label
+          stats
+        }
+      }
+      Drives_Us {
+        title
+        Drives_Us_Items {
+          icon
+          title
+          Drives_Us_subItems {
+            points
+          }
+        }
+      }
+      Work_Together {
+        title
+        description
+        Work_Together_Items {
+          icon
+          title
+          description
+        }
+      }
+      Guiding {
+        title
+        description
+        Guiding_Items {
+          title
+          subtitle
+          description
+          image {
+            url
+          }
+          hovertext
+        }
+      }
+      Teams_in_Action {
+        title
+        description
+        Teams_in_Action_Items {
+          icon
+          title
+          image {
+            url
+          }
+          Teams_in_Action_Points {
+            points
+          }
+        }
+      }
+      How_We_Partner {
+        title
+        description
+        How_We_Partner_Items {
+          icon
+          step
+          title
+          description
+        }
+      }
+      Milestones {
+        title
+        description
+        Milestones_Items {
+          title
+          description
+          icon
+          year
+          image {
+            url
+          }
+        }
+      }
+      What_it_feels {
+        title
+        description
+        What_it_feels_gallery {
+          image {
+            url
+          }
+          hovertext
+        }
+      }
+      Where_you_work {
+        title
+        description
+        viewText
+        viewLink
+        Where_you_work_Items {
+          icon
+          title
+          Where_you_work_countries {
+            country
+          }
+        }
+      }
+      Recognitions {
+        icon
+        title
+        description
+        Recognitions_Item1 {
+          label
+          icon
+        }
+        Recognitions_Item2 {
+          title
+          countryyear
+        }
+      }
+      Ready_to_Talk {
+        title
+        description
+        Ready_to_Talk_buttons {
+          icon
+          link
+          text
+        }
+      }
+      ourteam_page_seo {
+        metaTitle
+        metaDescription
+        metaImage {
+          url
+        }
+        openGraph {
+          ogTitle
+          ogDescription
+          ogImage {
+            url
+          }
+          ogUrl
+          ogType
+        }
+        keywords
+        metaRobots
+        metaViewport
+        canonicalURL
+        structuredData
+      }
+    }
+  }
+`
+
+export const GET_CONTACT_PAGE = gql`
+  query {
+    contactPage {
+      documentId
+      badgeicon
+      badge
+      title
+      description
+      image{
+       url
+      }
+      buttons {
+        text
+        link
+      }
+      features {
+        label
+      }
+      Choose_how_to_connect {
+        title
+        description
+        connect_items {
+          title
+          description
+          sharetext
+          sharelink
+          icon
+        }
+      }
+      Tell_us_about_project {
+        title
+        note
+        What_to_share_text
+        what_to_share_Items {
+          label
+        }
+        contact_form {
+          contact_form_fields {
+            fieldname
+            placeholder
+            required
+            order
+            errorMessage
+          }
+          typeOfHelpTitle
+          typeOfHelpOptions {
+            order
+            name
+            default
+          }
+          servicesTitle
+          services {
+            order
+            label
+          }
+          contactMethodTitle
+          contactMethods {
+            label
+            order
+          }
+          submitbutton
+          reply_msg
+        }
+      }
+      Where_we_support {
+        title
+        description
+        presence_types {
+          title
+          presence_type_item {
+            label
+            icon
+            icon_color
+          }
+        }
+        regions {
+          title
+          region_item {
+            region_name
+            map_embed_code
+          }
+        }
+        locations {
+          location_name
+          icon
+          type
+          type_color
+          description
+        }
+      }
+      Not_sure {
+        title
+        description
+        Not_sure_Item {
+          heading
+          description
+          Go_to_from_text
+          Go_to_from_link
+          icon
+        }
+      }
+      Local_expertise {
+        title
+        Local_expertise_Item {
+          count
+          label
+          icon
+        }
+        Trusted_text
+      }
+      Before_you_reach_out_heading
+      Before_you_reach_out_subheading
+      Before_you_reach_out_Item {
+        question
+        answer
+      }
+      contact_cta {
+        heading
+        icon
+        subheading
+        link
+        message
+      }
+      contact_page_seo {
+        metaTitle
+        metaDescription
+        metaImage {
+          url
+        }
+        openGraph {
+          ogTitle
+          ogDescription
+          ogImage {
+            url
+          }
+          ogUrl
+          ogType
+        }
+        keywords
+        metaRobots
+        metaViewport
+        canonicalURL
+        structuredData
+      }  
+    }
+  }`
+
+
+

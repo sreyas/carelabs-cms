@@ -115,11 +115,8 @@ if (!compliance) return null;
             </div>
           
            <div className=" w-full lg:w-[80%]  text-[#2575b6] flex items-center justify-center mt-10 p-6 rounded-2xl  card-shadow ">
-            <div className="icon p-5 lg:p-1">
-              <Icons.Check size={18}/>
-            </div>
             <div className="poppins-font text-[16px] ">
-                <p> All studies and reports delivered with full traceability to applicable Canadian standards</p>
+                <p> {compliance.notetext}</p>
             </div>
            </div>
 

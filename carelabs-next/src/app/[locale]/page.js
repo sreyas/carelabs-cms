@@ -117,11 +117,11 @@ console.log("Pararar111",params['locale']);
         <div 
           data-aos="fade-up"
           data-aos-duration="2000"
-          className="  w-11/12 flex flex-col items-center justify-center blog-shadow border boreder-[#0f172914] glass-panel rounded-3xl  p-4 
+          className="  w-11/12 flex flex-col items-center justify-center blog-shadow border border-[#0f172914] glass-panel rounded-3xl  p-4 
           md:w-4/5 md:h-[85%] md:mt-2  md:p-6
           lg:w-[85%] lg:mt-5
           xl:w-[80%] xl:mt-16
-          2xl:mt-0 2xl:w-[65%]"  >
+          2xl:mt-0 2xl:w-[65%]" >
 
             <div className="w-full flex flex-col items-center justify-evenly space-y-6 md:space-y-8">
                 {/* Heading Button */}
