@@ -42,6 +42,21 @@
       "type": "component",
       "component": "contact.tell-us-about-project",
       "repeatable": false
+    },
+    "Where_we_support": {
+      "type": "component",
+      "component": "contact.where-we-support",
+      "repeatable": false
+    },
+    "Not_sure": {
+      "type": "component",
+      "component": "contact.not-sure",
+      "repeatable": false
+    },
+    "Local_expertise": {
+      "type": "component",
+      "component": "contact.local-expertise",
+      "repeatable": false
     }
   }
 }

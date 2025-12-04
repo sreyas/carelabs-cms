@@ -635,12 +635,17 @@ export interface ApiContactPageContactPage extends Struct.SingleTypeSchema {
       Schema.Attribute.Private;
     description: Schema.Attribute.Text;
     features: Schema.Attribute.Component<'contact.features', true>;
+    Local_expertise: Schema.Attribute.Component<
+      'contact.local-expertise',
+      false
+    >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::contact-page.contact-page'
     > &
       Schema.Attribute.Private;
+    Not_sure: Schema.Attribute.Component<'contact.not-sure', false>;
     publishedAt: Schema.Attribute.DateTime;
     Tell_us_about_project: Schema.Attribute.Component<
       'contact.tell-us-about-project',
@@ -650,6 +655,10 @@ export interface ApiContactPageContactPage extends Struct.SingleTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    Where_we_support: Schema.Attribute.Component<
+      'contact.where-we-support',
+      false
+    >;
   };
 }
 

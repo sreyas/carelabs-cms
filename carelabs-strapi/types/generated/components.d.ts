@@ -96,6 +96,121 @@ export interface ContactFeatures extends Struct.ComponentSchema {
   };
 }
 
+export interface ContactLocalExpertise extends Struct.ComponentSchema {
+  collectionName: 'components_contact_local_expertises';
+  info: {
+    displayName: 'Local_expertise';
+  };
+  attributes: {
+    Local_expertise_Item: Schema.Attribute.Component<
+      'contact.local-expertise-item',
+      true
+    >;
+    title: Schema.Attribute.RichText;
+    Trusted_by_text: Schema.Attribute.Text;
+  };
+}
+
+export interface ContactLocalExpertiseItem extends Struct.ComponentSchema {
+  collectionName: 'components_contact_local_expertise_items';
+  info: {
+    displayName: 'Local_expertise_Item';
+  };
+  attributes: {
+    count: Schema.Attribute.String;
+    icon: Schema.Attribute.String;
+    label: Schema.Attribute.String;
+  };
+}
+
+export interface ContactLocations extends Struct.ComponentSchema {
+  collectionName: 'components_contact_locations';
+  info: {
+    displayName: 'locations';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    icon: Schema.Attribute.String;
+    location_name: Schema.Attribute.String;
+    type: Schema.Attribute.String;
+    type_color: Schema.Attribute.String;
+  };
+}
+
+export interface ContactNotSure extends Struct.ComponentSchema {
+  collectionName: 'components_contact_not_sures';
+  info: {
+    displayName: 'Not_sure';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    Not_sure_Item: Schema.Attribute.Component<'contact.not-sure-item', true>;
+    title: Schema.Attribute.RichText;
+  };
+}
+
+export interface ContactNotSureItem extends Struct.ComponentSchema {
+  collectionName: 'components_contact_not_sure_items';
+  info: {
+    displayName: 'Not_sure_Item';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    Go_to_from_link: Schema.Attribute.String;
+    Go_to_from_text: Schema.Attribute.String;
+    heading: Schema.Attribute.String;
+    icon: Schema.Attribute.String;
+  };
+}
+
+export interface ContactPresenceTypeItem extends Struct.ComponentSchema {
+  collectionName: 'components_contact_presence_type_items';
+  info: {
+    displayName: 'presence_type_item';
+  };
+  attributes: {
+    icon: Schema.Attribute.String;
+    icon_color: Schema.Attribute.String;
+    label: Schema.Attribute.String;
+  };
+}
+
+export interface ContactPresenceTypes extends Struct.ComponentSchema {
+  collectionName: 'components_contact_presence_types';
+  info: {
+    displayName: 'presence_types';
+  };
+  attributes: {
+    presence_type_item: Schema.Attribute.Component<
+      'contact.presence-type-item',
+      true
+    >;
+    title: Schema.Attribute.String;
+  };
+}
+
+export interface ContactRegionItem extends Struct.ComponentSchema {
+  collectionName: 'components_contact_region_items';
+  info: {
+    displayName: 'region-item';
+  };
+  attributes: {
+    map_embed_code: Schema.Attribute.RichText;
+    region_name: Schema.Attribute.String;
+  };
+}
+
+export interface ContactRegions extends Struct.ComponentSchema {
+  collectionName: 'components_contact_regions';
+  info: {
+    displayName: 'regions';
+  };
+  attributes: {
+    region_item: Schema.Attribute.Component<'contact.region-item', true>;
+    title: Schema.Attribute.String;
+  };
+}
+
 export interface ContactServices extends Struct.ComponentSchema {
   collectionName: 'components_contact_services';
   info: {
@@ -143,6 +258,20 @@ export interface ContactWhatToShareItems extends Struct.ComponentSchema {
   };
   attributes: {
     label: Schema.Attribute.String;
+  };
+}
+
+export interface ContactWhereWeSupport extends Struct.ComponentSchema {
+  collectionName: 'components_contact_where_we_supports';
+  info: {
+    displayName: 'Where_we_support';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    locations: Schema.Attribute.Component<'contact.locations', true>;
+    presence_types: Schema.Attribute.Component<'contact.presence-types', false>;
+    regions: Schema.Attribute.Component<'contact.regions', false>;
+    title: Schema.Attribute.RichText;
   };
 }
 
@@ -1161,10 +1290,20 @@ declare module '@strapi/strapi' {
       'contact.contact-form-fields': ContactContactFormFields;
       'contact.contact-methods': ContactContactMethods;
       'contact.features': ContactFeatures;
+      'contact.local-expertise': ContactLocalExpertise;
+      'contact.local-expertise-item': ContactLocalExpertiseItem;
+      'contact.locations': ContactLocations;
+      'contact.not-sure': ContactNotSure;
+      'contact.not-sure-item': ContactNotSureItem;
+      'contact.presence-type-item': ContactPresenceTypeItem;
+      'contact.presence-types': ContactPresenceTypes;
+      'contact.region-item': ContactRegionItem;
+      'contact.regions': ContactRegions;
       'contact.services': ContactServices;
       'contact.tell-us-about-project': ContactTellUsAboutProject;
       'contact.type-of-help-options': ContactTypeOfHelpOptions;
       'contact.what-to-share-items': ContactWhatToShareItems;
+      'contact.where-we-support': ContactWhereWeSupport;
       'features.feature-item': FeaturesFeatureItem;
       'features.service-feature': FeaturesServiceFeature;
       'footer.footer-bottomlink': FooterFooterBottomlink;
