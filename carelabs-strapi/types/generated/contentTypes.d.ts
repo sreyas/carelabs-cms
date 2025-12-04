@@ -637,6 +637,7 @@ export interface ApiContactPageContactPage extends Struct.SingleTypeSchema {
       false
     >;
     contact_cta: Schema.Attribute.Component<'contact.contact-cta', true>;
+    contact_page_seo: Schema.Attribute.Component<'shared.seo', false>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1631,6 +1632,7 @@ export interface ApiOurTeamPageOurTeamPage extends Struct.SingleTypeSchema {
     mainheading: Schema.Attribute.RichText;
     mainimage: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     Milestones: Schema.Attribute.Component<'ourteam.milestones', false>;
+    ourteam_page_seo: Schema.Attribute.Component<'shared.seo', false>;
     ourteam_stats: Schema.Attribute.Component<'ourteam.ourteam-stats', true>;
     publishedAt: Schema.Attribute.DateTime;
     Ready_to_Talk: Schema.Attribute.Component<'ourteam.ready-to-talk', false>;

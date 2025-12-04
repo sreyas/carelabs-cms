@@ -73,6 +73,11 @@
       "type": "component",
       "component": "contact.contact-cta",
       "repeatable": true
+    },
+    "contact_page_seo": {
+      "type": "component",
+      "component": "shared.seo",
+      "repeatable": false
     }
   }
 }
