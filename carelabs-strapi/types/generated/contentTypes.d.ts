@@ -643,6 +643,7 @@ export interface ApiContactPageContactPage extends Struct.SingleTypeSchema {
       Schema.Attribute.Private;
     description: Schema.Attribute.Text;
     features: Schema.Attribute.Component<'contact.features', true>;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     Local_expertise: Schema.Attribute.Component<
       'contact.local-expertise',
       false

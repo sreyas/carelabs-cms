@@ -23,6 +23,16 @@
     "description": {
       "type": "text"
     },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
     "buttons": {
       "type": "component",
       "component": "contact.buttons",
