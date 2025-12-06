@@ -265,48 +265,32 @@ const HomeServices = () => {
                   </div>
 
                   {/* Performance Metrics */}
-                  {/* <div>
-                    <p className="mb-3 font-semibold text-[14px] primary-color">PERFORMANCE METRICS</p>
-                    <div className="flex flex-col sm:flex-row items-center justify-between sm:justify-evenly gap-4 sm:gap-2">
 
-                      {activeItem?.performance?.map((p, idx) => (
-                        <div key={idx} className="flex items-center justify-center flex-col text-center">
-                          <p
-                            className="text-xl sm:text-2xl font-bold "
-                            dangerouslySetInnerHTML={{ __html: p.stats }}
-                          />
-                          <p className="text-xs sm:text-sm text-gray-600">{p.name}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </div> */}
+              <div>
+             <p className="mb-3 font-semibold text-[14px] primary-color">
+             PERFORMANCE METRICS
+             </p>
 
-                  <div>
-  <p className="mb-3 font-semibold text-[14px] primary-color">
-    PERFORMANCE METRICS
-  </p>
-
-  <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between sm:justify-evenly gap-4 sm:gap-2">
-    {activeItem?.performance?.map((p, idx) => (
-      <div 
-        key={idx} 
-        className="flex flex-col items-start text-left sm:items-center sm:text-center"
-      >
-        <p
-          className="text-xl sm:text-2xl font-bold"
-          dangerouslySetInnerHTML={{ __html: p.stats }}
-        />
-        <p className="text-xs sm:text-sm text-gray-600">{p.name}</p>
-      </div>
-    ))}
-  </div>
-</div>
+             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between sm:justify-evenly gap-4 sm:gap-2">
+             {activeItem?.performance?.map((p, idx) => (
+             <div 
+             key={idx} 
+             className="flex flex-col items-start text-left sm:items-center sm:text-center"
+             >
+             <p
+             className="text-xl sm:text-2xl font-bold"
+             dangerouslySetInnerHTML={{ __html: p.stats }}
+             />
+             <p className="text-xs sm:text-sm text-gray-600">{p.name}</p>
+             </div>
+             ))}
+             </div>
+             </div>
 
 
-                  {/* Action Buttons */}
+   {/* Action Buttons */}
 
-
-                  <div className="flex flex-col sm:flex-row gap-3 sm:gap-5">
+  <div className="flex flex-col sm:flex-row gap-3 sm:gap-5">
   
   {/* Primary Button */}
   <a href={activeItem?.button1link}>

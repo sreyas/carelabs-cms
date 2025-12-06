@@ -221,12 +221,6 @@ const Header = () => {
               </button>
             </div>
 
-            {/* <div className="nav-bttn hidden lg:flex justify-center items-center rounded-md xl:w-[35%] 2xl:w-[45%] bg-[#157de5]">
-                    <button className=' text-sm lg:py-[10px] lg:px-3 ' >
-                      <a href={navbarData?.buttonlink} className='text-[14px] text-white font-medium'>{navbarData?.buttontext}</a>
-                    </button>
-                  </div> */}
-
             <div className="nav-bttn hidden lg:flex justify-center items-center rounded-md xl:w-[35%] 2xl:w-[45%] bg-[#157de5]">
               <button className="text-sm lg:py-[10px] lg:px-3 cursor-pointer" onClick={() => navigate(navbarData.buttonlink)}>
                 <span className="text-[14px] text-white font-medium">

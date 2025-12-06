@@ -487,6 +487,8 @@ const openRandomVideo = () => {
             shadow-[0_8px_20px_rgba(0,0,0,0.15)]
             transform transition-all duration-500
             hover:scale-[1.06] hover:-translate-y-1 hover:shadow-[0_8px_20px_rgba(0,0,0,0.2)]
+            overflow-hidden
+            min-h-[85px] sm:min-h-[95px]
           "
         >
           <p className="text-base sm:text-lg lg:text-2xl font-bold" style={{
@@ -496,7 +498,7 @@ const openRandomVideo = () => {
               backgroundClip: 'text'
             }}
           >{stat.number}</p>
-          <p className="text-[12px] sm:text-[12px] text-gray-500">{stat.label}</p>
+          <p className="text-[12px] sm:text-[12px] text-gray-500 break-words leading-tight">{stat.label}</p>
         </div>
       ))}
     </div>
