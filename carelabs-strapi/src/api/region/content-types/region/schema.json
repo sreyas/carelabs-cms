@@ -25,6 +25,12 @@
     },
     "order": {
       "type": "integer"
+    },
+    "language": {
+      "type": "string"
+    },
+    "language_value": {
+      "type": "string"
     }
   }
 }

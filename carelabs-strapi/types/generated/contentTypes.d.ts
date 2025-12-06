@@ -1740,6 +1740,8 @@ export interface ApiRegionRegion extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     isDefault: Schema.Attribute.Boolean;
+    language: Schema.Attribute.String;
+    language_value: Schema.Attribute.String;
     link: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
