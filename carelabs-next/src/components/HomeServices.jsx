@@ -280,19 +280,6 @@ const HomeServices = () => {
 
                   {/* Action Buttons */}
 
-                  {/* <div className="flex flex-col sm:flex-row gap-3 sm:gap-5">
-                    <a href={activeItem?.button1link}>
-                      <button className="w-full sm:w-auto px-6 sm:px-8 py-3 bg-[#FF7038] rounded-full text-white font-bold hover:bg-[#ff5722] transition-colors">
-                        {activeItem?.button1text}
-                      </button>
-                    </a>
-
-                    <a href={activeItem?.button2link}>
-                      <button className="w-full sm:w-auto px-6 sm:px-8 py-3 border-2 border-blue-400 text-blue-400 rounded-full hover:bg-blue-50 transition-colors">
-                        {activeItem?.button2text}
-                      </button>
-                    </a>
-                  </div> */}
 
                   <div className="flex flex-col sm:flex-row gap-3 sm:gap-5">
   
@@ -309,6 +296,8 @@ const HomeServices = () => {
         flex items-center justify-center
         hover:bg-[#ff5722]
         transition-colors
+        cursor-pointer
+        monserrat-font
       "
     >
       {activeItem?.button1text}
@@ -328,6 +317,8 @@ const HomeServices = () => {
         flex items-center justify-center
         hover:bg-blue-50
         transition-colors
+        cursor-pointer
+        monserrat-font
       "
     >
       {activeItem?.button2text}

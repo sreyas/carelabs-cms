@@ -59,7 +59,6 @@ const FaqItem = ({ question, answer, isOpen, onClick }) => {
         <ChevronDown
           className={cn(
             "h-5 w-5 text-muted-foreground transition-transform flex-shrink-0",
-            "group-hover:text-blue-600",
             isOpen && "rotate-180"
           )}
         />
@@ -123,23 +122,28 @@ const ResourceCard = ({ label, format, icon }) => {
     <div
       className="
         flex items-center gap-4 p-3 
-        rounded-xl transition-all duration-300 cursor-pointer
-        hover:-translate-y-[2px]
+        rounded-xl cursor-pointer
         border-none
+         bg-white/50
+         hover:bg-white/70
+         hover:shadow-lg
+         group
       "
     >
       {/* Icon Box */}
-      <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-blue-100 text-blue-600 text-xl">
+      <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-blue-100 text-blue-600 text-xl transition-transform duration-200 group-hover:scale-110">
         <IconComponent className="w-6 h-6 text-blue-600" />
       </div>
 
       {/* Text */}
       <div className="flex-1">
-        <p className="font-semibold montserrat-font">{label}</p>
-        <p className="text-xs text-gray-500">{format}</p>
+         <p className="font-normal montserrat-font group-hover:text-[#157DE5]">{label}</p>
+        <p className="text-xs font-normal text-gray-500">{format}</p>
       </div>
 
-      <LucideIcons.SquareArrowOutUpRight className="h-5 w-5 text-gray-400" />
+      <LucideIcons.SquareArrowOutUpRight className="hidden group-hover:block 
+      style={{ color: '#65758B', width: '16px', height: '20px', opacity: 0.5 }} 
+      " />
     </div>
   );
 };
@@ -221,7 +225,7 @@ export default function FaqResourcesSection({ service }) {
            dangerouslySetInnerHTML={{ __html: service?.faqTitle || '' }}
           />
 
-            <p className="text-sm sm:text-md md:text-lg w-[95%] sm:w-[80%] mx-auto text-muted-foreground mt-3 text-gray-500">
+            <p className="text-sm sm:text-md md:text-lg max-w-3xl  mx-auto text-muted-foreground mt-3 text-gray-500">
               {service?.faqSubtitle}
             </p>
           </div>

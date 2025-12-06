@@ -230,6 +230,15 @@
 
 
 /* Media query */
+
+
+@media (min-width: 1600px) {
+    .header {
+     width: 80%; 
+   }
+}
+
+
 @media (max-width: 550px) {
   
     .timeline-cards{

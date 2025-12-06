@@ -136,8 +136,7 @@ export default function EngineeringServices({ service }) {
         {/* ICON BOX */}
         <div
           className="w-14 h-14 rounded-xl flex items-center justify-center
-                     bg-gradient-to-br from-[#E9F3FF] to-[#F4F6FF]
-                     shadow-[0px_4px_12px_rgba(0,0,0,0.08)] backdrop-blur-[2px]
+                     bg-gradient-to-br from-[rgba(21,125,229,0.1)] to-[rgba(255,112,56,0.1)]
                      transition-all duration-300 ease-out
                      group-hover:scale-110 group-hover:rotate-6"
         >

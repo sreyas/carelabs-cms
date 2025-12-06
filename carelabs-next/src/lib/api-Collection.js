@@ -791,9 +791,6 @@ query ($locale: I18NLocaleCode) {
 }
 
 `
-
-
-
 export const GET_PAGE_SEO = gql`
 query ($locale: I18NLocaleCode) {
    homePage(locale:$locale) {
@@ -1129,7 +1126,7 @@ export const GET_CONTACT_PAGE = gql`
     }
   }`
 
- export const GET_REGION_INDUSTRIES = gql`
+export const GET_REGION_INDUSTRIES = gql`
     query ($locale: I18NLocaleCode){
       homeIndustries(locale:$locale) {
         badgeicon
@@ -1152,7 +1149,7 @@ export const GET_CONTACT_PAGE = gql`
       }
     }
  `
-  export const GET_REGION_CLIENTS_BY_LOCALE = gql`
+export const GET_REGION_CLIENTS_BY_LOCALE = gql`
     query ($locale: I18NLocaleCode){
        homeOurClients(locale:$locale) {
           Clients {
@@ -1185,3 +1182,80 @@ export const GET_CONTACT_PAGE = gql`
           title
         }
       }`
+
+export const GET_REGIONS = gql`
+ query {
+    regions {
+      name
+      link
+      order
+      siteUrl
+    }
+  }
+`;
+
+export const GET_CONTACT_POPUP_FIELDNAMES = gql`
+query  {
+  contactPopup {
+    documentId
+    logo {
+      url
+    }
+    heading
+    subheading
+    form_fields {
+      label
+      placeholder
+      field_type
+      required
+      options {
+        options_name
+      }
+    }
+    buttontext
+    buttonlink
+   createdAt
+}
+}
+`;
+
+export const GET_DEFAULT_PAGE = gql`
+  query ($slug: String!) {
+    pages (filters: { slug: { eq: $slug } }) {
+      documentId
+      badge
+      badgeicon
+      title
+      buttontext
+      buttonlink
+      mainimage {
+        url
+      }
+      introtitle
+      introcontent
+      slug
+    }
+  }
+`;
+
+export const GET_DEFAULT_PAGE_BY_LOCALE = gql`
+query ($slug: String!, $locale: I18NLocaleCode) {
+    pages(
+      filters: { slug: { eq: $slug } }
+      locale: $locale
+    ) {
+      documentId
+      badge
+      badgeicon
+      title
+      buttontext
+      buttonlink
+      mainimage {
+        url
+      }
+      introtitle
+      introcontent
+      slug
+    }
+  }
+`;

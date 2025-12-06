@@ -90,36 +90,33 @@ useEffect(() => {
 
 if (!homeData) {
    return (
-  <div className="w-full h-screen flex flex-col items-center justify-center gap-6 p-4">
+      <div className="w-full h-screen flex flex-col items-center justify-center gap-6 p-4">
 
-    {/* Skeleton for main card / hero section */}
-    <div className="w-[80%]  h-[90%] flex items-center justify-center bg-gray-200 rounded-2xl p-4 animate-pulse flex-col gap-4">
-      
-      {/* Large placeholder for main heading */}
-      <div className="w-full h-full bg-gray-300 rounded-lg"></div>
+        {/* Skeleton for main card / hero section */}
+        <div className="w-[80%]  h-[90%] flex items-center justify-center bg-gray-200 rounded-2xl p-4 animate-pulse flex-col gap-4">
+          
+          {/* Large placeholder for main heading */}
+          <div className="w-full h-full bg-gray-300 rounded-lg"></div>
 
-      {/* Placeholder for subheading */}
-      <div className="w-3/4 h-8 bg-gray-300 rounded-lg"></div>
+          {/* Placeholder for subheading */}
+          <div className="w-3/4 h-8 bg-gray-300 rounded-lg"></div>
 
-      {/* Inner content / stats placeholders */}
-      <div className="w-full flex flex-col sm:flex-row items-center  justify-between gap-4 mt-4">
-        <div className="w-full sm:w-[30%] h-24 bg-gray-300 rounded-lg"></div>
-        <div className="w-full sm:w-[30%] h-24 bg-gray-300 rounded-lg"></div>
-         <div className="w-full sm:w-[30%] h-24 bg-gray-300 rounded-lg"></div>
+          {/* Inner content / stats placeholders */}
+          <div className="w-full flex flex-col sm:flex-row items-center  justify-between gap-4 mt-4">
+            <div className="w-full sm:w-[30%] h-24 bg-gray-300 rounded-lg"></div>
+            <div className="w-full sm:w-[30%] h-24 bg-gray-300 rounded-lg"></div>
+            <div className="w-full sm:w-[30%] h-24 bg-gray-300 rounded-lg"></div>
+          </div>
+
+        </div>
       </div>
+   );
 
-    </div>
-
-   
-
-  </div>
-);
-
-  }
+}
 
   return (
     <>
-<div className="home-cover relative w-full min-h-[calc(100vh-80px)] 2xl:h-[calc(100vh-80px)] top-[80px] flex flex-col items-center justify-center">
+<div className="home-cover relative w-full top-[90px] flex flex-col items-center justify-center">
   {/* Section 1 */}
   <div 
   data-aos="fade-up"
@@ -236,6 +233,7 @@ if (!homeData) {
         text-[14px] poppins-font font-medium
         transition-all duration-300
         hover:bg-[#FF4C05]
+        cursor-pointer
       "
     >
       {homeData.btn1_text}
@@ -262,6 +260,7 @@ if (!homeData) {
         transition-all duration-300
         hover:bg-[#FF7038] hover:text-white
         hover:border-[#307FE2]
+        cursor-pointer
       "
     >
       <Play size={14} />

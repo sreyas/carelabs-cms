@@ -6,10 +6,36 @@ import Link from 'next/link';
 
 const OurTeamsBanner = ({ data }) => {
 
-    if (!data) return null;
+    if (!data) {
+        return (
+            <div className="w-full h-screen flex flex-col items-center justify-center gap-6 p-4">
 
-    console.log("SnapData",data);
-    
+                {/* Skeleton for main card / hero section */}
+                <div className="w-[80%]  h-[90%] flex items-center justify-center bg-gray-200 rounded-2xl p-4 animate-pulse flex-col gap-4">
+
+                    {/* Large placeholder for main heading */}
+                    <div className="w-full h-full bg-gray-300 rounded-lg"></div>
+
+                    {/* Placeholder for subheading */}
+                    <div className="w-3/4 h-8 bg-gray-300 rounded-lg"></div>
+
+                    {/* Inner content / stats placeholders */}
+                    <div className="w-full flex flex-col sm:flex-row items-center  justify-between gap-4 mt-4">
+                        <div className="w-full sm:w-[30%] h-24 bg-gray-300 rounded-lg"></div>
+                        <div className="w-full sm:w-[30%] h-24 bg-gray-300 rounded-lg"></div>
+                        <div className="w-full sm:w-[30%] h-24 bg-gray-300 rounded-lg"></div>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+        );
+    }
+
+    console.log("SnapData", data);
+
 
     return (
         <div className=' w-full flex items-center justify-center '>
@@ -51,62 +77,62 @@ const OurTeamsBanner = ({ data }) => {
                     </div> */}
 
 
-                <div className="flex flex-col py-3 gap-3 sm:flex-row">
-                {data.ourteam_stats?.map((item, index) => (
-                    <div
-                    key={index}
-                    className="flex items-center justify-center gap-2 card-shadow border border-[#dae9fd] bg-white px-4 py-2 rounded-4xl"
-                    >
-                    <p
-                        className="montserrat-font font-semibold text-[24px]
+                    <div className="flex flex-col py-3 gap-3 sm:flex-row">
+                        {data.ourteam_stats?.map((item, index) => (
+                            <div
+                                key={index}
+                                className="flex items-center justify-center gap-2 card-shadow border border-[#dae9fd] bg-white px-4 py-2 rounded-4xl"
+                            >
+                                <p
+                                    className="montserrat-font font-semibold text-[24px]
                                     bg-gradient-to-r from-[#157de5] via-[#91768a] to-[#ff7a00]
                                     bg-clip-text text-transparent"  >
-                        {item.stats}
-                    </p>
+                                    {item.stats}
+                                </p>
 
-                    {/* <p className="poppins-font text-[14px]">{item.label}</p> */}
-                    <p className="poppins-font text-[14px] text-[#61758a]">
-                     {item.label}
-                    </p>
+                                {/* <p className="poppins-font text-[14px]">{item.label}</p> */}
+                                <p className="poppins-font text-[14px] text-[#61758a]">
+                                    {item.label}
+                                </p>
 
+                            </div>
+                        ))}
                     </div>
-                ))}
-                </div>
 
                     <div className="flex flex-col gap-3 py-3
                       sm:flex-row ">
                         <Link
-                        href={data.button1link || "#"}
-                        className="
+                            href={data.button1link || "#"}
+                            className="
                             py-2 px-5 text-[14px] bg-[#FF7038] border border-[#dae9fd] text-white 
                             rounded-4xl poppins-font
                             transition-all duration-300 ease-out hover:bg-[#FF4C05] 
                             hover:scale-[1.05] hover:shadow-md
                         "
                         >
-                        {data.button1text}
+                            {data.button1text}
                         </Link>
                         <Link
-                        href={data.button2link || "#"}
-                        className="
+                            href={data.button2link || "#"}
+                            className="
                             poppins-font text-[14px] p-2 px-5 bg-white rounded-4xl border border-[#dae9fd]
                             transition-all duration-300
                             hover:bg-[#f5faff]      /* VERY VERY light blue */
                             hover:border-[#7db5ff]  /* slightly darker blue border */
                         "
                         >
-                    {data.button2text}
-                    </Link>
+                            {data.button2text}
+                        </Link>
                     </div>
                     {/* <div className="flex items-center gap-2 text-[14px] mt-5">
                         <p>{data.scrolltext} </p>
                     </div> */}
                     <div className="flex items-center gap-2 text-[14px] mt-5">
-                    <p className="animate-[bounce_1s_ease-in-out_infinite] text-[#61758a]">
-                        {data.scrolltext}
-                    </p>
+                        <p className="animate-[bounce_1s_ease-in-out_infinite] text-[#61758a]">
+                            {data.scrolltext}
+                        </p>
                     </div>
-                    
+
                 </div>
                 <div className="right_section flex items-center justify-center w-full  mt-[80px] lg:mt-0 lg:w-[50%] xl:p-5">
                     <div

@@ -9,7 +9,7 @@ const OurTeamGallery = ({ data }) => {
   return (
     <div className="w-full flex flex-col items-center justify-center mt-20">
       <div className="flex flex-col w-[85%] p-5 text-center 2xl:w-[50%]">
-        <h2 className="text-[30px] montserrat-font font-semibold mb-4"
+        <h2 className="text-[30px] md:text-[36px] montserrat-font font-bold mb-4"
            dangerouslySetInnerHTML={{ __html: data.title }}
         >
         </h2>

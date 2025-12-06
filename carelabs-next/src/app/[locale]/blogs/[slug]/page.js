@@ -15,7 +15,7 @@ export default function Page(props) {
   console.log(" Server → Slug:", slug);
   console.log(" Server → Locale:", locale);
 
-  if(locale=="CA"){
+  if(locale=="CA" || locale=="ca"){
     locale="en-CA";
   }
 

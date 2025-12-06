@@ -80,30 +80,50 @@ if (!featured) {
             </div>
 
             <Link href="/services/power-system-analysis" legacyBehavior>
-              <a className="px-5 py-3 border border-[#1F8FEB] text-[#1F8FEB] rounded-xl inline-block poppins-font">
+              <a className="px-5 py-3 border border-[#1F8FEB] text-[#1F8FEB] rounded-[12px]
+              inline-block poppins-font text-center w-full sm:w-auto hover:bg-[#E9EDF5] transition-all duration-300 animate-pop-in ">
                 {insights.button}
               </a>
             </Link>
 
-
         </div>
 
+
+       <div className="relative w-full md:w-[80%] 2xl:w-[65%]">
+
+        {featured?.featured && (
+        <span className="absolute top-[55px] left-3 bg-[#1F8FEB]/95 text-white text-sm font-medium px-4 py-2 rounded-full shadow-md z-20 pointer-events-none montserrat-font">
+        {featured?.featuredText}
+        </span>
+        )}
+
+
         {/* BLOG CARD */}
-        <div data-aos="fade-up" data-aos-anchor-placement="top-center" className="bg-white transform transition-all duration-500 ease-in-out hover:-translate-y-3 w-full mt-10  flex flex-col md:flex-row navbar-shadow group rounded-[24px] 
-          md:w-[80%]
-          lg:h-auto
-          2xl:w-[65%] ">
+        <div 
+           data-aos="fade-up"
+           data-aos-anchor-placement="top-center" 
+           className="bg-white transform transition-all duration-500 ease-in-out hover:-translate-y-3 w-full mt-10  flex flex-col md:flex-row group rounded-[24px] lg:h-auto shadow-[0px_18px_45px_rgba(15,23,42,0.10)] "
+          
+          >
+
+
 
             {/* IMAGE SECTION */}
             <div
-              className="w-full h-60 md:w-1/2 md:h-auto bg-cover bg-center 
-                        rounded-t-2xl md:rounded-l-2xl md:rounded-tr-none overflow-hidden">
+              className=" w-full h-60 md:w-1/2 md:h-auto bg-cover bg-center rounded-t-2xl md:rounded-l-2xl md:rounded-tr-none overflow-hidden" 
+
+              >
+               
+                
               <img
-                  //src="https://proper-hug-7f40206151.media.strapiapp.com/service2_9d7db5d882.jpg"
                   src={featured?.image?.url}
-                  className="w-full h-full object-cover transform transition-all duration-500 ease-in-out group-hover:scale-115 rounded-t-2xl md:rounded-l-2xl md:rounded-tr-none"
+                  className="w-full h-full object-cover  transform transition-all duration-500 ease-in-out group-hover:scale-115 rounded-t-2xl md:rounded-l-2xl md:rounded-tr-none"
               />
             </div>
+
+         
+
+
 
             {/* CONTENT SECTION */}
             <div
@@ -152,6 +172,9 @@ if (!featured) {
         </div>
       </div>
     </div>
+      
+
+    </div>
 
     <div className="w-full py-10 bg-[#e7f1ff]">
   <div className="cards-blog grid grid-cols-1 mt-16 lg:grid-cols-3 
@@ -165,7 +188,7 @@ if (!featured) {
 
           <div 
             data-aos="fade-up"
-            className="bg-[#e6f0fd] card-shadow rounded-xl 
+            className="bg-[#e6f0fd] shadow-[0px_14px_35px_rgba(15,23,42,0.08)] rounded-xl 
                 flex flex-col h-full hover:shadow-lg cursor-pointer group">
 
             {/* IMAGE */}

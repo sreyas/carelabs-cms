@@ -2,8 +2,17 @@ import { GET_PAGE_SEO } from "@/lib/api-Collection";
 import client from "@/lib/appollo-client";
 
 export async function generateMetadata({ params }) {
-  const locale = params?.locale || "en-CA"; // FIXED
-  console.log("META LOCALE:", locale);
+  // params might be a ReactPromise
+  if (typeof params.then === "function") {
+    params = await params;
+  }
+
+  let locale = params?.locale;
+
+  // fallback
+  if (!locale) locale = "en";
+
+  console.log("Server META LOCALE:", locale); // should now log "ca"
 
   try {
     const res = await client.query({
@@ -19,6 +28,7 @@ export async function generateMetadata({ params }) {
         title: data.metaTitle,
         description: data.metaDescription,
         keywords: data.keywords || undefined,
+        lang: locale,
       };
     }
   } catch (err) {
@@ -28,9 +38,23 @@ export async function generateMetadata({ params }) {
   return {
     title: "Carelabs",
     description: "",
+    lang: locale,
   };
 }
 
-export default function Layout({ children}) {
-  return <>{children}</>;
+export default async function LocaleLayout({ children, params }) {
+  // Await in case params is a ReactPromise
+  if (typeof params.then === "function") {
+    params = await params;
+  }
+
+  // Extract locale with fallback
+  const locale = params?.locale || "en";
+  console.log("Resolved locale:", locale);
+
+  return (
+    <html lang={locale}>
+      <body>{children}</body>
+    </html>
+  );
 }

@@ -5,12 +5,20 @@ import * as Icons from "lucide-react";
 
 
 const OurTeamWorkWith = ({data}) => {
+
+ const ICON_COLORS = [
+  { color: "#1F8FEB", shadow: "0px 10px 25px rgba(31, 143, 235, 0.25)" }, // Curious Blue
+  { color: "#FF7038", shadow: "0px 10px 25px rgba(255, 112, 56, 0.25)" }, // Burning Orange
+  { color: "#1F8FEB", shadow: "0px 10px 25px rgba(31, 143, 235, 0.25)" }, // Curious Blue
+];
+
+
   if(!data)return null;
   return (
     <div>
         <div className='w-full flex flex-col items-center justify-center mt-20'>
           <div className="w-[80%]">
-              <h2 className='text-[36px] montserrat-font font-semibold text-center  my-10'
+              <h2 className='text-[30px] md:text-[36px] montserrat-font font-bold text-center  my-10'
                   dangerouslySetInnerHTML={{ __html: data.title }}
               ></h2>
                 <p className='text-[18px] text-center  para-text  poppins-font'>{data.description}</p>
@@ -22,25 +30,22 @@ const OurTeamWorkWith = ({data}) => {
 
               <div className="w-full p-5 grid grid-cols-1 md:grid-cols-3 gap-3 lg:gap-10">
 
-                {data.Where_you_work_Items?.map((item, index) => {
+                {/* {data.Where_you_work_Items?.map((item, index) => {
                   // Fetch icon dynamically from lucide-react
                   const IconComponent = Icons[item.icon.trim()] || Icons.Map;
 
                   return (
                     <div key={index} className="p-10 md:p-5 flex flex-col justify-start gap-3">
                       
-                      {/* Icon Box */}
                       <div className="w-[50px] h-[50px] lg:w-[70px] lg:h-[70px] light-blue rounded-[16px] 
                                       flex items-center justify-center">
-                        <IconComponent className="w-6 h-6 lg:w-8 lg:h-8" />
+                        <IconComponent className="w-[32px] h-[32px] lg:w-8 lg:h-8" />
                       </div>
 
-                      {/* Title */}
                       <h3 className="text-[18px] montserrat-font font-semibold">
                         {item.title}
                       </h3>
 
-                      {/* Countries */}
                       <div className="flex flex-wrap gap-5 text-[14px] para-text">
                         {item.Where_you_work_countries?.map((countryItem, i) => (
                           <p key={i}>{countryItem.country}</p>
@@ -49,7 +54,47 @@ const OurTeamWorkWith = ({data}) => {
 
                     </div>
                   );
-                })}
+                })} */}
+
+                {data.Where_you_work_Items?.map((item, index) => {
+  const IconComponent = Icons[item.icon.trim()] || Icons.Map;
+
+  // Select colors based on index
+  const { color, shadow } = ICON_COLORS[index] || ICON_COLORS[0];
+
+  return (
+    <div key={index} className="p-10 md:p-5 flex flex-col justify-start gap-3">
+      
+      {/* Icon Box */}
+      <div
+        className="w-[50px] h-[50px] lg:w-[70px] lg:h-[70px] rounded-[16px] flex items-center justify-center"
+        style={{
+          backgroundColor: `${color}15`, // very light tint
+                      
+        }}
+      >
+        <IconComponent
+          className="w-[32px] h-[32px] lg:w-8 lg:h-8"
+          stroke={color}  // ← icon color
+        />
+      </div>
+
+      {/* Title */}
+      <h3 className="text-[18px] montserrat-font font-semibold">
+        {item.title}
+      </h3>
+
+      {/* Countries */}
+      <div className="flex flex-wrap gap-5 text-[14px] para-text">
+        {item.Where_you_work_countries?.map((countryItem, i) => (
+          <p key={i}>{countryItem.country}</p>
+        ))}
+      </div>
+
+    </div>
+  );
+})}
+
 
               </div>
 

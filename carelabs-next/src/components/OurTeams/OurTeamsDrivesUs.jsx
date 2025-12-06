@@ -10,7 +10,7 @@ const OurTeamsDrivesUs = ({data}) => {
 
   return (
     <div className='w-full flex flex-col items-center justify-center mt-20'>
-        <h2 className='text-[36px] montserrat-font font-semibold text-center  my-10'
+        <h2 className='text-[30px] md:text-[36px] montserrat-font font-bold text-center  my-10'
          dangerouslySetInnerHTML={{ __html: data.title }}
         ></h2>
            <div className="flex flex-col w-[85%] rounded-2xl lg:flex-row 2xl:w-[70%]">

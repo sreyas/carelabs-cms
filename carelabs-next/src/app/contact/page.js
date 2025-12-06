@@ -32,7 +32,32 @@ const Contactpage = () => {
         fetchData();
       }, []);
 
-      if (!contactData) return <p>Loading...</p>;
+      if (!contactData) {
+        return (
+            <div className="w-full h-screen flex flex-col items-center justify-center gap-6 p-4">
+
+              {/* Skeleton for main card / hero section */}
+              <div className="w-[80%]  h-[90%] flex items-center justify-center bg-gray-200 rounded-2xl p-4 animate-pulse flex-col gap-4">
+                
+                {/* Large placeholder for main heading */}
+                <div className="w-full h-full bg-gray-300 rounded-lg"></div>
+
+                {/* Placeholder for subheading */}
+                <div className="w-3/4 h-8 bg-gray-300 rounded-lg"></div>
+
+                {/* Inner content / stats placeholders */}
+                <div className="w-full flex flex-col sm:flex-row items-center  justify-between gap-4 mt-4">
+                  <div className="w-full sm:w-[30%] h-24 bg-gray-300 rounded-lg"></div>
+                  <div className="w-full sm:w-[30%] h-24 bg-gray-300 rounded-lg"></div>
+                  <div className="w-full sm:w-[30%] h-24 bg-gray-300 rounded-lg"></div>
+                </div>
+
+              </div>
+            </div>
+        );
+
+      }
+
 
   return (
 
@@ -368,165 +393,6 @@ const Contactpage = () => {
             </div>
 
           </form>
-
-
-          
-          {/* <form className="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-        <div className="flex flex-col">
-          <label className="text-sm font-medium mb-1">Full Name *</label>
-          <input
-            type="text"
-            className="w-full px-4 py-3 border rounded-xl bg-gray-50 focus:ring-2 focus:ring-blue-300 outline-none"
-            placeholder="John Smith"
-          />
-        </div>
-
-        <div className="flex flex-col">
-          <label className="text-sm font-medium mb-1">Company / Facility Name *</label>
-          <input
-            type="text"
-            className="w-full px-4 py-3 border rounded-xl bg-gray-50"
-            placeholder="ABC Manufacturing"
-          />
-        </div>
-
-        <div className="flex flex-col">
-          <label className="text-sm font-medium mb-1">Work Email *</label>
-          <input
-            type="email"
-            className="w-full px-4 py-3 border rounded-xl bg-gray-50"
-            placeholder="john@company.com"
-          />
-        </div>
-
-        <div className="flex flex-col">
-          <label className="text-sm font-medium mb-1">Phone</label>
-          <input
-            type="text"
-            className="w-full px-4 py-3 border rounded-xl bg-gray-50"
-            placeholder="+1 (555) 123-4567"
-          />
-        </div>
-
-        <div className="flex flex-col">
-          <label className="text-sm font-medium mb-1">Country *</label>
-          <input
-            type="text"
-            className="w-full px-4 py-3 border rounded-xl bg-gray-50"
-            placeholder="United States"
-          />
-        </div>
-
-        <div className="flex flex-col">
-          <label className="text-sm font-medium mb-1">City</label>
-          <input
-            type="text"
-            className="w-full px-4 py-3 border rounded-xl bg-gray-50"
-            placeholder="New York"
-          />
-        </div>
-
-        <div className="col-span-1 md:col-span-2 flex flex-col">
-          <label className="text-sm font-medium mb-1">Type of help you need *</label>
-          <select className="w-full px-4 py-3 border rounded-xl bg-gray-50 text-gray-600">
-            <option>Select an option</option>
-          </select>
-        </div>
-
-        <div className="col-span-1 md:col-span-2 flex flex-col">
-          <label className="text-sm font-medium mb-1">
-            Which services are you interested in?
-          </label>
-
-          <div className="flex flex-wrap gap-3 mt-3">
-            {[
-              "Power System Analysis",
-              "Thermography",
-              "Relay Coordination",
-              "Compliance Audits",
-              "Arc-Flash Studies",
-              "Other",
-            ].map((item, idx) => (
-              <span
-                key={idx}
-                className="px-4 py-2 bg-gray-100 rounded-full text-sm text-gray-700 hover:bg-gray-200 cursor-pointer"
-              >
-                {item}
-              </span>
-            ))}
-          </div>
-        </div>
-
-        <div className="col-span-1 md:col-span-2">
-          <label className="text-sm font-medium mb-2 block">
-            Preferred contact method
-          </label>
-
-          <div className="flex items-center gap-6 text-sm text-gray-700">
-            <label className="flex items-center gap-2 cursor-pointer">
-              <input type="radio" name="contact_method" defaultChecked />
-              Email
-            </label>
-
-            <label className="flex items-center gap-2 cursor-pointer">
-              <input type="radio" name="contact_method" />
-              Phone
-            </label>
-
-            <label className="flex items-center gap-2 cursor-pointer">
-              <input type="radio" name="contact_method" />
-              Online Meeting
-            </label>
-          </div>
-        </div>
-
-        <div className="col-span-1 md:col-span-2 flex flex-col">
-          <label className="text-sm font-medium mb-1">Message *</label>
-          <textarea
-            rows="4"
-            className="w-full px-4 py-3 border rounded-xl bg-gray-50"
-            placeholder="Write your message..."
-          ></textarea>
-        </div>
-
-        <div className="col-span-1 md:col-span-2 flex flex-col items-center mt-6">
-
-        <button
-          type="submit"
-          className="
-            w-full md:w-[60%] 
-            py-3 
-            bg-[#FF6B35] 
-            text-white 
-            rounded-full 
-            text-sm 
-            font-medium 
-            shadow 
-            hover:bg-[#ff5a1f] 
-            transition
-          "
-        >
-          Send to our experts
-        </button>
-
-        <p className="flex items-center gap-2 text-gray-600 text-sm mt-3">
-          <svg
-            className="w-4 h-4"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            viewBox="0 0 24 24"
-          >
-            <path d="M12 11.5v3m0-8v.01M12 4a8 8 0 100 16 8 8 0 000-16z" />
-          </svg>
-          We reply within one business day, often sooner, for all project and safety-critical requests
-        </p>
-
-        </div>
-
-        </form> */}
-
         </div>
       </div>
     </section>
@@ -551,19 +417,24 @@ const Contactpage = () => {
 
           {/* LEFT MAP CARD */}
           <div className="col-span-2 bg-white rounded-3xl shadow-[0_8px_50px_rgba(0,0,0,0.06)] p-8 md:p-12 flex items-center justify-center">
-            <div className="w-full h-[350px] md:h-[420px] bg-[#F1F6FE] rounded-2xl flex flex-col items-center justify-center border border-gray-200">
-              <div className="flex gap-3 mb-3">
-                <span className="w-4 h-4 rounded-full bg-blue-500"></span>
-                <span className="w-4 h-4 rounded-full bg-blue-300"></span>
-                <span className="w-4 h-4 rounded-full bg-orange-400"></span>
-              </div>
-              <p className="text-gray-600 font-medium text-sm">
-                {selectedRegion?.region_name || "Select a region"}
-              </p>
+            <div className="w-full h-[350px] md:h-[420px] bg-[#F1F6FE] rounded-2xl flex flex-col items-center justify-center border border-gray-200 overflow-hidden">
+               {!selectedRegion && (
+                <>
+                  <div className="flex gap-3 mb-3">
+                    <span className="w-4 h-4 rounded-full bg-blue-500"></span>
+                    <span className="w-4 h-4 rounded-full bg-blue-300"></span>
+                    <span className="w-4 h-4 rounded-full bg-orange-400"></span>
+                  </div>
+
+                  <p className="text-gray-600 font-medium text-sm">
+                    Select a region
+                  </p>
+                </>
+              )}
 
               {selectedRegion?.map_embed_code && (
                 <div
-                  className="w-full h-full mt-4"
+                  className="w-full h-full overflow-hidden rounded-2xl"
                   dangerouslySetInnerHTML={{ __html: selectedRegion.map_embed_code }}
                 />
               )}
@@ -571,20 +442,20 @@ const Contactpage = () => {
           </div>
       
           {/* RIGHT CARD */}
-          <div className="flex flex-col gap-8">
+          <div className="flex flex-col gap-8 ml-6 md:ml-0">
 
             <div
               className="
-                bg-white rounded-3xl 
-                shadow-[0_8px_40px_rgba(0,0,0,0.05)] 
-                p-8 text-left
+                bg-white rounded-3xl text-[#111827]
+                contact-shadow 
+                p-7 text-left
               "
             >
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">
+              <h3 className="text-[14.9px] font-semibold mb-4">
                 {contactData?.Where_we_support?.presence_types?.title}
               </h3>
 
-              <ul className="space-y-3 text-gray-700 text-sm">
+              <ul className="space-y-3 text-[12.3px]">
                 {contactData?.Where_we_support?.presence_types?.presence_type_item?.map(
                   (item, idx) => {
                     const IconComponent = LucideIcons[item.icon];
@@ -593,7 +464,7 @@ const Contactpage = () => {
                       <li key={idx} className="flex items-center gap-3">
                         {IconComponent ? (
                           <IconComponent
-                            className="w-5 h-5"
+                            className="w-4 h-4"
                             stroke={item.icon_color} 
                             fill="none"
                           />
@@ -612,19 +483,19 @@ const Contactpage = () => {
             </div>
 
             {/* Regions */}
-            <div className="bg-white rounded-3xl shadow-[0_8px_40px_rgba(0,0,0,0.05)] p-8 text-left">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">
-                {contactData?.Where_we_support?.regions?.title || "Regions"}
+            <div className="bg-[#FFFFFFE6] rounded-3xl contact-shadow p-6 text-left">
+              <h3 className=" font-semibold text-[14.9px] text-[#111827] mb-4">
+                {contactData?.Where_we_support?.regions?.title }
               </h3>
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-wrap gap-2">
                 {contactData?.Where_we_support?.regions?.region_item?.map((region, i) => (
                   <span
                     key={i}
                     onClick={() => setSelectedRegion(region)}
-                    className={`px-4 py-2 rounded-full text-sm cursor-pointer ${
+                    className={`w-fit px-2 py-0 rounded-full text-[11.3px] font-semibold border border-[#0F172914] text-gray-900 cursor-pointer ${
                       selectedRegion?.region_name === region.region_name
-                        ? "bg-blue-500 text-white"
-                        : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                        ? "bg-[#157DE5] text-white"
+                        : "text-gray-700 hover:bg-[#157DE51A] hover:border-[#157DE533]" 
                     }`}
                   >
                     {region.region_name}
@@ -637,7 +508,7 @@ const Contactpage = () => {
         </div>
       </div>
       
-      <section className="w-full flex justify-center py-10 bg-[#F7F8FB]">
+      <section className="w-full flex justify-center py-10 bg-[#F7F8FB] mt-10">
         <div
           className="
             w-[98%] md:w-[90%] lg:w-[85%] xl:w-[78%] 2xl:w-[72%]
@@ -848,7 +719,7 @@ const Contactpage = () => {
                   openIndex === i ? "max-h-[500px] pb-5" : "max-h-0"
                 }`}
               >
-                <div className="px-2 items-start">
+                <div className="px-2 text-left ml-3">
                   {item.answer}
                 </div>
               </div>

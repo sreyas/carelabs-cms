@@ -69,6 +69,7 @@ export default async function Page({ params }) {
 
         return (
           <div
+          
             key={idx}
             className="
               w-full sm:w-[45%] lg:w-[31.8%] 
@@ -155,7 +156,11 @@ export default async function Page({ params }) {
 
       {/* LEFT CARD */}
       <div className="
-        bg-gradient-to-br from-white/20 to-[#f0f5fd] p-8 rounded-2xl 
+        bg-gradient-to-br
+        from-[rgba(255,255,255,0.9)] 
+         via-[rgba(239,246,255,0.85)]
+         to-[rgba(255,247,237,0.8)] 
+        p-8 rounded-2xl 
         w-full lg:w-[50%] xl:w-[48%] 
         shadow-[0_6px_10px_rgba(0,0,0,0.15)] flex flex-col gap-6
       ">
@@ -197,7 +202,11 @@ export default async function Page({ params }) {
 
       {/* RIGHT CARD */}
       <div className="
-        bg-gradient-to-br from-[#f0f5fd] to-white/20 p-8 rounded-2xl 
+        bg-gradient-to-br
+        from-[rgba(21,125,229,0.1)]
+        via-[rgba(255,255,255,0.95)]
+        to-[rgba(255,255,255,0.9)]
+         p-8 rounded-2xl 
         w-full lg:w-[50%] xl:w-[48%] 
         shadow-[0_6px_10px_rgba(0,0,0,0.15)] flex flex-col gap-6
       ">
@@ -250,8 +259,8 @@ export default async function Page({ params }) {
       ===================================================================================== */}
       <section>
         <div className="w-full flex flex-col items-center py-10 mt-10 bg-[#f9fbfe]">
-           <h1 className=" text-4xl font-bold montserrat-font md:text-5xl text-center leading-tight " dangerouslySetInnerHTML={{ __html: service.WhatsIncludedtitle }}></h1>
-          <p className="text-gray-500 max-w-3xl text-center text-[18px] mt-3">{service?.WhatsIncludedsubtitle}</p>
+           <h1 className=" text-4xl p-4 font-bold montserrat-font md:text-5xl text-center leading-tight " dangerouslySetInnerHTML={{ __html: service.WhatsIncludedtitle }}></h1>
+          <p className="text-gray-500 p-4 max-w-3xl text-center text-[18px] mt-3">{service?.WhatsIncludedsubtitle}</p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10 w-[90%] lg:w-[80%]">
             {service?.whats_include_features?.map((f, idx) => {
@@ -295,153 +304,112 @@ export default async function Page({ params }) {
         </div>
       </section>
 
+   
       {/* =====================================================================================
-         SECTION 4 → How Study Runs (Timeline)
+         SECTION 4 →TimeLine
       ===================================================================================== */}
-      {/* <section>
-        <div className="w-full flex flex-col items-center py-10">
 
-          <p className="gradient-text text-4xl font-bold">{service?.methodsTitle}</p>
-          <p className="text-gray-700 max-w-xl text-center mt-3">{service?.methodsSubtitle}</p>
+      <section>
+        <div className="w-full flex flex-col items-center py-11 bg-[#f9fbfe]">
 
-          <div className="w-[90%] md:w-[70%] flex flex-col gap-10 py-10">
+          <h1 className=" montserrat-font font-bold text-4xl md:text-5xl text-center leading-tight">
+            {service?.methodsTitle?.split(" ").slice(0, -1).join(" ")} <br />
+            {service?.methodsTitle?.split(" ").slice(-1)}
+          </h1>
+
+          <p className="text-gray-500 p-3 text-[18px] max-w-3xl text-center mt-3">{service?.methodsSubtitle}</p>
+
+          <div className="w-[90%] md:w-[70%] flex flex-col gap-10 py-10 ">
             {service?.methodology?.map((step, index) => (
-              <div key={index} className="flex flex-col items-center gap-4">
+            <div key={index} className="flex flex-col items-center gap-4">
 
-                <div className={`flex w-full ${index % 2 === 0 ? "md:justify-start" : "md:justify-end"}`}>
-                  <div className="bg-white rounded-2xl navbar-shadow flex flex-col md:flex-row overflow-hidden w-full lg:w-[60%]">
-                    
-                    <div
-                      className="w-full md:w-[40%] h-56 md:h-auto"
-                      style={{
-                        backgroundImage: `url(${step?.image?.url})`,
-                        backgroundSize: "cover",
-                        backgroundPosition: "center",
-                      }}
-                    />
+            <div className={`flex w-full ${index % 2 === 0 ? "md:justify-start " : "md:justify-end"}`}>
+        
 
-                    <div className="p-6 flex gap-4 md:w-[60%]">
-                      <div className="w-[50px] h-[50px] flex justify-center items-center bg-amber-200 rounded-xl text-lg font-bold">
-                        {step.Order}
-                      </div>
-                      <div>
-                        <p className="text-xl font-bold">{step.OrderTitleText}</p>
-                        <p className="text-sm text-gray-700 mt-2">{step.OrderSubtitleText}</p>
-                      </div>
-                    </div>
-                  </div>
+            <div
+            className={`
+              group bg-white rounded-2xl shadow-[0_6px_10px_rgba(0,0,0,0.15)] flex
+              flex-col md:flex-row overflow-hidden
+              w-full lg:w-[80%] xl:w-[75%] 2xl:w-[70%] 
+              h-full md:h-[180px]
+              ${index % 2 !== 0 ? "md:flex-row-reverse" : ""}
+            `}
+          >
+          {/* IMAGE */}
+          <div className="w-full md:w-[35%] h-48 md:h-auto shrink-0 relative">
+
+          {/* IMAGE */}
+              <div
+                className="
+                  w-full h-full
+                  transition-transform duration-[1100ms]
+                  ease-[cubic-bezier(.13,.62,.31,1)]
+                  group-hover:scale-[1.08]
+                "
+                style={{
+                  backgroundImage: `url(${step?.image?.url})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                }}
+              />
+
+          {/* GRADIENT OVERLAY */}
+              {/* OVERLAY */}
+              <div
+                className={`absolute inset-0 pointer-events-none
+                  ${index % 2 === 0 
+                    ? "bg-gradient-to-r from-white/30 via-white/10 to-transparent" 
+                    : "bg-gradient-to-l from-white/30 via-white/10 to-transparent"
+                  }`}
+              ></div>
+
+        </div>
+
+        {/* CONTENT */}
+        <div className="p-6 flex gap-4 md:w-[70%] items-start">
+          {/* ORDER BOX */}
+          <div className="min-w-[40px] h-[40px] flex justify-center items-center bg-[#e2ecf8] text-[#157be2] rounded-xl text-lg font-bold">
+            {step.Order}
+          </div>
+
+          {/* ICON */}
+          {step.icon && (() => {
+            const iconName = step.icon.trim();
+            const StepIcon = LucideIcons[iconName] || LucideIcons.Circle;
+            return <StepIcon className="text-[#157be2] w-5 h-5 shrink-0 mt-1" />;
+          })()}
+
+          {/* TEXT */}
+          <div className="flex-1">
+            <p className="text-xl font-bold montserrat-font text-[#10192c]">{step.OrderTitleText}</p>
+            <p className="text-sm text-gray-500 mt-2">
+              {step.OrderSubtitleText}
+            </p>
+          </div>
+        </div>
+      </div>
+
+
                 </div>
 
                 {index !== service.methodology.length - 1 && (
-                  <i className="fa-solid fa-angles-down text-blue-500 text-3xl" />
-                )}
+        <div className="flex items-center gap-2">
+          {/* Left separator */}
+          <div className="w-12 h-[2px] bg-gradient-to-l from-[#157DE5]/30 to-[#1F7FDB]/0"></div>
+
+          {/* Icon */}
+          <ChevronDown className="text-blue-400 w-6 h-6" />
+
+          {/* Right separator */}
+          <div className="w-12 h-[2px] bg-gradient-to-r from-[#157DE5]/30 to-[#1F7FDB]/0"></div>
+        </div>
+      )}
               </div>
             ))}
           </div>
 
         </div>
-      </section> */}
-
-      <section>
-  <div className="w-full flex flex-col items-center py-11 bg-[#f9fbfe]">
-
-    <h1 className=" montserrat-font font-bold text-4xl md:text-5xl text-center leading-tight">
-  {service?.methodsTitle?.split(" ").slice(0, -1).join(" ")} <br />
-  {service?.methodsTitle?.split(" ").slice(-1)}
-</h1>
-
-    <p className="text-gray-500 text-[18px] max-w-3xl text-center mt-3">{service?.methodsSubtitle}</p>
-
-    <div className="w-[90%] md:w-[70%] flex flex-col gap-10 py-10 ">
-      {service?.methodology?.map((step, index) => (
-        <div key={index} className="flex flex-col items-center gap-4">
-
-          <div className={`flex w-full ${index % 2 === 0 ? "md:justify-start " : "md:justify-end"}`}>
-  
-
-  <div
-  className={`
-    group bg-white rounded-2xl shadow-[0_6px_10px_rgba(0,0,0,0.15)] flex
-    flex-col md:flex-row overflow-hidden
-    w-full lg:w-[80%] xl:w-[75%] 2xl:w-[70%] h-[180px]
-    ${index % 2 !== 0 ? "md:flex-row-reverse" : ""}
-  `}
->
-  {/* IMAGE */}
-  <div className="w-full md:w-[35%] h-48 md:h-auto shrink-0 relative">
-
-    {/* IMAGE */}
-    <div
-      className="
-        w-full h-full
-        transition-transform duration-[1100ms]
-        ease-[cubic-bezier(.13,.62,.31,1)]
-        group-hover:scale-[1.08]
-      "
-      style={{
-        backgroundImage: `url(${step?.image?.url})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
-    />
-
-    {/* GRADIENT OVERLAY */}
-{/* OVERLAY */}
-<div
-  className={`absolute inset-0 pointer-events-none
-    ${index % 2 === 0 
-      ? "bg-gradient-to-r from-white/30 via-white/10 to-transparent" 
-      : "bg-gradient-to-l from-white/30 via-white/10 to-transparent"
-    }`}
-></div>
-
-  </div>
-
-  {/* CONTENT */}
-  <div className="p-6 flex gap-4 md:w-[70%] items-start">
-    {/* ORDER BOX */}
-    <div className="min-w-[40px] h-[40px] flex justify-center items-center bg-[#e2ecf8] text-[#157be2] rounded-xl text-lg font-bold">
-      {step.Order}
-    </div>
-
-    {/* ICON */}
-    {step.icon && (() => {
-      const iconName = step.icon.trim();
-      const StepIcon = LucideIcons[iconName] || LucideIcons.Circle;
-      return <StepIcon className="text-[#157be2] w-5 h-5 shrink-0 mt-1" />;
-    })()}
-
-    {/* TEXT */}
-    <div className="flex-1">
-      <p className="text-xl font-bold montserrat-font text-[#10192c]">{step.OrderTitleText}</p>
-      <p className="text-sm text-gray-500 mt-2">
-        {step.OrderSubtitleText}
-      </p>
-    </div>
-  </div>
-</div>
-
-
-          </div>
-
-          {index !== service.methodology.length - 1 && (
-  <div className="flex items-center gap-2">
-    {/* Left separator */}
-    <div className="w-12 h-[2px] bg-gradient-to-l from-[#157DE5]/30 to-[#1F7FDB]/0"></div>
-
-    {/* Icon */}
-    <ChevronDown className="text-blue-400 w-6 h-6" />
-
-    {/* Right separator */}
-    <div className="w-12 h-[2px] bg-gradient-to-r from-[#157DE5]/30 to-[#1F7FDB]/0"></div>
-  </div>
-)}
-        </div>
-      ))}
-    </div>
-
-  </div>
-</section>
+      </section>
 
   
 
@@ -467,14 +435,14 @@ export default async function Page({ params }) {
                    hover:-translate-y-2 hover:shadow-2xl hover:scale-[1.02]"
       >
         <div
-          className="w-[50px] h-[50px] rounded-xl flex justify-center items-center
+          className="w-[56px] h-[56px] p-[14px] rounded-xl flex justify-center items-center
           bg-gradient-to-br from-[rgba(21,125,229,0.1)] to-[rgba(255,112,56,0.1)] 
                      transition-colors duration-300
                      group-hover:scale-110 group-hover:rotate-3           
           "
         >
           <Icon
-            className="w-7 h-7 text-[#157be2] transition-all duration-300 ease-out
+            className="w-[28px] h-[28px] text-[#157be2] transition-all duration-300 ease-out
                        group-hover:text-orange-500"
           />
         </div>
@@ -594,9 +562,12 @@ export default async function Page({ params }) {
 
                 <StatIcon className="w-[32px] h-[32px] text-[#157be2] transition-all duration-300 group-hover:text-orange-500" />
               </div>
-              <p className="text-4xl font-bold bg-gradient-to-r from-[#5b68c3] to-[#c58a7a] bg-clip-text text-transparent">
-                {stat.percentage}
+             <p className="text-4xl font-bold 
+              bg-[linear-gradient(90deg,#157DE5_0%,#FF7038_90%)]
+              bg-clip-text text-transparent">
+              {stat.percentage}
               </p>
+
               <p className="text-sm text-gray-500">{stat.description}</p>
             </div>
           );

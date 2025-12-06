@@ -26,7 +26,7 @@ const OurTeamConverstation = ({data}) => {
               return (
                 <a key={index} href={btn.link || "#"} className="w-full sm:w-auto">
                   <button
-                    className={`flex items-center justify-center rounded-full px-5 py-3 w-full sm:w-auto text-base sm:text-[14px] font-medium
+                    className={`flex items-center justify-center rounded-full px-5 py-3 w-full sm:w-auto text-base text-[14px] font-medium
                       ${index === 0 ? "secondary-bg text-white" : "border border-[#2575b6] text-[#111827]"}`}
                   >
                     <Icon className=" h-5 w-5 mx-2" />

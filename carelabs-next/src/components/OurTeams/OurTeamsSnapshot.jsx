@@ -21,7 +21,7 @@ const OurTeamsSnapshot = ({data}) => {
 
     {/* LEFT DIV */}
     <div className="w-full lg:w-[60%] bg--400 lg:p-4">
-      <h2 className='text-[36px] font-semibold montserrat-font leading-9 mb-5'
+      <h2 className='text-[30px] md:text-[36px] font-bold montserrat-font leading-9 mb-5'
       dangerouslySetInnerHTML={{ __html: data.title }}
       ></h2>
       <p className='poppins-font para-text text-[16px] mb-5'

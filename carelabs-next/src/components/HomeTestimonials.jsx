@@ -115,7 +115,7 @@ const HomeTestimonials = () => {
     key={current} 
     className="opacity-0 animate-feedbackFade max-w-[700px] text-center px-4 md:px-0"
   >
-    <p className="text-xl md:text-2xl text-gray-700 leading-relaxed poppins-font">
+    <p className="text-base sm:text-lg md:text-2xl text-gray-700 leading-relaxed poppins-font">
       {testimonials[current]?.feedback}
     </p>
   </div>
@@ -149,7 +149,7 @@ const HomeTestimonials = () => {
         {/* Navigation */}
         <div className="flex justify-center items-center gap-6 mt-10">
           <button
-            className="w-10 h-10 flex items-center justify-center border rounded-full hover:bg-gray-100 transition"
+            className="w-10 h-10 flex items-center justify-center border rounded-full hover:bg-gray-100 transition cursor-pointer"
             onClick={prevSlide}
 
             style={{
@@ -162,16 +162,6 @@ const HomeTestimonials = () => {
           </button>
 
           {/* Dot Indicators */}
-          {/* <div className="flex gap-2">
-            {testimonials.map((_, index) => (
-              <span
-                key={index}
-                className={`w-3 h-3 rounded-full ${
-                  current === index ? "bg-blue-600" : "bg-gray-300"
-                }`}
-              ></span>
-            ))}
-          </div> */}
 
           <div className="flex gap-2">
   {testimonials.map((_, index) => {
@@ -205,7 +195,7 @@ const HomeTestimonials = () => {
 
 
           <button
-            className="w-10 h-10 flex items-center justify-center border rounded-full hover:bg-gray-100 transition"
+            className="w-10 h-10 flex items-center justify-center border rounded-full hover:bg-gray-100 transition cursor-pointer"
             onClick={nextSlide}
             style={{
             borderColor: "#307FE2",

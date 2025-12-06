@@ -70,7 +70,9 @@ if (!blog) {
       {/* Breadcrumbs */}
       <div className="w-full md:w-[80%] xl:w-[70%] mt-20 md:mt-24 lg:mt-30 px-4 md:px-0">
         <p className="text-para text-[14px] poppins-font">
-          Home / Insights / {blog.slug}
+          {/* Home / Insights / {blog.slug} */}
+           <span className="text-slate-500">Home</span> /
+           <span className="text-slate-500"> Insights </span> /{blog.slug}
         </p>
       </div>
 
@@ -94,33 +96,33 @@ if (!blog) {
             dangerouslySetInnerHTML={{ __html: blog.mainheading }}>
           </h1>
 
-          <p className="text-[16px] xl:text-[18px] poppins-font para-text">{blog.description}</p>
+          <p className="text-[16px] xl:text-[18px] montserrat-font para-text">{blog.description}</p>
 
           <hr className="w-full border-gray-300 my-4" />
 
-        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 text-sm poppins-font para-text">
+        <div className="flex flex-col sm:flex-row items-start gap-2 sm:items-center text-sm poppins-font para-text">
             
 
             {blog?.author && (
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-1 ">
                 {/* Show custom icon if exists, otherwise default User icon */}
                 {AuthorIcon ? <AuthorIcon size={14} /> : <User size={14} />}
-                <span>{blog.author}</span>
+                <span className="text-[12px]">{blog.author}</span>
               </div>
             )}
 
             {blog?.publishedOn&& (
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-1">
                 {PublishedIcon? <PublishedIcon size={14} />: <Calendar/>}
-                 <span>{blog.publishedOn}</span>
+                 <span className="text-[12px]">{blog.publishedOn}</span>
               </div>
             )}
 
         {blog?.time && (
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1">
             {/* Show custom icon if exists, otherwise default Clock icon */}
             {TimeIcon ? <TimeIcon size={14} /> : <Clock size={14} />}
-            <span>{blog.time}</span>
+            <span className="text-[12px]">{blog.time}</span>
           </div>
         )}
           </div>
@@ -184,16 +186,23 @@ if (!blog) {
               <p className="py-2 poppins-font text-[14px] para-text">
                 {blog.Weeklydesc || "Get the latest insights delivered to your inbox."}
               </p>
-              <input
+              {/* <input
                 placeholder={blog.emailplaceholder || "Your email"}
                 className="w-full border border-black h-10 rounded-lg p-2"
-              />
-              <button className="bg-[#157de5] w-full p-2 mt-3 rounded-lg text-white text-[14px] font-medium">
+              /> */}
+              <input
+  placeholder={blog.emailplaceholder || "Your email"}
+className="w-full border border-black h-10 rounded-lg p-2
+             focus:outline-none focus:ring-2 focus:ring-[#157DE5]" />
+              {/* <button className="bg-[#157de5] w-full p-2 mt-3 rounded-lg text-white text-[14px] font-medium">
                 <a href={blog.subscribebuttonlink || "#"}>
                   {blog.subscribebutton || "Subscribe"}
                 </a>
-              </button>
-            </div>
+              </button> */}
+              <button className="bg-[#157de5] w-full p-2 mt-3 rounded-lg text-white text-[14px] font-medium hover:bg-[#3B94EB] transition-colors duration-300">
+                <a href={blog.subscribebuttonlink || '#'}>{blog.subscribebutton || 'Subscribe'}</a>
+              </button>         
+   </div>
           </div>
 
           {/* MAIN CONTENT */}
@@ -234,9 +243,17 @@ if (!blog) {
               if (section.__typename === "ComponentInsightsWhyTraditionalMaintenance") {
                 return (
                   <div key={index} id={section.slug} className="shadow-lg rounded-2xl p-10 blog-panel">
+                {section.title.includes("<") ? (
+                    <h1
+                      className="mb-5 text-[30px] font-bold montserrat-font"
+                      dangerouslySetInnerHTML={{ __html: section.title }}
+                    />
+                  ) : (
                     <h1 className="mb-5 text-[30px] font-bold montserrat-font">
                       {section.title}
                     </h1>
+                  )}
+
 
                     {/* {section.introduction && (
                       <p className="poppins-font text-[16px] mb-5">{section.introduction}</p>
@@ -271,7 +288,7 @@ if (!blog) {
                       <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
                         {section.WhyTraditionalItems.map((item, idx) => (
                           <div key={idx} className="p-3 border rounded-2xl">
-                            <h2 className="font-semibold text-[16px] montserrat-font py-2">
+                            <h2 className="font-semibold text-[16px] montserrat-font py-2" >
                               {item.title}
                             </h2>
                             <p className="text-[14px] poppins-font para-text">{item.description}</p>
@@ -321,9 +338,17 @@ if (!blog) {
       <div id={section.slug} className="shadow-lg rounded-2xl p-10 blog-panel">
         
         {/* Title */}
-        <h2 className="mb-5 text-[30px] font-bold montserrat-font">
-          {section.title}
-        </h2>
+       {section.title.includes("<") ? (
+  <h1
+    className="mb-5 text-[30px] font-bold montserrat-font"
+    dangerouslySetInnerHTML={{ __html: section.title }}
+  />
+) : (
+  <h1 className="mb-5 text-[30px] font-bold montserrat-font">
+    {section.title}
+  </h1>
+)}
+
 
         {/* Content Parsing (paragraph → list → paragraph) */}
         {section.content && (() => {
@@ -392,9 +417,17 @@ if (!blog) {
                 return (
                   <React.Fragment key={index}>
                     <div id={section.slug} className="shadow-lg rounded-2xl p-10 blog-panel">
-                      <h1 className="mb-5 text-[30px] font-bold montserrat-font">
-                        {section.title}
-                      </h1>
+                      {section.title.includes("<") ? (
+                          <h2
+                            className="mb-5 text-[30px] font-bold montserrat-font"
+                            dangerouslySetInnerHTML={{ __html: section.title }}
+                          />
+                        ) : (
+                          <h2 className="mb-5 text-[30px] font-bold montserrat-font">
+                            {section.title}
+                          </h2>
+                        )}
+
                       {section.KeyBuildingBlocksItems?.map((item, idx) => (
                         <div key={idx} className="mb-8">
                           <h2 className="mb-2 text-[#157de5] montserrat-font text-[20px] font-bold">
@@ -430,9 +463,16 @@ if (!blog) {
               if (section.__typename === "ComponentInsightsRealWorld") {
                 return (
                   <div key={index} id={section.slug} className="shadow-lg rounded-2xl p-10 blog-panel">
-                    <h2 className="mb-5 text-[30px] font-bold montserrat-font">
-                      {section.title}
-                    </h2>
+                       {section.title.includes("<") ? (
+                          <h2
+                            className="mb-5 text-[30px] font-bold montserrat-font"
+                            dangerouslySetInnerHTML={{ __html: section.title }}
+                          />
+                        ) : (
+                          <h2 className="mb-5 text-[30px] font-bold montserrat-font">
+                            {section.title}
+                          </h2>
+                        )}
                     {section.RealWorldItems?.map((item, idx) => (
                       <div key={idx} className="mb-6">
                         <h3 className="text-[20px] montserrat-font mb-2 font-bold text-[#157de5]">
@@ -456,9 +496,16 @@ if (!blog) {
                 return (
                   <React.Fragment key={index}>
                     <div id={section.slug} className="shadow-lg rounded-2xl p-10 blog-panel">
-                      <h2 className="mb-5 text-[30px] font-bold montserrat-font">
-                        {section.title}
-                      </h2>
+                        {section.title.includes("<") ? (
+                          <h2
+                            className="mb-5 text-[30px] font-bold montserrat-font"
+                            dangerouslySetInnerHTML={{ __html: section.title }}
+                          />
+                        ) : (
+                          <h2 className="mb-5 text-[30px] font-bold montserrat-font">
+                            {section.title}
+                          </h2>
+                        )}
                       <div
                         className="poppins-font para-text"
                         dangerouslySetInnerHTML={{ __html: section.content }}
@@ -487,9 +534,16 @@ if (!blog) {
               if (section.__typename === "ComponentInsightsChallenges") {
                 return (
                   <div key={index} id={section.slug} className="shadow-lg rounded-2xl p-10 blog-panel">
-                    <h1 className="mb-5 text-[30px] font-bold montserrat-font">
-                      {section.title}
-                    </h1>
+                     {section.title.includes("<") ? (
+                          <h2
+                            className="mb-5 text-[30px] font-bold montserrat-font"
+                            dangerouslySetInnerHTML={{ __html: section.title }}
+                          />
+                        ) : (
+                          <h2 className="mb-5 text-[30px] font-bold montserrat-font">
+                            {section.title}
+                          </h2>
+                        )}
                     {section.introduction && (
                       <p className="poppins-font para-text mb-5">{section.introduction}</p>
                     )}
@@ -514,9 +568,16 @@ if (!blog) {
               if (section.__typename === "ComponentInsightsTheRoadAhead") {
                 return (
                   <div key={index} id={section.slug} className="shadow-lg rounded-2xl p-10 blog-panel">
-                    <h1 className="mb-5 text-[30px] font-bold montserrat-font">
-                      {section.title}
-                    </h1>
+                    {section.title.includes("<") ? (
+                          <h2
+                            className="mb-5 text-[30px] font-bold montserrat-font"
+                            dangerouslySetInnerHTML={{ __html: section.title }}
+                          />
+                        ) : (
+                          <h2 className="mb-5 text-[30px] font-bold montserrat-font">
+                            {section.title}
+                          </h2>
+                        )}
                     <div
                       className="poppins-font para-text"
                       dangerouslySetInnerHTML={{ __html: section.content }}
@@ -538,15 +599,17 @@ if (!blog) {
               <div className="shadow-lg rounded-2xl p-10 text-center bg-gradient-to-br 
                   from-[rgba(31,127,219,0.08)] 
                   to-[rgba(255,122,60,0.08)]">
-                <h2 className="text-[36px] font-bold montserrat-font">
-                  {blog.exploretitle}
+                <h2 className="text-[36px] font-bold montserrat-font"
+                 dangerouslySetInnerHTML={{ __html: blog.exploretitle }}
+                >
+                  
                 </h2>
                 {blog.exploresubtitle && (
                   <p className="poppins-font para-text py-10">{blog.exploresubtitle}</p>
                 )}
                 <div className="flex flex-col lg:flex-row items-center gap-4 justify-center para-text poppins-font">
                   {blog.button1text && (
-                    <button className="bg-[#157de5] py-3 px-6 rounded-md text-white text-[14px] font-medium">
+                    <button className="bg-[#157de5] py-3 px-6 rounded-md text-white text-[14px] font-medium hover:bg-[#3B94EB] transition-colors duration-300">
                       <a href={blog.button1link || "#"} className="flex items-center gap-2">
                         {blog.button1text}
                         <ArrowRight size={18} />
@@ -571,14 +634,26 @@ if (!blog) {
                 </h1>
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
                   {blog.RelatedArticleItems.map((article, idx) => (
-                    <div key={idx} className="p-5 shadow-lg rounded-2xl blog-panel">
+                    <div key={idx} className="p-5 shadow-lg rounded-2xl blog-panel transition-all duration-300 hover:-translate-y-2">
                       <p className="mb-3 text-[#157de5] font-semibold">{article.category}</p>
                       <p className="font-bold mb-3 text-lg hover:text-[#157de5] transition-colors duration-300 cursor-pointer">{article.title}</p>
-                      <a href={article.link || "#"} className="text-[#157de5] flex items-center gap-2 font-semibold">
+                      {/* <a href={article.link || "#"} className="text-[#157de5] flex items-center gap-2 font-semibold" >
                         {article.readtext || "Read more"}
                         <ArrowRight size={18} />
-                      </a>
+                      </a> */}
+
+                      <a
+                        href={article.link || "#"}
+                        className="text-[#157de5] flex items-center gap-2 font-semibold group"
+                      >
+                        {article.readtext || "Read more"}
+                        <ArrowRight
+                          size={18}
+                          className="transition-transform duration-300 group-hover:translate-x-1"
+                        />
+                      </a>                   
                     </div>
+                    
                   ))}
                 </div>
               </div>

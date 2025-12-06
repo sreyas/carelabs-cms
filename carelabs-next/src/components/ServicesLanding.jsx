@@ -64,8 +64,11 @@ const openRandomVideo = () => {
 
 
   return (
-    <div className="w-full min-h-[80vh] pt-[80px] flex justify-center px-4 bg-[#f9fbfe]">
-      <div className="w-full xl:w-[90%] xl:px-6 2xl:w-[70%] flex flex-col lg:flex-row mt-12 gap-10 ">
+    <div 
+    className="w-full min-h-[80vh] pt-[80px] flex justify-center px-4 bg-[#f9fbfe]">
+      <div 
+   
+      className="w-full xl:w-[90%] xl:px-6 2xl:w-[70%] flex flex-col lg:flex-row mt-12 gap-10 ">
 
         {/* LEFT SECTION */}
         <div className="w-full lg:w-[50%] flex flex-col gap-5 py-2 ">

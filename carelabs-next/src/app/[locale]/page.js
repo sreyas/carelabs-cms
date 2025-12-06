@@ -112,7 +112,7 @@ console.log("Pararar111",params['locale']);
 
   return (
     <>
-      <div className="home-cover relative w-full min-h-[calc(100vh-80px)] 2xl:h-[calc(100vh-80px)]  top-[80px] flex flex-col items-center justify-center">
+      <div className="home-cover relative w-full   top-[80px] flex flex-col items-center justify-center">
         {/* Section 1 */}
         <div 
           data-aos="fade-up"
