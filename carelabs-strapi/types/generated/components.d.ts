@@ -346,6 +346,20 @@ export interface FeaturesServiceFeature extends Struct.ComponentSchema {
   };
 }
 
+export interface FooterFloatingCta extends Struct.ComponentSchema {
+  collectionName: 'components_footer_floating_ctas';
+  info: {
+    displayName: 'floating_cta';
+  };
+  attributes: {
+    button1link: Schema.Attribute.String;
+    button1text: Schema.Attribute.String;
+    button2icon: Schema.Attribute.String;
+    heading: Schema.Attribute.String;
+    subheading: Schema.Attribute.String;
+  };
+}
+
 export interface FooterFooterBottomlink extends Struct.ComponentSchema {
   collectionName: 'components_footer_footer_bottomlinks';
   info: {
@@ -387,6 +401,36 @@ export interface FooterSocialLink extends Struct.ComponentSchema {
   attributes: {
     icon: Schema.Attribute.String;
     url: Schema.Attribute.String;
+  };
+}
+
+export interface HomeTestimonialsSection extends Struct.ComponentSchema {
+  collectionName: 'components_home_testimonials_sections';
+  info: {
+    displayName: 'testimonials_section';
+  };
+  attributes: {
+    badge: Schema.Attribute.String;
+    description: Schema.Attribute.Text;
+    testimonials: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::testimonial.testimonial'
+    >;
+    title: Schema.Attribute.RichText;
+  };
+}
+
+export interface HomeWorldwideimpactSection extends Struct.ComponentSchema {
+  collectionName: 'components_home_worldwideimpact_sections';
+  info: {
+    displayName: 'worldwideimpact_section';
+  };
+  attributes: {
+    badge: Schema.Attribute.String;
+    description: Schema.Attribute.Text;
+    projectStat: Schema.Attribute.Component<'stats.project-stat', true>;
+    successStat: Schema.Attribute.Component<'stats.success-stat', true>;
+    title: Schema.Attribute.RichText;
   };
 }
 
@@ -1361,10 +1405,13 @@ declare module '@strapi/strapi' {
       'contact.where-we-support': ContactWhereWeSupport;
       'features.feature-item': FeaturesFeatureItem;
       'features.service-feature': FeaturesServiceFeature;
+      'footer.floating-cta': FooterFloatingCta;
       'footer.footer-bottomlink': FooterFooterBottomlink;
       'footer.footer-menu': FooterFooterMenu;
       'footer.menu-link': FooterMenuLink;
       'footer.social-link': FooterSocialLink;
+      'home.testimonials-section': HomeTestimonialsSection;
+      'home.worldwideimpact-section': HomeWorldwideimpactSection;
       'industry.clients': IndustryClients;
       'industry.clients-name': IndustryClientsName;
       'industry.components-features': IndustryComponentsFeatures;

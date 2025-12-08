@@ -704,39 +704,6 @@ export interface ApiContactPopupContactPopup extends Struct.SingleTypeSchema {
   };
 }
 
-export interface ApiFloatingCtaFloatingCta extends Struct.SingleTypeSchema {
-  collectionName: 'floating_ctas';
-  info: {
-    displayName: 'FloatingCTA';
-    pluralName: 'floating-ctas';
-    singularName: 'floating-cta';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    button1link: Schema.Attribute.String;
-    button1text: Schema.Attribute.String;
-    button2link: Schema.Attribute.String;
-    button2text: Schema.Attribute.String;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::floating-cta.floating-cta'
-    > &
-      Schema.Attribute.Private;
-    publishedAt: Schema.Attribute.DateTime;
-    subtitle: Schema.Attribute.String;
-    title: Schema.Attribute.Text;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface ApiFooterFooter extends Struct.SingleTypeSchema {
   collectionName: 'footers';
   info: {
@@ -754,6 +721,7 @@ export interface ApiFooterFooter extends Struct.SingleTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     description: Schema.Attribute.Text;
+    floating_cta: Schema.Attribute.Component<'footer.floating-cta', false>;
     footerMenu: Schema.Attribute.Component<'footer.footer-menu', true>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -1002,6 +970,18 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    home_compliance: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::home-compliance.home-compliance'
+    >;
+    home_industry: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::home-industry.home-industry'
+    >;
+    home_service: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::home-serivice.home-serivice'
+    >;
     homebanner: Schema.Attribute.Relation<'oneToOne', 'api::home.home'>;
     homeseo: Schema.Attribute.Component<'shared.seo', false> &
       Schema.Attribute.SetPluginOptions<{
@@ -1021,6 +1001,15 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
           localized: true;
         };
       }>;
+    testimonials_section: Schema.Attribute.Component<
+      'home.testimonials-section',
+      false
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     title: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -1030,6 +1019,15 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    worldwideimpact_section: Schema.Attribute.Component<
+      'home.worldwideimpact-section',
+      false
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
   };
 }
 
@@ -2678,7 +2676,6 @@ declare module '@strapi/strapi' {
       'api::blog-category.blog-category': ApiBlogCategoryBlogCategory;
       'api::contact-page.contact-page': ApiContactPageContactPage;
       'api::contact-popup.contact-popup': ApiContactPopupContactPopup;
-      'api::floating-cta.floating-cta': ApiFloatingCtaFloatingCta;
       'api::footer.footer': ApiFooterFooter;
       'api::home-compliance.home-compliance': ApiHomeComplianceHomeCompliance;
       'api::home-industry.home-industry': ApiHomeIndustryHomeIndustry;

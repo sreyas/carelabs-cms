@@ -36,6 +36,21 @@
       "relation": "oneToOne",
       "target": "api::home.home"
     },
+    "home_service": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::home-serivice.home-serivice"
+    },
+    "home_industry": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::home-industry.home-industry"
+    },
+    "home_compliance": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::home-compliance.home-compliance"
+    },
     "homeseo": {
       "type": "component",
       "pluginOptions": {
@@ -44,6 +59,26 @@
         }
       },
       "component": "shared.seo",
+      "repeatable": false
+    },
+    "testimonials_section": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "home.testimonials-section",
+      "repeatable": false
+    },
+    "worldwideimpact_section": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "home.worldwideimpact-section",
       "repeatable": false
     }
   }
