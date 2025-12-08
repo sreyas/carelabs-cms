@@ -41,6 +41,11 @@
       "type": "component",
       "component": "footer.footer-bottomlink",
       "repeatable": true
+    },
+    "floating_cta": {
+      "type": "component",
+      "component": "footer.floating-cta",
+      "repeatable": false
     }
   }
 }

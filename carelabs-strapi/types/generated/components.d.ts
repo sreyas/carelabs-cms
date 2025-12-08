@@ -346,6 +346,20 @@ export interface FeaturesServiceFeature extends Struct.ComponentSchema {
   };
 }
 
+export interface FooterFloatingCta extends Struct.ComponentSchema {
+  collectionName: 'components_footer_floating_ctas';
+  info: {
+    displayName: 'floating_cta';
+  };
+  attributes: {
+    button1link: Schema.Attribute.String;
+    button1text: Schema.Attribute.String;
+    button2icon: Schema.Attribute.String;
+    heading: Schema.Attribute.String;
+    subheading: Schema.Attribute.String;
+  };
+}
+
 export interface FooterFooterBottomlink extends Struct.ComponentSchema {
   collectionName: 'components_footer_footer_bottomlinks';
   info: {
@@ -1361,6 +1375,7 @@ declare module '@strapi/strapi' {
       'contact.where-we-support': ContactWhereWeSupport;
       'features.feature-item': FeaturesFeatureItem;
       'features.service-feature': FeaturesServiceFeature;
+      'footer.floating-cta': FooterFloatingCta;
       'footer.footer-bottomlink': FooterFooterBottomlink;
       'footer.footer-menu': FooterFooterMenu;
       'footer.menu-link': FooterMenuLink;
