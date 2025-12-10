@@ -5,7 +5,6 @@ import Footer from "@/components/Footer";
 import QuoteBar from "@/components/QuoteBar";
 import Script from "next/script";
 import { Montserrat, Poppins } from "next/font/google";
-import Head from "next/head";
 
 
 
@@ -43,19 +42,7 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en" >
-
-              <Head>
-                <link 
-                  rel="preconnect" 
-                  href="https://inspired-gem-f09bdfaddd.media.strapiapp.com"
-                  crossOrigin=""
-                />
-                <link 
-                  rel="preconnect" 
-                  href="https://inspired-gem-f09bdfaddd.strapiapp.com"
-                  crossOrigin=""
-                />
-              </Head>
+      
       
         <body className={`${montserrat.variable} ${poppins.variable} font-sans`}>
           
