@@ -43,7 +43,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" >
       
-      
+      <head>
+  <link rel="preconnect" href="https://inspired-gem-f09bdfaddd.media.strapiapp.com" crossOrigin="true" />
+  <link rel="dns-prefetch" href="https://inspired-gem-f09bdfaddd.media.strapiapp.com" />
+</head>
+
         <body className={`${montserrat.variable} ${poppins.variable} font-sans`}>
           
         <Header/>
