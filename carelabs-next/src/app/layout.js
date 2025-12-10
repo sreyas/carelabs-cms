@@ -44,7 +44,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" >
       
-<body className={`${montserrat.variable} ${poppins.variable} font-sans`}>
+        <body className={`${montserrat.variable} ${poppins.variable} font-sans`}>
           
         <Header/>
         {children}

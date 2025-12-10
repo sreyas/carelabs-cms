@@ -70,14 +70,14 @@ const Footer = () => {
 
             {/* FOOTER MENUS */}
             {footerMenu?.map((col, idx) => (
-              <div key={idx} className="flex-1 flex flex-col gap-2 text-gray-50">
+              <div key={idx} className="flex-1 flex flex-col gap-4 text-gray-50">
                 <p className="text-lg font-bold">{col.title}</p>
 
                 {col.links.map((link, index) => (
                   <a
                     key={index}
                     href={link.url}
-                    className="text-sm hover:underline"
+                    className="text-sm text-gray-300"
                   >
                     {link.label}
                   </a>
