@@ -9,7 +9,6 @@ import { clientIcons } from "@/lib/clientIcons";
 import { useParams, useRouter } from "next/navigation";
 import { useLocalizedNavigate } from '@/lib/navigation';
 import ContactPopupModal from './Modal/ContactPopupModal';
-import Image from "next/image";
 
 
 const Header = () => {
@@ -23,6 +22,7 @@ const Header = () => {
   const [selectedRegion, setSelectedRegion] = useState("Global");
   const [isContactModalOpen, setIsContactModalOpen] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [logoUrl, setLogoUrl] = useState("https://inspired-gem-f09bdfaddd.media.strapiapp.com/carelab_logo_7d51f198e5.png");
 
   const router = useRouter();
   const navigate = useLocalizedNavigate();
@@ -68,6 +68,7 @@ const Header = () => {
           ?.flatMap(item => item.submenus || [])
           ?.map(sub => sub.slug);
       setNavbarData(res.data.navbar);
+      setLogoUrl(res.data.navbar.Logo?.url || logoUrl);
 
     } catch (err) {
       console.log("Error fetching navbar data:", err);
@@ -137,9 +138,10 @@ const Header = () => {
         <div className="header w-full  h-full flex items-center justify-between lg:justify-center  2xl:p-3 ">
           <div className="logo flex item center justify-center w-[50%] sm:w-[40%]  lg:w-[22%] ">
             <Link href={currentLocale ? `/${currentLocale}/` : "/"}>
-              <Image
+              <img
                 className="p-3 md:w-[0%] lg:w-[75%] object-contain"
-                src={navbarData.Logo?.url}
+                // src={navbarData.Logo?.url}
+                src={logoUrl}
                 alt="Logo"
                 width={400}
                 height={100}
