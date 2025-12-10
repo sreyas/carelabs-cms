@@ -88,7 +88,6 @@ useEffect(() => {
 if (!homeData) {
    return (
       <div className="w-full h-screen flex flex-col items-center justify-center gap-6 p-4">
-
         {/* Skeleton for main card / hero section */}
         <div className="w-[80%]  h-[90%] flex items-center justify-center bg-gray-200 rounded-2xl p-4 animate-pulse flex-col gap-4">
           
@@ -99,7 +98,7 @@ if (!homeData) {
           <div className="w-3/4 h-8 bg-gray-300 rounded-lg"></div>
 
           {/* Inner content / stats placeholders */}
-          <div className="w-full flex flex-col sm:flex-row items-center  justify-between gap-4 mt-4">
+          <div className="w-full flex flex-col sm:flex-row items-center  justify-between gap-4 pt-4">
             <div className="w-full sm:w-[30%] h-24 bg-gray-300 rounded-lg"></div>
             <div className="w-full sm:w-[30%] h-24 bg-gray-300 rounded-lg"></div>
             <div className="w-full sm:w-[30%] h-24 bg-gray-300 rounded-lg"></div>
