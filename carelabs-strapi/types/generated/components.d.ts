@@ -404,6 +404,20 @@ export interface FooterSocialLink extends Struct.ComponentSchema {
   };
 }
 
+export interface HomeHomeInsights extends Struct.ComponentSchema {
+  collectionName: 'components_home_home_insights';
+  info: {
+    displayName: 'home_insights';
+  };
+  attributes: {
+    article: Schema.Attribute.Relation<'oneToOne', 'api::article.article'>;
+    buttonlink: Schema.Attribute.String;
+    buttontext: Schema.Attribute.String;
+    description: Schema.Attribute.Text;
+    title: Schema.Attribute.String;
+  };
+}
+
 export interface HomeTestimonialsSection extends Struct.ComponentSchema {
   collectionName: 'components_home_testimonials_sections';
   info: {
@@ -1410,6 +1424,7 @@ declare module '@strapi/strapi' {
       'footer.footer-menu': FooterFooterMenu;
       'footer.menu-link': FooterMenuLink;
       'footer.social-link': FooterSocialLink;
+      'home.home-insights': HomeHomeInsights;
       'home.testimonials-section': HomeTestimonialsSection;
       'home.worldwideimpact-section': HomeWorldwideimpactSection;
       'industry.clients': IndustryClients;

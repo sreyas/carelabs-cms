@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_home_home_insights",
+  "info": {
+    "displayName": "home_insights"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "buttontext": {
+      "type": "string"
+    },
+    "buttonlink": {
+      "type": "string"
+    },
+    "article": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::article.article"
+    }
+  },
+  "config": {}
+}

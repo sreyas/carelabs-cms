@@ -46,19 +46,24 @@
       "relation": "oneToOne",
       "target": "api::home-industry.home-industry"
     },
+    "home_our_client": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::home-our-client.home-our-client"
+    },
     "home_compliance": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::home-compliance.home-compliance"
     },
-    "homeseo": {
+    "worldwideimpact_section": {
       "type": "component",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "component": "shared.seo",
+      "component": "home.worldwideimpact-section",
       "repeatable": false
     },
     "testimonials_section": {
@@ -71,14 +76,24 @@
       "component": "home.testimonials-section",
       "repeatable": false
     },
-    "worldwideimpact_section": {
+    "home_insights": {
       "type": "component",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "component": "home.worldwideimpact-section",
+      "component": "home.home-insights",
+      "repeatable": false
+    },
+    "homeseo": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "shared.seo",
       "repeatable": false
     }
   }

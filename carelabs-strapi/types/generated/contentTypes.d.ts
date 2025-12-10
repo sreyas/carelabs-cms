@@ -978,6 +978,16 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
       'oneToOne',
       'api::home-industry.home-industry'
     >;
+    home_insights: Schema.Attribute.Component<'home.home-insights', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    home_our_client: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::home-our-client.home-our-client'
+    >;
     home_service: Schema.Attribute.Relation<
       'oneToOne',
       'api::home-serivice.home-serivice'
