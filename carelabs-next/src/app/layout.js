@@ -43,16 +43,6 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" >
       
-        <head>
-         <link
-            rel="preload"
-            as="image"
-            href="https://inspired-gem-f09bdfaddd.media.strapiapp.com/carelab_logo_7d51f198e5.png"
-            fetchpriority="high"
-          />
-
-        </head>
-
         <body className={`${montserrat.variable} ${poppins.variable} font-sans`}>
           
         <Header/>
