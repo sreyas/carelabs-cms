@@ -14,14 +14,12 @@ const params = useParams();
 const slug = params.slug;
 let locale = params.locale;
 
-console.log("Server → Slug default:", slug);
-console.log("Locale → Slug: default", locale);
+
 
 if (locale === "ca") {
   locale = "en-CA";
 }
 
-console.log("altLoc", locale);
 
   
  
@@ -32,9 +30,7 @@ console.log("altLoc", locale);
           query: GET_DEFAULT_PAGE_BY_LOCALE,
           variables: { slug,locale },
           fetchPolicy: "no-cache",
-        });
-        console.log("DefaultData",res.data.pages[0]);
-        
+        });        
         setPageData(res.data.pages[0]);
 
       } catch (error) {

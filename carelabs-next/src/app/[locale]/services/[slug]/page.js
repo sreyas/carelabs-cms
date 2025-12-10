@@ -20,7 +20,6 @@ export default async function Page({ params }) {
   //const service = response?.data?.services?.data?.[0]?.attributes;
   const service = response?.data?.services?.[0];
 
-  console.log("Service from slug:", service);
 
   if (!service) {
     return (

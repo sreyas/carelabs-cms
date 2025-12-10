@@ -20,7 +20,6 @@ const Header = () => {
   const [selectedSubmenuIndex, setSelectedSubmenuIndex] = useState(0);
   const [openMobileMenu, setOpenMobileMenu] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [selectedRegion, setSelectedRegion] = useState("Global");
   const [isContactModalOpen, setIsContactModalOpen] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -68,8 +67,6 @@ const Header = () => {
         res.data.navbar.items
           ?.flatMap(item => item.submenus || [])
           ?.map(sub => sub.slug);
-
-      console.log("Navbar data:", allSlugs);
       setNavbarData(res.data.navbar);
 
     } catch (err) {
@@ -127,18 +124,12 @@ const Header = () => {
 
   //slugmethod 
   const currentItem = navbarData?.items?.[activeIndex] ?? null;
-  const currentSubmenu = currentItem?.submenus?.[selectedSubmenuIndex] ?? null;
- console.log("CurrentMenu Slug::::",);
- 
+  const currentSubmenu = currentItem?.submenus?.[selectedSubmenuIndex] ?? null; 
   const isBlogMenu = currentItem?.label === "Insights Hub";
 
   const targetSlug = isBlogMenu
     ? `/blogs/${currentSubmenu?.slug}`
     : `/services/${currentSubmenu?.slug}`;
-
-  console.log("NAV DATA:", navbarData.items);
-
-
 
   return (
     <>
@@ -147,9 +138,11 @@ const Header = () => {
           <div className="logo flex item center justify-center w-[50%] sm:w-[40%]  lg:w-[22%] ">
             <Link href={currentLocale ? `/${currentLocale}/` : "/"}>
               <img
-                className="p-3 md:w-[60%] lg:w-[75%]"
+                className="p-3 md:w-[60%] lg:w-[75%] object-contain"
                 src={navbarData.Logo?.url}
                 alt="Logo"
+                width={400}
+                height={100}
               />
             </Link>
           </div>
@@ -200,6 +193,7 @@ const Header = () => {
             <button
               onClick={() => setIsModalOpen(true)}
               className="global hidden sm:flex items-center justify-center gap-2 px-2 py-2 rounded-4xl border border-gray-300 hover:border-blue-400 w-24"
+              aria-label="Select region"
             >
 
               <Globe size={16} />
@@ -208,7 +202,7 @@ const Header = () => {
 
 
             <div className="mob-global flex sm:hidden">
-              <button onClick={() => setIsModalOpen(true)}>
+              <button onClick={() => setIsModalOpen(true)} aria-label="Select region">
                 <Globe/>
               </button>
             </div>

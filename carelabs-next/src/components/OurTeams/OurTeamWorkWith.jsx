@@ -34,7 +34,7 @@ const OurTeamWorkWith = ({data}) => {
 
                 {data.Where_you_work_Items?.map((item, index) => {
                   const iconName = item.icon?.trim();
-                     console.log("IconName:",iconName);
+
                      
                   const IconComponent = clientIcons[iconName] || clientIcons.Map;
 

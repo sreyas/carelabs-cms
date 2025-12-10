@@ -1,51 +1,22 @@
+"use client"
 
 import React, { useEffect, useState } from 'react'
-import client from '@/lib/appollo-client';
-import { GET_HOME_SERVICES_BY_LOCALE } from '@/lib/api-Collection';
 import { Zap, Check } from 'lucide-react';
 import { clientIcons } from "@/lib/clientIcons";
-import { useParams } from 'next/navigation';
 
-const HomeServices = () => {
-
-  const params = useParams();
-  let locale = params.locale;
-
-  if (locale == "CA" || locale == "ca") {
-    locale = "en-CA"
-  } else {
-    locale = "en"
-  }
-
-
-
+const HomeServices = ({data}) => {
+  
   const [globalReachData, setGlobalReachData] = useState(null)
   const [activeServiceIndex, setActiveServiceIndex] = useState(0)
 
-
-
-  const fetchGlobalReach = async () => {
-    try {
-      const response = await client.query({
-        query: GET_HOME_SERVICES_BY_LOCALE,
-        variables: { locale },
-      });
-
-      setGlobalReachData(response.data.homeSerivices[0])
-    } catch (error) {
-      console.log("Error fetching Global Reach:", error);
-    }
-  };
-
   useEffect(() => {
-    fetchGlobalReach()
+    setGlobalReachData(data);
   }, []);
 
 
   if (!globalReachData) return null;
 
   const items = globalReachData.home_service_items || [];
-
   const activeItem = items[activeServiceIndex];
 
   return (
@@ -102,48 +73,48 @@ const HomeServices = () => {
       <div className="w-full flex flex-col lg:flex-row items-stretch justify-center gap-5">
         
     <div className="w-full lg:w-[50%] 2xl:w-[45%] flex flex-col items-center gap-3">
-    {items.map((item, index) => {
-    const IconComponent = clientIcons[item.icon];
+        {items.map((item, index) => {
+        const IconComponent = clientIcons[item.icon];
 
-    return (
-      <div
-        key={index}
-        onClick={() => setActiveServiceIndex(index)}
-        className={`
-          w-[417.49px] 
-          h-[92.64px]
-          max-w-full
-          rounded-[16px]
-          flex items-center 
-          gap-4
-          px-4
-          shadow-md hover:shadow-lg transition-shadow cursor-pointer
-          ${activeServiceIndex === index 
-            ? "bg-[#dae9fd] border border-[#2575b6]" 
-            : "bg-[#f2f6fc]"
-          }
-        `}
-      >
-        {/* Icon Section */}
-        <div className="flex justify-center items-center">
-          <div className="w-[49.44px] h-[49.44px] bg-[#dae9fd] rounded-[12px] flex items-center justify-center">
-            {IconComponent ? <IconComponent size={28} color="#2575b6" /> : null}
+        return (
+          <div
+            key={index}
+            onClick={() => setActiveServiceIndex(index)}
+            className={`
+              w-[417.49px] 
+              h-[92.64px]
+              max-w-full
+              rounded-[16px]
+              flex items-center 
+              gap-4
+              px-4
+              shadow-md hover:shadow-lg transition-shadow cursor-pointer
+              ${activeServiceIndex === index 
+                ? "bg-[#dae9fd] border border-[#2575b6]" 
+                : "bg-[#f2f6fc]"
+              }
+            `}
+          >
+            {/* Icon Section */}
+            <div className="flex justify-center items-center">
+              <div className="w-[49.44px] h-[49.44px] bg-[#dae9fd] rounded-[12px] flex items-center justify-center">
+                {IconComponent ? <IconComponent size={28} color="#2575b6" /> : null}
+              </div>
+            </div>
+
+            {/* Text Section */}
+            <div className="flex flex-col">
+              <p className="text-[16px] font-bold text-[#1f1f1f] leading-tight montserrat-font">
+                {item.name}
+              </p>
+              <p className="text-[12px] text-gray-600 mt-1">
+                Click to explore details
+              </p>
+            </div>
           </div>
-        </div>
-
-        {/* Text Section */}
-        <div className="flex flex-col">
-          <p className="text-[16px] font-bold text-[#1f1f1f] leading-tight montserrat-font">
-            {item.name}
-          </p>
-          <p className="text-[12px] text-gray-600 mt-1">
-            Click to explore details
-          </p>
-        </div>
-      </div>
-    );
-  })}
-</div>
+        );
+      })}
+    </div>
 
            <div
                 data-aos="fade-up"
@@ -220,17 +191,17 @@ const HomeServices = () => {
                   {/* Key Features */}
                   <div>
                     <h4 className="mb-3 font-semibold text-[14px] primary-color">KEY FEATURES</h4>
-                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm sm:text-base">
+                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2  text-sm sm:text-base ">
                       {activeItem?.serviceFeatures?.map((feat, idx) => (
-                        <li key={idx} className="flex items-center gap-2">
-                          <div
-                            className="w-5 h-5 rounded-full flex items-center justify-center"
-                            style={{ backgroundColor: 'rgba(5, 150, 105, 0.1)' }}
-                          >
+                        <div key={idx}
+                          className="flex items-center  gap-2 ">
+                          {/* <CircleCheckBig size={20} className='text-green-300' /> */}
+                          <div className="w-5 h-5 rounded-full flex items-center justify-center" style={{ backgroundColor: 'rgba(5, 150, 105, 0.1)' }}>
                             <Check size={12} className="text-[#059669]" />
                           </div>
-                          <span className="poppins-font text-[16px] font-medium">{feat.name}</span>
-                        </li>
+                          <li key={idx} className='poppins-font text-[16px] font-medium'> {feat.name}</li>
+                        </div>
+
                       ))}
                     </ul>
                   </div>

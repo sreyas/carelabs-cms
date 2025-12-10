@@ -16,8 +16,6 @@ export default function Page({ params }) {
   
   const { slug } = useParams();  
 
-  console.log(" Server → Slug:", slug);
-
    const[blog,setblog]=useState(null);
 
   if (!slug) {
@@ -37,7 +35,6 @@ export default function Page({ params }) {
                           variables: { slug },
                           fetchPolicy: "no-cache",
                         });
-      console.log(" Blog:", response.data); 
       setblog(response.data.insightblogs[0]);            
     }catch(err){
       console.log("Error at Fetching Blog By Slug",err);
@@ -82,7 +79,7 @@ const TimeIcon =blog?.timeicon && clientIcons[blog.timeicon.trim()]? clientIcons
 
   }
 
-  console.log("BlogsForIcons",blog);
+  // console.log("BlogsForIcons",blog);
   
  
   return (

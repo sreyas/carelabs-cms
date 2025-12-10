@@ -32,7 +32,6 @@ export default function Home() {
     const res= await client.query({
                   query: GET_HOME_SECTION_1,
                  });
-    console.log("Home banner data:", res.data.homes[0]);
    setHomeData(res.data.homes[0]);
     }catch(err){
       console.log("Error fetching home banner data:", err);
@@ -49,7 +48,6 @@ useEffect(() => {
 }, []);
 
 
-console.log("Home Data",homeData);
 
 const randomVideos = [
   "dQw4w9WgXcQ",
@@ -146,12 +144,9 @@ if (!homeData) {
           <div className="text-[#157de5]">
               <Zap size={18} />
           </div>
-
           <div>
              <p className="curved-Text text-[14px] montserrat-font">{homeData.heading}</p>
-          </div>
-          
-          
+          </div>                
         </button>
       </div>
 

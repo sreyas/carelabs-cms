@@ -12,7 +12,7 @@ const Page = (params) => {
   const [pageData, setPageData] = useState(null);
   const { slug } = useParams();  
 
-  console.log(" Server → Slug:", slug);
+  // console.log(" Server → Slug:", slug);
 
   useEffect(() => {
     const fetchData = async () => {

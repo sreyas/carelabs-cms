@@ -1,56 +1,34 @@
-import React, { useEffect, useState } from 'react'
-import client from "@/lib/appollo-client";
-import { GET_INSIGHTS, GET_INSIGHTS_BY_LOCALE } from "@/lib/api-Collection";
+"use client"
+
 import Link from 'next/link';
 import { clientIcons } from "@/lib/clientIcons";
 import { ArrowRight } from "lucide-react";
-import { useParams } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import Aos from 'aos';
 
 
-const HomeBlog = () => {
-  const params=useParams();
-  var locale=params.locale;
-  
-  if(locale=="CA" || locale=="ca"){
-    locale="en-CA"
-  }else{
-    locale="en"
-  }
+const HomeBlog = ({data}) => {   
+    const [insights, setInsights] = useState(null);
 
-  
-  
- 
-const [insights, setInsights] = useState(null);
-
-const fetchInsights = async () => {
-  try {
-
-    const response = await client.query({
-      query:GET_INSIGHTS_BY_LOCALE,
-       variables: {locale },
-    });
-    setInsights(response.data.insight)
-    
-  } catch(error) {
-    console.log("Error fetching insights:", error);
-  }
-}
-
-useEffect(()=> {
-  fetchInsights()
-},[])
-
-if(!insights) return null
-
-//const featured = insights.articles[0];
-
-const featured = insights.articles.find(a => a.featured === true);
+    useEffect(() => {
+      setInsights(data);
+    }, [data]);
 
 
-if (!featured) {
-  console.log("No featured article found!");
-  return null;
-}
+    useEffect(() => {
+        Aos.init({ 
+          once: true,     
+        });
+    }, []);
+
+    if(!insights) return null;
+
+    const featured = insights.articles.find(a => a.featured === true);
+
+    if (!featured) {
+      console.log("No featured article found!");
+      return null;
+    }
 
 
 

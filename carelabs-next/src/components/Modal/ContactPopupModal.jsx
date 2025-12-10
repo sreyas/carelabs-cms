@@ -19,7 +19,6 @@ const ContactPopupModal = ({ isOpen, setIsOpen }) => {
             const response = await client.query({
                 query: GET_CONTACT_POPUP_FIELDNAMES,
             });
-            console.log("FieldNames:", response.data.contactPopup);
             setFieldNames(response.data.contactPopup);
 
         } catch (err) {

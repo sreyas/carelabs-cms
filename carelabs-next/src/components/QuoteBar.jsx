@@ -15,7 +15,6 @@ const QuoteBar = () => {
         query: GET_FOOTER,
       });
 
-      console.log("QuoteBar footerData:", response.data.footer);
       setFooterData(response.data.footer);
     } catch (error) {
       console.log("Error fetching footer in QuoteBar:", error);
@@ -84,7 +83,7 @@ const QuoteBar = () => {
           {/* SCROLL TO TOP */}
           <button
             className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gray-200 flex items-center justify-center"
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} aria-label="Scroll to top"
           >
             {/* Dynamic Icon EXACTLY like your style */}
           <IconComponent/>

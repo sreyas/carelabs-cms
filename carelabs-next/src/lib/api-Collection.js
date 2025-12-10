@@ -1192,12 +1192,15 @@ export const GET_REGION_CLIENTS_BY_LOCALE = gql`
 
 export const GET_REGIONS = gql`
  query {
-    regions {
-      name
-      link
-      order
-      siteUrl
-    }
+     regions {
+        name
+        link
+        siteUrl
+        isDefault
+        order
+        language
+        language_value
+      }
   }
 `;
 
@@ -1266,3 +1269,192 @@ query ($slug: String!, $locale: I18NLocaleCode) {
     }
   }
 `;
+
+
+// :::::::::::: Optimize Api Calls :::::::::::::::::://
+
+export const GET_HOMEPAGE_DATA = gql`
+  query  {
+  homePage {
+    documentId
+    title
+    slug
+    homebanner {
+      documentId
+      title1
+      title2
+      title3
+      description
+      btn1_text
+      btn1_link
+      stats {
+        number
+        label
+      }
+      btn2_text
+      btn2_link
+      heading
+      createdAt
+      updatedAt
+      publishedAt
+      locale
+    }
+    home_service {
+      badge
+      title
+      description
+      home_service_items {
+        order
+        name
+        icon
+        linktext
+        description
+        Image {
+          url
+        }
+        featureheading
+        performanceheading
+        button1text
+        button1link
+        button2text
+        button2link
+        serviceFeatures {
+          name
+        }
+        performance {
+          stats
+          name
+        }
+      }
+    }
+    home_industry {
+      badgeicon
+      badge
+      title
+      description
+      industry_categories {
+        label
+      }
+      key_industries {
+        title
+        icon
+        highlight_text
+        highlight_color
+        key_features {
+          label
+        }
+      }
+      locale
+    }
+    home_compliance {
+      badgeicon
+      badge
+      title
+      description
+      components_features {
+        title
+        subtitle
+        description
+        icon
+        color
+      }
+      notetext
+    }
+    homeseo {
+      metaTitle
+      metaDescription
+      metaImage {
+        url
+      }
+      openGraph {
+        ogTitle
+        ogDescription
+        ogImage {
+          url
+        }
+        ogUrl
+        ogType
+      }
+      keywords
+      metaRobots
+      metaViewport
+      canonicalURL
+      structuredData
+    }
+    testimonials_section {
+      badge
+      title
+      description
+      testimonials {
+        feedback
+        name
+        position
+        company
+      }
+    }
+    worldwideimpact_section {
+      badge
+      title
+      description
+      projectStat {
+        title
+        countryName
+        count
+        countryCount
+      }
+      successStat {
+        title
+        icon
+        value
+      }
+    }
+    home_insights {
+      title
+      description
+      buttontext
+      buttonlink
+      articles {
+        documentId
+        title
+        slug
+        description
+        content
+        image {
+          url
+        }
+        category
+        date
+        featured
+        buttontext
+        buttonlink
+        featuredText
+        blog_category {
+          category
+        }
+        icon
+       
+      }
+    }
+    home_our_client {
+      badgeicon
+      badge
+      title
+      description
+      Partners {
+        Partners_names {
+          countryName
+          description
+        }
+      }
+      Clients {
+        title
+        Clients_name {
+          logo {
+            url
+          }
+        }
+      }
+    }
+  }
+}
+`

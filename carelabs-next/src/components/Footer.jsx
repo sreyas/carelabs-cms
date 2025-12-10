@@ -14,7 +14,6 @@ const Footer = () => {
         const response = await client.query({
             query:GET_FOOTER
         });
-        console.log("footerData:", response.data.footer)
 
         setFooterData(response.data.footer)
     } catch (error) {

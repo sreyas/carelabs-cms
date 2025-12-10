@@ -14,7 +14,6 @@ const OurTeamRecognitions = ({data}) => {
     const IconComponent = clientIcons[data.icon.trim()];
     const certifications=data.Recognitions_Item1 ||  [];
     const affiliations=data.Recognitions_Item2 || [];
-    console.log("certifications",certifications);
     
 
 

@@ -22,8 +22,6 @@ export default async function Page({ params }) {
   //const service = response?.data?.services?.data?.[0]?.attributes;
   const service = response?.data?.services?.[0];
 
-  console.log("Service from slug:", service);
-
   if (!service) {
     return (
       <div className="w-full py-20 text-center bg-[#f9fbfe]">
@@ -50,7 +48,7 @@ export default async function Page({ params }) {
       {service?.service_features?.map((feat, idx) => {
         const iconName = feat.icon.trim();
         const Icon = clientIcons[iconName] || clientIcons.CircleCheck; 
-        console.log("Icon Name",Icon);
+        // console.log("Icon Name",Icon);
         
 
         return (

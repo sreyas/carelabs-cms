@@ -171,7 +171,10 @@ const Contactpage = () => {
         {/* Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {contactData?.Choose_how_to_connect?.connect_items?.map((item, i) => {
-            const IconComponent = clientIcons[item.icon] || clientIcons.HelpCircle;
+            const iconName = item.icon?.trim();
+         
+            
+            const IconComponent = clientIcons[iconName] || clientIcons.HelpCircle;
 
             return (
               <div

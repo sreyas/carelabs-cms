@@ -21,8 +21,6 @@ import { useEffect, useState } from "react";
 export default function Home() {
   
 const params = useParams();
-console.log("Pararar",params);
-console.log("Pararar111",params['locale']);
   
 
   const localeMap = {
@@ -34,15 +32,8 @@ console.log("Pararar111",params['locale']);
 };
   var locale = "";
   locale = localeMap[params.locale] || "en";
-  console.log("para-Local 7777",locale);
  
-//  if(params['locale']=='ca')
-//  {
-//   console.log("GARRAR")
-//   locale='en-CA';
-//  }
 
-  console.log("para-Local 44",locale);
   
   const [homeData,setHomeData]=useState();
   const [regionIndustries,setRegionIndustries]=useState(null);
@@ -76,7 +67,6 @@ console.log("Pararar111",params['locale']);
         variables: { locale },
       });
 
-      console.log("RegionClients",regionClientData.data.homeOurClients[0]);
       setRegionClients(regionClientData.data.homeOurClients[0]);
       setRegionIndustries(regionIndustriesData.data.homeIndustries[0]);
       setHomeData(data?.homes?.[0]);
@@ -91,7 +81,6 @@ console.log("Pararar111",params['locale']);
     };
     fetchData();
   }, []);
-  console.log("HomeData",homeData);
   
   if (!homeData) {
     return (

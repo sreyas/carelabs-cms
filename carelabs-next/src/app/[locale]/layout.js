@@ -12,8 +12,6 @@ export async function generateMetadata({ params }) {
   // fallback
   if (!locale) locale = "en";
 
-  console.log("Server META LOCALE:", locale); // should now log "ca"
-
   try {
     const res = await client.query({
       query: GET_PAGE_SEO,
@@ -50,8 +48,6 @@ export default async function LocaleLayout({ children, params }) {
 
   // Extract locale with fallback
   const locale = params?.locale || "en";
-  console.log("Resolved locale:", locale);
-
   return (
     <html lang={locale}>
       <body>{children}</body>

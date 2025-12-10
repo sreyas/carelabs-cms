@@ -1,34 +1,25 @@
+"use client"
 
 import React, { useEffect, useState } from 'react'
-import client from '@/lib/appollo-client';
-import { GET_WORLD_IMPACT } from '@/lib/api-Collection';
 import { Globe, Zap } from 'lucide-react';
 import { clientIcons } from "@/lib/clientIcons";
+import Aos from 'aos';
 
 
 
-const GlobalReach = () => {
+const GlobalReach = ({data}) => {
 
  const [impactData, setImpactData] = useState(null);
 
- const fetchWorldImpact = async () => {
-    try {
-      const response = await client.query({
-        query: GET_WORLD_IMPACT,
-      });
-      setImpactData(response.data.worldwideImpact);
-
-    } catch (error) {
-      console.log("Error fetching World Impact:", error);
-    }
-  };
-
   useEffect(() => {
-    fetchWorldImpact();
+    setImpactData(data);
   }, []);
 
-
-
+  useEffect(() => {
+      Aos.init({ 
+        once: true,     
+      });
+  }, []);
 
   
   if (!impactData) return null;

@@ -2,25 +2,35 @@
 import { ChevronDown, Globe, Mail, X } from "lucide-react";
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import client from "@/lib/appollo-client";
+import { GET_REGIONS } from "@/lib/api-Collection";
 
 const RegionModal = ({ setIsModalOpen }) => {
   const router = useRouter();
+  const [regions,setRegion]=useState([]);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [selectedRegion, setSelectedRegion] = useState("");
 
-  // Regions list
-  const regions = [
-    { name: "Global", link: "www.carelabs.com", order: 1, siteUrl: "Go to: www.carelabs.com", lang: "", langValue: "en" },
-    { name: "Middle East & Africa", link: "www.carelabs-mea.com", order: 2, siteUrl: "Go to: carelabs-mea.com", lang: "mea", langValue: "en-MEA" },
-    { name: "Asia-Pacific", link: "www.carelabs-apac.com", order: 3, siteUrl: "Go to: carelabs-apac.com", lang: "apac", langValue: "en-APAC" },
-    { name: "Europe", link: "www.carelabs-eu.com", order: 4, siteUrl: "Go to: carelabs-eu.com", lang: "eu", langValue: "en-EU" },
-    { name: "Americas", link: "www.carelabs-americas.com", order: 5, siteUrl: "Go to: carelabs-americas.com", lang: "an", langValue: "en-AM" },
-    { name: "Canada", link: "www.carelabs.ca", order: 6, siteUrl: "Go to: carelabs.ca", lang: "ca", langValue: "en-CA" }
-  ];
+  const fetchRegions = async () => {
+    try{
+        const res = await client.query({
+                    query:GET_REGIONS,});
 
-  // 💡 Auto-detect current locale from URL and pre-select region
-  useEffect(() => {
-    const pathParts = window.location.pathname.split("/").filter(Boolean);
+
+        defaultRegion(res.data.regions);
+        setRegion(res.data.regions);
+    }catch(err){
+      console.log("ERROR at Fetching Regions in Modal",err);
+    }
+  }
+
+  useEffect(()=>{
+    fetchRegions();
+  },[]);
+
+
+  const defaultRegion=(regions) => {
+      const pathParts = window.location.pathname.split("/").filter(Boolean);
     const currentLocale = pathParts[0] || "";
 
     const matchedRegion =
@@ -28,7 +38,7 @@ const RegionModal = ({ setIsModalOpen }) => {
       regions[0]; // default: Global
 
     setSelectedRegion(matchedRegion.name);
-  }, []);
+  }
 
   // Change region
   const handleSelectRegion = (region) => {
@@ -38,18 +48,22 @@ const RegionModal = ({ setIsModalOpen }) => {
 
     const currentPath = window.location.pathname;
     const pathParts = currentPath.split("/").filter(Boolean);
-    const knownLocales = regions.map((r) => r.lang).filter(Boolean);
+    const knownLocales = regions.map((r) => r.language).filter(Boolean);
 
     // remove old locale
     if (knownLocales.includes(pathParts[0])) pathParts.shift();
 
     // build new path
-    const newPath = region.lang
-      ? `/${region.lang}/${pathParts.join("/")}`
+    const newPath = region.language
+      ? `/${region.language}/${pathParts.join("/")}`
       : `/${pathParts.join("/")}`;
 
     router.push(newPath);
   };
+
+
+    if(!regions) return null;
+
 
   return (
     <div
@@ -82,7 +96,7 @@ const RegionModal = ({ setIsModalOpen }) => {
             />
           </button>
 
-          {isDropdownOpen && (
+          {isDropdownOpen && regions &&(
             <ul className="absolute left-0 right-0 mt-2 bg-white rounded-xl shadow-lg border overflow-y-auto max-h-60 z-10">
               {regions.map((region) => (
                 <li
@@ -90,7 +104,7 @@ const RegionModal = ({ setIsModalOpen }) => {
                   onClick={() => handleSelectRegion(region)}
                   className="px-4 py-3 hover:bg-gray-100 cursor-pointer"
                 >
-                  {region.name} ({region.lang || "global"})
+                  {region.name} ({region.language || "global"})
                 </li>
               ))}
             </ul>

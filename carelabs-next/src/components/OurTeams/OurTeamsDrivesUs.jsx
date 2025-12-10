@@ -5,7 +5,6 @@ import { clientIcons } from "@/lib/clientIcons";
 
 
 const OurTeamsDrivesUs = ({data}) => {
-     console.log("DriverData",data);
 
     if(!data)return null;
 

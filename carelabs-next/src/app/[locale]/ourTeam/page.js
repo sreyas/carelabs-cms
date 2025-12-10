@@ -64,9 +64,6 @@ const page = () => {
         setourTeamworkWithUs(workWithUs);
         setourTeamRecognitions(Recognition);
         setourTeamReadyToTalk(readyToTalk);
-
-        console.log("OURTEAM",fetchedData);
-
         
     }catch(err){
       console.log("Error At Fetching ourTeam Data",err);

@@ -6,7 +6,6 @@ import { clientIcons } from "@/lib/clientIcons";
 
 
 const OurTeamsWrkTogether = ({data}) => {
-    console.log("WrkTogether",data);
 
     if(!data)return null
     

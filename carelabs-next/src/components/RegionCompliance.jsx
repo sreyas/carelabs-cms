@@ -27,7 +27,6 @@ const RegionCompliance = () => {
           variables: {locale },
         });
 
-        console.log("REGIONCOMPLIANCE Data:", response.data.homeCompliances[0])
         setCompliance(response.data.homeCompliances[0]); 
     }catch(err){
        console.log("ERROR at Fetching RegionCompliance in Component",err);

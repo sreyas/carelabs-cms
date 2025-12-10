@@ -26,7 +26,6 @@ const OurTeamPartner = ({data}) => {
 
       {items.map((item, index) => {
         const iconName = item.icon?.trim();
-        console.log("IconName",iconName);
         
         const ItemIcon = clientIcons[iconName] || clientIcons.HelpCircle;
         // fallback icon

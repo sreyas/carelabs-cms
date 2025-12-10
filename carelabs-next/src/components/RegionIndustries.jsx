@@ -1,4 +1,3 @@
-import { GET_REGION_INDUSTRIES } from '@/lib/api-Collection';
 import { Heart, Zap } from 'lucide-react'
 import React from 'react'
 import { clientIcons } from "@/lib/clientIcons";
@@ -9,7 +8,6 @@ import { clientIcons } from "@/lib/clientIcons";
 const RegionIndustries = ({data}) => {
 
   if(!data)return null
-         console.log(data.badgeicon);
          
     const BadgeIcon =clientIcons[data.badgeicon.trim()];
     const industriesData=data.key_industries || [];

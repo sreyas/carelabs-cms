@@ -1,29 +1,24 @@
+"use client"
+import Aos from 'aos';
 import React, { useState, useEffect } from 'react'
-import { GET_TESTIMONIALS } from '@/lib/api-Collection';
-import client from '@/lib/appollo-client';
 import { Quote, ChevronLeft, ChevronRight, } from 'lucide-react';
 
 
-const HomeTestimonials = () => {
+const HomeTestimonials = ({data}) => {
 
   const [testimonialData, setTestimonialData] = useState(null)
   const [current, setCurrent] = useState(0);
  
 
-  const fetchTestimonials = async () => {
-    try {
-      const response = await client.query({
-        query:GET_TESTIMONIALS
-      })
-       setTestimonialData(response.data.testimonialsSection)
-    } catch (error) {
-      console.log("Error fetching testimonials:", error);
-    }
-  }
-
   useEffect(()=> {
-   fetchTestimonials()
-  },[])
+    setTestimonialData(data);
+  },[]);
+
+  useEffect(() => {
+      Aos.init({ 
+        once: true,     
+      });
+  }, []);
 
   if(!testimonialData) return null
 

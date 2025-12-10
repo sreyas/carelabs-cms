@@ -65,7 +65,6 @@ const page = () => {
         setourTeamRecognitions(Recognition);
         setourTeamReadyToTalk(readyToTalk);
 
-        console.log("OURTEAM",fetchedData);
 
         
     }catch(err){

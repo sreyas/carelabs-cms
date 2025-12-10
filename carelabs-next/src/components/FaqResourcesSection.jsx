@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { ChevronDown, FileText, Download } from "lucide-react";
 import { cn } from "@/lib/utils";
-import {SquareArrowOutUpRight} from "lucide-react";
 import { clientIcons } from "@/lib/clientIcons";
 
 

@@ -7,19 +7,16 @@ import React from "react";
 
 export default function Page(props) {
   const params = React.use(props.params);
-  console.log("Params",params);
   
   const slug = params?.slug;
   var locale=params?.locale;
 
-  console.log(" Server → Slug:", slug);
-  console.log(" Server → Locale:", locale);
+
 
   if(locale=="CA" || locale=="ca"){
     locale="en-CA";
   }
 
-   console.log(" Server → Locales :", locale);
 
   if (!slug) {
     return (
@@ -35,8 +32,6 @@ export default function Page(props) {
       variables: { slug,locale },
       fetchPolicy: "no-cache",
     });
-      console.log(" Blog:::::::::::::::::::::");
-    console.log(" Blog:", response.data);
     return response?.data?.insightblogs?.[0] || null;
   }
 

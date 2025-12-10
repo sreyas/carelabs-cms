@@ -34,7 +34,6 @@ const OurTeamsBanner = ({ data }) => {
         );
     }
 
-    console.log("SnapData", data);
 
 
     return (
