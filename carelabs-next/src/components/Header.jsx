@@ -137,15 +137,20 @@ const Header = () => {
         <div className="header w-full  h-full flex items-center justify-between lg:justify-center  2xl:p-3 ">
           <div className="logo flex item center justify-center w-[50%] sm:w-[40%]  lg:w-[22%] ">
             <Link href={currentLocale ? `/${currentLocale}/` : "/"}>
-            <img
-            src={navbarData.Logo?.url}
-            width="400"
-            height="100"
-            alt="Logo"
-            fetchpriority="high"
-            decoding="async"
-            style={{ objectFit: "contain" }}
-          />
+              <Image
+                  className="p-3 md:w-[60%] lg:w-[75%] object-contain"
+                  src={
+                    navbarData.Logo?.url
+                      ? navbarData.Logo.url
+                      : "https://inspired-gem-f09bdfaddd.media.strapiapp.com/carelab_logo_7d51f198e5.png"
+                  }
+                  alt="Logo"
+                  width={400}
+                  height={100}
+                  priority
+                  fetchPriority="high"
+                  decoding="async"
+                />
 
             </Link>
           </div>
