@@ -47,6 +47,8 @@ const Footer = () => {
                 className="w-32 md:w-55"
                 src={logo?.url}
                 alt="Footer Logo"
+                width={128} 
+                height={128} 
               />
               <p className="text-sm text-[#808898] ">{description}</p>
 

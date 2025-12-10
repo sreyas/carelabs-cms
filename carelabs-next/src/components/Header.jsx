@@ -9,7 +9,7 @@ import { clientIcons } from "@/lib/clientIcons";
 import { useParams, useRouter } from "next/navigation";
 import { useLocalizedNavigate } from '@/lib/navigation';
 import ContactPopupModal from './Modal/ContactPopupModal';
-
+import Image from "next/image";
 
 
 const Header = () => {
@@ -143,6 +143,7 @@ const Header = () => {
                 alt="Logo"
                 width={400}
                 height={100}
+                loading="eager"
               />
             </Link>
           </div>
