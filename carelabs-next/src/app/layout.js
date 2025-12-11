@@ -46,8 +46,8 @@ export default function RootLayout({ children }) {
       
         <body className={`${montserrat.variable} ${poppins.variable} font-sans`}>
           
-        {/* <Header/> */}
-        <Navbar/>
+        <Header/>
+        {/* <Navbar/> */}
         {children}
         <QuoteBar/>
         <Footer/>
