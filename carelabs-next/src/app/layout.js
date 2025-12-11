@@ -8,9 +8,6 @@ import { Montserrat, Poppins } from "next/font/google";
 import Navbar from "@/components/Header/Navbar";
 
 
-const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
-
-
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -46,16 +43,6 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en" >
-
-
-        <head>
-        {STRAPI_URL && (
-          <>
-            <link rel="preconnect" href={STRAPI_URL} />
-            <link rel="preconnect" href={STRAPI_URL} crossOrigin="" />
-          </>
-        )}
-      </head>
       
         <body className={`${montserrat.variable} ${poppins.variable} font-sans`}>
           
