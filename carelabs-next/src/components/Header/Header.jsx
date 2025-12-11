@@ -1,15 +1,14 @@
 "use client";
-import { GET_NAVBAR } from '@/lib/api-Collection';
-import client from '@/lib/appollo-client';
+
 import { ChevronDown,Moon,ArrowRight, Menu, X, Globe} from 'lucide-react';
 import React, { useEffect, useState } from 'react'
-import RegionModal from '../components/Modal/RegionModal';
 import Link from 'next/link';
 import { clientIcons } from "@/lib/clientIcons";
 import { useParams, useRouter } from "next/navigation";
 import { useLocalizedNavigate } from '@/lib/navigation';
-import ContactPopupModal from './Modal/ContactPopupModal';
 import Image from 'next/image';
+import ContactPopupModal from '../Modal/ContactPopupModal';
+import RegionModal from '../Modal/RegionModal';
 
 
 const Header = ({navbarData}) => {
@@ -22,7 +21,7 @@ const Header = ({navbarData}) => {
   const [selectedRegion, setSelectedRegion] = useState("Global");
   const [isContactModalOpen, setIsContactModalOpen] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [logoUrl, setLogoUrl] = useState("https://inspired-gem-f09bdfaddd.media.strapiapp.com/carelab_logo_7d51f198e.png");
+  const [logoUrl, setLogoUrl] = useState("https://inspired-gem-f09bdfaddd.media.strapiapp.com/carelab_logo_7d51f198e5.png");
 
   const router = useRouter();
   const navigate = useLocalizedNavigate();
@@ -66,7 +65,11 @@ const Header = ({navbarData}) => {
   //     console.log("Error fetching navbar data:", err);
   //   }
   // }
-   setLogoUrl(navbarData.Logo?.url || logoUrl);
+useEffect(() => {
+  if (navbarData?.Logo?.url) {
+    setLogoUrl(navbarData.Logo.url);
+  }
+}, [navbarData]);
 
 
   useEffect(() => {
