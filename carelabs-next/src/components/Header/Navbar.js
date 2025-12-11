@@ -1,8 +1,8 @@
 // components/Navbar.js
 import React from 'react';
-import Header from '../Header';
 import client from '@/lib/appollo-client';
 import { GET_NAVBAR } from '@/lib/api-Collection';
+import Header from '../Header/Header';
 
 const Navbar = async () => {
   let navbarData = null;
