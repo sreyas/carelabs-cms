@@ -197,19 +197,23 @@ const HomeServices = ({data}) => {
                   {/* Key Features */}
                   <div>
                     <h4 className="mb-3 font-semibold text-[14px] primary-color">KEY FEATURES</h4>
-                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2  text-sm sm:text-base ">
-                      {activeItem?.serviceFeatures?.map((feat, idx) => (
-                        <div key={idx}
-                          className="flex items-center  gap-2 ">
-                          {/* <CircleCheckBig size={20} className='text-green-300' /> */}
-                          <div className="w-5 h-5 rounded-full flex items-center justify-center" style={{ backgroundColor: 'rgba(5, 150, 105, 0.1)' }}>
-                            <Check size={12} className="text-[#059669]" />
-                          </div>
-                          <li key={idx} className='poppins-font text-[16px] font-medium'> {feat.name}</li>
+                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm sm:text-base">
+                    {activeItem?.serviceFeatures?.map((feat, idx) => (
+                      <li key={idx} className="flex items-center gap-2 poppins-font text-[16px] font-medium">
+
+                        <div
+                          className="w-5 h-5 rounded-full flex items-center justify-center"
+                          style={{ backgroundColor: "rgba(5, 150, 105, 0.1)" }}
+                        >
+                          <Check size={12} className="text-[#059669]" />
                         </div>
 
-                      ))}
-                    </ul>
+                        {feat.name}
+
+                      </li>
+                    ))}
+                  </ul>
+
                   </div>
 
                   {/* Performance Metrics */}
@@ -240,26 +244,7 @@ const HomeServices = ({data}) => {
 
   <div className="flex flex-col sm:flex-row gap-3 sm:gap-5">
   
-  {/* Primary Button */}
-  {/* <a href={activeItem?.button1link}
-
-      className="
-        w-[177px]
-        h-[48px]
-        bg-[#FF7038]
-        text-white
-        font-bold
-        rounded-[9999px]
-        flex items-center justify-center
-        hover:bg-[#ff5722]
-        transition-colors
-        cursor-pointer
-        monserrat-font
-      "
-    >
-      {activeItem?.button1text}
   
-  </a> */}
   <a 
   href={activeItem?.button1link || '#'} 
   aria-label={activeItem?.button1text || 'Request Demo'}
@@ -282,26 +267,7 @@ const HomeServices = ({data}) => {
 </a>
   
   
-  {/* Secondary Button */}
-  {/* <a href={activeItem?.button2link}
   
-      className="
-        w-[177px]
-        h-[48px]
-        border-2 border-blue-400
-        text-blue-400
-        font-semibold
-        rounded-[9999px]
-        flex items-center justify-center
-        hover:bg-blue-50
-        transition-colors
-        cursor-pointer
-        monserrat-font
-      "
-    >
-      {activeItem?.button2text}
-  
-  </a> */}
   <a 
   href={activeItem?.button2link || '#'} 
   aria-label={activeItem?.button2text || 'Learn More'}

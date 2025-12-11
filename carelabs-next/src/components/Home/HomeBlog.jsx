@@ -23,6 +23,9 @@ const HomeBlog = ({data}) => {
 
     if(!insights) return null;
 
+    console.log("BlogInsigts",insights);
+    
+
     const featured = insights.articles.find(a => a.featured === true);
 
     if (!featured) {
@@ -57,7 +60,7 @@ const HomeBlog = ({data}) => {
               className="px-5 py-3 border border-[#1F8FEB] text-[#1F8FEB] rounded-[12px]
               inline-block poppins-font text-center w-full sm:w-auto hover:bg-[#E9EDF5] transition-all duration-300 animate-pop-in"
             >
-              {insights.button}
+              {insights.buttontext}
             </Link>
 
         </div>
@@ -136,7 +139,7 @@ const HomeBlog = ({data}) => {
               </p> */}
               
               <a
-                href={featured?.buttonlink}
+                href={featured?.buttonlink || '#'}
                 className="text-md font-semibold text-[#2575b6] cursor-pointer 
              flex items-center gap-2 group"
               >
@@ -161,7 +164,7 @@ const HomeBlog = ({data}) => {
       items-stretch">
 
     {insights.articles.slice(1, 4).map((item, idx) => (
-      <a key={idx} href={item.buttonlink}>
+      <a  key={idx} href={item.buttonlink || '#'}>
         <div className="transform transition-all duration-500 ease-in-out hover:-translate-y-3 
             border-[1px] border-transparent hover:border hover:border-blue-900 h-full rounded-2xl">
 
