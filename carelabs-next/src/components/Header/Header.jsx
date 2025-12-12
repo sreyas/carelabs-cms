@@ -100,7 +100,7 @@ const navigatetoSlugPage = () => {
 
 
   console.log("TargetSlug", targetSlug);
-  console.log("currentSubmenu", currentSubmenu.slug);
+  console.log("currentSubmenu1", currentSubmenu.slug);
   window.location.href=targetSlug;
 
   // Navigate
@@ -312,15 +312,6 @@ const navigatetoSlugPage = () => {
                     ))}
                   </div>
 
-                  {/* <Link 
-                        href={`/services/${navbarData.items[activeIndex].submenus[selectedSubmenuIndex].slug}`}
-                        className="group relative inline-flex items-center justify-center bg-[#157de5] text-white text-[14px] font-semibold py-2 px-4 rounded-full w-[45%] text-center transition-all duration-300 ease-in-out transform hover:scale-105 hover:bg-gradient-to-r hover:from-[#157de5] hover:to-[#ff7038] hover:shadow-[0_20px_30px_rgba(0,0,0,0.3)]"
-                      >
-                        <span className="flex items-center gap-2">
-                          {navbarData.items[activeIndex].submenus[selectedSubmenuIndex].Button}
-                          <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-                        </span>
-                      </Link> */}
 
                <button
                   // onClick={navigatetoSlugPage}
@@ -332,16 +323,6 @@ const navigatetoSlugPage = () => {
                   </span>
                 </button>
 
-
-                  {/* <Link
-                        //href={finalURL}
-                        className="group relative inline-flex items-center justify-center bg-[#157de5] text-white text-[14px] font-semibold py-2 px-4 rounded-full w-[45%] text-center transition-all duration-300 ease-in-out transform hover:scale-105 hover:bg-gradient-to-r hover:from-[#157de5] hover:to-[#ff7038] hover:shadow-[0_20px_30px_rgba(0,0,0,0.3)]"
-                      >
-                        <span className="flex items-center gap-2">
-                          {submenu.Button}
-                          <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-                        </span>
-                      </Link> */}
 
 
                 </div>
