@@ -1,24 +1,41 @@
 // lib/navigation.js
-import { useRouter, usePathname } from "next/navigation";
+"use client";
 
-/**
- * Returns a function to navigate respecting current locale in the URL
- */
+import { useRouter, usePathname } from "next/navigation";
+import { useRegions } from "./regionContext";
+
+
+
 export const useLocalizedNavigate = () => {
   const router = useRouter();
   const pathname = usePathname();
+  const { regions } = useRegions();
 
-  // Extract locale from pathname if it exists
+ console.log("RegionS:::",regions);
+
+ const filteredLanguages = regions
+  .map(r => r.language)   // get language
+  .filter(lang => lang);  // remove null or undefined
+
+console.log(filteredLanguages);
+ 
+  // Extract locale from pathname
   const pathSegments = pathname.split("/").filter(Boolean);
-  const locale = pathSegments[0]?.length === 5 || pathSegments[0] === "ca" ? pathSegments[0] : null;
+  console.log("Pathsegments",pathSegments);
+  
+  // Example: 'en-US' or 'ca', adjust the check based on your locale format
+const locale = filteredLanguages.includes(pathSegments[0]) ? pathSegments[0] : null;
+  console.log("Localein Nav",locale);
+  
 
   const navigate = (path) => {
-    if (locale) {
-      // prepend locale
-      router.push(`/${locale}${path.startsWith("/") ? path : `/${path}`}`);
-    } else {
-      router.push(path);
-    }
+    // Prepend the locale if it exists
+    const finalPath = locale
+      ? `/${locale}${path.startsWith("/") ? path : `/${path}`}`
+      : path;
+     console.log("FinalPath",finalPath);
+     
+    router.push(finalPath);
   };
 
   return navigate;

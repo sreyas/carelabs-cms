@@ -6,6 +6,8 @@ import QuoteBar from "@/components/QuoteBar";
 import Script from "next/script";
 import { Montserrat, Poppins } from "next/font/google";
 import Navbar from "@/components/Header/Navbar";
+import { RegionProvider } from "@/lib/regionContext";
+
 
 
 
@@ -47,10 +49,13 @@ export default function RootLayout({ children }) {
         <body className={`${montserrat.variable} ${poppins.variable} font-sans`}>
           
         {/* <Header/> */}
-        <Navbar/>
-        {children}
-        <QuoteBar/>
-        <Footer/>
+        <RegionProvider>
+          <Navbar/>
+           {children}
+          <QuoteBar/>
+        <  Footer/>
+        </RegionProvider>
+        
 
 
 

@@ -504,6 +504,9 @@ export const GET_INSIGHTS_BY_SLUG = gql`
       badgeicon
       mainheading
       description
+      mainimage {
+        url
+      }
       authoricon
       author
       publishedicon
@@ -511,6 +514,9 @@ export const GET_INSIGHTS_BY_SLUG = gql`
       timeicon
       time
       slug
+      blog_categories {
+        category
+      }
       category {
         title
       }
@@ -636,7 +642,10 @@ export const GET_INSIGHTS_BY_SLUG_By_LOCALE = gql`
       timeicon
       time
       slug
-        locale
+      locale
+      blog_categories {
+        category
+      }
       category {
         title
       }
@@ -1460,22 +1469,21 @@ export const GET_HOMEPAGE_DATA = gql`
 }
 `
 
-export const GET_BLOG_LIST = gql`
-  query GetBlogList($filters: InsightblogFiltersInput) {
-    insightblogs(filters: $filters) {
-      documentId
-      slug
+export const GET_ALL_INSIGHTBLOGS = gql`
+  query {
+    insightblogs (pagination: { page: 1, pageSize: 1000 }) {
       mainheading
+      slug
       description
-      badge
-      badgeicon
-      author
-      authoricon
+      mainimage {
+        url
+      }
+      publishedicon
       publishedOn
-      time
-      category {
-        title
+      blog_categories {
+        category
       }
     }
   }
 `;
+

@@ -4,43 +4,42 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import client from "@/lib/appollo-client";
 import { GET_REGIONS } from "@/lib/api-Collection";
+import { useRegions } from "@/lib/regionContext";
 
 const RegionModal = ({ setIsModalOpen }) => {
   console.log("OpenModals",setIsModalOpen);
   
   const router = useRouter();
-  const [regions,setRegion]=useState([]);
+  const { regions, loading } = useRegions();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [selectedRegion, setSelectedRegion] = useState("");
 
-  const fetchRegions = async () => {
-    try{
-        const res = await client.query({
-                    query:GET_REGIONS,});
 
-
-        defaultRegion(res.data.regions);
-        setRegion(res.data.regions);
-    }catch(err){
-      console.log("ERROR at Fetching Regions in Modal",err);
-    }
-  }
-
-  useEffect(()=>{
-    fetchRegions();
-  },[]);
-
-
-  const defaultRegion=(regions) => {
+   useEffect(() => {
+    if (!loading && regions.length) {
       const pathParts = window.location.pathname.split("/").filter(Boolean);
-    const currentLocale = pathParts[0] || "";
+      const currentLocale = pathParts[0] || "";
 
-    const matchedRegion =
-      regions.find((r) => r.lang === currentLocale) ||
-      regions[0]; // default: Global
+      // Find region matching the current locale
+      const matchedRegion = regions.find(r => r.language === currentLocale);
 
-    setSelectedRegion(matchedRegion.name);
-  }
+      // If none match, use the default region (isDefault === true) or first region
+      const defaultRegion = matchedRegion || regions.find(r => r.isDefault) || regions[0];
+
+      setSelectedRegion(defaultRegion.name);
+    }
+  }, [loading, regions]);
+
+  // const defaultRegion=(regions) => {
+  //     const pathParts = window.location.pathname.split("/").filter(Boolean);
+  //   const currentLocale = pathParts[0] || "";
+
+  //   const matchedRegion =
+  //     regions.find((r) => r.lang === currentLocale) ||
+  //     regions[0]; // default: Global
+
+  //   setSelectedRegion(matchedRegion.name);
+  // }
 
   // Change region
   const handleSelectRegion = (region) => {
@@ -59,7 +58,8 @@ const RegionModal = ({ setIsModalOpen }) => {
     const newPath = region.language
       ? `/${region.language}/${pathParts.join("/")}`
       : `/${pathParts.join("/")}`;
-
+      console.log("new",newPath);
+      
     router.push(newPath);
   };
 

@@ -169,7 +169,7 @@ const TimeIcon =blog?.timeicon && clientIcons[blog.timeicon.trim()]? clientIcons
         <div
           className="w-full md:w-1/2 h-64 md:min-h-[440px] rounded-2xl"
           style={{
-            backgroundImage: `url(${blog.sections?.[1]?.image?.url || carlabz.src})`,
+            backgroundImage: `url(${blog.mainimage?.url || carlabz.src})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
