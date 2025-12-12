@@ -4,10 +4,13 @@ import React, { useState, useEffect } from 'react';
 import client from '@/lib/appollo-client'
 import { GET_FOOTER } from '@/lib/api-Collection'
 import { clientIcons } from "@/lib/clientIcons";
+import ContactPopupModal from './Modal/ContactPopupModal';
 
 const QuoteBar = () => {
   const [footerData, setFooterData] = useState(null)
   const [showBar, setShowBar] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  
 
    const fetchFooter = async () => {
     try {
@@ -51,7 +54,8 @@ const QuoteBar = () => {
   const IconComponent = clientIcons[cta?.button2icon.trim()] || clientIcons.ArrowRight
 
   return (
-    <div
+    <div className="">
+      <div
       className={`w-full fixed bottom-0 mb-5 z-[999] flex items-center justify-center p-2 transition-transform duration-300 ${
         showBar ? "translate-y-0" : "translate-y-full"
       }`}
@@ -68,17 +72,16 @@ const QuoteBar = () => {
         <div className="flex flex-wrap sm:flex-nowrap gap-2 items-center justify-center sm:justify-end">
 
           {/* CTA BUTTON */}
-          <a
-            href={cta?.button1link || "/contact"}
-            aria-label={cta?.button1text}
-            className="px-4 sm:px-5 py-2 bg-[#FF7038] text-white rounded-full text-sm sm:text-base inline-flex items-center justify-center cursor-pointer hover:bg-[#ff5722] transition-colors no-underline"
-            onClick={(e) => {
-              e.preventDefault();
-              window.openContactModal();
-            }}
-          >
-            {cta?.button1text}
-          </a>
+        <button   
+          type="button"
+          name="quote_Bar_Modal_Button"
+          aria-label={cta?.button1text}
+          className="px-4 sm:px-5 py-2 bg-[#FF7038] text-white rounded-full text-sm sm:text-base inline-flex items-center justify-center cursor-pointer hover:bg-[#ff5722] transition-colors"
+          onClick={() => setIsOpen(true)}
+        >
+          {cta?.button1text}
+        </button>
+
 
           {/* SCROLL TO TOP */}
           <button
@@ -90,6 +93,17 @@ const QuoteBar = () => {
           </button>
         </div>
       </div>
+
+
+
+    </div>
+   {isOpen && (
+        <ContactPopupModal 
+            isOpen={isOpen}
+            setIsOpen={setIsOpen}
+        />
+        )}
+
     </div>
   );
 };

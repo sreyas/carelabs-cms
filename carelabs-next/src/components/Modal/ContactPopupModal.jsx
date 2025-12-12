@@ -31,7 +31,21 @@ console.log("KJHGFDSAASDFGGHHJKKLQWETTYUIOOPP");
     fetchFieldValues(); // call on mount
 }, []);
 
+   useEffect(() => {
+   
 
+    const interval = setInterval(() => {
+      if (window.turnstile) {
+        window.turnstile.render("#cf-turnstile", {
+          sitekey: "0x4AAAAAAA_eaDkiLVUQBCGg",
+          theme: "light",
+        });
+        clearInterval(interval);
+      }
+    }, 300);
+
+    return () => clearInterval(interval);
+  }, []);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -81,7 +95,7 @@ console.log("KJHGFDSAASDFGGHHJKKLQWETTYUIOOPP");
      
     return (
         <div
-            className="fixed top-0  left-0 w-full p-5 z-50 h-screen flex items-center justify-center bg-black/60 backdrop-blur-sm lg:p-4"
+            className="fixed top-0  left-0 w-full p-5 z-[1000] h-screen flex items-center justify-center bg-black/60 backdrop-blur-sm lg:p-4"
             onClick={(e) => e.target === e.currentTarget && setIsOpen(false)}
         >
             <div className="relative w-full  max-w-[650px] lg:max-w-[700px] rounded-2xl shadow-xl bg-white overflow-hidden">
@@ -251,12 +265,14 @@ console.log("KJHGFDSAASDFGGHHJKKLQWETTYUIOOPP");
                             </label>
 
                             <div className="w-full flex justify-center">
-                                <div
+                                {/* <div
                                     className="cf-turnstile mt-4"
                                     data-sitekey="0x4AAAAAAA_eaDkiLVUQBCGg"
                                     data-theme="light"
                                     id="cf-captcha"
-                                ></div>
+                                ></div> */}
+                                <div id="cf-turnstile"></div>
+
                             </div>
                         </div>
                         <button
