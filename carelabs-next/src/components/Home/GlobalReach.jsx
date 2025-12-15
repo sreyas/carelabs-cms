@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from 'react'
 import { Globe, Zap } from 'lucide-react';
 import { clientIcons } from "@/lib/clientIcons";
-import Aos from 'aos';
 
 
 
@@ -15,11 +14,7 @@ const GlobalReach = ({data}) => {
     setImpactData(data);
   }, []);
 
-  useEffect(() => {
-      Aos.init({ 
-        once: true,     
-      });
-  }, []);
+
 
   
   if (!impactData) return null;
@@ -77,7 +72,7 @@ const GlobalReach = ({data}) => {
         <div className="cover w-full flex  item-center justify-center p-5 2xl:mb-10">
             <div 
             data-aos="fade-up"
-     data-aos-anchor-placement="top-center"
+             data-aos-anchor-placement="top-center"
             className="w-[90%] flex flex-col items-center justify-center rounded-[32px] md:w-[80%] lg:w-[85%] 2xl:w-[65%] p-4 border border-[#0F172A]/10 shadow-[0_24px_60px_rgba(15,23,42,0.08)] bg-white ">
      <div className="card-block grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4  w-[95%] gap-5 sm:gap-4 justify-items-center sm:p-5">
 
@@ -85,7 +80,7 @@ const GlobalReach = ({data}) => {
 
 
 
-{impactData.projectsStat?.map((item, index) => {
+{impactData.projectStat?.map((item, index) => {
   
   // Define color set EXACTly like screenshot
   const colors = [

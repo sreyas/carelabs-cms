@@ -1,4 +1,3 @@
-"use client";
 
 import client from "@/lib/appollo-client";
 import { GET_SINGLE_SERVICE_BY_SLUG } from "@/lib/api-Collection";
@@ -48,8 +47,11 @@ export default async function Page({ params }) {
     <div className="w-full sm:w-[80%] lg:w-[75%] flex flex-wrap justify-center gap-6">
 
       {service?.service_features?.map((feat, idx) => {
-        const iconName = feat.icon.trim();
-        const Icon = clientIcons[iconName] || clientIcons.CircleCheck; 
+       const iconName = feat?.icon?.trim();
+       console.log("IconNamesss",iconName);
+       
+       const Icon = clientIcons[iconName] ?? clientIcons.CircleCheck;
+
         console.log("Icon Name",Icon);
         
 

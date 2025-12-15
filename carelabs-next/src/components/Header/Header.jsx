@@ -27,85 +27,81 @@ const Header = ({navbarData}) => {
 
   const activeSubmenu =
     navbarData?.items?.[activeIndex]?.submenus?.[selectedSubmenuIndex];
-  const ActiveIcon = activeSubmenu ? clientIcons[activeSubmenu.icon] : null;
+    const ActiveIcon = activeSubmenu ? clientIcons[activeSubmenu.icon] : null;
 
-  console.log("NavbarData",navbarData);
-  console.log("NavbarItems",navbarData?.items);
-  
+    console.log("NavbarData",navbarData);
+    console.log("NavbarItems",navbarData?.items);
 
-
-  
-
-  const openMobilemenus = () => {
-    console.log("TETEE");
-    setOpenMobileMenu(!openMobileMenu);
-  }
-
-useEffect(() => {
-  if (navbarData?.Logo?.url) {
-    setLogoUrl(navbarData.Logo.url);
-  }
-  if(navbarData?.Logo?.alternativeText==""){
-
-  }
-}, [navbarData]);
-
-  //cloudFlare
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js";
-    script.async = true;
-    script.defer = true;
-    document.body.appendChild(script);
-
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, [])
-
-  useEffect(() => {
-    if (isContactModalOpen) {
-      setTimeout(() => {
-        if (window.turnstile) {
-          window.turnstile.render("#cf-captcha", {
-            sitekey: "0x4AAAAAAA_eaDkiLVUQBCGg",
-            theme: "light",
-          });
-        }
-      }, 100);
+    const openMobilemenus = () => {
+      console.log("TETEE");
+      setOpenMobileMenu(!openMobileMenu);
     }
-  }, [isContactModalOpen]);
+
+    useEffect(() => {
+      if (navbarData?.Logo?.url) {
+        setLogoUrl(navbarData.Logo.url);
+      }
+      if(navbarData?.Logo?.alternativeText==""){
+
+      }
+    }, [navbarData]);
+
+    //cloudFlare
+    useEffect(() => {
+      const script = document.createElement("script");
+      script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js";
+      script.async = true;
+      script.defer = true;
+      document.body.appendChild(script);
+
+      return () => {
+        document.body.removeChild(script);
+      };
+    }, [])
+
+    useEffect(() => {
+      if (isContactModalOpen) {
+        setTimeout(() => {
+          if (window.turnstile) {
+            window.turnstile.render("#cf-captcha", {
+              sitekey: "0x4AAAAAAA_eaDkiLVUQBCGg",
+              theme: "light",
+            });
+          }
+        }, 100);
+      }
+    }, [isContactModalOpen]);
 
 
-  if (!navbarData) {
-    return (
-      <div className="w-full bg-gray-100 flex items-center justify-center h-[80px] gap-3 p-2">
-        <div className="w-[10%] h-full rounded-md bg-gray-300 animate-pulse"></div>
-        <div className="w-[60%] h-full rounded-md bg-gray-300 animate-pulse"></div>
-        <div className="w-[20%] h-full rounded-md bg-gray-300 animate-pulse"></div>
-      </div>
-    );
-  }
+    if (!navbarData) {
+      return (
+        <div className="w-full bg-gray-100 flex items-center justify-center h-[80px] gap-3 p-2">
+          <div className="w-[10%] h-full rounded-md bg-gray-300 animate-pulse"></div>
+          <div className="w-[60%] h-full rounded-md bg-gray-300 animate-pulse"></div>
+          <div className="w-[20%] h-full rounded-md bg-gray-300 animate-pulse"></div>
+        </div>
+      );
+    }
 
-const navigatetoSlugPage = () => {
-  const currentItem = navbarData?.items?.[activeIndex] ?? null;
-  const currentSubmenu = currentItem?.submenus?.[selectedSubmenuIndex] ?? null; 
-  const isBlogMenu = currentItem?.label === "Insights Hub";
+    const navigatetoSlugPage = () => {
+      const currentItem = navbarData?.items?.[activeIndex] ?? null;
+      const currentSubmenu = currentItem?.submenus?.[selectedSubmenuIndex] ?? null; 
+      const isBlogMenu = currentItem?.label === "Insights Hub";
 
-  const targetSlug = isBlogMenu
-    ? `/blogs/${currentSubmenu?.slug}`
-    : `/services/${currentSubmenu?.slug}`;
+      const targetSlug = isBlogMenu
+        ? `/blogs/${currentSubmenu?.slug}`
+        : `/services/${currentSubmenu?.slug}`;
 
-  // const targetSlug ="/ourTeam"
+      // const targetSlug ="/ourTeam"
 
 
-  console.log("TargetSlug", targetSlug);
-  console.log("currentSubmenu1", currentSubmenu.slug);
-  window.location.href=targetSlug;
+      console.log("TargetSlug", targetSlug);
+      console.log("currentSubmenu1", currentSubmenu.slug);
+      // window.location.href=targetSlug;
 
-  // Navigate
-  // navigate(targetSlug); // or router.push(targetSlug) if using useRouter
-}
+      // Navigate
+      navigate(targetSlug);
+    }
 
 
   
@@ -115,19 +111,21 @@ const navigatetoSlugPage = () => {
     <>
       <div className="headCvr w-full h-[80px] flex items-center justify-center navbar-shadow fixed z-50 header-background">
         <div className="header w-full  h-full flex items-center justify-between lg:justify-center  2xl:p-3 ">
-          <div className="logo flex item center justify-center w-[50%] sm:w-[40%]  lg:w-[22%] ">
+          <div className="logos  flex items-center justify-center w-[50%] sm:w-[40%] lg:w-[22%]">
             <Link href={currentLocale ? `/${currentLocale}/` : "/"}>
-              <Image
-                className="p-3  lg:w-[75%] object-contain"
-                // src={navbarData.Logo?.url}
-                src={logoUrl}
-                alt={navbarData.Logo?.alternativeText || "Carelabs Logo"}
-                width={400}
-                height={100}
-                priority   
+              <div className=" logos1 flex items-center justify-center w-full h-full">
+                <Image
+                  className="logo w-[200px] lg:w-[75%] object-contain"
+                  src={logoUrl}
+                  alt={navbarData.Logo?.alternativeText || "Carelabs Logo"}
+                  width={400}
+                  height={100}
+                  priority
                 />
+              </div>
             </Link>
           </div>
+
 
           <div className="menuList hidden lg:flex lg:w-[60%] xl:w-[38%] lg:justify-center h-full ">
             <ul className='flex text-[14px] font-medium justify-evenly items-center gap-6 w-[95%] p-3'>
@@ -314,7 +312,7 @@ const navigatetoSlugPage = () => {
 
 
                <button
-                  // onClick={navigatetoSlugPage}
+                  onClick={navigatetoSlugPage}
                   className="relative inline-flex items-center justify-center bg-[#157de5] text-white text-[14px] font-semibold py-2 px-4 rounded-full w-[45%] text-center hover:bg-gradient-to-r hover:from-[#157de5] hover:to-[#ff7038] hover:shadow-[0_20px_30px_rgba(0,0,0,0.3)] transition-transform duration-300 hover:scale-105"
                 >
                   <span className="flex items-center gap-2 whitespace-nowrap">

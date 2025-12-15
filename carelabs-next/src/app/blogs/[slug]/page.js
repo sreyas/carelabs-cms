@@ -1,88 +1,65 @@
-"use client";
 
 import client from "@/lib/appollo-client";
 import { GET_INSIGHTS_BY_SLUG } from "@/lib/api-Collection";
-import { Brain, Calendar, Clock, Globe, User, ArrowRight, Tag } from "lucide-react";
+import { Calendar,Clock,ArrowRight,Tag } from "lucide-react";
 import { clientIcons } from "@/lib/clientIcons";
-import Image from "next/image";
 import carlabz from "@/assets/carlabz.jpg";
-import React, { useEffect, useState } from "react";
-import { useParams } from "next/navigation";
 
 
-export default function Page({ params }) {
+export default async function Page({ params }) {
+    const { slug } = await params;
+    console.log("Blog_Slug",slug);
 
-  // console.log("Params11",params);
-  
-  const { slug } = useParams();  
-
-   const[blog,setblog]=useState(null);
-
-  if (!slug) {
-    return (
-      <div className="p-20 text-center">
-        <h1 className="text-3xl font-bold">Slug Missing</h1>
-      </div>
-    );
-  }
-
- 
-
-  const fetchBlogs=async()=>{
+    if (!slug) {
+      return (
+        <div className="p-20 text-center">
+          <h1 className="text-3xl font-bold">Slug Missing</h1>
+        </div>
+      );
+    }
+    let blog = null;
     try{
       const response = await client.query({
-                          query: GET_INSIGHTS_BY_SLUG,
-                          variables: { slug },
-                          fetchPolicy: "no-cache",
-                        });
-
-                         console.log("BlogURL:",response.data.insightblogs[0]);
-                         
-      setblog(response.data.insightblogs[0]);            
+        query: GET_INSIGHTS_BY_SLUG,
+        variables: { slug },
+      
+      });
+       blog=response.data.insightblogs[0];   
     }catch(err){
       console.log("Error at Fetching Blog By Slug",err);
-      
     }
-  }
-
-  useEffect(()=>{
-   fetchBlogs();
-  },[]);
-
-const BrainIcon =blog?.badgeicon && clientIcons[blog.badgeicon.trim()]? clientIcons[blog.badgeicon.trim()]: null;
-const AuthorIcon =blog?.authoricon && clientIcons[blog.authoricon.trim()]? clientIcons[blog.authoricon.trim()]: null;
-const PublishedIcon =blog?.publishedicon && clientIcons[blog.publishedicon.trim()]? clientIcons[blog.publishedicon.trim()]: null;
-const TimeIcon =blog?.timeicon && clientIcons[blog.timeicon.trim()]? clientIcons[blog.timeicon.trim()]: null;
+  
+    const BrainIcon =blog?.badgeicon && clientIcons[blog.badgeicon.trim()]? clientIcons[blog.badgeicon.trim()]: null;
+    const AuthorIcon =blog?.authoricon && clientIcons[blog.authoricon.trim()]? clientIcons[blog.authoricon.trim()]: null;
+    const PublishedIcon =blog?.publishedicon && clientIcons[blog.publishedicon.trim()]? clientIcons[blog.publishedicon.trim()]: null;
+    const TimeIcon =blog?.timeicon && clientIcons[blog.timeicon.trim()]? clientIcons[blog.timeicon.trim()]: null;
 
 
 
-  if (!blog) {
-    return (
-        <div className="w-full h-screen flex flex-col items-center justify-center gap-6 p-4">
+    if (!blog) {
+      return (
+          <div className="w-full h-screen flex flex-col items-center justify-center gap-6 p-4">
 
-          {/* Skeleton for main card / hero section */}
-          <div className="w-[80%]  h-[90%] flex items-center justify-center bg-gray-200 rounded-2xl p-4 animate-pulse flex-col gap-4">
-            
-            {/* Large placeholder for main heading */}
-            <div className="w-full h-full bg-gray-300 rounded-lg"></div>
+            {/* Skeleton for main card / hero section */}
+            <div className="w-[80%]  h-[90%] flex items-center justify-center bg-gray-200 rounded-2xl p-4 animate-pulse flex-col gap-4">
+              
+              {/* Large placeholder for main heading */}
+              <div className="w-full h-full bg-gray-300 rounded-lg"></div>
 
-            {/* Placeholder for subheading */}
-            <div className="w-3/4 h-8 bg-gray-300 rounded-lg"></div>
+              {/* Placeholder for subheading */}
+              <div className="w-3/4 h-8 bg-gray-300 rounded-lg"></div>
 
-            {/* Inner content / stats placeholders */}
-            <div className="w-full flex flex-col sm:flex-row items-center  justify-between gap-4 mt-4">
-              <div className="w-full sm:w-[30%] h-24 bg-gray-300 rounded-lg"></div>
-              <div className="w-full sm:w-[30%] h-24 bg-gray-300 rounded-lg"></div>
-              <div className="w-full sm:w-[30%] h-24 bg-gray-300 rounded-lg"></div>
+              {/* Inner content / stats placeholders */}
+              <div className="w-full flex flex-col sm:flex-row items-center  justify-between gap-4 mt-4">
+                <div className="w-full sm:w-[30%] h-24 bg-gray-300 rounded-lg"></div>
+                <div className="w-full sm:w-[30%] h-24 bg-gray-300 rounded-lg"></div>
+                <div className="w-full sm:w-[30%] h-24 bg-gray-300 rounded-lg"></div>
+              </div>
+
             </div>
-
           </div>
-        </div>
-    );
-
-  }
-
-  // console.log("BlogsForIcons",blog);
+      );
+    }
   
  
   return (
@@ -354,20 +331,20 @@ className="w-full border border-black h-10 rounded-lg p-2
 
               if (section.__typename === "ComponentInsightsWhatAiPoweredPredictive") {
   return (
-    <React.Fragment key={index}>
+    <>
       <div id={section.slug} className="shadow-lg rounded-2xl p-10 blog-panel">
         
         {/* Title */}
        {section.title.includes("<") ? (
-  <h1
-    className="mb-5 text-[30px] font-bold montserrat-font"
-    dangerouslySetInnerHTML={{ __html: section.title }}
-  />
-) : (
-  <h1 className="mb-5 text-[30px] font-bold montserrat-font">
-    {section.title}
-  </h1>
-)}
+          <h1
+            className="mb-5 text-[30px] font-bold montserrat-font"
+            dangerouslySetInnerHTML={{ __html: section.title }}
+          />
+          ) : (
+            <h1 className="mb-5 text-[30px] font-bold montserrat-font">
+              {section.title}
+            </h1>
+          )}
 
 
         {/* Content Parsing (paragraph → list → paragraph) */}
@@ -427,7 +404,7 @@ className="w-full border border-black h-10 rounded-lg p-2
           )}
         </div>
       )}
-    </React.Fragment>
+    </>
   );
 }
 
@@ -435,7 +412,7 @@ className="w-full border border-black h-10 rounded-lg p-2
               // Key Building Blocks Section
               if (section.__typename === "ComponentInsightsKeyBuildingBlocks") {
                 return (
-                  <React.Fragment key={index}>
+                  < >
                     <div id={section.slug} className="shadow-lg rounded-2xl p-10 blog-panel">
                       {section.title.includes("<") ? (
                           <h2
@@ -475,7 +452,7 @@ className="w-full border border-black h-10 rounded-lg p-2
                         )}
                       </div>
                     )}
-                  </React.Fragment>
+                  </>
                 );
               }
 
@@ -514,7 +491,7 @@ className="w-full border border-black h-10 rounded-lg p-2
               // How to Get Started Section
               if (section.__typename === "ComponentInsightsHowtoGetStarted") {
                 return (
-                  <React.Fragment key={index}>
+                  <>
                     <div id={section.slug} className="shadow-lg rounded-2xl p-10 blog-panel">
                         {section.title.includes("<") ? (
                           <h2
@@ -546,7 +523,7 @@ className="w-full border border-black h-10 rounded-lg p-2
                         )}
                       </div>
                     )}
-                  </React.Fragment>
+                  </>
                 );
               }
 

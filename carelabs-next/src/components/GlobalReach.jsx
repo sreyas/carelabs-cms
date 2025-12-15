@@ -109,9 +109,7 @@ const GlobalReach = () => {
   return (
     <div
       key={index}
-      data-aos="zoom-in"
-      data-aos-duration="800"
-      data-aos-delay={index * 100}
+     
       className="w-full flex justify-center"
     >
       <div
