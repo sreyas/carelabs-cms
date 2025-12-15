@@ -6,7 +6,7 @@ import HomeCounter from '../Homecounter';
 import Aos from 'aos';
 import ContactPopupModal from '../Modal/ContactPopupModal';
 
-const HomeBanner = ({data}) => {
+const  HomeBanner = ({data}) => {
     
     const[homeData,setHomeData]=useState(null);
     const [isOpen, setIsOpen] = useState(false);
