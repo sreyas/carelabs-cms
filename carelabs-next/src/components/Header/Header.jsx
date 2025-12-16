@@ -6,8 +6,8 @@ import Link from 'next/link';
 import { clientIcons } from "@/lib/clientIcons";
 import { useParams, useRouter } from "next/navigation";
 import { useLocalizedNavigate } from '@/lib/navigation';
-import Image from 'next/image';
 import RegionModal from '../Modal/RegionModal';
+import Image from 'next/image';
 
 
 const Header = ({navbarData}) => {
@@ -18,7 +18,7 @@ const Header = ({navbarData}) => {
   const [openMobileMenu, setOpenMobileMenu] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false)
-  const [logoUrl, setLogoUrl] = useState("https://inspired-gem-f09bdfaddd.media.strapiapp.com/carelab_logo_7d51f198e5.png");
+  const [logoUrl, setLogoUrl] = useState("https://striking-pleasure-03fbdffa08.media.strapiapp.com/carelab_logo_7d51f198e5.png");
 
   const router = useRouter();
   const navigate = useLocalizedNavigate();

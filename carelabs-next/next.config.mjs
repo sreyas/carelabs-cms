@@ -7,7 +7,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "inspired-gem-f09bdfaddd.media.strapiapp.com",
+        hostname: "striking-pleasure-03fbdffa08.media.strapiapp.com",
       },
     ],
   },
