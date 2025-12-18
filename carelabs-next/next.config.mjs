@@ -1,9 +1,4 @@
 /** @type {import('next').NextConfig} */
-
-const mediaUrl = new URL(process.env.NEXT_PUBLIC_STRAPI_MEDIA_URL);
-
- console.log("MediaURl:",mediaUrl);
- 
 const nextConfig = {
   reactCompiler: true,
   swcMinify: true,
@@ -11,8 +6,8 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: mediaUrl.protocol.replace(":", ""),
-        hostname: mediaUrl.hostname,
+        protocol: "https",
+        hostname: "inspired-gem-f09bdfaddd.media.strapiapp.com",
       },
     ],
   },
