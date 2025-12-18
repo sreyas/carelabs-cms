@@ -96,13 +96,7 @@ const HomeTestimonials = ({data}) => {
           </div>
         </div>
 
-        {/* Testimonial Text */}
-
-        {/* <div className="min-h-[140px] md:min-h-[170px] flex items-center justify-center">
-        <p className="text-xl md:text-2xl text-gray-700 leading-relaxed poppins-font">
-        {testimonials[current]?.feedback}
-        </p>
-       </div> */}
+     
 
 <div className="min-h-[140px] md:min-h-[170px] flex items-center justify-center">
   <div

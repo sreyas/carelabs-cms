@@ -26,7 +26,6 @@ export async function generateViewport() {
   const homeData = await getHomePageData();
   const seo = homeData?.homeseo;
 
-  // If metaViewport = null → fallback recommended value
   return {
     width: "device-width",
     initialScale: 1,
@@ -69,12 +68,6 @@ export async function generateMetadata() {
 
   } catch (error) {
     console.error(" SEO METADATA ERROR:", error);
-
-    // return {
-    //   title: "Carelabz",
-    //   description: "Default SEO description",
-    //   robots: "index, follow",
-    // };
   }
 }
 

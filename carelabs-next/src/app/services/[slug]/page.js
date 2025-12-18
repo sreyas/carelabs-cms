@@ -382,20 +382,7 @@ export default async function Page({ params }) {
           {sec.label}
         </p>
 
-        {/* {[sec.list1, sec.list2, sec.list3].map(
-          (txt, i) =>
-            txt && (
-              <div key={i} className="flex gap-2 items-start">
-                <div className="w-5 h-5 rounded-full border-2 border-orange-500 flex items-center justify-center">
-                  <i className="fa-solid fa-check text-orange-500 text-[10px]"></i>
-                </div>
-                <p className="transition-all duration-300 text-gray-600">
-                  {txt}
-                </p>
-              </div>
-            )
-        )} */}
-
+     
   {[sec.list1, sec.list2, sec.list3].map(
    (txt, i) =>
     txt && (

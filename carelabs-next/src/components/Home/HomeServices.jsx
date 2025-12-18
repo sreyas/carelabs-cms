@@ -37,26 +37,19 @@ const HomeServices = ({data}) => {
 
 
         <div className="flex justify-center items-center">
-          <div
-            className="
-              inline-flex items-center justify-center
-              w-auto h-[42px]
-              px-[21px] py-[11px]
-              gap-[8px]
-              border border-[#157de5]
-              rounded-[9999px]
-              bg-white
-              poppins-font text-[14px]
-            "
-          >
-            <span className="text-[#157de5]">
-              <Zap size={18} />
-            </span>
+            <div className="flex justify-center items-center">
+                    <button className="px-4 flex items-center justify-center gap-2 py-2 border border-[#157de54d] rounded-full ">
+                    <div className="text-[#157de5]">
+                        <Zap size={18} />
+                    </div>
 
-            <span>
-              {globalReachData.badge}
-            </span>
-          </div>
+                    <div>
+                        <p className="curved-Text text-[14px] montserrat-font">{globalReachData.badge}</p>
+                    </div>
+                    
+                    
+                    </button>
+                </div>
         </div>
 
 
@@ -67,7 +60,7 @@ const HomeServices = ({data}) => {
 
 
 
-        <p className="px-4 sm:px-8 text-lg  md:text-xl poppins-font para-text">
+        <p className="px-4 w-[80%] sm:px-8 text-lg  md:text-xl poppins-font para-text">
           {globalReachData.description}
         </p>
 

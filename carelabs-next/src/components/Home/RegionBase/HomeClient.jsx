@@ -20,15 +20,19 @@ const HomeClient = ({data}) => {
             className="w-11/12 sm:w-4/5 md:w-3/5 lg:w-[80%] 2xl:w-[65%] bg-white flex items-center justify-center text-center flex-col gap-5 p-4 not-odd:">
             
                 {/* Heading */}
-                <h1 className="text-xs flex items-center justify-center gap-2 sm:text-sm md:text-base px-3 py-1 rounded-full border border-[#157de5] poppins-font">
+                <div className="flex justify-center items-center">
+                    <button className="px-4 flex items-center justify-center gap-2 py-2 border border-[#157de54d] rounded-full ">
                     <div className="text-[#157de5]">
                         <BadgeIcon size={18} />
                     </div>
 
-                    {/* Global Reach */}
-                  {data.badge}
-                
-                </h1>
+                    <div>
+                        <p className="curved-Text text-[14px] montserrat-font">{data.badge}</p>
+                    </div>
+                    
+                    
+                    </button>
+                </div>
                 
                 {/* Title */}
                 <h2 className="  text-3xl sm:text-4xl md:text-5xl lg:text-[60px] py-4 font-bold montserrat-font"
@@ -56,21 +60,21 @@ const HomeClient = ({data}) => {
              className=" w-full sm:w-[80%] lg:w-[50%]  p-10 rounded-[24px] glass-panel">
                 <h3 className='mb-3 montserrat-font text-[24px] font-semibold '
                  dangerouslySetInnerHTML={{ __html: data.Partners.title }}></h3>
-                <p className='mb-3 poppins-font'>{data.Partners.description}</p>
-                    <p className='mb-3'>{data.Partners.Recenttitle}</p>
+                <p className='mb-6 mt-5 text-gray-500 text-[15.5px] poppins-font leading-7'>{data.Partners.description}</p>
+                    <p className='mb-3 text-gray-500 font-semibold text-[14px]'>{data.Partners.Recenttitle}</p>
 
                 <div className="flex flex-col gap-3 lg:mt-5">
                     {data.Partners?.Partners_names?.map((partner) => (
                         <div
                         key={partner.id}
-                        className="flex items-center p-4 light-blue border border-[#2575b6] rounded-2xl gap-3"
+                        className="flex items-center p-4 bg-[#f5f7fb] border border-gray-200 rounded-2xl gap-3 transition-all duration-300 ease-in-out hover:border-blue-500 hover:scale-102"
                         >
                         <i className="primary-color">
-                            <MapPin />
+                            <MapPin size={20}/>
                         </i>
-                        <p className="montserrat-font font-semibold">{partner.countryName}</p>
+                        <p className="montserrat-font text-sm font-semibold">{partner.countryName}</p>
                         <p>-</p>
-                        <p className="poppins-font">{partner.description}</p>
+                        <p className="poppins-font text-sm text-gray-500">{partner.description}</p>
                         </div>
                     ))}
                  </div>
@@ -83,10 +87,10 @@ const HomeClient = ({data}) => {
                 {data.Clients?.Clients_name?.map((client, index) => (
                     <div
                     key={index}
-                    className="glass-panel flex flex-col items-center rounded-xl justify-center py-10 px-3 gap-2"
+                    className=" flex flex-col items-center bg-[#f5f7fb] border border-gray-200 rounded-xl justify-center py-7 px-3 gap-2 transition-all duration-300 ease-in-out hover:border-blue-500 hover:scale-105 hover:bg-white hover:shadow-[0_8px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-2px_rgba(0,0,0,0.05)]"
                     >
-                    {client.logo ? <img src={client.logo} alt={client.name} /> : <Shield size={44} />}
-                    <p>{client.name}</p>
+                    {client.logo ? <img src={client.logo} alt={client.name} /> : <Shield size={43} className="text-gray-500 hover:text-[#157de5]"  />}
+                    <p className="text-[14px] text-gray-600">{client.name}</p>
                     </div>
                 ))}
             </div>

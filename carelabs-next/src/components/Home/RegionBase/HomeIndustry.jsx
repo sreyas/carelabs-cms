@@ -20,15 +20,19 @@ const HomeIndustry = ({data}) => {
             className="w-11/12 sm:w-4/5 md:w-3/5 lg:w-[80%] 2xl:w-[65%] bg-white flex items-center justify-center text-center flex-col gap-5 p-4 not-odd:">
             
                 {/* Heading */}
-                <h1 className="text-[13px] bg-white flex items-center justify-center gap-2  px-5 py-2 rounded-full border border-[#157de5] poppins-font">
-                  <div className="text-[#157de5]">
-                        < BadgeIcon size={17} />
+                <div className="flex justify-center items-center">
+                    <button className="px-4 flex items-center justify-center gap-2 py-2 border border-[#157de54d] rounded-full ">
+                    <div className="text-[#157de5]">
+                        <BadgeIcon size={18} />
                     </div>
 
-                    {/* Global Reach */}
-                    {data.badge}
-               
-                </h1>
+                    <div>
+                        <p className="curved-Text text-[14px] montserrat-font">{data.badge}</p>
+                    </div>
+                    
+                    
+                    </button>
+                </div>
                 
                 {/* Title */}
                 <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[60px] py-4 font-bold montserrat-font"
@@ -41,7 +45,7 @@ const HomeIndustry = ({data}) => {
                 {/* Description */}
                 <p className="px-4 w-[80%] sm:px-8 text-lg  md:text-xl poppins-font para-text">
                      {data.description}
-                 </p>
+                </p>
     
     
                 <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-3 2xl:mt-10">
@@ -58,20 +62,20 @@ const HomeIndustry = ({data}) => {
 
         </div>
 
-          <div 
-          className="w-11/12 sm:w-[80%] 2xl:w-[65%] 2xl:mt-20 grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-5">
+          <div className="w-11/12 sm:w-[80%] 2xl:w-[65%] 2xl:mt-20 grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-5">
             {industriesData.map((item, index) => {
-              const CardIcon = item.icon ? clientIcons[item.icon.trim()] : Heart; // fallback icon
+              const CardIcon = item.icon ? clientIcons[item.icon.trim()] : Heart; 
               return (
                 <div key={index} className="
-                  glass-panel p-5 rounded-xl
+                  glass-panel2 p-5 rounded-xl
                   border border-transparent
-                  transition-all duration-300 ease-out
-                  hover:-translate-y-2
-                  hover:border-[var(--hl)]
+                  transform transition-all duration-500 ease-in-out hover:-translate-y-3
                   group
                   cursor-pointer
                 "
+                  style={{
+                    '--card-border': item.highlight_color,
+                  }}
                   data-aos="fade-up"
                   data-aos-anchor-placement="top-center"
                 >

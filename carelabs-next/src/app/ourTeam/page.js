@@ -1,138 +1,119 @@
-"use client";
-import OurTeamConverstation from '@/components/OurTeams/OurTeamConverstation';
-import OurTeamGallery from '@/components/OurTeams/OurTeamGallery';
-import OurTeamMilestone from '@/components/OurTeams/OurTeamMilestone';
-import OurTeamPartner from '@/components/OurTeams/OurTeamPartner';
-import OurTeamRecognitions from '@/components/OurTeams/OurTeamRecognitions';
-import OurTeamsAction from '@/components/OurTeams/OurTeamsAction';
-import OurTeamsBanner from '@/components/OurTeams/OurTeamsBanner';
-import OurTeamsDrivesUs from '@/components/OurTeams/OurTeamsDrivesUs';
-import OurTeamsSnapshot from '@/components/OurTeams/OurTeamsSnapshot';
-import OurTeamsWrkProjcet from '@/components/OurTeams/OurTeamsWrkProjcet';
-import OurTeamsWrkTogether from '@/components/OurTeams/OurTeamsWrkTogether';
-import OurTeamWorkWith from '@/components/OurTeams/OurTeamWorkWith';
-import { GET_OURTEAM_PAGE } from '@/lib/api-Collection';
-import client from '@/lib/appollo-client';
-import React, { useEffect, useState } from 'react'
+import OurTeamConverstation from "@/components/OurTeams/OurTeamConverstation";
+import OurTeamGallery from "@/components/OurTeams/OurTeamGallery";
+import OurTeamMilestone from "@/components/OurTeams/OurTeamMilestone";
+import OurTeamPartner from "@/components/OurTeams/OurTeamPartner";
+import OurTeamRecognitions from "@/components/OurTeams/OurTeamRecognitions";
+import OurTeamsAction from "@/components/OurTeams/OurTeamsAction";
+import OurTeamsBanner from "@/components/OurTeams/OurTeamsBanner";
+import OurTeamsDrivesUs from "@/components/OurTeams/OurTeamsDrivesUs";
+import OurTeamsSnapshot from "@/components/OurTeams/OurTeamsSnapshot";
+import OurTeamsWrkProjcet from "@/components/OurTeams/OurTeamsWrkProjcet";
+import OurTeamsWrkTogether from "@/components/OurTeams/OurTeamsWrkTogether";
+import OurTeamWorkWith from "@/components/OurTeams/OurTeamWorkWith";
+
+import { GET_OURTEAM_PAGE } from "@/lib/api-Collection";
+import client from "@/lib/appollo-client";
 
 
+const getOurTeamPageData = async () => {
+  const res = await client.query({
+    query: GET_OURTEAM_PAGE,
+  });
 
-const page = () => {
-  const[ourTeamAllData,setourTeamAllData]=useState(null);
-  const[ourTeamSnapshot,setourTeamSnapshot]=useState(null);
-  const[ourTeamDriversUs,setourTeamDriversUs]=useState(null);
-  const[ourTeamWrkTgther,setourTeamDWrkTgther]=useState(null);
-  const[ourTeamGudieWrkPrj,setourTeamGudieWrkPrj]=useState(null);
-  const[ourTeamWrkAction,setourTeamWrkAction]=useState(null);
-  const[ourTeamPartner,setourTeamPartner]=useState(null);
-  const[ourTeamMilestones,setourTeamMilestones]=useState(null);
-  const[ourTeamGallery,setourTeamGallery]=useState(null);
-  const[ourTeamworkWithUs,setourTeamworkWithUs]=useState(null);
-  const[ourTeamRecognitions,setourTeamRecognitions]=useState(null);
-  const[ourTeamReadyToTalk,setourTeamReadyToTalk]=useState(null);
+  return res.data.ourTeamPage;
+};
 
 
+export async function generateMetadata() {
+  const data = await getOurTeamPageData();
+  const seo = data?.ourteam_page_seo;
 
-  const getOurTeamPageData=async()=>{
-    try{
-        const res= await client.query({
-                    query: GET_OURTEAM_PAGE,
-                   });
+  if (!seo) return {};
 
-        const fetchedData=res.data.ourTeamPage;
-        const snapShot=fetchedData.snapshot;
-        const driversUs=fetchedData.Drives_Us;
-        const wrkTgther=fetchedData.Work_Together;
-        const GuidingWrk=fetchedData.Guiding;
-        const WrkAction=fetchedData.Teams_in_Action;
-        const partner=fetchedData.How_We_Partner;
-        const mileStone=fetchedData.Milestones;
-        const gallery=fetchedData.What_it_feels;
-        const workWithUs=fetchedData.Where_you_work;
-        const Recognition = fetchedData.Recognitions;
-        const readyToTalk=fetchedData.Ready_to_Talk;
-      
-        setourTeamAllData(fetchedData);
-        setourTeamSnapshot(snapShot);
-        setourTeamDriversUs(driversUs);
-        setourTeamDWrkTgther(wrkTgther);
-        setourTeamGudieWrkPrj(GuidingWrk);
-        setourTeamWrkAction(WrkAction);
-        setourTeamPartner(partner);
-        setourTeamMilestones(mileStone);
-        setourTeamGallery(gallery);
-        setourTeamworkWithUs(workWithUs);
-        setourTeamRecognitions(Recognition);
-        setourTeamReadyToTalk(readyToTalk);
+  return {
+    title: seo.metaTitle,
+    description: seo.metaDescription,
+    keywords: seo.keywords || undefined,
+    robots: seo.metaRobots || undefined,
 
+    alternates: {
+      canonical: seo.canonicalURL || undefined,
+    },
 
-        
-    }catch(err){
-      console.log("Error At Fetching ourTeam Data",err);
-      
-    }
-  }
+    openGraph: {
+      title: seo.openGraph?.ogTitle || seo.metaTitle,
+      description:
+        seo.openGraph?.ogDescription || seo.metaDescription,
+      url: seo.openGraph?.ogUrl || undefined,
+      type: seo.openGraph?.ogType || "website",
+      images: seo.openGraph?.ogImage?.url
+        ? [
+            {
+              url: seo.openGraph.ogImage.url,
+            },
+          ]
+        : undefined,
+    },
+
+    viewport: seo.metaViewport || undefined,
+  };
+}
 
 
-  useEffect(()=>{
-    getOurTeamPageData();
-  },[])
-
-
- 
+const Page = async () => {
+  const data = await getOurTeamPageData();
 
   return (
     <div>
       <section>
-        <OurTeamsBanner data={ourTeamAllData}/>
+        <OurTeamsBanner data={data} />
       </section>
 
       <section>
-        <OurTeamsSnapshot data={ourTeamSnapshot}/>
+        <OurTeamsSnapshot data={data.snapshot} />
       </section>
 
       <section>
-        <OurTeamsDrivesUs data={ourTeamDriversUs}/>
+        <OurTeamsDrivesUs data={data.Drives_Us} />
       </section>
 
       <section>
-        <OurTeamsWrkTogether data={ourTeamWrkTgther} />
+        <OurTeamsWrkTogether data={data.Work_Together} />
       </section>
 
       <section>
-        <OurTeamsWrkProjcet data={ourTeamGudieWrkPrj}/>
-      </section>
-
-       <section>
-        <OurTeamsAction data={ourTeamWrkAction}/>
+        <OurTeamsWrkProjcet data={data.Guiding} />
       </section>
 
       <section>
-        <OurTeamPartner data={ourTeamPartner}/>
+        <OurTeamsAction data={data.Teams_in_Action} />
       </section>
 
       <section>
-        <OurTeamMilestone data={ourTeamMilestones}/>
-      </section>
-
-       <section>
-        <OurTeamGallery data={ourTeamGallery}/>
-      </section>
-
-       <section>
-        <OurTeamWorkWith data={ourTeamworkWithUs}/>
+        <OurTeamPartner data={data.How_We_Partner} />
       </section>
 
       <section>
-        <OurTeamRecognitions data={ourTeamRecognitions}/>
+        <OurTeamMilestone data={data.Milestones} />
       </section>
 
-       <section>
-        <OurTeamConverstation data={ourTeamReadyToTalk}/>
+      <section>
+        <OurTeamGallery data={data.What_it_feels} />
       </section>
-     
+
+      <section>
+        <OurTeamWorkWith data={data.Where_you_work} />
+      </section>
+
+      <section>
+        <OurTeamRecognitions data={data.Recognitions} />
+      </section>
+
+      <section>
+        <OurTeamConverstation data={data.Ready_to_Talk} />
+      </section>
     </div>
-  )
-}
+  );
+};
 
-export default page
+export default Page;

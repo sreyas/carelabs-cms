@@ -119,6 +119,18 @@
     /* IMPORTANT: remove radius so parent radius works */
 }
 
+.glass-panel2 {
+    background: rgba(255, 255, 255, 0.9); /* white with opacity */
+    border: 2px solid rgba(15, 23, 42, 0.1); /* subtle dark border */
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    box-shadow: 0 18px 45px rgba(15, 23, 42, 0.1);
+    border-radius: 16px;
+    transition: border-color 0.7s ease, transform 0.7s ease;
+}
+.glass-panel2:hover {
+  border-color: color-mix(in srgb, var(--card-border) 25%, transparent);
+}
 /* 5th december */
 .ourteam-panel {
     background: rgba(255, 255, 255, 0.9); /* white with opacity */

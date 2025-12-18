@@ -7,6 +7,7 @@ import { clientIcons } from "@/lib/clientIcons";
 import { useParams, useRouter } from "next/navigation";
 import { useLocalizedNavigate } from '@/lib/navigation';
 import RegionModal from '../Modal/RegionModal';
+import carelabsLogo from "@/assets/carelabs-Logo.webp"
 import Image from 'next/image';
 
 
@@ -19,6 +20,9 @@ const Header = ({navbarData}) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false)
   const [logoUrl, setLogoUrl] = useState(null);
+  const finalLogoSrc = logoUrl && logoUrl.trim() !== ""
+  ? logoUrl
+  : carelabsLogo;
 
   const router = useRouter();
   const navigate = useLocalizedNavigate();
@@ -108,7 +112,7 @@ const Header = ({navbarData}) => {
               <div className=" logos1 flex items-center justify-center w-full h-full">
                 <Image
                   className="logo w-[200px] lg:w-[75%] object-contain"
-                  src={logoUrl}
+                  src={finalLogoSrc}
                   alt={navbarData.Logo?.alternativeText || "Carelabs Logo"}
                   width={400}
                   height={100}

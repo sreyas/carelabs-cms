@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useEffect, useState } from "react";
-import { GET_DEFAULT_PAGE } from "@/lib/api-Collection";
+import { GET_DEFAULT_PAGE_BY_LOCALE } from "@/lib/api-Collection";
 import client from "@/lib/appollo-client";
 import React from 'react'
 import { clientIcons } from "@/lib/clientIcons";
@@ -11,6 +11,7 @@ import { useParams } from "next/navigation";
 const Page = (params) => {
   const [pageData, setPageData] = useState(null);
   const { slug } = useParams();  
+  const locale = "en"
 
   // console.log(" Server → Slug:", slug);
 
@@ -18,8 +19,8 @@ const Page = (params) => {
     const fetchData = async () => {
       try {
         const res = await client.query({
-          query: GET_DEFAULT_PAGE,
-          variables: { slug },
+            query: GET_DEFAULT_PAGE_BY_LOCALE,
+          variables: { slug,locale },
           fetchPolicy: "no-cache",
         });
         // Assuming you want the first page only

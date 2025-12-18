@@ -41,17 +41,17 @@ const  HomeBanner = ({data}) => {
     
 
    const randomVideos = [
-    "dQw4w9WgXcQ",
-    "kXYiU_JCYtU",
-    "RgKAFK5djSk",
-    "3JZ_D3ELwOQ",
-    "9bZkp7q19f0",
-    ];
+            "dQw4w9WgXcQ",
+            "kXYiU_JCYtU",
+            "RgKAFK5djSk",
+            "3JZ_D3ELwOQ",
+            "9bZkp7q19f0",
+         ];
 
     const openRandomVideo = () => {
         const randomId = randomVideos[Math.floor(Math.random() * randomVideos.length)];
-        setVideoId(randomId);
-        setShowVideo(true);
+            setVideoId(randomId);
+            setShowVideo(true);
     };
 
     const popIn = `
@@ -62,8 +62,6 @@ const  HomeBanner = ({data}) => {
       }
     `;
     
-    
-   
    if(!homeData) return null;
 
   return (

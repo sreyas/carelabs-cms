@@ -90,63 +90,7 @@ export default function FaqResourcesSection({ service }) {
   const [openIndex, setOpenIndex] = useState(null);
 
   return (
-    // <section>
-    //   <div className="min-h-[80vh] w-full flex items-center justify-center">
-    //     <div className="w-[95%] md:w-[85%] lg:w-[90%] 2xl:w-[75%] py-10 rounded-4xl flex flex-col items-center bg-card">
-          
-    //       {/* TOP TITLE */}
-    //       <div className="w-full flex items-center justify-center text-center mb-10 px-4">
-    //         <div className="flex flex-col items-center gap-3">
-    //           <p className="text-3xl sm:text-4xl md:text-5xl font-bold">
-    //             <span className="text-primary">FAQs</span>
-    //             {" & "}
-    //             <span className="gradient-text">Technical Resources</span>
-    //           </p>
-    //           <p className="text-sm sm:text-md md:text-lg w-[95%] sm:w-[80%] text-center text-muted-foreground">
-    //             Common questions about power system analysis and helpful resources to support your project planning.
-    //           </p>
-    //         </div>
-    //       </div>
-
-    //       {/* MAIN AREA */}
-    //       <div className="w-full px-4 md:px-8 lg:px-12 grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
-            
-    //         {/* FAQ SECTION */}
-    //         <div className="lg:col-span-2">
-    //           <div className="space-y-1">
-    //             {faqData.map((faq, index) => (
-    //               <FaqItem
-    //                 key={index}
-    //                 question={faq.question}
-    //                 answer={faq.answer}
-    //                 isOpen={openIndex === index}
-    //                 onClick={() =>
-    //                   setOpenIndex(openIndex === index ? null : index)
-    //                 }
-    //               />
-    //             ))}
-    //           </div>
-    //         </div>
-
-    //         {/* RESOURCES */}
-    //         <div className="lg:col-span-1">
-    //           <div className="bg-card border border-border rounded-2xl p-6 sticky top-8">
-    //             <h2 className="text-xl font-bold text-foreground mb-6">
-    //               Technical Resources
-    //             </h2>
-    //             <div className="space-y-2">
-    //               {technicalResources.map((resource, index) => (
-    //                 <ResourceCard key={index} {...resource} />
-    //               ))}
-    //             </div>
-    //           </div>
-    //         </div>
-
-    //       </div>
-    //     </div>
-    //   </div>
-    // </section>
-
+  
      <section>
       <div className="min-h-[80vh] w-full flex items-center justify-center bg-[#f9fbfe]">
         <div className="w-[95%] md:w-[85%] lg:w-[90%] 2xl:w-[75%] py-10 rounded-4xl flex flex-col items-center bg-card">

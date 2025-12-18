@@ -59,22 +59,6 @@ const OurTeamsBanner = ({ data }) => {
                     lg:text-[18px] poppins-font para-text mb-5'>
                         {data.maindescription}
                     </p>
-                    {/* <div className="flex flex-col py-3 gap-3 sm:flex-row" >
-                        {data.ourteam_stats?.map((item, index) => (
-                            <div
-                                key={index}
-                                className="flex items-center justify-center gap-2 card-shadow border border-[#dae9fd] bg-white px-4 py-2 rounded-4xl"
-                            >
-                                <p className="montserrat-font font-semibold text-[24px]">
-                                    {item.stats}
-                                </p>
-                                <p className="poppins-font text-[14px]">
-                                    {item.label}
-                                </p>
-                            </div>
-                        ))}
-                    </div> */}
-
 
                     <div className="flex flex-col py-3 gap-3 sm:flex-row">
                         {data.ourteam_stats?.map((item, index) => (
@@ -123,9 +107,7 @@ const OurTeamsBanner = ({ data }) => {
                             {data.button2text}
                         </Link>
                     </div>
-                    {/* <div className="flex items-center gap-2 text-[14px] mt-5">
-                        <p>{data.scrolltext} </p>
-                    </div> */}
+                   
                     <div className="flex items-center gap-2 text-[14px] mt-5">
                         <p className="animate-[bounce_1s_ease-in-out_infinite] text-[#61758a]">
                             {data.scrolltext}

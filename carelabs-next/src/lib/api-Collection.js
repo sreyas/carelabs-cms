@@ -52,165 +52,6 @@ export const GET_NAVBAR = gql`
       }
     `;
 
-export const GET_BLOG = gql`
-    query  {
-      blogs {
-        title
-        slug
-        content
-        description
-        link
-        featureImage {
-          url
-        }
-        seo {
-          keywords
-          metaDescription
-          metaRobots
-          metaTitle
-          metaViewport
-          structuredData
-          openGraph {
-            ogDescription
-            ogImage {
-              url
-            }
-            ogType
-            ogTitle
-            ogUrl
-          }
-        }
-      }
-    }`;
-
-
-export const GET_HOME_SECTION_1 = gql`
-query  {
-  homes {
-    title1
-    title2 
-    title3
-    heading
-    description
-    btn1_link
-    btn1_text
-    btn2_link
-    btn2_text
-    stats {
-      label
-      number
-      id
-    }
-  }
-}`;
-
-
-export const GET_HOME_SECTION_12 = gql`
-query ($locale: I18NLocaleCode!) {
-  homes(locale: $locale) {
-    title1
-    title2
-    title3
-    heading
-    description
-    btn1_link
-    btn1_text
-    btn2_link
-    btn2_text
-    stats {
-      id
-      label
-      number
-    }
-  }
-}
-`;
-
-
-export const GET_GLOBAL_REACH = gql`
-query {
-  homeSerivices {
-    badge
-    title
-    description
-    home_service_items {
-      order
-      name
-      icon
-      Image {
-        url
-      }
-      button1link
-      button1text
-      button2link
-      button2text
-      description
-      featureheading
-      linktext
-      performanceheading
-      performance {
-        name
-        stats
-      }
-      serviceFeatures {
-        name
-      }
-    }
-  }
-}
-
-`
-export const GET_WORLD_IMPACT = gql` 
-query {
-  worldwideImpact {
-    badge
-    description
-    title
-    projectsStat {
-      count
-      countryCount
-      countryName
-      title
-    }
-    successStat {
-      title
-      value
-      icon
-    }
-  }
-}
-
-`
-export const GET_INSIGHTS = gql`
-query {
-  insight {
-    title
-    description
-    button
-    buttonLink
-    articles {
-      title
-      slug
-      image {
-        url
-      }
-      featuredText
-      featured
-      description
-      date
-      content
-      icon
-      category
-      buttontext
-      buttonlink
-      blog_category {
-        category
-      }
-    }
-  }
-}
-  
-`
 export const GET_INSIGHTS_BY_LOCALE = gql`
 query  ($locale: I18NLocaleCode!){
   insight (locale: $locale){
@@ -243,22 +84,7 @@ query  ($locale: I18NLocaleCode!){
   
 `
 
-export const GET_TESTIMONIALS = gql`
- query {
-  testimonialsSection {
-    badge
-    title
-    description
-    testimonials {
-      feedback
-      name
-      company
-      position
-    }
-  }
-}
-  
-`
+
 export const GET_FOOTER = gql`
 query {
   footer {
@@ -288,105 +114,6 @@ query {
       button1text
       button1link
       button2icon
-    }
-  }
-}
-
-`
-export const GET_SERVICES = gql`
-query {
-  services {
-    badge
-    badgeicon
-    mainheading1
-    mainheading2
-    maindesc
-    mainbutton1
-    mainbuttonlink1
-    mainbutton2
-    mainbuttonlink2
-    mainbutton3
-    mainbuttonlink3
-    mainimage {
-      url
-    }
-    service_stats {
-      label
-      number
-    }
-    service_features {
-      title
-      description
-    }
-    Why_Matters {
-      title
-      subtitle
-      icon
-      ans1
-      ans2
-      ans3
-      ans4
-    }
-    WhatsIncludedtitle
-    WhatsIncludedsubtitle
-    whats_include_features {
-      icon
-      label
-      description
-      stat
-    }
-    methodsTitle
-    methodsSubtitle
-    methodology {
-      Order
-      icon
-      OrderTitleText
-      OrderSubtitleText
-    }
-    sectorBenefitsTitle
-    sectorBenefitsSubtitle
-    sectorBenefits {
-      icon
-      label
-      list1
-      list2
-      list3
-    }
-    resultsTitle
-    resultsSubtitle
-    resultsStat {
-      percentage
-      description
-    }
-    resultName {
-      icon
-      label
-      description
-    }
-    readyTitle
-    readySubtitle
-    readyButton1
-    readyButton1Link
-    readyButton2
-    readyButton2Link
-    relatedTitle
-    relatedSubtitle
-    relatedServices {
-      icon
-      label
-      description
-    }
-    faqTitle
-    faqSubtitle
-    questions {
-      questionName
-      questionAns
-    }
-    technicalTitle
-    technicalItems {
-      icon
-      label
-      format
     }
   }
 }
@@ -749,30 +476,32 @@ export const GET_INSIGHTS_BY_SLUG_By_LOCALE = gql`
         readicon
         link
       }
+      blogs_seo {
+        metaTitle
+        metaDescription
+        metaImage {
+          url
+        }
+        openGraph {
+          ogTitle
+          ogDescription
+          ogImage {
+            url
+          }
+          ogUrl
+          ogType
+        }
+        keywords
+        metaRobots
+        metaViewport
+        canonicalURL
+        structuredData
+      }
     }
   }
 `;
 
 
-export const GET_REGIONCOMPLIANCE_BY_LOCALE = gql`
-query ($locale: I18NLocaleCode) {
-  homeCompliances (locale:$locale) {
-    locale
-    description
-    badgeicon
-    badge
-    notetext
-    components_features {
-      color
-      description
-      icon
-      subtitle
-      title
-    }
-    title
-  }
-}
-`
 
 export const GET_HOME_SERVICES_BY_LOCALE = gql`
 query ($locale: I18NLocaleCode) {
@@ -1236,27 +965,6 @@ export const GET_DEFAULT_PAGE = gql`
   }
 `;
 
-export const GET_DEFAULT_PAGE_BY_LOCALE = gql`
-query ($slug: String!, $locale: I18NLocaleCode) {
-    pages(
-      filters: { slug: { eq: $slug } }
-      locale: $locale
-    ) {
-      documentId
-      badge
-      badgeicon
-      title
-      buttontext
-      buttonlink
-      mainimage {
-        url
-      }
-      introtitle
-      introcontent
-      slug
-    }
-  }
-`;
 
 
 // :::::::::::: Optimize Api Calls :::::::::::::::::://
@@ -1468,4 +1176,26 @@ export const GET_ALL_INSIGHTBLOGS = gql`
     }
   }
 `;
+
+export const GET_DEFAULT_PAGE_BY_LOCALE = gql`
+  query ($slug: String!, $locale: I18NLocaleCode) {
+      pages(
+        filters: { slug: { eq: $slug } }
+        locale: $locale
+      ) {
+        documentId
+        badge
+        badgeicon
+        title
+        buttontext
+        buttonlink
+        mainimage {
+          url
+        }
+        introtitle
+        introcontent
+        slug
+      }
+    }
+  `;
 

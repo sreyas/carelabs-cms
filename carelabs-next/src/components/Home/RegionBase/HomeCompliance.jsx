@@ -22,14 +22,19 @@ const HomeCompliance = ({data}) => {
             data-aos-anchor-placement="top-center"
         className="flex flex-col  items-center justify-center w-[85%] p-5 text-center
                 2xl:w-[65%]">
-              <div className="w-fit flex items-center justify-center ">
-                  <h1 className="text-xs flex items-center justify-center gap-2 sm:text-sm md:text-base px-3 py-1 rounded-full border border-[#157de5] poppins-font">
+              <div className="flex justify-center items-center">
+                    <button className="px-4 flex items-center justify-center gap-2 py-2 border border-[#157de54d] rounded-full ">
                     <div className="text-[#157de5]">
-                       <BadgeIcon size={18} />
+                        <BadgeIcon size={18} />
                     </div>
-                     {compliance.badge}
-                  </h1>
-              </div>    
+
+                    <div>
+                        <p className="curved-Text text-[14px] montserrat-font">{compliance.badge}</p>
+                    </div>
+                    
+                    
+                    </button>
+                </div>    
                
               <div className="w-full sm:w-[80%] flex items-center justify-center flex-col py-5">
                   <h2 className=" text-3xl sm:text-4xl md:text-5xl lg:text-[60px] py-4 font-bold montserrat-font"
