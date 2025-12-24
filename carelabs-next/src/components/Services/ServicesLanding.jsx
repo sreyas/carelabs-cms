@@ -39,28 +39,40 @@ const downloadRandomPdf = () => {
 
   const link = document.createElement("a");
   link.href = randomFile;
-  link.download = randomFile.split("/").pop(); // auto filename
+  link.download = randomFile.split("/").pop();
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
 };
 
-const randomVideos = [
-  "dQw4w9WgXcQ",
-  "kXYiU_JCYtU",
-  "RgKAFK5djSk",
-  "3JZ_D3ELwOQ",
-  "9bZkp7q19f0",
-];
+// const randomVideos = [
+//   "dQw4w9WgXcQ",
+//   "kXYiU_JCYtU",
+//   "RgKAFK5djSk",
+//   "3JZ_D3ELwOQ",
+//   "9bZkp7q19f0",
+// ];
 
-const openRandomVideo = () => {
-  const randomId = randomVideos[Math.floor(Math.random() * randomVideos.length)];
-  setVideoId(randomId);
+// const openRandomVideo = () => {
+//   const randomId = randomVideos[Math.floor(Math.random() * randomVideos.length)];
+//   setVideoId(randomId);
+//   setShowVideo(true);
+// };
+
+const openVideo = () => {
+  if (!mainbuttonlink3) return;
+
+  const url = mainbuttonlink3;
+  let youtubeId = null;
+
+  const match = url.match(/(?:v=|\.be\/)([a-zA-Z0-9_-]{11})/);
+  if (match) youtubeId = match[1];
+
+  if (!youtubeId) return;
+
+  setVideoId(youtubeId);
   setShowVideo(true);
 };
-
-
-
 
 
   return (
@@ -119,26 +131,6 @@ const openRandomVideo = () => {
           <div className="w-full flex flex-col sm:flex-row lg:flex-col gap-4">
 
             <div className="flex flex-col sm:flex-row gap-4">
-              {/* <button className="px-6 sm:px-8 py-2 text-white rounded-lg text-sm bg-blue-600">
-                Request a Study
-              </button> */}
-
-              {/* <a
-                href={mainbuttonlink1}
-                className="
-                group relative px-6 sm:px-8 py-2 rounded-lg text-sm 
-                bg-blue-600 text-white overflow-hidden
-                "
-              >
-                <span
-                className="
-                absolute inset-0 bg-blue-400/30 
-                opacity-0 group-hover:opacity-100 
-                transition-opacity duration-300
-                "
-                ></span>
-                <span className="relative z-10">{mainbutton1}</span>
-              </a> */}
 
               <a
       //href={mainbuttonlink1}
@@ -167,54 +159,6 @@ const openRandomVideo = () => {
 
  
     </a>
-
-         {/* section2 */}
-              {/* <button className="px-6 sm:px-8 py-2 text-sm border-2 rounded-lg border-blue-500 bg-white text-gray-600">
-                Download Sample Report
-              </button> */}
-               
-               {/* <a
-                href={mainbuttonlink2}
-                className="
-                group relative px-6 sm:px-8 py-2 text-sm 
-                border-2 rounded-lg border-blue-500 
-                bg-white text-gray-600
-                overflow-hidden
-                "
-              >
-                <span
-                className="
-                absolute inset-0 bg-blue-200/40 
-                opacity-0 group-hover:opacity-100 
-                transition-opacity duration-300
-                "
-                ></span>
-                <span className="relative z-10">{mainbutton2}</span>
-              </a> */}
-
-              {/* <a
-      href={mainbuttonlink2}
-      className="
-        group relative px-6 sm:px-8 py-2 text-sm 
-        border-2 rounded-lg border-blue-500 
-        bg-white text-gray-600
-        overflow-hidden flex items-center gap-2
-      "
-    >
-      <span
-        className="
-          absolute inset-0 bg-blue-200/40 
-          opacity-0 group-hover:opacity-100 
-          transition-opacity duration-300
-        "
-      ></span>
-
-      
-      <Download className="relative z-10 w-4 h-4" />
-
-      
-      <span className="relative z-10">{mainbutton2}</span>
-    </a> */}
 
     <button
   onClick={downloadRandomPdf}
@@ -249,57 +193,9 @@ const openRandomVideo = () => {
 
             </div>
 
-            {/* section3 */}
-
-            {/* <button className="px-6 sm:px-8 py-2 text-sm rounded-lg border-2 border-orange-400 text-gray-600
-              lg:w-[60%] xl:w-[50%] 2xl:w-[40%]">
-              Download Sample Report
-            </button> */}
-
-            {/* <a
-              href={mainbuttonlink3}
-              className="
-              group relative px-6 sm:px-8 py-2 text-sm rounded-lg 
-              border-2 border-orange-400 text-gray-600
-              lg:w-[60%] xl:w-[50%] 2xl:w-[40%]
-              overflow-hidden
-              "  
-            >
-              <span
-              className="
-              absolute inset-0 bg-blue-200/40 
-              opacity-0 group-hover:opacity-100 
-              transition-opacity duration-300
-              "
-              ></span>
-              <span className="relative z-10">{mainbutton3}</span>
-            </a> */}
-
-            {/* <a
-    href={mainbuttonlink3}
-    className="
-      group relative px-6 sm:px-8 py-2 text-sm rounded-lg 
-      border-2 border-orange-400 text-gray-600
-      lg:w-[60%] xl:w-[50%] 2xl:w-[40%]
-      overflow-hidden flex items-center gap-2
-    "
-  >
-    <span
-      className="
-        absolute inset-0 bg-blue-200/40 
-        opacity-0 group-hover:opacity-100 
-        transition-opacity duration-300
-      "
-    ></span>
-
-    
-    <PlayCircle className="relative z-10 w-5 h-5 text-orange-500" />
-
-    <span className="relative z-10">{mainbutton3}</span>
-  </a> */}
 
   <button
-  onClick={openRandomVideo}
+  onClick={openVideo}
   className="
     group relative px-6 sm:px-8 py-2 text-sm rounded-lg 
     border-2 border-[#FF70384D]       /* 30% opacity */
@@ -327,96 +223,6 @@ const openRandomVideo = () => {
           </div>
         </div>
 
-        {/* RIGHT IMAGE SECTION */}
-        {/* <div className="w-full lg:w-[50%] flex justify-center ">
-          <div
-            className="
-              w-full 
-              h-[260px] 
-              sm:h-[340px] 
-              md:h-[420px] 
-              lg:h-[480px] 
-              rounded-4xl 
-              relative 
-              overflow-visible 
-              shadow-lg
-              2xl:mt-6
-            "
-            style={{
-              backgroundImage: `url("${mainimage?.url}")`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}
-          >
-
-            
-            <div className="absolute inset-0 bg-gradient-to-t from-white/90 via-white/40 to-transparent rounded-4xl"></div>
-
-            <div className="absolute bottom-[-50px] left-1/2 -translate-x-1/2 
-              w-[90%] sm:w-[80%] lg:w-[90%]
-              flex items-center justify-between gap-3 p-3 z-20">
-
-              {service_stats?.map((stat, idx) => (
-                <div
-                  key={idx}
-                  className="bg-white w-1/3 py-4 rounded-lg text-start ps-3 shadow"
-                >
-                  <p className="text-lg text-blue-500 font-bold">{stat.number}</p> 
-                  <p className="text-sm text-gray-600">{stat.label}</p>
-                </div>
-              ))}
-              
-            </div>
-          </div>
-        </div> */}
-
-{/* <div className="w-full lg:w-[50%] flex justify-center">
-  <div
-    className="
-      group relative w-full 
-      h-[260px] sm:h-[340px] md:h-[420px] lg:h-[480px]
-      pb-16 sm:pb-20
-    "
-  >
-
-    
-    <div className="relative w-full h-full rounded-4xl shadow-lg overflow-hidden">
-      
-      <img
-        src={mainimage?.url}
-        alt="Service"
-        className="
-          w-full h-full object-cover
-          transition-transform duration-[1100ms]
-          ease-[cubic-bezier(.13,.62,.31,1)]
-          group-hover:scale-[1.08]
-        "
-      />
-
-      <div className="absolute inset-0 bg-gradient-to-t from-white/90 via-white/40 to-transparent"></div>
-    </div>
-
-    <div
-      className="
-        absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2
-        w-[90%] sm:w-[85%] lg:w-[90%]
-        flex items-center justify-between gap-3 sm:gap-4 z-20
-      "
-    >
-      {service_stats?.map((stat, idx) => (
-        <div
-          key={idx}
-          className="bg-white w-1/3 py-3 sm:py-4 px-2 sm:px-3 rounded-lg sm:rounded-xl text-start shadow-lg"
-        >
-          <p className="text-base sm:text-lg lg:text-xl text-blue-500 font-bold">{stat.number}</p>
-          <p className="text-xs sm:text-sm text-gray-600">{stat.label}</p>
-        </div>
-      ))}
-    </div>
-
-  </div>
-</div> */}
-
 <div className="w-full lg:w-[50%] flex justify-center">
   <div
     className="
@@ -425,21 +231,6 @@ const openRandomVideo = () => {
       pb-16 sm:pb-20
     "
   >
-
-    {/* Image Container */}
-    {/* <div className="relative w-full h-full rounded-4xl shadow-lg overflow-hidden">
-      <img
-        src={mainimage?.url}
-        alt="Service"
-        className="
-          w-full h-full object-cover
-          transition-transform duration-[1100ms]
-          ease-[cubic-bezier(.13,.62,.31,1)]
-          group-hover:scale-[1.08]
-        "
-      />
-      <div className="absolute inset-0 bg-gradient-to-t from-white/90 via-white/40 to-transparent"></div>
-    </div> */}
 
     <div className="
   relative w-full 
@@ -513,7 +304,7 @@ const openRandomVideo = () => {
       {/* YouTube iframe */}
       <iframe
         className="w-full aspect-video rounded-xl"
-        src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
+        src={`https://www.youtube.com/embed/${videoId}?rel=0`}
         allow="autoplay; encrypted-media"
         allowFullScreen
       ></iframe>

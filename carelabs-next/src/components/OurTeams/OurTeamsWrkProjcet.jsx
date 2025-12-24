@@ -9,7 +9,7 @@ const OurTeamsWrkProjcet = ({data}) => {
     if(!data)return null;
   return (
     <div>
-       <div className='w-full flex flex-col items-center justify-center mt-20'>
+       <div id="section5" className='w-full flex flex-col items-center justify-center mt-20'>
         <div className="flex flex-col w-[85%] p-5 text-center items-center justify-center
                 2xl:w-[50%]    ">
                     <h2 className='text-[30px] md:text-[36px] montserrat-font font-bold mb-4'

@@ -786,6 +786,7 @@ export const GET_CONTACT_PAGE = gql`
             order
           }
           submitbutton
+          submissionlink
           reply_msg
         }
       }
@@ -941,6 +942,8 @@ query  {
     }
     buttontext
     buttonlink
+    sitekey
+    theme
    createdAt
 }
 }

@@ -7,7 +7,7 @@ const OurTeamConverstation = ({data}) => {
   if(!data) return null;
 
   return (
-    <section className="w-full p-10 mt-20">
+    <section id="section12" className="w-full p-10 mt-20">
       <div className="w-full flex items-center justify-center">
         <div className="w-[95%] sm:w-[85%] lg:w-[70%] xl:w-[60%]  flex flex-col items-center justify-center gap-6 sm:gap-8 p-6 sm:p-10 bg-white shadow-lg rounded-[32px] shadow-lg rounded-2xl p-10 text-center bg-gradient-to-br 
                   from-[rgba(31,127,219,0.08)] 

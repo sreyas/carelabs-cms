@@ -12,7 +12,7 @@ const ContactPopupModal = ({ setIsOpen }) => {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [fieldNames, setFieldNames] = useState([]);
 
-console.log("KJHGFDSAASDFGGHHJKKLQWETTYUIOOPP");
+// console.log("KJHGFDSAASDFGGHHJKKLQWETTYUIOOPP");
 
  
    useEffect(() => {

@@ -309,7 +309,7 @@ const Header = ({navbarData}) => {
 
                <button
                   onClick={navigatetoSlugPage}
-                  className="relative inline-flex items-center justify-center bg-[#157de5] text-white text-[14px] font-semibold py-2 px-4 rounded-full w-[45%] text-center hover:bg-gradient-to-r hover:from-[#157de5] hover:to-[#ff7038] hover:shadow-[0_20px_30px_rgba(0,0,0,0.3)] transition-transform duration-300 hover:scale-105"
+                  className="relative inline-flex items-center justify-center bg-[#157de5] text-white text-[14px] font-semibold py-2 px-4 rounded-full w-[45%] text-center hover:bg-gradient-to-r hover:from-[#157de5] hover:to-[#ff7038] hover:shadow-[0_20px_30px_rgba(0,0,0,0.3)] transition-transform duration-300 hover:scale-105 cursor-pointer"
                 >
                   <span className="flex items-center gap-2 whitespace-nowrap">
                     {navbarData?.items?.[activeIndex]?.submenus?.[selectedSubmenuIndex]?.Button}

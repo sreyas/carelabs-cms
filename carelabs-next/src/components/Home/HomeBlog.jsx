@@ -56,7 +56,7 @@ const HomeBlog = ({data}) => {
             </div>
 
               <Link
-              href="/services/power-system-analysis"
+              href={insights?.buttonlink || "#"}
               className="px-5 py-3 border border-[#1F8FEB] text-[#1F8FEB] rounded-[12px]
               inline-block poppins-font text-center w-full sm:w-auto hover:bg-[#E9EDF5] transition-all duration-300 animate-pop-in"
             >

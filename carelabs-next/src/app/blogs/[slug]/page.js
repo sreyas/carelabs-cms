@@ -67,7 +67,7 @@ export default async function Page({ params }) {
   return (
     <div className="relative w-full flex flex-col items-center justify-center gap-5 overflow-y-auto">
       {/* Breadcrumbs */}
-      <div className="w-full md:w-[80%] xl:w-[70%] mt-20 md:mt-24 lg:mt-30 px-4 md:px-0">
+      <div className="w-full md:w-[80%] xl:w-[80%] mt-20 md:mt-24 lg:mt-30 px-4 md:px-0">
         <p className="text-para text-[14px] poppins-font">
           {/* Home / Insights / {blog.slug} */}
            <span className="text-slate-500">Home</span> /
@@ -76,7 +76,7 @@ export default async function Page({ params }) {
       </div>
 
       {/* HERO SECTION */}
-      <div className="w-full md:w-[80%] xl:w-[70%] bg-red flex flex-col md:flex-row items-center gap-6 p-8 md:p-10 shadow-2xl rounded-[24px] blog-panel">
+      <div className="w-full md:w-[80%] xl:w-[80%] bg-red flex flex-col md:flex-row items-center gap-6 p-8 md:p-10 shadow-2xl rounded-[24px] blog-panel">
         <div className="w-full md:w-1/2 flex flex-col gap-4 ">
           {(BrainIcon || blog?.badge) && (
             <div className="flex items-center gap-2 gradient-bg-badge rounded-full py-2 px-4 w-max">
@@ -157,7 +157,7 @@ export default async function Page({ params }) {
 
       {/* MAIN CONTENT WRAPPER */}
       <div className="w-full flex items-center justify-center mt-10">
-        <div className="w-full md:w-[80%] xl:w-[70%] flex flex-col items-center justify-center lg:items-start lg:flex-row gap-8">
+        <div className="w-full md:w-[80%] xl:w-[80%] flex flex-col items-center justify-center lg:items-start lg:flex-row gap-8">
           
           {/* SIDEBAR */}
           <div className="w-[90%] md:w-full lg:w-[25%] flex flex-col gap-5  ">

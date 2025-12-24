@@ -85,7 +85,14 @@ const OurTeamsBanner = ({ data }) => {
                     <div className="flex flex-col gap-3 py-3
                       sm:flex-row ">
                         <Link
-                            href={data.button1link || "#"}
+                            // href={data.button1link || "#"}
+                            href="#section5"
+                            onClick={(e) => {
+                                e.preventDefault();
+                                document
+                                    .getElementById("section5")
+                                    ?.scrollIntoView({ behavior: "smooth", block: "start" });
+                                }}
                             className="
                             py-2 px-5 text-[14px] bg-[#FF7038] border border-[#dae9fd] text-white 
                             rounded-4xl poppins-font
@@ -96,7 +103,14 @@ const OurTeamsBanner = ({ data }) => {
                             {data.button1text}
                         </Link>
                         <Link
-                            href={data.button2link || "#"}
+                            // href={data.button2link || "#"}
+                            href="#section12"
+                            onClick={(e) => {
+                                e.preventDefault();
+                                document
+                                    .getElementById("section12")
+                                    ?.scrollIntoView({ behavior: "smooth", block: "start" });
+                            }}
                             className="
                             poppins-font text-[14px] p-2 px-5 bg-white rounded-4xl border border-[#dae9fd]
                             transition-all duration-300

@@ -10,6 +10,8 @@ const ContactClient = ({ contactData }) => {
      const [selected, setSelected] = useState(null);
      const [normalFields, setNormalFields] = useState([]);
      const [messageField, setMessageField] = useState(null);
+     const [formData, setFormData] = useState({});
+     const [success, setSuccess] = useState(false);
      const [selectedRegion, setSelectedRegion] = useState(
       contactData?.Where_we_support?.regions?.[0]?.region_item?.[0]
      );
@@ -284,9 +286,8 @@ useEffect(() => {
 
         {/* RIGHT SIDE FORM */}
     <div className="w-full md:w-[60%]">
-    <form className="grid grid-cols-1 md:grid-cols-2 gap-6">
+    {/* <form className="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-        {/* NORMAL FIELDS */}
         {normalFields
         ?.sort((a, b) => a.order - b.order)
         .map((field, idx) => (
@@ -304,7 +305,7 @@ useEffect(() => {
             </div>
         ))}
 
-        {/* TYPE OF HELP */}
+
         <div className="col-span-1 md:col-span-2 flex flex-col">
         <label className="text-sm font-medium mb-1">
             {contactData?.Tell_us_about_project?.contact_form?.typeOfHelpTitle}
@@ -321,7 +322,7 @@ useEffect(() => {
         </select>
         </div>
 
-        {/* SERVICES */}
+
         <div className="col-span-1 md:col-span-2 flex flex-col">
         <label className="text-sm font-medium mb-1">
             {contactData?.Tell_us_about_project?.contact_form?.servicesTitle}
@@ -347,7 +348,7 @@ useEffect(() => {
         </div>
         </div>
 
-        {/* CONTACT METHOD */}
+
         <div className="col-span-1 md:col-span-2">
         <label className="text-sm font-medium mb-2 block">
             {contactData?.Tell_us_about_project?.contact_form?.contactMethodTitle}
@@ -365,7 +366,7 @@ useEffect(() => {
         </div>
         </div>
 
-        {/* MESSAGE FIELD (ALWAYS LAST) */}
+ 
         {messageField && (
         <div className="col-span-1 md:col-span-2 flex flex-col">
             <label className="text-sm font-medium mb-1">
@@ -381,22 +382,205 @@ useEffect(() => {
         </div>
         )}
 
-        {/* SUBMIT */}
-        <div className="col-span-1 md:col-span-2 flex flex-col items-center mt-6">
-        <button
-            type="submit"
-            className="w-[60%] md:w-full py-3 bg-[linear-gradient(90deg,#FF7038FF,#FF7038E6)] text-white rounded-full text-sm font-medium shadow transition"
-        >
-            {contactData?.Tell_us_about_project?.contact_form?.submitbutton}
-        </button>
 
-        <p className="flex items-center gap-2 text-[#65758B] text-sm mt-3">
-            <Clock className="w-4 h-4" />
-            {contactData?.Tell_us_about_project?.contact_form?.reply_msg}
-        </p>
+        <div className="col-span-1 md:col-span-2 flex flex-col items-center mt-6">
+          <button
+              type="submit"
+              className="w-[60%] md:w-full py-3 bg-[linear-gradient(90deg,#FF7038FF,#FF7038E6)] text-white rounded-full text-sm font-medium shadow transition"
+          >
+              {contactData?.Tell_us_about_project?.contact_form?.submitbutton}
+          </button>
+
+          <p className="flex items-center gap-2 text-[#65758B] text-sm mt-3">
+              <Clock className="w-4 h-4" />
+              {contactData?.Tell_us_about_project?.contact_form?.reply_msg}
+          </p>
         </div>
 
+    </form> */}
+
+    <form className="grid grid-cols-1 md:grid-cols-2 gap-6"
+      onSubmit={async (e) => {
+        e.preventDefault();
+
+        const submissionUrl =
+          contactData?.Tell_us_about_project?.contact_form?.submissionlink;
+
+        if (!submissionUrl) {
+          alert("Submission URL not found in Strapi");
+          return;
+        }
+
+        try {
+          const res = await fetch(submissionUrl, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(formData),
+          });
+
+          if (res.ok) {
+            setSuccess(true);
+            setTimeout(() => setSuccess(false), 5000);
+          } else {
+            alert("Submission failed");
+          }
+        } catch (err) {
+          console.error(err);
+          alert("Something went wrong");
+        }
+      }}
+    >
+
+        {/* NORMAL FIELDS */}
+        {normalFields
+          ?.sort((a, b) => a.order - b.order)
+          ?.map((field, idx) => (
+            <div key={idx} className="flex flex-col">
+              <label className="text-sm font-medium mb-1">
+                {field.fieldname} {field.required ? "*" : ""}
+              </label>
+
+              <input
+                type="text"
+                placeholder={field.placeholder}
+                required={field.required}
+                className="w-full px-3 py-2 border border-[#13182014] rounded-xl placeholder:text-sm placeholder:text-gray-500 focus:outline-none focus:border-[#157DE5] focus:border-2"
+                onChange={(e) =>
+                  setFormData((prev) => ({
+                    ...prev,
+                    [field.fieldname]: e.target.value,
+                  }))
+                }
+              />
+            </div>
+          ))}
+
+        {/* TYPE OF HELP */}
+        <div className="col-span-1 md:col-span-2 flex flex-col">
+          <label className="text-sm font-medium mb-1">
+            {contactData?.Tell_us_about_project?.contact_form?.typeOfHelpTitle}
+          </label>
+
+          <select
+            className="w-full px-3 py-2 border border-[#13182014] rounded-xl text-[14px] text-gray-800 focus:outline-none focus:border-[#157DE5] focus:border-2"
+            onChange={(e) =>
+              setFormData((prev) => ({ ...prev, typeOfHelp: e.target.value }))
+            }
+          >
+            {(contactData?.Tell_us_about_project?.contact_form?.typeOfHelpOptions ||
+              [])
+              ?.sort((a, b) => a.order - b.order)
+              ?.map((opt, i) => (
+                <option key={i} defaultValue={opt.default}>
+                  {opt.name}
+                </option>
+              ))}
+          </select>
+        </div>
+
+        {/* SERVICES */}
+        <div className="col-span-1 md:col-span-2 flex flex-col">
+          <label className="text-sm font-medium mb-1">
+            {contactData?.Tell_us_about_project?.contact_form?.servicesTitle}
+          </label>
+
+          <div className="flex flex-wrap gap-3 mt-3">
+            {(contactData?.Tell_us_about_project?.contact_form?.services || [])
+              ?.sort((a, b) => a.order - b.order)
+              ?.map((service, idx) => (
+                <span
+                  key={idx}
+                  onClick={() => {
+                    setSelected(idx);
+                    setFormData((prev) => ({
+                      ...prev,
+                      service: service.label,
+                    }));
+                  }}
+                  className={`px-3 py-2 border rounded-full text-[12px] font-semibold cursor-pointer
+                    ${
+                      selected === idx
+                        ? "bg-[#157DE5] text-white border-[#157DE5]"
+                        : "border-[#13182014] text-gray-700 hover:bg-gray-200"
+                    }`}
+                >
+                  {service.label}
+                </span>
+              ))}
+          </div>
+        </div>
+
+        {/* CONTACT METHOD */}
+        <div className="col-span-1 md:col-span-2">
+          <label className="text-sm font-medium mb-2 block">
+            {contactData?.Tell_us_about_project?.contact_form?.contactMethodTitle}
+          </label>
+
+          <div className="flex flex-wrap items-center gap-6 text-sm text-gray-900">
+            {(contactData?.Tell_us_about_project?.contact_form?.contactMethods || [])
+              ?.sort((a, b) => a.order - b.order)
+              ?.map((method, idx) => (
+                <label key={idx} className="flex items-center gap-2 cursor-pointer">
+                  <input
+                    type="radio"
+                    name="contact_method"
+                    onChange={() =>
+                      setFormData((prev) => ({
+                        ...prev,
+                        contactMethod: method.label,
+                      }))
+                    }
+                  />
+                  {method.label}
+                </label>
+              ))}
+          </div>
+        </div>
+
+        {/* MESSAGE FIELD */}
+        {messageField && (
+          <div className="col-span-1 md:col-span-2 flex flex-col">
+            <label className="text-sm font-medium mb-1">
+              {messageField.fieldname} {messageField.required ? "*" : ""}
+            </label>
+
+            <textarea
+              rows="4"
+              placeholder={messageField.placeholder}
+              required={messageField.required}
+              className="w-full px-5 py-5 rounded-xl border border-[#13182014] text-[14px] text-gray-800 focus:outline-none focus:border-[#157DE5] focus:border-2 placeholder:text-sm placeholder:text-gray-500"
+              onChange={(e) =>
+                setFormData((prev) => ({ ...prev, message: e.target.value }))
+              }
+            />
+          </div>
+        )}
+
+        {/* SUBMIT + MESSAGE */}
+        <div className="col-span-1 md:col-span-2 flex flex-col items-center mt-6">
+          <button
+            type="submit"
+            className="w-[60%] md:w-full py-3 bg-[linear-gradient(90deg,#FF7038FF,#FF7038E6)] text-white rounded-full text-sm font-medium shadow transition"
+          >
+            {contactData?.Tell_us_about_project?.contact_form?.submitbutton}
+          </button>
+
+          {!success && (
+            <p className="flex items-center gap-2 text-[#65758B] text-sm mt-3">
+              <Clock className="w-4 h-4" />
+              {contactData?.Tell_us_about_project?.contact_form?.reply_msg}
+            </p>
+          )}
+
+          {success && (
+            <div className="fixed bottom-6 right-6 bg-white text-black px-4 py-3 rounded-xl shadow-lg flex items-center gap-2 text-sm font-medium">
+              <CircleCheck className="text-green-600 w-5 h-5" />
+              {contactData?.Tell_us_about_project?.contact_form?.reply_msg}
+            </div>
+          )}
+        </div>
     </form>
+
     </div>
 
       </div>
@@ -609,7 +793,14 @@ useEffect(() => {
             {/* LINK */}
             {item.Go_to_from_text && (
               <a
-                href={item.Go_to_from_link}
+                // href={item.Go_to_from_link}
+                href={item.sharelink || "#contact_form"}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          document
+                            .getElementById("contact_form")
+                            ?.scrollIntoView({ behavior: "smooth", block: "start" });
+                        }}
                 className="text-[#007FFF] font-medium text-sm flex items-center gap-1 ml-[60px] mt-1"
               >
                 {item.Go_to_from_text} →
